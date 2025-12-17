@@ -1,5 +1,77 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
+
+const FallingCoin: React.FC<{ delay: number; left: number; duration: number; size: number }> = ({ delay, left, duration, size }) => {
+  return (
+    <motion.div
+      initial={{ y: -100, opacity: 0, rotateY: 0 }}
+      animate={{ 
+        y: '110vh', 
+        opacity: [0, 1, 1, 0.5, 0],
+        rotateY: 720,
+      }}
+      transition={{
+        duration,
+        delay,
+        repeat: Infinity,
+        ease: "linear"
+      }}
+      style={{ left: `${left}%` }}
+      className="absolute top-0"
+    >
+      <div 
+        className="relative"
+        style={{ width: size, height: size }}
+      >
+        {/* Coin glow */}
+        <div 
+          className="absolute inset-0 rounded-full bg-yellow-400/30 blur-md"
+          style={{ transform: 'scale(1.5)' }}
+        />
+        {/* Coin body */}
+        <div 
+          className="absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 via-yellow-500 to-yellow-600 border-2 border-yellow-200/50 shadow-[0_0_15px_rgba(250,204,21,0.5)]"
+          style={{ 
+            backgroundImage: 'linear-gradient(135deg, #fde047 0%, #facc15 30%, #eab308 70%, #ca8a04 100%)',
+          }}
+        >
+          {/* Coin inner circle / symbol */}
+          <div className="absolute inset-[20%] rounded-full border border-yellow-700/30 flex items-center justify-center">
+            <span className="text-yellow-800/60 font-bold" style={{ fontSize: size * 0.4 }}>₿</span>
+          </div>
+          {/* Shine effect */}
+          <div className="absolute top-[10%] left-[15%] w-[25%] h-[25%] rounded-full bg-white/40 blur-[1px]" />
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const CoinWaterfall: React.FC = () => {
+  const coins = useMemo(() => {
+    return Array.from({ length: 25 }, (_, i) => ({
+      id: i,
+      delay: Math.random() * 8,
+      left: Math.random() * 100,
+      duration: 6 + Math.random() * 6,
+      size: 16 + Math.random() * 20,
+    }));
+  }, []);
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {coins.map((coin) => (
+        <FallingCoin
+          key={coin.id}
+          delay={coin.delay}
+          left={coin.left}
+          duration={coin.duration}
+          size={coin.size}
+        />
+      ))}
+    </div>
+  );
+};
 
 export const CyberpunkBackground: React.FC = () => {
   return (
@@ -51,6 +123,9 @@ export const CyberpunkBackground: React.FC = () => {
         }}
         className="absolute bottom-[-10%] left-[20%] w-[60vw] h-[60vw] bg-accent/15 rounded-full blur-[120px] opacity-30 mix-blend-screen"
       />
+
+      {/* Falling Coins Waterfall */}
+      <CoinWaterfall />
       
       {/* Grid Overlay (preserved from original design but lighter) */}
       <div 
