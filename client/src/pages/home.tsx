@@ -1,12 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight, Instagram, Youtube, Send } from 'lucide-react';
-import { cvData, blogPosts } from '@/data/cv';
+import { useQuery } from '@tanstack/react-query';
+import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import avatarImage from '@assets/generated_images/cyberpunk_portrait_of_bearded_man_with_glasses.png';
+import type { BlogPost } from '@shared/schema';
 
 export default function Home() {
+  const { data: blogPosts = [], isLoading } = useQuery<BlogPost[]>({
+    queryKey: ['/api/blog-posts'],
+    queryFn: async () => {
+      const response = await fetch('/api/blog-posts');
+      if (!response.ok) throw new Error('Failed to fetch blog posts');
+      return response.json();
+    }
+  });
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
       <CyberpunkBackground />
@@ -76,8 +86,13 @@ export default function Home() {
       {/* Blog Grid Section */}
       <section className="py-20 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post, index) => (
+          {isLoading ? (
+            <div className="text-center py-20 font-mono text-muted-foreground">
+              LOADING_KNOWLEDGE_BASE...
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map((post, index) => (
               <a key={index} href={`/blog/${post.id}`} className="block group">
                 <NeonCard variant="accent" className="h-full flex flex-col hover:bg-accent/5 transition-all duration-300 hover:scale-[1.02]">
                   <div className="mb-6 relative overflow-hidden rounded border border-white/10 aspect-video bg-black/40 group-hover:border-accent/50 transition-colors">
@@ -110,8 +125,9 @@ export default function Home() {
                   </div>
                 </NeonCard>
               </a>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
