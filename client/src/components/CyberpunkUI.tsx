@@ -101,22 +101,73 @@ export const CyberButton: React.FC<CyberButtonProps> = ({
   );
 };
 
+const ScrollingChar: React.FC<{ target: string; delay?: number }> = ({ target, delay = 0 }) => {
+  const [char, setChar] = React.useState(target);
+  const internalTarget = React.useRef(target);
+
+  React.useEffect(() => {
+    if (internalTarget.current === target) return;
+    
+    const start = internalTarget.current.charCodeAt(0);
+    const end = target.charCodeAt(0);
+    const direction = end > start ? 1 : -1;
+    let current = start;
+
+    // Small delay before starting the scroll for this specific character
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        if (current === end) {
+          clearInterval(interval);
+          internalTarget.current = target;
+          return;
+        }
+        
+        current += direction;
+        // Skip some characters to make it faster/look like random glitching if distance is far
+        if (Math.abs(end - current) > 5 && Math.random() > 0.5) {
+             current += direction; 
+        }
+        
+        setChar(String.fromCharCode(current));
+      }, 50);
+
+      return () => clearInterval(interval);
+    }, delay);
+
+    return () => clearTimeout(timeout);
+  }, [target, delay]);
+
+  return <span>{char}</span>;
+};
+
 export const NameGlitch: React.FC = () => {
-  const [suffix, setSuffix] = React.useState("EY");
+  const [isSergio, setIsSergio] = React.useState(false);
 
   React.useEffect(() => {
     const interval = setInterval(() => {
-      // Randomly decide whether to glitch
-      if (Math.random() > 0.6) {
-        setSuffix(prev => prev === "EY" ? "IO" : "EY");
+      if (Math.random() > 0.7) {
+        setIsSergio(prev => !prev);
       }
-    }, 800);
+    }, 2000); // Check every 2s
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <GlitchText text={`SERG${suffix}`} className="text-white block" />
+    <div className="relative inline-block group">
+      <span className="relative z-10">
+        SERG
+        <ScrollingChar target={isSergio ? "I" : "E"} delay={0} />
+        <ScrollingChar target={isSergio ? "O" : "Y"} delay={100} />
+      </span>
+      {/* Glitch layers */}
+      <span className="absolute top-0 left-0 -z-10 w-full h-full text-primary opacity-0 group-hover:opacity-70 group-hover:translate-x-[2px] group-hover:-translate-y-[2px] transition-all duration-100 select-none">
+        SERG{isSergio ? "IO" : "EY"}
+      </span>
+      <span className="absolute top-0 left-0 -z-10 w-full h-full text-secondary opacity-0 group-hover:opacity-70 group-hover:-translate-x-[2px] group-hover:translate-y-[2px] transition-all duration-100 select-none">
+        SERG{isSergio ? "IO" : "EY"}
+      </span>
+    </div>
   );
 };
 
