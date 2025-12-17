@@ -19,7 +19,7 @@ export const CyberpunkBackground: React.FC = () => {
           repeat: Infinity,
           ease: "easeInOut"
         }}
-        className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-primary/20 rounded-full blur-[100px] opacity-30 mix-blend-screen"
+        className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-primary/25 rounded-full blur-[100px] opacity-[0.35] mix-blend-screen"
       />
       
       <motion.div
@@ -34,7 +34,7 @@ export const CyberpunkBackground: React.FC = () => {
           ease: "easeInOut",
           delay: 2
         }}
-        className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] bg-secondary/20 rounded-full blur-[100px] opacity-30 mix-blend-screen"
+        className="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] bg-secondary/25 rounded-full blur-[100px] opacity-[0.35] mix-blend-screen"
       />
 
       <motion.div
@@ -49,7 +49,7 @@ export const CyberpunkBackground: React.FC = () => {
           ease: "easeInOut",
           delay: 5
         }}
-        className="absolute bottom-[-10%] left-[20%] w-[60vw] h-[60vw] bg-accent/15 rounded-full blur-[120px] opacity-30 mix-blend-screen"
+        className="absolute bottom-[-10%] left-[20%] w-[60vw] h-[60vw] bg-accent/20 rounded-full blur-[120px] opacity-[0.35] mix-blend-screen"
       />
       
       {/* Grid Overlay (preserved from original design but lighter) */}
