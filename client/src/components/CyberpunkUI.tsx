@@ -101,6 +101,25 @@ export const CyberButton: React.FC<CyberButtonProps> = ({
   );
 };
 
+export const NameGlitch: React.FC = () => {
+  const [suffix, setSuffix] = React.useState("EY");
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      // Randomly decide whether to glitch
+      if (Math.random() > 0.6) {
+        setSuffix(prev => prev === "EY" ? "IO" : "EY");
+      }
+    }, 800);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <GlitchText text={`SERG${suffix}`} className="text-white block" />
+  );
+};
+
 export const SectionHeader: React.FC<{ title: string; subtitle?: string }> = ({ title, subtitle }) => (
   <div className="mb-12 relative">
     <h2 className="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary animate-gradient-x">

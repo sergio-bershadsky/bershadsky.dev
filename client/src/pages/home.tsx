@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink } from 'lucide-react';
 import { cvData, blogPosts } from '@/data/cv';
-import { GlitchText, NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
+import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import bgImage from '@assets/generated_images/dark_abstract_cyberpunk_grid_background.png';
 import avatarImage from '@assets/generated_images/cyberpunk_portrait_of_bearded_man_with_glasses.png';
 
@@ -30,7 +30,7 @@ export default function Home() {
               SYSTEM_READY_V2.0.25
             </div>
             <h1 className="text-6xl md:text-8xl font-display font-bold leading-tight">
-              <GlitchText text="SERGEY" className="text-white block" />
+              <NameGlitch />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
                 BERSHADSKY
               </span>
