@@ -1,5 +1,6 @@
 import { db } from "./db";
 import { blogPosts } from "@shared/schema";
+import { sql } from "drizzle-orm";
 
 const seedData = [
   {
@@ -22,6 +23,7 @@ Implementing this pattern requires a robust observability stack. You cannot scal
 The future of microservices isn't about adding more complexity—it's about building systems smart enough to manage themselves.`,
     date: "2024-12-10",
     tags: ["Architecture", "DevOps"],
+    imageUrl: "/attached_assets/generated_images/microservices_network_visualization.png",
     videoUrl: "/attached_assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4"
   },
   {
@@ -45,6 +47,7 @@ GraphQL solves the over-fetching problem elegantly, allowing clients to request 
 The choice isn't about replacing REST everywhere—it's about choosing the right tool for each use case. But one thing is clear: the days of REST-only backends are numbered.`,
     date: "2024-11-28",
     tags: ["API", "Opinion"],
+    imageUrl: "/attached_assets/generated_images/rest_api_evolution_visual.png",
     videoUrl: "/attached_assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4"
   },
   {
@@ -75,6 +78,7 @@ When you build your MVP with discipline, you gain speed through quality. Your te
 Remember: the goal isn't to launch fast and crash—it's to launch fast and scale.`,
     date: "2024-11-15",
     tags: ["Startup", "Product"],
+    imageUrl: "/attached_assets/generated_images/mvp_rocket_launch_concept.png",
     videoUrl: "/attached_assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4"
   }
 ];
@@ -83,6 +87,10 @@ async function seed() {
   console.log("Starting database seed...");
   
   try {
+    // Clear existing data
+    await db.execute(sql`DELETE FROM blog_posts`);
+    console.log("Cleared existing blog posts");
+    
     for (const post of seedData) {
       const [created] = await db.insert(blogPosts).values(post).returning();
       console.log(`✓ Created blog post: ${created.title}`);
