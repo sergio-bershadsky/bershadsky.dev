@@ -1,19 +1,49 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useRoute } from "wouter";
+import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2 } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4';
-import { blogPosts } from '@/data/cv';
+import type { BlogPost } from '@shared/schema';
 
-export default function BlogPost() {
+export default function BlogPostPage() {
   const [match, params] = useRoute("/blog/:id");
   const [copied, setCopied] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(false);
   
-  // Mock full content since we only have excerpts in the CV data
-  const post = blogPosts.find(p => p.id === Number(params?.id)) || blogPosts[0];
+  const postId = Number(params?.id);
+  
+  const { data: post, isLoading } = useQuery<BlogPost>({
+    queryKey: ['/api/blog-posts', postId],
+    queryFn: async () => {
+      const response = await fetch(`/api/blog-posts/${postId}`);
+      if (!response.ok) throw new Error('Failed to fetch blog post');
+      return response.json();
+    },
+    enabled: !!postId
+  });
+  
+  const { data: allPosts = [] } = useQuery<BlogPost[]>({
+    queryKey: ['/api/blog-posts'],
+    queryFn: async () => {
+      const response = await fetch('/api/blog-posts');
+      if (!response.ok) throw new Error('Failed to fetch blog posts');
+      return response.json();
+    }
+  });
+  
+  if (isLoading || !post) {
+    return (
+      <div className="min-h-screen text-foreground relative overflow-x-hidden flex items-center justify-center">
+        <CyberpunkBackground />
+        <div className="text-center font-mono text-muted-foreground">
+          LOADING_ARTICLE...
+        </div>
+      </div>
+    );
+  }
 
   const copyCode = () => {
     navigator.clipboard.writeText(`// Microservices scaling example
@@ -241,7 +271,7 @@ const scaleService = async (serviceId: string) => {
         <div className="max-w-4xl mx-auto mt-20 pt-10 border-t border-white/10">
           <SectionHeader title="RELATED_DATA" subtitle="Continue Reading" />
           <div className="grid md:grid-cols-2 gap-6">
-            {blogPosts.filter(p => p.id !== post.id).slice(0, 2).map(related => (
+            {allPosts.filter(p => p.id !== post.id).slice(0, 2).map(related => (
                <NeonCard key={related.id} variant="accent" className="cursor-pointer group">
                   <div className="flex justify-between items-start mb-4">
                     <h4 className="font-display font-bold text-lg group-hover:text-accent transition-colors">{related.title}</h4>
