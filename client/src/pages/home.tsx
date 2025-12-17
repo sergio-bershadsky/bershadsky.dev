@@ -4,6 +4,7 @@ import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, P
 import { cvData, blogPosts } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
+import avatarImage from '@assets/generated_images/cyberpunk_portrait_of_bearded_man_with_glasses.png';
 
 export default function Home() {
   return (
@@ -11,11 +12,28 @@ export default function Home() {
       <CyberpunkBackground />
 
       {/* Hero Section */}
-      <section className="min-h-[60vh] flex flex-col items-center justify-center relative px-4 pt-20">
+      <section className="min-h-[80vh] flex flex-col items-center justify-center relative px-4 pt-20">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="relative w-64 h-64 md:w-80 md:h-80 mx-auto mb-10"
+        >
+          <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-[spin_10s_linear_infinite]" />
+          <div className="absolute -inset-4 rounded-full border border-secondary/20 animate-[spin_15s_linear_infinite_reverse]" />
+          <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-accent/50 shadow-[0_0_50px_rgba(147,51,234,0.3)]">
+             <img 
+              src={avatarImage} 
+              alt="Cyberpunk Avatar" 
+              className="w-full h-full object-cover filter contrast-125 hover:scale-110 transition-transform duration-700"
+            />
+          </div>
+        </motion.div>
+
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="text-center space-y-6 max-w-4xl"
         >
           <div className="inline-block px-3 py-1 border border-secondary/50 text-secondary font-mono text-sm bg-secondary/5 backdrop-blur-sm mb-4">
