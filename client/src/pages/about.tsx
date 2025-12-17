@@ -42,7 +42,7 @@ export default function About() {
                 BERSHADSKY
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground font-mono max-w-lg">
+            <p className="text-lg md:text-2xl text-muted-foreground font-mono whitespace-nowrap">
               &lt; {cvData.personal.title} /&gt;
             </p>
             <p className="text-lg max-w-xl text-foreground/80 leading-relaxed">
