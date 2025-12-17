@@ -85,11 +85,11 @@ const scaleService = async (serviceId: string) => {
           <div className="grid md:grid-cols-[1fr_250px] gap-10">
             <div className="space-y-8">
               {/* Introduction */}
-              <div className="prose prose-invert prose-lg max-w-none">
-                <p className="text-xl leading-relaxed text-foreground/90 font-light first-letter:text-5xl first-letter:font-display first-letter:text-primary first-letter:mr-3 first-letter:float-left">
+              <div className="prose prose-invert prose-lg max-w-none font-serif text-gray-200">
+                <p className="text-xl leading-8 text-gray-100 font-light first-letter:text-5xl first-letter:font-display first-letter:text-primary first-letter:mr-3 first-letter:float-left tracking-wide">
                   In the rapidly evolving landscape of distributed systems, the challenge isn't just building microservices—it's orchestrating them at scale without creating a maintenance nightmare. As we move into 2025, the old paradigms of manual scaling and static provisioning are dead.
                 </p>
-                <p>
+                <p className="text-lg leading-8 text-gray-300">
                   Today, we're seeing a shift towards autonomous, event-driven architectures that react to system pressure in real-time. This article explores the architectural patterns that are defining the next generation of scalable platforms.
                 </p>
               </div>
@@ -122,7 +122,7 @@ const scaleService = async (serviceId: string) => {
               </NeonCard>
 
               {/* Code Example */}
-              <div className="relative group">
+              <div className="relative group my-12">
                 <div className="absolute -top-3 left-4 bg-background px-2 text-xs font-mono text-primary border border-primary/30 rounded z-10">
                   SCALING_LOGIC.TS
                 </div>
@@ -158,15 +158,15 @@ const scaleService = async (serviceId: string) => {
                 </div>
               </div>
 
-              <div className="prose prose-invert prose-lg max-w-none">
-                <h3 className="text-2xl font-display text-white mt-8 mb-4">The Implementation Strategy</h3>
-                <p>
+              <div className="prose prose-invert prose-lg max-w-none font-serif text-gray-200">
+                <h3 className="text-3xl font-display text-white mt-12 mb-6 tracking-wide">The Implementation Strategy</h3>
+                <p className="text-lg leading-8 text-gray-300 mb-6">
                   Implementing this pattern requires a robust observability stack. You cannot scale what you cannot measure. We recommend starting with Prometheus for metrics collection and Grafana for visualization, but the real magic happens when you couple these with an automated decision engine.
                 </p>
-                <ul className="list-disc pl-6 space-y-2 text-muted-foreground marker:text-primary">
-                  <li>Define clear SLIs and SLOs before writing scaling rules</li>
-                  <li>Implement circuit breakers to prevent cascading failures</li>
-                  <li>Use idempotent operations to ensure data consistency</li>
+                <ul className="list-disc pl-6 space-y-4 text-gray-300 marker:text-primary">
+                  <li className="pl-2">Define clear SLIs and SLOs before writing scaling rules</li>
+                  <li className="pl-2">Implement circuit breakers to prevent cascading failures</li>
+                  <li className="pl-2">Use idempotent operations to ensure data consistency</li>
                 </ul>
               </div>
             </div>
