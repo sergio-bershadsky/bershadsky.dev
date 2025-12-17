@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight } from 'lucide-react';
+import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight, Instagram, Youtube, Send } from 'lucide-react';
 import { cvData, blogPosts } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
@@ -30,6 +30,24 @@ export default function Home() {
           <p className="text-xl md:text-2xl text-muted-foreground font-mono max-w-2xl mx-auto">
             Insights on scaling architectures, distributed systems, and the future of tech.
           </p>
+
+          <div className="flex justify-center gap-6 mt-8">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="group">
+              <div className="p-3 border border-primary/30 rounded-full bg-primary/5 hover:bg-primary/20 hover:border-primary transition-all duration-300 hover:scale-110 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_20px_rgba(236,72,153,0.5)]">
+                <Instagram className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+              </div>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="group">
+               <div className="p-3 border border-red-500/30 rounded-full bg-red-500/5 hover:bg-red-500/20 hover:border-red-500 transition-all duration-300 hover:scale-110 shadow-[0_0_10px_rgba(239,68,68,0.2)] hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
+                <Youtube className="w-6 h-6 text-red-500 group-hover:text-white transition-colors" />
+              </div>
+            </a>
+            <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" className="group">
+               <div className="p-3 border border-secondary/30 rounded-full bg-secondary/5 hover:bg-secondary/20 hover:border-secondary transition-all duration-300 hover:scale-110 shadow-[0_0_10px_rgba(6,182,212,0.2)] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]">
+                <Send className="w-6 h-6 text-secondary group-hover:text-white transition-colors" />
+              </div>
+            </a>
+          </div>
         </motion.div>
         
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-muted-foreground text-sm font-mono opacity-50">
