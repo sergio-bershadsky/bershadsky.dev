@@ -141,53 +141,31 @@ const ScrollingChar: React.FC<{ target: string; delay?: number }> = ({ target, d
 };
 
 export const NameGlitch: React.FC = () => {
-  const [text, setText] = React.useState("SERGEY");
-  const [targetWord, setTargetWord] = React.useState("SERGIO");
-  const [isDeleting, setIsDeleting] = React.useState(true);
-  const [isWaiting, setIsWaiting] = React.useState(false);
+  const [isSergio, setIsSergio] = React.useState(false);
 
   React.useEffect(() => {
-    if (isWaiting) return;
-
-    const timeout = setTimeout(() => {
-      const currentText = text;
-      
-      if (isDeleting) {
-        if (currentText === "SERG") {
-          setIsDeleting(false);
-        } else {
-          setText(currentText.slice(0, -1));
-        }
-      } else {
-        // Typing
-        if (currentText === targetWord) {
-          setIsWaiting(true);
-          setTimeout(() => {
-            setTargetWord(prev => prev === "SERGEY" ? "SERGIO" : "SERGEY");
-            setIsDeleting(true);
-            setIsWaiting(false);
-          }, 2000);
-        } else {
-          setText(targetWord.slice(0, currentText.length + 1));
-        }
+    const interval = setInterval(() => {
+      if (Math.random() > 0.7) {
+        setIsSergio(prev => !prev);
       }
-    }, isDeleting ? 100 : 150); // Faster delete, slower type
+    }, 2000); // Check every 2s
 
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, isWaiting, targetWord]);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="relative inline-block group h-[1em]">
-       {/* Use a fixed height container to prevent layout shifts if possible, though h1 handles it */}
-      <span className="relative z-10">{text}</span>
-      <span className="animate-pulse ml-1 inline-block w-[0.1em] h-[0.8em] bg-primary align-middle" />
-      
-      {/* Glitch layers for the current text */}
+    <div className="relative inline-block group">
+      <span className="relative z-10">
+        SERG
+        <ScrollingChar target={isSergio ? "I" : "E"} delay={0} />
+        <ScrollingChar target={isSergio ? "O" : "Y"} delay={100} />
+      </span>
+      {/* Glitch layers */}
       <span className="absolute top-0 left-0 -z-10 w-full h-full text-primary opacity-0 group-hover:opacity-70 group-hover:translate-x-[2px] group-hover:-translate-y-[2px] transition-all duration-100 select-none">
-        {text}
+        SERG{isSergio ? "IO" : "EY"}
       </span>
       <span className="absolute top-0 left-0 -z-10 w-full h-full text-secondary opacity-0 group-hover:opacity-70 group-hover:-translate-x-[2px] group-hover:translate-y-[2px] transition-all duration-100 select-none">
-        {text}
+        SERG{isSergio ? "IO" : "EY"}
       </span>
     </div>
   );
