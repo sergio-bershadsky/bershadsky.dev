@@ -3,19 +3,13 @@ import { motion } from 'framer-motion';
 import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink } from 'lucide-react';
 import { cvData, blogPosts } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
-import bgImage from '@assets/generated_images/dark_abstract_cyberpunk_grid_background.png';
+import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import avatarImage from '@assets/generated_images/cyberpunk_portrait_of_bearded_man_with_glasses.png';
 
 export default function Home() {
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
-      {/* Background Overlay */}
-      <div 
-        className="fixed inset-0 z-[-1] opacity-40 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      />
-      <div className="fixed inset-0 z-[-1] bg-background/80 backdrop-blur-[2px]" />
-      <div className="fixed inset-0 z-[50] pointer-events-none scanlines opacity-[0.03]" />
+      <CyberpunkBackground />
 
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center relative px-4 pt-20">
