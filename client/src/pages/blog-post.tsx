@@ -84,6 +84,11 @@ const scaleService = async (serviceId: string) => {
           {/* Main Content */}
           <div className="grid md:grid-cols-[1fr_250px] gap-10">
             <div className="space-y-8">
+              <a href="/" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors group mb-4">
+                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                <span className="font-display font-bold">BACK_TO_INDEX</span>
+              </a>
+
               {/* Introduction */}
               <div className="prose prose-invert prose-lg max-w-none font-serif text-gray-200">
                 <p className="text-xl leading-8 text-gray-100 font-light first-letter:text-5xl first-letter:font-display first-letter:text-primary first-letter:mr-3 first-letter:float-left tracking-wide">
