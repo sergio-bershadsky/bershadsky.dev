@@ -116,7 +116,7 @@ export default function Home() {
               <h3 className="text-xl font-bold mb-3 font-display">FRAMEWORKS</h3>
               <div className="flex flex-wrap gap-2">
                 {cvData.skills.frameworks.map(skill => (
-                  <span key={skill} className="px-2 py-1 bg-secondary/10 border border-secondary/30 text-xs font-mono text-secondary-foreground/80">
+                  <span key={skill} className="px-2 py-1 bg-secondary/10 border border-secondary/30 text-xs font-mono text-secondary">
                     {skill}
                   </span>
                 ))}
