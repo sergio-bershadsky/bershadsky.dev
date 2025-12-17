@@ -24,7 +24,7 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   
-  --font-sans: 'Rajdhani', sans-serif;
+  --font-sans: 'Inter', sans-serif;
   --font-display: 'Orbitron', sans-serif;
   --font-mono: 'Share Tech Mono', monospace;
   

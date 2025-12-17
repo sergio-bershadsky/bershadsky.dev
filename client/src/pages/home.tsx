@@ -15,7 +15,7 @@ export default function Home() {
         style={{ backgroundImage: `url(${bgImage})` }}
       />
       <div className="fixed inset-0 z-[-1] bg-background/80 backdrop-blur-[2px]" />
-      <div className="fixed inset-0 z-[50] pointer-events-none scanlines opacity-30" />
+      <div className="fixed inset-0 z-[50] pointer-events-none scanlines opacity-[0.03]" />
 
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center relative px-4 pt-20">
