@@ -210,30 +210,32 @@ export default function Home() {
           
           <div className="grid md:grid-cols-3 gap-6">
             {blogPosts.map((post, index) => (
-              <NeonCard key={index} variant="accent" className="h-full flex flex-col">
-                <div className="mb-4 text-xs font-mono text-accent flex justify-between">
-                  <span>ID: 00{post.id}</span>
-                  <span>{post.date}</span>
-                </div>
-                <h3 className="text-xl font-bold mb-3 font-display leading-tight flex-grow">
-                  {post.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {post.excerpt}
-                </p>
-                <div className="mt-auto flex gap-2">
-                  {post.tags.map(tag => (
-                    <span key={tag} className="text-[10px] uppercase tracking-wider border border-white/20 px-2 py-1 text-white/50">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="mt-4 pt-4 border-t border-white/5">
-                  <button className="text-sm font-mono text-accent hover:text-white transition-colors flex items-center gap-2">
-                    READ_ENTRY <ExternalLink className="w-3 h-3" />
-                  </button>
-                </div>
-              </NeonCard>
+              <a key={index} href={`/blog/${post.id}`} className="block h-full">
+                <NeonCard variant="accent" className="h-full flex flex-col hover:bg-accent/5 transition-colors cursor-pointer">
+                  <div className="mb-4 text-xs font-mono text-accent flex justify-between">
+                    <span>ID: 00{post.id}</span>
+                    <span>{post.date}</span>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3 font-display leading-tight flex-grow">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {post.excerpt}
+                  </p>
+                  <div className="mt-auto flex gap-2">
+                    {post.tags.map(tag => (
+                      <span key={tag} className="text-[10px] uppercase tracking-wider border border-white/20 px-2 py-1 text-white/50">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-white/5">
+                    <button className="text-sm font-mono text-accent hover:text-white transition-colors flex items-center gap-2">
+                      READ_ENTRY <ExternalLink className="w-3 h-3" />
+                    </button>
+                  </div>
+                </NeonCard>
+              </a>
             ))}
           </div>
         </div>
