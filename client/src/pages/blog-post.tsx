@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useRoute } from "wouter";
 import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
-import bgImage from '@assets/generated_images/dark_abstract_cyberpunk_grid_background.png';
+import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4';
 import { blogPosts } from '@/data/cv';
 
@@ -29,13 +29,7 @@ const scaleService = async (serviceId: string) => {
 
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
-      {/* Background Overlay */}
-      <div 
-        className="fixed inset-0 z-[-1] opacity-40 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${bgImage})` }}
-      />
-      <div className="fixed inset-0 z-[-1] bg-background/80 backdrop-blur-[2px]" />
-      <div className="fixed inset-0 z-[50] pointer-events-none scanlines opacity-[0.03]" />
+      <CyberpunkBackground />
 
       {/* Navigation Bar */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-white/10 px-4 py-4">
