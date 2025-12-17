@@ -25,6 +25,7 @@
   --color-ring: hsl(var(--ring));
   
   --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Merriweather', serif;
   --font-display: 'Orbitron', sans-serif;
   --font-mono: 'Share Tech Mono', monospace;
   
