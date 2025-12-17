@@ -149,27 +149,27 @@ const scaleService = async (serviceId: string) => {
 
               {/* Diagram Section */}
               <NeonCard variant="secondary" className="my-10 p-8">
-                <div className="text-xs font-mono text-secondary mb-4 flex justify-between">
+                <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
                   <span>FIG 1.0 // ARCHITECTURE_DIAGRAM</span>
                   <span>STATUS: LIVE</span>
                 </div>
-                <div className="relative h-64 border border-dashed border-white/20 rounded bg-black/40 flex items-center justify-center p-4">
+                <div className="relative min-h-[320px] border border-dashed border-white/20 rounded bg-black/40 flex items-center justify-center p-6">
                   {/* CSS-only flowchart diagram */}
-                  <div className="flex items-center gap-4 w-full justify-center">
-                    <div className="flex flex-col items-center gap-2">
-                      <div className="w-24 h-12 border border-primary bg-primary/10 flex items-center justify-center text-xs font-mono rounded">CLIENT</div>
-                      <div className="h-8 w-[1px] bg-white/20"></div>
-                      <div className="w-24 h-12 border border-accent bg-accent/10 flex items-center justify-center text-xs font-mono rounded">API GATEWAY</div>
+                  <div className="flex items-center gap-6 w-full justify-center">
+                    <div className="flex flex-col items-center gap-3">
+                      <div className="w-32 h-14 border border-primary bg-primary/10 flex items-center justify-center text-base font-mono rounded">CLIENT</div>
+                      <div className="h-10 w-[2px] bg-white/30"></div>
+                      <div className="w-32 h-14 border border-accent bg-accent/10 flex items-center justify-center text-base font-mono rounded">API GATEWAY</div>
                     </div>
-                    <div className="h-[1px] w-8 bg-white/20"></div>
+                    <div className="h-[2px] w-12 bg-white/30"></div>
                     <div className="flex flex-col gap-4">
-                      <div className="w-32 h-10 border border-secondary bg-secondary/10 flex items-center justify-center text-xs font-mono rounded">AUTH SERVICE</div>
-                      <div className="w-32 h-10 border border-secondary bg-secondary/10 flex items-center justify-center text-xs font-mono rounded">DATA SERVICE</div>
-                      <div className="w-32 h-10 border border-secondary bg-secondary/10 flex items-center justify-center text-xs font-mono rounded">ANALYTICS</div>
+                      <div className="w-40 h-12 border border-secondary bg-secondary/10 flex items-center justify-center text-base font-mono rounded">AUTH SERVICE</div>
+                      <div className="w-40 h-12 border border-secondary bg-secondary/10 flex items-center justify-center text-base font-mono rounded">DATA SERVICE</div>
+                      <div className="w-40 h-12 border border-secondary bg-secondary/10 flex items-center justify-center text-base font-mono rounded">ANALYTICS</div>
                     </div>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground mt-4 font-mono text-center">
+                <p className="text-base text-muted-foreground mt-4 font-mono text-center">
                   // Distributed Event Mesh Architecture with Auto-scaling capabilities
                 </p>
               </NeonCard>
@@ -194,7 +194,7 @@ const scaleService = async (serviceId: string) => {
                       {copied ? 'COPIED' : 'COPY_SOURCE'}
                     </button>
                   </div>
-                  <pre className="p-6 overflow-x-auto text-sm font-mono leading-relaxed">
+                  <pre className="p-6 overflow-x-auto text-base font-mono leading-loose">
                     <code className="text-gray-300">
                       <span className="text-purple-400">// Microservices scaling example</span>{'\n'}
                       <span className="text-blue-400">const</span> <span className="text-yellow-300">scaleService</span> = <span className="text-blue-400">async</span> (<span className="text-orange-300">serviceId</span>: <span className="text-green-400">string</span>) ={'>'} {'{'}{'\n'}
