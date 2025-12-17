@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useRoute } from "wouter";
-import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2 } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4';
@@ -10,6 +10,7 @@ import { blogPosts } from '@/data/cv';
 export default function BlogPost() {
   const [match, params] = useRoute("/blog/:id");
   const [copied, setCopied] = React.useState(false);
+  const [isExpanded, setIsExpanded] = React.useState(false);
   
   // Mock full content since we only have excerpts in the CV data
   const post = blogPosts.find(p => p.id === Number(params?.id)) || blogPosts[0];
@@ -45,42 +46,59 @@ const scaleService = async (serviceId: string) => {
       </nav>
 
       <div className="container mx-auto px-4 pt-24 pb-20">
-        <article className="max-w-4xl mx-auto">
-          {/* Header Video Section */}
-          <div className="relative aspect-video w-full rounded-lg overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(236,72,153,0.2)] mb-10 group">
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-            <video 
-              src={blogVideo} 
-              autoPlay 
-              loop 
-              muted 
-              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-            />
-            
-            {/* Title Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-20">
-              <div className="flex flex-wrap gap-4 mb-4 text-xs font-mono">
-                <span className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-primary">
-                  <Calendar className="w-3 h-3" /> {post.date}
-                </span>
-                <span className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-secondary">
-                  <Clock className="w-3 h-3" /> 8 MIN READ
-                </span>
-                {post.tags.map(tag => (
-                  <span key={tag} className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-muted-foreground">
-                    <Hash className="w-3 h-3" /> {tag}
-                  </span>
-                ))}
-              </div>
-              <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-4 drop-shadow-lg">
-                {post.title}
-              </h1>
-              <p className="text-xl text-white/80 max-w-2xl font-light">
-                {post.excerpt}
-              </p>
-            </div>
-          </div>
+        {/* Header Video Section - Now expandable */}
+        <motion.div 
+          layout
+          className={`relative rounded-lg overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(236,72,153,0.2)] mb-10 group transition-all duration-500 ease-in-out ${
+            isExpanded 
+              ? 'w-[calc(100vw-2rem)] ml-[calc(50%-50vw+1rem)] h-[80vh] z-30' 
+              : 'w-full aspect-video max-w-4xl mx-auto'
+          }`}
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
+          
+          {/* Expansion Toggle */}
+          <button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="absolute top-4 right-4 z-40 p-2 bg-black/60 backdrop-blur rounded-full border border-white/20 text-white/80 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+            title={isExpanded ? "Collapse View" : "Expand View"}
+          >
+            {isExpanded ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
+          </button>
 
+          <video 
+            src={blogVideo} 
+            autoPlay 
+            loop 
+            muted 
+            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+          />
+          
+          {/* Title Overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-20">
+            <div className="flex flex-wrap gap-4 mb-4 text-xs font-mono">
+              <span className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-primary">
+                <Calendar className="w-3 h-3" /> {post.date}
+              </span>
+              <span className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-secondary">
+                <Clock className="w-3 h-3" /> 8 MIN READ
+              </span>
+              {post.tags.map(tag => (
+                <span key={tag} className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-muted-foreground">
+                  <Hash className="w-3 h-3" /> {tag}
+                </span>
+              ))}
+            </div>
+            <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-4 drop-shadow-lg transition-all duration-300`}>
+              {post.title}
+            </h1>
+            <p className="text-xl text-white/80 max-w-2xl font-light">
+              {post.excerpt}
+            </p>
+          </div>
+        </motion.div>
+
+        <article className="max-w-4xl mx-auto">
           {/* Main Content */}
           <div className="grid md:grid-cols-[1fr_250px] gap-10">
             <div className="space-y-8">
