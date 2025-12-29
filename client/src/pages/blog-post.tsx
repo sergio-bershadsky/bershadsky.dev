@@ -29,36 +29,8 @@ export default function BlogPostPage() {
   const [copied, setCopied] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [tableOfContents, setTableOfContents] = React.useState<string[]>([]);
-  const [activeSection, setActiveSection] = React.useState<string>('');
   
   const postSlug = params?.slug;
-  
-  // Track active section with IntersectionObserver
-  React.useEffect(() => {
-    if (tableOfContents.length === 0) return;
-    
-    const slugs = tableOfContents.map(heading => 
-      heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
-    );
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
-    );
-    
-    slugs.forEach((slug) => {
-      const element = document.getElementById(slug);
-      if (element) observer.observe(element);
-    });
-    
-    return () => observer.disconnect();
-  }, [tableOfContents]);
   
   const { data: post, isLoading } = useQuery<BlogPostWithSeries>({
     queryKey: ['/api/blog-posts', postSlug],
@@ -292,8 +264,8 @@ export default function BlogPostPage() {
               </div>
             </div>
 
-            <aside className="hidden md:block md:sticky md:top-24 md:self-start">
-              <div className="space-y-8">
+            <aside className="hidden md:block self-start">
+              <div className="sticky top-24 space-y-8">
                 <NeonCard variant="primary" className="p-6">
                   <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">About Author</h4>
                   <div className="flex items-center gap-4 mb-4">
@@ -327,25 +299,20 @@ export default function BlogPostPage() {
                 {tableOfContents.length > 0 && (
                   <div className="border border-white/10 rounded bg-black/20 p-6">
                     <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">Table of Contents</h4>
-                    <ul className="space-y-2 text-sm font-light">
+                    <ul className="space-y-2 text-sm font-light text-muted-foreground">
                       {tableOfContents.map((heading, i) => {
                         const slug = heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-                        const isActive = activeSection === slug;
                         return (
                           <li key={i}>
                             <a 
                               href={`#${slug}`}
-                              className={`cursor-pointer transition-all duration-200 block ${
-                                isActive 
-                                  ? 'text-primary font-medium pl-2 border-l-2 border-primary' 
-                                  : 'text-muted-foreground hover:text-primary pl-0 border-l-2 border-transparent'
-                              }`}
+                              className="hover:text-primary cursor-pointer transition-colors block"
                               onClick={(e) => {
                                 e.preventDefault();
                                 document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' });
                               }}
                             >
-                              {isActive ? '▸' : '▹'} {heading}
+                              ▹ {heading}
                             </a>
                           </li>
                         );
