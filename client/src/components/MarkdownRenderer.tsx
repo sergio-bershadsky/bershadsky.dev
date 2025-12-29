@@ -1187,7 +1187,7 @@ const extractText = (node: React.ReactNode): string => {
 const CyberParagraph = ({ children }: { children: React.ReactNode }) => {
   // Filter out reading time/audience metadata lines
   const textContent = extractText(children);
-  if (textContent.includes('Reading time:') && textContent.includes('Audience:')) {
+  if (textContent.includes('Reading time:')) {
     return null;
   }
   return (
