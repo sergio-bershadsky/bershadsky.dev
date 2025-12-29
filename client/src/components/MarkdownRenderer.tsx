@@ -922,6 +922,57 @@ const ProcessStepsDiagram = () => (
   </div>
 );
 
+const SkillsFolderStructureDiagram = () => {
+  const folders = [
+    { name: 'skills/', icon: FolderOpen, color: 'text-primary', children: [
+      { name: 'standup/', icon: Folder, color: 'text-cyan-400', comment: 'Daily standup generator', children: [
+        { name: 'SKILL.md', icon: File, color: 'text-green-400' }
+      ]},
+      { name: 'recap/', icon: Folder, color: 'text-secondary', comment: 'Weekly summary', children: [
+        { name: 'SKILL.md', icon: File, color: 'text-green-400' }
+      ]},
+      { name: 'README.md', icon: File, color: 'text-gray-400', comment: 'Skills index' }
+    ]}
+  ];
+
+  const renderNode = (node: any, depth: number = 0) => {
+    const Icon = node.icon;
+    const isFolder = node.children;
+    
+    return (
+      <div key={node.name} className={depth > 0 ? 'ml-5' : ''}>
+        <div className="flex items-center gap-2 py-0.5">
+          <Icon className={`w-4 h-4 ${node.color} flex-shrink-0`} />
+          <span className={`font-mono text-sm ${isFolder ? 'text-white' : 'text-gray-400'}`}>
+            {node.name}
+          </span>
+          {node.comment && (
+            <span className="text-xs text-gray-500 hidden sm:inline">// {node.comment}</span>
+          )}
+        </div>
+        {node.children && (
+          <div className="border-l border-white/10 ml-2">
+            {node.children.map((child: any) => renderNode(child, depth + 1))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-primary mb-3 flex items-center gap-2">
+        <FolderOpen className="w-4 h-4 text-primary" />
+        <span>your-second-brain/</span>
+        <span className="text-xs text-muted-foreground ml-auto">SKILLS STRUCTURE</span>
+      </div>
+      <div className="space-y-0.5">
+        {folders.map(folder => renderNode(folder))}
+      </div>
+    </div>
+  );
+};
+
 const FolderStructureDiagram = () => {
   const folders = [
     { name: 'docs/', icon: FolderOpen, color: 'text-primary', children: [
@@ -1013,6 +1064,7 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isHistoricalRecordDiagram = codeContent.includes('HISTORICAL RECORD') && codeContent.includes('Rarely changes');
     const isDecisionLifecycleDiagram = codeContent.includes('Proposed') && codeContent.includes('Accepted') && codeContent.includes('Implemented');
     const isFolderStructureDiagram = codeContent.includes('my-second-brain/') && codeContent.includes('├──') && codeContent.includes('docs/');
+    const isSkillsFolderStructure = codeContent.includes('your-second-brain/') && codeContent.includes('skills/') && codeContent.includes('SKILL.md');
     const isSessionFlowDiagram = codeContent.includes('SESSION 1') && codeContent.includes('SESSION 2') && codeContent.includes('knowledge base');
     const isProcessStepsDiagram = codeContent.includes('Step 1') && codeContent.includes('Step 2') && codeContent.includes('Step 3') && codeContent.includes('Step 4') && codeContent.includes('Claude');
     const isDocumentVsJustDoIt = codeContent.includes('DOCUMENT') && codeContent.includes('JUST DO IT') && codeContent.includes('Explained twice');
@@ -1080,6 +1132,10 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     
     if (isDecisionLifecycleDiagram) {
       return <DecisionLifecycleDiagram />;
+    }
+    
+    if (isSkillsFolderStructure) {
+      return <SkillsFolderStructureDiagram />;
     }
     
     if (isFolderStructureDiagram) {
