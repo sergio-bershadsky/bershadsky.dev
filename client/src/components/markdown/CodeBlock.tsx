@@ -86,6 +86,62 @@ export const ChatConversationDiagram = ({ content }: { content: string }) => {
   );
 };
 
+export const highlightJson = (code: string): React.ReactNode[] => {
+  const lines = code.split('\n');
+  return lines.map((line, lineIndex) => {
+    const tokens: React.ReactNode[] = [];
+    let remaining = line;
+    let tokenKey = 0;
+    
+    while (remaining.length > 0) {
+      const keyMatch = remaining.match(/^("(?:[^"\\]|\\.)*")\s*:/);
+      if (keyMatch) {
+        tokens.push(<span key={tokenKey++} className="text-secondary">{keyMatch[1]}</span>);
+        remaining = remaining.slice(keyMatch[1].length);
+        continue;
+      }
+      
+      const stringMatch = remaining.match(/^("(?:[^"\\]|\\.)*")/);
+      if (stringMatch) {
+        tokens.push(<span key={tokenKey++} className="text-green-400">{stringMatch[1]}</span>);
+        remaining = remaining.slice(stringMatch[1].length);
+        continue;
+      }
+      
+      const numMatch = remaining.match(/^(-?\d+\.?\d*)/);
+      if (numMatch) {
+        tokens.push(<span key={tokenKey++} className="text-orange-400">{numMatch[1]}</span>);
+        remaining = remaining.slice(numMatch[1].length);
+        continue;
+      }
+      
+      const boolNullMatch = remaining.match(/^(true|false|null)\b/);
+      if (boolNullMatch) {
+        tokens.push(<span key={tokenKey++} className="text-primary font-semibold">{boolNullMatch[1]}</span>);
+        remaining = remaining.slice(boolNullMatch[1].length);
+        continue;
+      }
+      
+      const punctMatch = remaining.match(/^([{}\[\]:,])/);
+      if (punctMatch) {
+        tokens.push(<span key={tokenKey++} className="text-gray-400">{punctMatch[1]}</span>);
+        remaining = remaining.slice(punctMatch[1].length);
+        continue;
+      }
+      
+      tokens.push(<span key={tokenKey++} className="text-gray-300">{remaining[0]}</span>);
+      remaining = remaining.slice(1);
+    }
+    
+    return (
+      <React.Fragment key={lineIndex}>
+        {tokens}
+        {lineIndex < lines.length - 1 && '\n'}
+      </React.Fragment>
+    );
+  });
+};
+
 export const highlightPython = (code: string): React.ReactNode[] => {
   const keywords = ['def', 'class', 'if', 'else', 'elif', 'for', 'while', 'return', 'import', 'from', 'as', 'try', 'except', 'finally', 'with', 'lambda', 'and', 'or', 'not', 'in', 'is', 'True', 'False', 'None', 'raise', 'pass', 'break', 'continue', 'global', 'async', 'await', 'yield'];
   const builtins = ['print', 'len', 'range', 'str', 'int', 'float', 'list', 'dict', 'set', 'tuple', 'open', 'append', 'extend', 'format'];
@@ -178,6 +234,9 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
                        codeContent.includes('import ') ||
                        (codeContent.includes('# ') && (codeContent.includes('def ') || codeContent.includes('.py')));
 
+  const isJsonCode = className?.includes('json') || 
+                     (codeContent.trim().startsWith('{') && codeContent.trim().endsWith('}') && codeContent.includes('"'));
+
   const isAsciiDiagram = codeContent.includes('╔') || 
                          codeContent.includes('┌') || 
                          codeContent.includes('│') ||
@@ -219,7 +278,13 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
     );
   }
 
-  const languageLabel = isPythonCode ? 'PYTHON' : 'CODE_BLOCK';
+  const languageLabel = isPythonCode ? 'PYTHON' : isJsonCode ? 'JSON' : 'CODE_BLOCK';
+
+  const getHighlightedCode = () => {
+    if (isPythonCode) return highlightPython(codeContent);
+    if (isJsonCode) return highlightJson(codeContent);
+    return <span className="text-gray-300">{codeContent}</span>;
+  };
 
   return (
     <div className="relative group my-8">
@@ -243,7 +308,7 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
           </button>
         </div>
         <pre className="p-6 overflow-x-auto text-sm font-mono leading-relaxed">
-          <code>{isPythonCode ? highlightPython(codeContent) : <span className="text-gray-300">{codeContent}</span>}</code>
+          <code>{getHighlightedCode()}</code>
         </pre>
       </div>
     </div>
