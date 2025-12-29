@@ -481,7 +481,9 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
                          codeContent.includes('┌') || 
                          codeContent.includes('│') ||
                          codeContent.includes('───') ||
-                         codeContent.includes('═══');
+                         codeContent.includes('═══') ||
+                         codeContent.includes('↓') ||
+                         codeContent.includes('▶');
 
   const copyCode = () => {
     navigator.clipboard.writeText(codeContent);
