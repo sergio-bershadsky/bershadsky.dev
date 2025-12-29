@@ -114,12 +114,12 @@ const AIComparisonDiagram = () => (
           </div>
           {['Session 1', 'Session 2', 'Session 3'].map((session, i) => (
             <div key={i} className="p-3 border border-white/10 rounded bg-white/5">
-              <span className="font-mono text-xs text-gray-500">{session}: </span>
-              <span className="text-sm text-gray-400">"What's our API?"</span>
+              <div className="font-mono text-xs text-gray-500 mb-1">{session}:</div>
+              <div className="text-sm text-gray-400">"What's our API design?"</div>
             </div>
           ))}
           <div className="text-center text-xs text-red-400 font-mono p-2 border border-dashed border-red-400/30 rounded">
-            (explaining from zero)
+            (explaining from zero every time)
           </div>
         </div>
         
@@ -128,20 +128,16 @@ const AIComparisonDiagram = () => (
             <span className="font-mono text-green-400 text-sm">SECOND BRAIN AI</span>
           </div>
           <div className="p-3 border border-white/10 rounded bg-white/5">
-            <span className="font-mono text-xs text-gray-500">Session 1: </span>
-            <span className="text-sm text-gray-400">"What's our API?"</span>
+            <div className="font-mono text-xs text-gray-500 mb-1">Session 1:</div>
+            <div className="text-sm text-gray-400">"What's our API design?"</div>
           </div>
           <div className="p-3 border border-green-500/30 rounded bg-green-500/5">
-            <div className="mb-1">
-              <span className="font-mono text-xs text-gray-500">Session 2: </span>
-              <span className="text-sm text-green-400">"Remember the API?"</span>
-            </div>
-            <div className="text-sm text-secondary pl-4">
-              "Here's what changed..."
-            </div>
+            <div className="font-mono text-xs text-gray-500 mb-1">Session 2:</div>
+            <div className="text-sm text-green-400">"Remember the API design?"</div>
+            <div className="text-sm text-secondary mt-1">→ "Here's what changed since last time..."</div>
           </div>
           <div className="text-center text-xs text-green-400 font-mono p-2 border border-dashed border-green-400/30 rounded">
-            (builds on context)
+            (builds on previous context)
           </div>
         </div>
       </div>
