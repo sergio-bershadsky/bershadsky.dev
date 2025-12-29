@@ -340,6 +340,64 @@ const DecisionLifecycleDiagram = () => (
   </div>
 );
 
+const ChatConversationDiagram = ({ content }: { content: string }) => {
+  const lines = content.split('\n').filter(line => line.trim());
+  const messages: { speaker: 'you' | 'claude'; text: string }[] = [];
+  
+  let currentSpeaker: 'you' | 'claude' | null = null;
+  let currentText = '';
+  
+  lines.forEach(line => {
+    const youMatch = line.match(/^You:\s*(.*)$/);
+    const claudeMatch = line.match(/^Claude:\s*(.*)$/);
+    
+    if (youMatch) {
+      if (currentSpeaker && currentText) {
+        messages.push({ speaker: currentSpeaker, text: currentText.trim() });
+      }
+      currentSpeaker = 'you';
+      currentText = youMatch[1];
+    } else if (claudeMatch) {
+      if (currentSpeaker && currentText) {
+        messages.push({ speaker: currentSpeaker, text: currentText.trim() });
+      }
+      currentSpeaker = 'claude';
+      currentText = claudeMatch[1];
+    } else if (currentSpeaker) {
+      currentText += ' ' + line.trim();
+    }
+  });
+  
+  if (currentSpeaker && currentText) {
+    messages.push({ speaker: currentSpeaker, text: currentText.trim() });
+  }
+  
+  return (
+    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+        <span>FIG // CONVERSATION</span>
+        <span className="text-xs text-muted-foreground">CHAT</span>
+      </div>
+      <div className="space-y-3">
+        {messages.map((msg, i) => (
+          <div key={i} className={`flex ${msg.speaker === 'you' ? 'justify-end' : 'justify-start'}`}>
+            <div className={`max-w-[85%] rounded-lg px-4 py-2.5 ${
+              msg.speaker === 'you' 
+                ? 'bg-primary/20 border border-primary/40 text-gray-200' 
+                : 'bg-secondary/20 border border-secondary/40 text-gray-200'
+            }`}>
+              <div className={`text-xs font-mono mb-1 ${msg.speaker === 'you' ? 'text-primary' : 'text-secondary'}`}>
+                {msg.speaker === 'you' ? 'YOU' : 'CLAUDE'}
+              </div>
+              <div className="text-sm leading-relaxed">{msg.text.replace(/"/g, '')}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const SessionFlowDiagram = () => (
   <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
@@ -503,6 +561,7 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isFolderStructureDiagram = codeContent.includes('my-second-brain/') && codeContent.includes('├──') && codeContent.includes('docs/');
     const isSessionFlowDiagram = codeContent.includes('SESSION 1') && codeContent.includes('SESSION 2') && codeContent.includes('knowledge base');
     const isProcessStepsDiagram = codeContent.includes('Step 1') && codeContent.includes('Step 2') && codeContent.includes('Step 3') && codeContent.includes('Step 4') && codeContent.includes('Claude');
+    const isChatConversation = codeContent.includes('You:') && codeContent.includes('Claude:') && !isProcessStepsDiagram;
     
     if (isComparisonDiagram) {
       return <AIComparisonDiagram />;
@@ -538,6 +597,10 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     
     if (isProcessStepsDiagram) {
       return <ProcessStepsDiagram />;
+    }
+    
+    if (isChatConversation) {
+      return <ChatConversationDiagram content={codeContent} />;
     }
     
     if (isThreePillarsDiagram) {
