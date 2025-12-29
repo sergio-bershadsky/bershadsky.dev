@@ -143,13 +143,21 @@ export default function BlogPostPage() {
                 </span>
               </div>
             )}
-            <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-4 drop-shadow-lg transition-all duration-300`} data-testid="text-post-title">
+            <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 drop-shadow-lg transition-all duration-300`} data-testid="text-post-title">
               {post.title.replace(/\s*PART:\s*\d+$/i, '')}
             </h1>
-            <p className="text-xl text-white/80 max-w-2xl font-light" data-testid="text-post-excerpt">
-              {post.excerpt}
-            </p>
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.15 }}
+          className="max-w-4xl mx-auto mb-8"
+        >
+          <p className="text-xl text-gray-300 font-light leading-relaxed" data-testid="text-post-excerpt">
+            {post.excerpt}
+          </p>
         </motion.div>
 
         {seriesData && (
