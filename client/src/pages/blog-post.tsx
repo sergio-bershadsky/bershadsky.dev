@@ -133,7 +133,7 @@ export default function BlogPostPage() {
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-20">
             <div className="flex flex-wrap gap-4 mb-4 text-xs font-mono">
               <span className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-primary">
-                <Calendar className="w-3 h-3" /> {post.date}
+                <Calendar className="w-3 h-3" /> {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}
               </span>
               <span className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-secondary">
                 <Clock className="w-3 h-3" /> {Math.ceil(post.content.split(' ').length / 200)} MIN READ
