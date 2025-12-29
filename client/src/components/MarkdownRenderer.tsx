@@ -713,6 +713,12 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     setTimeout(() => setCopied(false), 2000);
   };
 
+  // Check for chat conversations first (they may not have ASCII diagram chars)
+  const isChatConversation = codeContent.includes('You:') && codeContent.includes('Claude:');
+  if (isChatConversation) {
+    return <ChatConversationDiagram content={codeContent} />;
+  }
+
   if (isAsciiDiagram) {
     const isComparisonDiagram = codeContent.includes('TRADITIONAL AI') && (codeContent.includes('Session 1:') || codeContent.includes('Session 2:'));
     const isSecondBrainDiagram = codeContent.includes('AUTOMATED WORKFLOWS') || codeContent.includes('CLAUDE WITH MEMORY');
@@ -725,7 +731,6 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isFolderStructureDiagram = codeContent.includes('my-second-brain/') && codeContent.includes('├──') && codeContent.includes('docs/');
     const isSessionFlowDiagram = codeContent.includes('SESSION 1') && codeContent.includes('SESSION 2') && codeContent.includes('knowledge base');
     const isProcessStepsDiagram = codeContent.includes('Step 1') && codeContent.includes('Step 2') && codeContent.includes('Step 3') && codeContent.includes('Step 4') && codeContent.includes('Claude');
-    const isChatConversation = codeContent.includes('You:') && codeContent.includes('Claude:') && !isProcessStepsDiagram;
     const isDocumentVsJustDoIt = codeContent.includes('DOCUMENT') && codeContent.includes('JUST DO IT') && codeContent.includes('Explained twice');
     const isGoodVsSkip = codeContent.includes('GOOD FIRST ENTRIES') && codeContent.includes('SKIP FOR NOW');
     
@@ -763,10 +768,6 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     
     if (isProcessStepsDiagram) {
       return <ProcessStepsDiagram />;
-    }
-    
-    if (isChatConversation) {
-      return <ChatConversationDiagram content={codeContent} />;
     }
     
     if (isDocumentVsJustDoIt) {
