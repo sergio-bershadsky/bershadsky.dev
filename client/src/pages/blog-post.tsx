@@ -280,24 +280,60 @@ export default function BlogPostPage() {
           </motion.div>
         )}
 
-        <article className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-[1fr_250px] gap-10">
-            <div className="space-y-8">
-              <a href="/" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors group mb-4" data-testid="link-back">
-                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                <span className="font-display font-bold">BACK_TO_INDEX</span>
-              </a>
+        <div className="grid md:grid-cols-[1fr_280px] gap-10 max-w-6xl mx-auto">
+          <div>
+            <article>
+              <div className="space-y-8">
+                <a href="/" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors group mb-4" data-testid="link-back">
+                  <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                  <span className="font-display font-bold">BACK_TO_INDEX</span>
+                </a>
 
-              <div data-testid="post-content">
-                <MarkdownRenderer 
-                  content={post.content} 
-                  onHeadingsExtracted={setTableOfContents}
-                />
+                <div data-testid="post-content">
+                  <MarkdownRenderer 
+                    content={post.content} 
+                    onHeadingsExtracted={setTableOfContents}
+                  />
+                </div>
+              </div>
+            </article>
+
+            <div className="mt-16">
+              <div className="border border-white/10 rounded-lg bg-black/30 backdrop-blur-sm p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-8 h-8 rounded-full border border-accent/50 bg-accent/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-accent text-sm font-mono">!</span>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-mono text-accent mb-2 uppercase tracking-wider">DISCLAIMER</h4>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      I extensively use AI for creating articles but not the content. The ideas are a result of hard work and testing approaches several times in real Software Development work.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <aside className="hidden md:block md:sticky md:top-24 md:h-[calc(100vh-7rem)] md:overflow-y-auto">
-              <div className="space-y-6 pr-2">
+            <div className="mt-20 pt-10 border-t border-white/10">
+              <SectionHeader title="RELATED_DATA" subtitle="Continue Reading" />
+              <div className="grid md:grid-cols-2 gap-6">
+                {allPosts.filter(p => p.id !== post.id).slice(0, 2).map(related => (
+                   <a key={related.id} href={`/blog/${related.slug || related.id}`} data-testid={`link-related-${related.slug || related.id}`}>
+                     <NeonCard variant="accent" className="cursor-pointer group h-full">
+                        <div className="flex justify-between items-start mb-4">
+                          <h4 className="font-display font-bold text-lg group-hover:text-accent transition-colors">{related.title}</h4>
+                          <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                        <p className="text-sm text-muted-foreground">{related.excerpt}</p>
+                     </NeonCard>
+                   </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <aside className="hidden md:block">
+            <div className="md:sticky md:top-24 md:h-[calc(100vh-7rem)] md:overflow-y-auto space-y-6 pr-2">
                 <NeonCard variant="primary" className="p-6">
                   <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">About Author</h4>
                   <div className="flex items-center gap-4 mb-4">
@@ -357,42 +393,8 @@ export default function BlogPostPage() {
                     </ul>
                   </div>
                 )}
-              </div>
-            </aside>
-          </div>
-        </article>
-
-        <div className="max-w-4xl mx-auto mt-16">
-          <div className="border border-white/10 rounded-lg bg-black/30 backdrop-blur-sm p-6">
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full border border-accent/50 bg-accent/10 flex items-center justify-center flex-shrink-0 mt-1">
-                <span className="text-accent text-sm font-mono">!</span>
-              </div>
-              <div>
-                <h4 className="text-sm font-mono text-accent mb-2 uppercase tracking-wider">DISCLAIMER</h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  I extensively use AI for creating articles but not the content. The ideas are a result of hard work and testing approaches several times in real Software Development work.
-                </p>
-              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="max-w-4xl mx-auto mt-20 pt-10 border-t border-white/10">
-          <SectionHeader title="RELATED_DATA" subtitle="Continue Reading" />
-          <div className="grid md:grid-cols-2 gap-6">
-            {allPosts.filter(p => p.id !== post.id).slice(0, 2).map(related => (
-               <a key={related.id} href={`/blog/${related.slug || related.id}`} data-testid={`link-related-${related.slug || related.id}`}>
-                 <NeonCard variant="accent" className="cursor-pointer group h-full">
-                    <div className="flex justify-between items-start mb-4">
-                      <h4 className="font-display font-bold text-lg group-hover:text-accent transition-colors">{related.title}</h4>
-                      <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <p className="text-sm text-muted-foreground">{related.excerpt}</p>
-                 </NeonCard>
-               </a>
-            ))}
-          </div>
+          </aside>
         </div>
       </div>
     </div>
