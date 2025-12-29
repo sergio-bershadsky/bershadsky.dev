@@ -25,8 +25,8 @@ A cyberpunk/neon aesthetic blog and portfolio website featuring article series w
 - **Structure:** Follow the established template with Hook, Problem, Solution, What's Next sections
 
 ### Title Format
-- Series articles use format: `[Title] PART: N` (e.g., "The Second Brain Concept PART: 1")
-- NOT "Part N: [Title]"
+- Series articles use format: `[SERIES NAME]: [TOPIC]` (e.g., "Second Brain: The Second Brain Concept")
+- The "PART: N" badge is shown separately in the UI, not in the title itself
 
 ### AI Disclaimer
 Include in author bio or footer: "I extensively use AI for creating articles but not the content. The ideas are a result of hard work and testing approaches several times in real Software Development work."
