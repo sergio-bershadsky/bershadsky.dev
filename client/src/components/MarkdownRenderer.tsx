@@ -1152,24 +1152,6 @@ const CyberBlockquote = ({ children }: { children: React.ReactNode }) => (
   </blockquote>
 );
 
-const CyberH1 = ({ children }: { children: React.ReactNode }) => (
-  <h1 className="text-4xl font-display font-bold text-white mt-8 mb-6 tracking-wide">
-    {children}
-  </h1>
-);
-
-const CyberH2 = ({ children }: { children: React.ReactNode }) => (
-  <h2 className="text-3xl font-display font-bold text-white mt-12 mb-6 tracking-wide border-b border-white/10 pb-4">
-    {children}
-  </h2>
-);
-
-const CyberH3 = ({ children }: { children: React.ReactNode }) => (
-  <h3 className="text-2xl font-display font-semibold text-white mt-8 mb-4">
-    {children}
-  </h3>
-);
-
 const extractText = (node: React.ReactNode): string => {
   if (typeof node === 'string') return node;
   if (typeof node === 'number') return String(node);
@@ -1182,6 +1164,36 @@ const extractText = (node: React.ReactNode): string => {
     }
   }
   return '';
+};
+
+const generateSlug = (text: string): string => {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+};
+
+const CyberH1 = ({ children }: { children: React.ReactNode }) => (
+  <h1 className="text-4xl font-display font-bold text-white mt-8 mb-6 tracking-wide">
+    {children}
+  </h1>
+);
+
+const CyberH2 = ({ children }: { children: React.ReactNode }) => {
+  const text = extractText(children);
+  const id = generateSlug(text);
+  return (
+    <h2 id={id} className="text-3xl font-display font-bold text-white mt-12 mb-6 tracking-wide border-b border-white/10 pb-4 scroll-mt-24">
+      {children}
+    </h2>
+  );
+};
+
+const CyberH3 = ({ children }: { children: React.ReactNode }) => {
+  const text = extractText(children);
+  const id = generateSlug(text);
+  return (
+    <h3 id={id} className="text-2xl font-display font-semibold text-white mt-8 mb-4 scroll-mt-24">
+      {children}
+    </h3>
+  );
 };
 
 const CyberParagraph = ({ children }: { children: React.ReactNode }) => {
