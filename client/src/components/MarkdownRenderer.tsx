@@ -340,6 +340,116 @@ const DecisionLifecycleDiagram = () => (
   </div>
 );
 
+const MCPFlowDiagram = () => (
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+      <span>FIG 4.0 // MCP_ARCHITECTURE</span>
+      <span className="text-xs text-muted-foreground">FLOW</span>
+    </div>
+    <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+      <div className="p-4 border border-primary/40 rounded-lg bg-primary/10 text-center min-w-[120px]">
+        <Brain className="w-8 h-8 text-primary mx-auto mb-2" />
+        <div className="font-mono text-xs text-primary">CLAUDE</div>
+        <div className="text-xs text-gray-400">(Brain)</div>
+      </div>
+      <ArrowRight className="w-6 h-6 text-white/40 rotate-90 md:rotate-0" />
+      <div className="p-4 border border-accent/40 rounded-lg bg-accent/10 text-center min-w-[120px]">
+        <RefreshCw className="w-8 h-8 text-accent mx-auto mb-2" />
+        <div className="font-mono text-xs text-accent">MCP SERVER</div>
+        <div className="text-xs text-gray-400">(Translator)</div>
+      </div>
+      <ArrowRight className="w-6 h-6 text-white/40 rotate-90 md:rotate-0" />
+      <div className="p-4 border border-secondary/40 rounded-lg bg-secondary/10 text-center min-w-[120px]">
+        <MessageSquare className="w-8 h-8 text-secondary mx-auto mb-2" />
+        <div className="font-mono text-xs text-secondary">SERVICE</div>
+        <div className="text-xs text-gray-400">(Slack/etc)</div>
+      </div>
+    </div>
+  </div>
+);
+
+const ConnectionTypesTable = () => (
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+      <span>FIG 4.1 // CONNECTION_TYPES</span>
+      <span className="text-xs text-muted-foreground">CAPABILITIES</span>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="p-4 border border-primary/30 rounded bg-primary/5">
+        <div className="font-mono text-sm text-primary mb-2 flex items-center gap-2">
+          <MessageSquare className="w-4 h-4" />
+          Team Chat
+        </div>
+        <ul className="text-xs text-gray-400 space-y-1">
+          <li>Read channel history</li>
+          <li>Summarize discussions</li>
+          <li>Find specific messages</li>
+        </ul>
+      </div>
+      <div className="p-4 border border-secondary/30 rounded bg-secondary/5">
+        <div className="font-mono text-sm text-secondary mb-2 flex items-center gap-2">
+          <CheckCircle className="w-4 h-4" />
+          Task Tracker
+        </div>
+        <ul className="text-xs text-gray-400 space-y-1">
+          <li>See sprint status</li>
+          <li>Check who''s blocked</li>
+          <li>Review issue details</li>
+        </ul>
+      </div>
+      <div className="p-4 border border-accent/30 rounded bg-accent/5">
+        <div className="font-mono text-sm text-accent mb-2 flex items-center gap-2">
+          <FileText className="w-4 h-4" />
+          Meeting Transcription
+        </div>
+        <ul className="text-xs text-gray-400 space-y-1">
+          <li>Import transcripts</li>
+          <li>Extract action items</li>
+          <li>Find past discussions</li>
+        </ul>
+      </div>
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="font-mono text-sm text-green-400 mb-2 flex items-center gap-2">
+          <BookOpen className="w-4 h-4" />
+          Calendar
+        </div>
+        <ul className="text-xs text-gray-400 space-y-1">
+          <li>Check availability</li>
+          <li>See upcoming meetings</li>
+          <li>Context about your day</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+);
+
+const CapabilitiesTable = () => (
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-primary mb-4 flex justify-between">
+      <span>FIG 4.2 // CAPABILITIES</span>
+      <span className="text-xs text-muted-foreground">QUERIES</span>
+    </div>
+    <div className="space-y-3">
+      <div className="flex items-center gap-4 p-3 border border-white/10 rounded bg-white/5">
+        <div className="text-sm text-gray-300 flex-1">"What happened overnight?"</div>
+        <div className="text-xs font-mono text-secondary">Team chat</div>
+      </div>
+      <div className="flex items-center gap-4 p-3 border border-white/10 rounded bg-white/5">
+        <div className="text-sm text-gray-300 flex-1">"What''s blocking the sprint?"</div>
+        <div className="text-xs font-mono text-accent">Task tracker</div>
+      </div>
+      <div className="flex items-center gap-4 p-3 border border-white/10 rounded bg-white/5">
+        <div className="text-sm text-gray-300 flex-1">"Summarize yesterday''s standup"</div>
+        <div className="text-xs font-mono text-primary">Chat + tasks</div>
+      </div>
+      <div className="flex items-center gap-4 p-3 border border-white/10 rounded bg-white/5">
+        <div className="text-sm text-gray-300 flex-1">"What did we decide about X?"</div>
+        <div className="text-xs font-mono text-green-400">Chat + decisions</div>
+      </div>
+    </div>
+  </div>
+);
+
 const ComparisonTableDiagram = ({ leftTitle, rightTitle, leftItems, rightItems, leftColor = 'primary', rightColor = 'secondary' }: { 
   leftTitle: string; 
   rightTitle: string; 
@@ -745,6 +855,21 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isProcessStepsDiagram = codeContent.includes('Step 1') && codeContent.includes('Step 2') && codeContent.includes('Step 3') && codeContent.includes('Step 4') && codeContent.includes('Claude');
     const isDocumentVsJustDoIt = codeContent.includes('DOCUMENT') && codeContent.includes('JUST DO IT') && codeContent.includes('Explained twice');
     const isGoodVsSkip = codeContent.includes('GOOD FIRST ENTRIES') && codeContent.includes('SKIP FOR NOW');
+    const isMCPFlowDiagram = codeContent.includes('Claude') && codeContent.includes('MCP Server') && codeContent.includes('Service');
+    const isConnectionTypesTable = codeContent.includes('CONNECTION TYPE') && codeContent.includes('WHAT CLAUDE CAN DO') && codeContent.includes('Team Chat');
+    const isCapabilitiesTable = codeContent.includes('QUESTION') && codeContent.includes('SOURCE') && codeContent.includes('What happened overnight');
+    
+    if (isMCPFlowDiagram) {
+      return <MCPFlowDiagram />;
+    }
+    
+    if (isConnectionTypesTable) {
+      return <ConnectionTypesTable />;
+    }
+    
+    if (isCapabilitiesTable) {
+      return <CapabilitiesTable />;
+    }
     
     if (isComparisonDiagram) {
       return <AIComparisonDiagram />;
