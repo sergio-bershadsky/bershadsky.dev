@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkGfm from 'remark-gfm';
@@ -6,8 +6,148 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeReact from 'rehype-react';
 import * as prod from 'react/jsx-runtime';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight } from 'lucide-react';
 import { NeonCard } from './CyberpunkUI';
+
+const DiagramBox = ({ 
+  children, 
+  icon: Icon, 
+  variant = 'primary',
+  className = ''
+}: { 
+  children: React.ReactNode; 
+  icon?: React.ElementType;
+  variant?: 'primary' | 'secondary' | 'accent';
+  className?: string;
+}) => {
+  const colors = {
+    primary: 'border-primary bg-primary/10 text-primary',
+    secondary: 'border-secondary bg-secondary/10 text-secondary',
+    accent: 'border-accent bg-accent/10 text-accent'
+  };
+  
+  return (
+    <div className={`flex flex-col items-center justify-center p-4 border rounded-lg ${colors[variant]} ${className}`}>
+      {Icon && <Icon className="w-6 h-6 mb-2" />}
+      <span className="font-mono text-sm text-center">{children}</span>
+    </div>
+  );
+};
+
+const SecondBrainArchitectureDiagram = () => (
+  <NeonCard variant="secondary" className="my-10 p-6 md:p-8">
+    <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+      <span>FIG 1.0 // SECOND_BRAIN_ARCHITECTURE</span>
+      <span className="text-xs text-muted-foreground animate-pulse">LIVE</span>
+    </div>
+    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-6 md:p-8">
+      <div className="text-center mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full border border-white/20">
+          <Brain className="w-5 h-5 text-primary" />
+          <span className="font-display font-bold text-white">YOUR SECOND BRAIN</span>
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <DiagramBox icon={BookOpen} variant="primary">
+          KNOWLEDGE<br/>BASE
+        </DiagramBox>
+        <DiagramBox icon={MessageSquare} variant="secondary">
+          DISCUSSIONS<br/>CAPTURED
+        </DiagramBox>
+        <DiagramBox icon={Zap} variant="accent">
+          DECISIONS<br/>TRACKED
+        </DiagramBox>
+      </div>
+      
+      <div className="flex justify-center mb-6">
+        <div className="flex flex-col items-center">
+          <div className="h-8 w-[2px] bg-gradient-to-b from-white/40 to-primary/60"></div>
+          <ArrowDown className="w-4 h-4 text-primary animate-bounce" />
+        </div>
+      </div>
+      
+      <div className="flex justify-center mb-6">
+        <div className="w-full max-w-md p-6 border-2 border-primary rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 text-center">
+          <Bot className="w-10 h-10 mx-auto mb-3 text-primary" />
+          <div className="font-display font-bold text-white text-lg mb-2">CLAUDE WITH MEMORY</div>
+          <div className="text-sm text-gray-400 font-mono">
+            "What did we decide about the API?"
+          </div>
+          <div className="mt-2 text-sm text-secondary">
+            → Returns actual answer with full context
+          </div>
+        </div>
+      </div>
+      
+      <div className="flex justify-center mb-6">
+        <div className="flex flex-col items-center">
+          <div className="h-8 w-[2px] bg-gradient-to-b from-primary/60 to-secondary/60"></div>
+          <ArrowDown className="w-4 h-4 text-secondary" />
+        </div>
+      </div>
+      
+      <div className="flex justify-center">
+        <div className="p-4 border border-secondary rounded-lg bg-secondary/10 text-center">
+          <RefreshCw className="w-6 h-6 mx-auto mb-2 text-secondary" />
+          <div className="font-mono text-sm text-white">AUTOMATED WORKFLOWS</div>
+          <div className="text-xs text-gray-400 mt-1">
+            Morning briefings • Standup generation • Decision tracking
+          </div>
+        </div>
+      </div>
+    </div>
+  </NeonCard>
+);
+
+const AIComparisonDiagram = () => (
+  <NeonCard variant="primary" className="my-10 p-6 md:p-8">
+    <div className="text-sm font-mono text-primary mb-4 flex justify-between">
+      <span>FIG 0.5 // AI_COMPARISON</span>
+      <span className="text-xs text-muted-foreground">ANALYSIS</span>
+    </div>
+    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="space-y-4">
+          <div className="text-center p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+            <span className="font-mono text-red-400 text-sm">TRADITIONAL AI ASSISTANT</span>
+          </div>
+          {['Session 1', 'Session 2', 'Session 3'].map((session, i) => (
+            <div key={i} className="flex items-center gap-3 p-3 border border-white/10 rounded bg-white/5">
+              <div className="w-20 font-mono text-xs text-gray-500">{session}:</div>
+              <div className="text-sm text-gray-400">"What's our API design?"</div>
+            </div>
+          ))}
+          <div className="text-center text-xs text-red-400 font-mono p-2 border border-dashed border-red-400/30 rounded">
+            (still explaining from zero every time)
+          </div>
+        </div>
+        
+        <div className="space-y-4">
+          <div className="text-center p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+            <span className="font-mono text-green-400 text-sm">SECOND BRAIN AI</span>
+          </div>
+          <div className="flex items-center gap-3 p-3 border border-white/10 rounded bg-white/5">
+            <div className="w-20 font-mono text-xs text-gray-500">Session 1:</div>
+            <div className="text-sm text-gray-400">"What's our API design?"</div>
+          </div>
+          <div className="p-3 border border-green-500/30 rounded bg-green-500/5">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-20 font-mono text-xs text-gray-500">Session 2:</div>
+              <div className="text-sm text-green-400">"Remember the API design?"</div>
+            </div>
+            <div className="pl-20 text-sm text-secondary">
+              "Here's what changed since our last discussion..."
+            </div>
+          </div>
+          <div className="text-center text-xs text-green-400 font-mono p-2 border border-dashed border-green-400/30 rounded">
+            (builds on previous context)
+          </div>
+        </div>
+      </div>
+    </div>
+  </NeonCard>
+);
 
 const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const [copied, setCopied] = useState(false);
@@ -29,6 +169,17 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
   };
 
   if (isAsciiDiagram) {
+    const isSecondBrainDiagram = codeContent.includes('SECOND BRAIN') || codeContent.includes('KNOWLEDGE') || codeContent.includes('CLAUDE WITH');
+    const isComparisonDiagram = codeContent.includes('TRADITIONAL AI') || codeContent.includes('Session 1:');
+    
+    if (isSecondBrainDiagram) {
+      return <SecondBrainArchitectureDiagram />;
+    }
+    
+    if (isComparisonDiagram) {
+      return <AIComparisonDiagram />;
+    }
+    
     return (
       <NeonCard variant="secondary" className="my-10 p-6 md:p-8">
         <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
@@ -183,6 +334,8 @@ interface MarkdownRendererProps {
 }
 
 export function MarkdownRenderer({ content, onHeadingsExtracted }: MarkdownRendererProps) {
+  const headingsRef = useRef<string[]>([]);
+  
   const renderedContent = useMemo(() => {
     const headings: string[] = [];
     const headingRegex = /^#{2,3}\s+(.+)$/gm;
@@ -190,9 +343,7 @@ export function MarkdownRenderer({ content, onHeadingsExtracted }: MarkdownRende
     while ((match = headingRegex.exec(content)) !== null) {
       headings.push(match[1]);
     }
-    if (onHeadingsExtracted) {
-      onHeadingsExtracted(headings.slice(0, 6));
-    }
+    headingsRef.current = headings.slice(0, 6);
 
     const processor = unified()
       .use(remarkParse)
@@ -236,6 +387,12 @@ export function MarkdownRenderer({ content, onHeadingsExtracted }: MarkdownRende
 
     const result = processor.processSync(content);
     return result.result;
+  }, [content]);
+  
+  useEffect(() => {
+    if (onHeadingsExtracted && headingsRef.current.length > 0) {
+      onHeadingsExtracted(headingsRef.current);
+    }
   }, [content, onHeadingsExtracted]);
 
   return <div className="markdown-content">{renderedContent}</div>;
