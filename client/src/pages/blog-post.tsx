@@ -43,13 +43,17 @@ export default function BlogPostPage() {
     
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
+        // Filter to only intersecting entries and find the one closest to top
+        const intersecting = entries.filter(e => e.isIntersecting);
+        if (intersecting.length > 0) {
+          // Sort by top position (ascending) and pick the closest to viewport top
+          const closest = intersecting.sort(
+            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
+          )[0];
+          setActiveSection(closest.target.id);
+        }
       },
-      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+      { rootMargin: '0px 0px -90% 0px', threshold: 0 }
     );
     
     slugs.forEach((slug) => {
