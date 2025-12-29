@@ -106,7 +106,7 @@ export default function Home() {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.slice(0, 12).map((post, index) => (
-              <a key={index} href={`/blog/${post.id}`} className="block group" data-testid={`card-blog-${post.id}`}>
+              <a key={index} href={`/blog/${post.slug || post.id}`} className="block group" data-testid={`card-blog-${post.slug || post.id}`}>
                 <NeonCard variant="accent" className="h-full flex flex-col hover:bg-accent/5 transition-all duration-300 hover:scale-[1.02]">
                   <div className="mb-6 relative overflow-hidden rounded border border-white/10 aspect-video bg-black/40 group-hover:border-accent/50 transition-colors">
                      {post.imageUrl && (
@@ -126,8 +126,7 @@ export default function Home() {
                      </div>
                   </div>
                   
-                  <div className="mb-4 text-xs font-mono text-accent flex justify-between opacity-70">
-                    <span>ID: 00{post.id}</span>
+                  <div className="mb-4 text-xs font-mono text-accent opacity-70">
                     <span>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}</span>
                   </div>
                   

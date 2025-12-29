@@ -25,21 +25,21 @@ import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with
 import type { BlogPost, BlogPostWithSeries, SeriesWithPosts } from '@shared/schema';
 
 export default function BlogPostPage() {
-  const [match, params] = useRoute("/blog/:id");
+  const [match, params] = useRoute("/blog/:slug");
   const [copied, setCopied] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [tableOfContents, setTableOfContents] = React.useState<string[]>([]);
   
-  const postId = Number(params?.id);
+  const postSlug = params?.slug;
   
   const { data: post, isLoading } = useQuery<BlogPostWithSeries>({
-    queryKey: ['/api/blog-posts', postId],
+    queryKey: ['/api/blog-posts', postSlug],
     queryFn: async () => {
-      const response = await fetch(`/api/blog-posts/${postId}`);
+      const response = await fetch(`/api/blog-posts/${postSlug}`);
       if (!response.ok) throw new Error('Failed to fetch blog post');
       return response.json();
     },
-    enabled: !!postId
+    enabled: !!postSlug
   });
   
   const { data: allPosts = [] } = useQuery<BlogPost[]>({
@@ -190,7 +190,7 @@ export default function BlogPostPage() {
               }}
             >
               {(() => {
-                const currentIndex = seriesData.posts.findIndex(p => p.id === postId);
+                const currentIndex = seriesData.posts.findIndex(p => p.id === post.id);
                 const prevPost = currentIndex > 0 ? seriesData.posts[currentIndex - 1] : null;
                 const nextPost = currentIndex < seriesData.posts.length - 1 ? seriesData.posts[currentIndex + 1] : null;
                 
@@ -198,7 +198,7 @@ export default function BlogPostPage() {
                   <>
                     {prevPost ? (
                       <a 
-                        href={`/blog/${prevPost.id}`}
+                        href={`/blog/${prevPost.slug || prevPost.id}`}
                         className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
                         data-testid="series-prev"
                       >
@@ -228,7 +228,7 @@ export default function BlogPostPage() {
                     
                     {nextPost ? (
                       <a 
-                        href={`/blog/${nextPost.id}`}
+                        href={`/blog/${nextPost.slug || nextPost.id}`}
                         className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
                         data-testid="series-next"
                       >
@@ -326,7 +326,7 @@ export default function BlogPostPage() {
           <SectionHeader title="RELATED_DATA" subtitle="Continue Reading" />
           <div className="grid md:grid-cols-2 gap-6">
             {allPosts.filter(p => p.id !== post.id).slice(0, 2).map(related => (
-               <a key={related.id} href={`/blog/${related.id}`} data-testid={`link-related-${related.id}`}>
+               <a key={related.id} href={`/blog/${related.slug || related.id}`} data-testid={`link-related-${related.slug || related.id}`}>
                  <NeonCard variant="accent" className="cursor-pointer group h-full">
                     <div className="flex justify-between items-start mb-4">
                       <h4 className="font-display font-bold text-lg group-hover:text-accent transition-colors">{related.title}</h4>

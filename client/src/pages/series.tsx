@@ -118,12 +118,12 @@ export default function SeriesPage() {
             {seriesData.posts.map((post, index) => (
               <motion.a
                 key={post.id}
-                href={`/blog/${post.id}`}
+                href={`/blog/${post.slug || post.id}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="block group"
-                data-testid={`series-post-${post.id}`}
+                data-testid={`series-post-${post.slug || post.id}`}
               >
                 <NeonCard 
                   variant="accent" 

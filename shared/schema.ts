@@ -42,6 +42,7 @@ export type Series = typeof series.$inferSelect;
 // Blog Posts
 export const blogPosts = pgTable("blog_posts", {
   id: serial("id").primaryKey(),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
   title: varchar("title", { length: 255 }).notNull(),
   excerpt: text("excerpt").notNull(),
   content: text("content").notNull(),
