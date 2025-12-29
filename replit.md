@@ -23,6 +23,7 @@ A cyberpunk/neon aesthetic blog and portfolio website featuring article series w
 - **Tone:** Conversational with light humor
 - **Audience:** Non-technical readers
 - **Structure:** Follow the established template with Hook, Problem, Solution, What's Next sections
+- **DO NOT** include "Reading time / Audience / Words" metadata in article content - this info is already displayed in the hero block
 
 ### Title Format
 - Series articles use format: `[SERIES NAME]: [TOPIC]` (e.g., "Second Brain: The Second Brain Concept")
