@@ -542,18 +542,30 @@ const ChatConversationDiagram = ({ content }: { content: string }) => {
         <span>FIG // CONVERSATION</span>
         <span className="text-xs text-muted-foreground">CHAT</span>
       </div>
-      <div className="space-y-3">
+      <div className="space-y-4">
         {messages.map((msg, i) => (
-          <div key={i} className={`flex ${msg.speaker === 'you' ? 'justify-end' : 'justify-start'}`}>
-            <div className={`max-w-[85%] rounded-lg px-4 py-2.5 ${
+          <div key={i} className={`flex items-end gap-2 ${msg.speaker === 'you' ? 'flex-row-reverse' : 'flex-row'}`}>
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
               msg.speaker === 'you' 
-                ? 'bg-primary/20 border border-primary/40 text-gray-200 text-right' 
-                : 'bg-secondary/20 border border-secondary/40 text-gray-200 text-left'
+                ? 'bg-primary/30 border border-primary/50' 
+                : 'bg-secondary/30 border border-secondary/50'
             }`}>
-              <div className={`text-xs font-mono mb-1 ${msg.speaker === 'you' ? 'text-primary text-right' : 'text-secondary text-left'}`}>
+              {msg.speaker === 'you' 
+                ? <MessageSquare className="w-4 h-4 text-primary" />
+                : <Bot className="w-4 h-4 text-secondary" />
+              }
+            </div>
+            <div className={`relative max-w-[80%] px-4 py-3 ${
+              msg.speaker === 'you' 
+                ? 'bg-primary/20 border border-primary/40 rounded-2xl rounded-br-md' 
+                : 'bg-secondary/20 border border-secondary/40 rounded-2xl rounded-bl-md'
+            }`}>
+              <div className={`text-xs font-mono mb-1.5 ${msg.speaker === 'you' ? 'text-primary text-right' : 'text-secondary text-left'}`}>
                 {msg.speaker === 'you' ? 'YOU' : 'CLAUDE'}
               </div>
-              <div className="text-sm leading-relaxed">{msg.text.replace(/"/g, '')}</div>
+              <div className={`text-sm leading-relaxed text-gray-200 ${msg.speaker === 'you' ? 'text-right' : 'text-left'}`}>
+                {msg.text.replace(/"/g, '')}
+              </div>
             </div>
           </div>
         ))}
