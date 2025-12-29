@@ -6,7 +6,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeReact from 'rehype-react';
 import * as prod from 'react/jsx-runtime';
-import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight, FileText, History, Lightbulb, Database, CheckCircle, XCircle, Folder, FolderOpen, File, Search } from 'lucide-react';
+import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight, FileText, History, Lightbulb, Database, CheckCircle, XCircle, Folder, FolderOpen, File, Search, Turtle, Wrench, ClipboardList, TrendingUp, TrendingDown, Users, User, Home, Cloud, AlertTriangle } from 'lucide-react';
 import { NeonCard } from './CyberpunkUI';
 
 const DiagramBox = ({ 
@@ -1140,9 +1140,64 @@ const CyberTh = ({ children }: { children: React.ReactNode }) => (
   </th>
 );
 
+const emojiToIcon: Record<string, React.ReactNode> = {
+  '⚡': <Zap className="w-4 h-4 inline text-yellow-400" />,
+  '🐢': <Turtle className="w-4 h-4 inline text-green-400" />,
+  '✅': <CheckCircle className="w-4 h-4 inline text-green-400" />,
+  '⚠️': <AlertTriangle className="w-4 h-4 inline text-yellow-400" />,
+  '🔧': <Wrench className="w-4 h-4 inline text-secondary" />,
+  '📋': <ClipboardList className="w-4 h-4 inline text-secondary" />,
+  '📈': <TrendingUp className="w-4 h-4 inline text-red-400" />,
+  '📉': <TrendingDown className="w-4 h-4 inline text-green-400" />,
+  '👩‍💻': <User className="w-4 h-4 inline text-primary" />,
+  '👥': <Users className="w-4 h-4 inline text-primary" />,
+  '🏠': <Home className="w-4 h-4 inline text-green-400" />,
+  '☁️': <Cloud className="w-4 h-4 inline text-secondary" />,
+  '🧠': <Brain className="w-4 h-4 inline text-primary" />,
+  '📚': <BookOpen className="w-4 h-4 inline text-primary" />,
+  '💬': <MessageSquare className="w-4 h-4 inline text-secondary" />,
+  '🔄': <RefreshCw className="w-4 h-4 inline text-accent" />,
+};
+
+const replaceEmojisWithIcons = (node: React.ReactNode): React.ReactNode => {
+  if (typeof node === 'string') {
+    const parts: React.ReactNode[] = [];
+    let remaining = node;
+    let key = 0;
+    
+    for (const [emoji, icon] of Object.entries(emojiToIcon)) {
+      if (remaining.includes(emoji)) {
+        const segments = remaining.split(emoji);
+        remaining = '';
+        segments.forEach((segment, i) => {
+          if (segment) parts.push(<span key={key++}>{segment}</span>);
+          if (i < segments.length - 1) parts.push(<span key={key++}>{icon}</span>);
+        });
+        remaining = '';
+      }
+    }
+    
+    if (parts.length > 0) return <>{parts}</>;
+    return node;
+  }
+  
+  if (Array.isArray(node)) {
+    return node.map((child, i) => <React.Fragment key={i}>{replaceEmojisWithIcons(child)}</React.Fragment>);
+  }
+  
+  if (React.isValidElement(node)) {
+    const props = node.props as { children?: React.ReactNode };
+    if (props.children) {
+      return React.cloneElement(node, {}, replaceEmojisWithIcons(props.children));
+    }
+  }
+  
+  return node;
+};
+
 const CyberTd = ({ children }: { children: React.ReactNode }) => (
   <td className="px-4 py-3 text-gray-300 border-t border-white/10 text-base">
-    {children}
+    {replaceEmojisWithIcons(children)}
   </td>
 );
 
