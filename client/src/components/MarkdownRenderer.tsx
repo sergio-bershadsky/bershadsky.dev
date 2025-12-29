@@ -1170,11 +1170,23 @@ const CyberH3 = ({ children }: { children: React.ReactNode }) => (
   </h3>
 );
 
+const extractText = (node: React.ReactNode): string => {
+  if (typeof node === 'string') return node;
+  if (typeof node === 'number') return String(node);
+  if (!node) return '';
+  if (Array.isArray(node)) return node.map(extractText).join('');
+  if (React.isValidElement(node)) {
+    const props = node.props as { children?: React.ReactNode };
+    if (props.children) {
+      return extractText(props.children);
+    }
+  }
+  return '';
+};
+
 const CyberParagraph = ({ children }: { children: React.ReactNode }) => {
   // Filter out reading time/audience metadata lines
-  const textContent = React.Children.toArray(children)
-    .map(child => typeof child === 'string' ? child : '')
-    .join('');
+  const textContent = extractText(children);
   if (textContent.includes('Reading time:') && textContent.includes('Audience:')) {
     return null;
   }
