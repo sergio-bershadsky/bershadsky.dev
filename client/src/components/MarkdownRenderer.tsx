@@ -547,10 +547,10 @@ const ChatConversationDiagram = ({ content }: { content: string }) => {
           <div key={i} className={`flex ${msg.speaker === 'you' ? 'justify-end' : 'justify-start'}`}>
             <div className={`max-w-[85%] rounded-lg px-4 py-2.5 ${
               msg.speaker === 'you' 
-                ? 'bg-primary/20 border border-primary/40 text-gray-200' 
-                : 'bg-secondary/20 border border-secondary/40 text-gray-200'
+                ? 'bg-primary/20 border border-primary/40 text-gray-200 text-right' 
+                : 'bg-secondary/20 border border-secondary/40 text-gray-200 text-left'
             }`}>
-              <div className={`text-xs font-mono mb-1 ${msg.speaker === 'you' ? 'text-primary' : 'text-secondary'}`}>
+              <div className={`text-xs font-mono mb-1 ${msg.speaker === 'you' ? 'text-primary text-right' : 'text-secondary text-left'}`}>
                 {msg.speaker === 'you' ? 'YOU' : 'CLAUDE'}
               </div>
               <div className="text-sm leading-relaxed">{msg.text.replace(/"/g, '')}</div>
