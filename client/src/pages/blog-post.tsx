@@ -350,6 +350,23 @@ const scaleService = async (serviceId: string) => {
           </div>
         </article>
 
+        {/* Disclaimer */}
+        <div className="max-w-4xl mx-auto mt-16">
+          <div className="border border-white/10 rounded-lg bg-black/30 backdrop-blur-sm p-6">
+            <div className="flex items-start gap-4">
+              <div className="w-8 h-8 rounded-full border border-accent/50 bg-accent/10 flex items-center justify-center flex-shrink-0 mt-1">
+                <span className="text-accent text-sm font-mono">!</span>
+              </div>
+              <div>
+                <h4 className="text-sm font-mono text-accent mb-2 uppercase tracking-wider">DISCLAIMER</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  I extensively use AI for creating articles but not the content. The ideas are a result of hard work and testing approaches several times in real Software Development work.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Read Next */}
         <div className="max-w-4xl mx-auto mt-20 pt-10 border-t border-white/10">
           <SectionHeader title="RELATED_DATA" subtitle="Continue Reading" />
