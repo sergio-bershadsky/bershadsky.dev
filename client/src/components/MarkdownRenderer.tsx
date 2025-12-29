@@ -1067,15 +1067,25 @@ const HookFlowDiagram = () => (
       <span>FIG 6.3 // HOOK_FLOW</span>
       <span className="text-xs text-muted-foreground">LOGIC</span>
     </div>
-    <div className="flex flex-col items-center gap-3">
+    <div className="flex flex-col items-center">
       <div className="px-4 py-2 border border-secondary/40 rounded bg-secondary/10 font-mono text-sm text-secondary">
         EVENT HAPPENS
       </div>
-      <ArrowDown className="w-4 h-4 text-secondary" />
+      <ArrowDown className="w-4 h-4 text-secondary my-2" />
       <div className="px-4 py-2 border border-accent/40 rounded bg-accent/10 font-mono text-sm text-accent">
         HOOK CHECKS CONDITION
       </div>
-      <ArrowDown className="w-4 h-4 text-accent" />
+      
+      {/* Branching lines using SVG */}
+      <svg width="280" height="40" className="my-1">
+        <line x1="140" y1="0" x2="140" y2="15" stroke="#9333ea" strokeWidth="2" />
+        <line x1="70" y1="15" x2="210" y2="15" stroke="#9333ea" strokeWidth="2" />
+        <line x1="70" y1="15" x2="70" y2="35" stroke="#22c55e" strokeWidth="2" />
+        <line x1="210" y1="15" x2="210" y2="35" stroke="#6b7280" strokeWidth="2" />
+        <polygon points="70,40 65,30 75,30" fill="#22c55e" />
+        <polygon points="210,40 205,30 215,30" fill="#6b7280" />
+      </svg>
+      
       <div className="grid grid-cols-2 gap-6 w-full max-w-md">
         <div className="flex flex-col items-center gap-2">
           <div className="px-3 py-1.5 border border-green-500/40 rounded bg-green-500/10 font-mono text-xs text-green-400 text-center">
