@@ -2,11 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRoute } from "wouter";
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2 } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4';
-import type { BlogPost } from '@shared/schema';
+import type { BlogPost, BlogPostWithSeries, SeriesWithPosts } from '@shared/schema';
 
 export default function BlogPostPage() {
   const [match, params] = useRoute("/blog/:id");
@@ -15,7 +15,7 @@ export default function BlogPostPage() {
   
   const postId = Number(params?.id);
   
-  const { data: post, isLoading } = useQuery<BlogPost>({
+  const { data: post, isLoading } = useQuery<BlogPostWithSeries>({
     queryKey: ['/api/blog-posts', postId],
     queryFn: async () => {
       const response = await fetch(`/api/blog-posts/${postId}`);
@@ -32,6 +32,16 @@ export default function BlogPostPage() {
       if (!response.ok) throw new Error('Failed to fetch blog posts');
       return response.json();
     }
+  });
+
+  const { data: seriesData } = useQuery<SeriesWithPosts>({
+    queryKey: ['/api/series', post?.series?.slug],
+    queryFn: async () => {
+      const response = await fetch(`/api/series/${post?.series?.slug}`);
+      if (!response.ok) throw new Error('Failed to fetch series');
+      return response.json();
+    },
+    enabled: !!post?.series?.slug
   });
   
   if (isLoading || !post) {
@@ -127,6 +137,79 @@ const scaleService = async (serviceId: string) => {
             </p>
           </div>
         </motion.div>
+
+        {/* Series Navigation */}
+        {seriesData && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            className="max-w-4xl mx-auto mb-8"
+          >
+            <div 
+              className="border rounded-lg p-4 flex items-center justify-between gap-4 backdrop-blur-sm"
+              style={{ 
+                borderColor: seriesData.accentColor ? seriesData.accentColor + '40' : 'rgba(236,72,153,0.25)',
+                backgroundColor: seriesData.accentColor ? seriesData.accentColor + '08' : 'rgba(236,72,153,0.03)'
+              }}
+            >
+              {/* Previous Post */}
+              {(() => {
+                const currentIndex = seriesData.posts.findIndex(p => p.id === postId);
+                const prevPost = currentIndex > 0 ? seriesData.posts[currentIndex - 1] : null;
+                const nextPost = currentIndex < seriesData.posts.length - 1 ? seriesData.posts[currentIndex + 1] : null;
+                
+                return (
+                  <>
+                    <a 
+                      href={prevPost ? `/blog/${prevPost.id}` : '#'}
+                      className={`flex items-center gap-2 ${prevPost ? 'text-muted-foreground hover:text-white' : 'opacity-30 pointer-events-none'} transition-colors`}
+                      data-testid="series-prev"
+                    >
+                      <ChevronLeft className="w-5 h-5" />
+                      <span className="hidden sm:inline text-sm font-mono">PREV</span>
+                    </a>
+                    
+                    {/* Series Info */}
+                    <a 
+                      href={`/series/${seriesData.slug}`}
+                      className="flex items-center gap-3 group flex-1 justify-center min-w-0"
+                      data-testid="series-link"
+                    >
+                      <div 
+                        className="w-10 h-10 rounded-full overflow-hidden border-2 flex-shrink-0"
+                        style={{ borderColor: seriesData.accentColor || '#ec4899' }}
+                      >
+                        {seriesData.coverImageUrl ? (
+                          <img src={seriesData.coverImageUrl} alt={seriesData.title} className="w-full h-full object-cover" />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-black/40 font-display font-bold" style={{ color: seriesData.accentColor || '#ec4899' }}>
+                            {seriesData.title.charAt(0)}
+                          </div>
+                        )}
+                      </div>
+                      <div className="text-center min-w-0">
+                        <div className="text-xs font-mono text-muted-foreground truncate">{seriesData.title}</div>
+                        <div className="text-sm font-display group-hover:text-accent transition-colors" style={{ color: seriesData.accentColor || '#ec4899' }}>
+                          Part {currentIndex + 1} of {seriesData.posts.length}
+                        </div>
+                      </div>
+                    </a>
+                    
+                    <a 
+                      href={nextPost ? `/blog/${nextPost.id}` : '#'}
+                      className={`flex items-center gap-2 ${nextPost ? 'text-muted-foreground hover:text-white' : 'opacity-30 pointer-events-none'} transition-colors`}
+                      data-testid="series-next"
+                    >
+                      <span className="hidden sm:inline text-sm font-mono">NEXT</span>
+                      <ChevronRight className="w-5 h-5" />
+                    </a>
+                  </>
+                );
+              })()}
+            </div>
+          </motion.div>
+        )}
 
         <article className="max-w-4xl mx-auto">
           {/* Main Content */}

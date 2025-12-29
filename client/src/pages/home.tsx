@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
+import { SeriesRail } from '@/components/SeriesRail';
 import avatarImage from '@assets/generated_images/cyberpunk_portrait_of_bearded_man_with_glasses.png';
 import type { BlogPost } from '@shared/schema';
 
@@ -80,6 +81,18 @@ export default function Home() {
         
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-muted-foreground text-sm font-mono opacity-50">
           SCROLL_TO_ACCESS_DATA
+        </div>
+      </section>
+
+      {/* Series Rail - Instagram Stories style */}
+      <section className="py-8 relative z-10 border-b border-white/5">
+        <div className="container mx-auto">
+          <div className="flex items-center gap-4 mb-6 px-4">
+            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-white/10" />
+            <span className="text-xs font-mono text-muted-foreground uppercase tracking-widest">SERIES</span>
+            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-white/10" />
+          </div>
+          <SeriesRail />
         </div>
       </section>
 
