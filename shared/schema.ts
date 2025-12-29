@@ -49,6 +49,8 @@ export const blogPosts = pgTable("blog_posts", {
   tags: text("tags").array().notNull(),
   imageUrl: text("image_url"),
   videoUrl: text("video_url"),
+  status: varchar("status", { length: 20 }).default("draft").notNull(), // draft, published
+  publishedAt: timestamp("published_at"), // null = not scheduled, future = scheduled, past = published
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),
 });

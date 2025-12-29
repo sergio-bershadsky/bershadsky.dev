@@ -24,7 +24,9 @@ The future of microservices isn't about adding more complexity—it's about buil
     date: "2024-12-10",
     tags: ["Architecture", "DevOps"],
     imageUrl: "/attached_assets/generated_images/microservices_network_visualization.png",
-    videoUrl: "/attached_assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4"
+    videoUrl: "/attached_assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4",
+    status: "published",
+    publishedAt: new Date("2024-12-10"),
   },
   {
     title: "The Death of Traditional REST APIs",
@@ -48,7 +50,9 @@ The choice isn't about replacing REST everywhere—it's about choosing the right
     date: "2024-11-28",
     tags: ["API", "Opinion"],
     imageUrl: "/attached_assets/generated_images/rest_api_evolution_visual.png",
-    videoUrl: "/attached_assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4"
+    videoUrl: "/attached_assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4",
+    status: "published",
+    publishedAt: new Date("2024-11-28"),
   },
   {
     title: "Building MVPs that Don't Suck",
@@ -79,7 +83,9 @@ Remember: the goal isn't to launch fast and crash—it's to launch fast and scal
     date: "2024-11-15",
     tags: ["Startup", "Product"],
     imageUrl: "/attached_assets/generated_images/mvp_rocket_launch_concept.png",
-    videoUrl: "/attached_assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4"
+    videoUrl: "/attached_assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4",
+    status: "published",
+    publishedAt: new Date("2024-11-15"),
   }
 ];
 

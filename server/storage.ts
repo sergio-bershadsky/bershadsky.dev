@@ -6,7 +6,7 @@ import {
   type InsertSeriesPost
 } from "@shared/schema";
 import { db } from "./db";
-import { eq, desc, asc, and } from "drizzle-orm";
+import { eq, desc, asc, and, lte, or } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -14,6 +14,7 @@ export interface IStorage {
   createUser(user: InsertUser): Promise<User>;
   
   getAllBlogPosts(): Promise<BlogPost[]>;
+  getPublishedBlogPosts(): Promise<BlogPost[]>;
   getBlogPost(id: number): Promise<BlogPost | undefined>;
   getBlogPostWithSeries(id: number): Promise<BlogPostWithSeries | undefined>;
   createBlogPost(post: InsertBlogPost): Promise<BlogPost>;
@@ -53,6 +54,21 @@ export class DatabaseStorage implements IStorage {
 
   async getAllBlogPosts(): Promise<BlogPost[]> {
     return await db.select().from(blogPosts).orderBy(desc(blogPosts.createdAt));
+  }
+
+  async getPublishedBlogPosts(): Promise<BlogPost[]> {
+    const now = new Date();
+    return await db.select().from(blogPosts)
+      .where(
+        and(
+          eq(blogPosts.status, "published"),
+          or(
+            lte(blogPosts.publishedAt, now),
+            eq(blogPosts.publishedAt, null as any)
+          )
+        )
+      )
+      .orderBy(desc(blogPosts.publishedAt));
   }
 
   async getBlogPost(id: number): Promise<BlogPost | undefined> {
