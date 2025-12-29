@@ -135,3 +135,5 @@ All diagrams follow a flat structure (no nested containers):
 - 2024-12-29: Built custom MarkdownRenderer with cyberpunk styling
 - 2024-12-29: Added CSS-based visual diagrams (AIComparisonDiagram, SecondBrainArchitectureDiagram)
 - 2024-12-29: Fixed diagram layout/wrapping issues
+- 2024-12-29: Implemented SEO-friendly slug routing for blog posts
+- 2024-12-29: Updated API route to use regex `/^\d+$/` for distinguishing IDs from slugs
