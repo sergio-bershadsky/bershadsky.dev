@@ -67,6 +67,15 @@ isDecisionLifecycle:    'Proposed' && 'Accepted' && 'Implemented'
 isFolderStructure:      'my-second-brain/' && '├──' && 'docs/'
 isThreePillars:         'CURRENT' && 'HISTORICAL' && 'DECISIONS'
 isSecondBrain:          'AUTOMATED WORKFLOWS' || 'CLAUDE WITH MEMORY'
+
+# Part 6: Hooks
+isSkillsVsHooks:        'SKILLS' && 'HOOKS' && 'You trigger them' && 'They trigger themselves'
+isHookEventsTable:      'EVENT' && 'WHEN IT HAPPENS' && 'Session Start' && 'File Created'
+isHookTimeline:         'SESSION START' && 'BEFORE TOOL USE' && 'AFTER TOOL USE' && 'SESSION END'
+isHookFlowDiagram:      'EVENT HAPPENS' && 'HOOK CHECKS' && 'CONDITION MET' && 'CONDITION NOT MET'
+isGoodFirstHooks:       'GOOD FIRST HOOKS' && 'NOT YET' && 'Session start reminder'
+isHooksFolderStructure: 'your-second-brain/' && 'hooks/' && 'session-start.md'
+isHookSpectrum:         'SILENT' && 'BLOCKING' && 'Inform' && 'Warn' && 'Suggest' && 'Require'
 ```
 
 ### Diagram Component Structure
