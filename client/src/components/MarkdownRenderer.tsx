@@ -6,7 +6,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeReact from 'rehype-react';
 import * as prod from 'react/jsx-runtime';
-import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight, FileText, History, Lightbulb, Database, CheckCircle, XCircle, Folder, FolderOpen, File, Search, Turtle, Wrench, ClipboardList, TrendingUp, TrendingDown, Users, User, Home, Cloud, AlertTriangle } from 'lucide-react';
+import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight, FileText, History, Lightbulb, Database, CheckCircle, XCircle, Folder, FolderOpen, File, Search, Turtle, Wrench, ClipboardList, TrendingUp, TrendingDown, Users, User, Home, Cloud, AlertTriangle, Package, GitBranch, Layers, Share2, Settings } from 'lucide-react';
 import { NeonCard } from './CyberpunkUI';
 
 const DiagramBox = ({ 
@@ -1227,6 +1227,289 @@ const HookSpectrumDiagram = () => (
   </div>
 );
 
+// Part 7: Plugin Diagrams
+const PluginEvolutionDiagram = () => (
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-primary mb-4 flex justify-between">
+      <span>FIG 7.0 // PLUGIN_EVOLUTION</span>
+      <span className="text-xs text-muted-foreground">JOURNEY</span>
+    </div>
+    <div className="space-y-3">
+      {[
+        { stage: 1, label: 'Personal automation', quote: 'I have a /standup skill that works great', color: 'gray' },
+        { stage: 2, label: 'Team interest', quote: 'Can I get that standup thing you have?', color: 'secondary' },
+        { stage: 3, label: 'Sharing challenge', quote: "Here's 5 files, put them here, rename this...", color: 'yellow' },
+        { stage: 4, label: 'Plugin solution', quote: 'Install my-standup-plugin. Done.', color: 'green' }
+      ].map((item, i) => (
+        <div key={i} className="flex items-center gap-3">
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center font-mono text-sm border ${
+            item.color === 'green' ? 'border-green-500/50 bg-green-500/20 text-green-400' :
+            item.color === 'yellow' ? 'border-yellow-500/50 bg-yellow-500/20 text-yellow-400' :
+            item.color === 'secondary' ? 'border-secondary/50 bg-secondary/20 text-secondary' :
+            'border-white/20 bg-white/5 text-gray-400'
+          }`}>
+            {item.stage}
+          </div>
+          <div className="flex-1">
+            <div className={`font-mono text-xs uppercase ${
+              item.color === 'green' ? 'text-green-400' :
+              item.color === 'yellow' ? 'text-yellow-400' :
+              item.color === 'secondary' ? 'text-secondary' :
+              'text-gray-400'
+            }`}>{item.label}</div>
+            <div className="text-xs text-gray-500 italic">"{item.quote}"</div>
+          </div>
+          {i < 3 && <ArrowDown className="w-4 h-4 text-gray-600" />}
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const PluginFolderStructureDiagram = () => {
+  const folders = [
+    { name: 'plugin.json', icon: File, color: 'text-yellow-400', comment: 'Metadata & configuration' },
+    { name: 'skills/', icon: FolderOpen, color: 'text-primary', children: [
+      { name: 'standup/', icon: Folder, color: 'text-primary', children: [
+        { name: 'SKILL.md', icon: File, color: 'text-gray-400' }
+      ]},
+      { name: 'recap/', icon: Folder, color: 'text-primary', children: [
+        { name: 'SKILL.md', icon: File, color: 'text-gray-400' }
+      ]}
+    ]},
+    { name: 'hooks/', icon: FolderOpen, color: 'text-secondary', children: [
+      { name: 'freshness.md', icon: File, color: 'text-gray-400' },
+      { name: 'sidebar-check.py', icon: File, color: 'text-gray-400' }
+    ]},
+    { name: 'agents/', icon: FolderOpen, color: 'text-accent', comment: 'Optional: specialized agents', children: [
+      { name: 'reviewer/', icon: Folder, color: 'text-accent', children: [
+        { name: 'AGENT.md', icon: File, color: 'text-gray-400' }
+      ]}
+    ]},
+    { name: 'README.md', icon: File, color: 'text-gray-400', comment: 'Documentation' }
+  ];
+
+  const renderNode = (node: any, depth: number = 0) => {
+    const Icon = node.icon;
+    const isFolder = node.children;
+    
+    return (
+      <div key={node.name} className={depth > 0 ? 'ml-5' : ''}>
+        <div className="flex items-center gap-2 py-0.5">
+          <Icon className={`w-4 h-4 ${node.color} flex-shrink-0`} />
+          <span className={`font-mono text-sm ${isFolder ? 'text-white' : 'text-gray-400'}`}>
+            {node.name}
+          </span>
+          {node.comment && (
+            <span className="text-xs text-gray-500 hidden sm:inline">// {node.comment}</span>
+          )}
+        </div>
+        {node.children && (
+          <div className="border-l border-white/10 ml-2">
+            {node.children.map((child: any) => renderNode(child, depth + 1))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-primary mb-3 flex items-center gap-2">
+        <Package className="w-4 h-4 text-primary" />
+        <span>my-second-brain-plugin/</span>
+        <span className="text-xs text-muted-foreground ml-auto">PLUGIN STRUCTURE</span>
+      </div>
+      <div className="space-y-0.5">
+        {folders.map(folder => renderNode(folder))}
+      </div>
+    </div>
+  );
+};
+
+const PluginComponentsTable = () => (
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+      <span>FIG 7.1 // KEY_COMPONENTS</span>
+      <span className="text-xs text-muted-foreground">REFERENCE</span>
+    </div>
+    <div className="space-y-2">
+      {[
+        { component: 'plugin.json', purpose: 'Tells Claude what\'s included', icon: Settings },
+        { component: 'skills/', purpose: 'Reusable procedures', icon: Zap },
+        { component: 'hooks/', purpose: 'Automatic behaviors', icon: RefreshCw },
+        { component: 'agents/', purpose: 'Specialized assistants', icon: Bot },
+        { component: 'README.md', purpose: 'How to use this plugin', icon: BookOpen }
+      ].map((item, i) => (
+        <div key={i} className="flex items-center gap-3 p-2 border border-white/10 rounded bg-white/5">
+          <item.icon className="w-4 h-4 text-secondary flex-shrink-0" />
+          <span className="font-mono text-sm text-white w-28">{item.component}</span>
+          <span className="text-xs text-gray-400">{item.purpose}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const BeforeAfterPluginDiagram = () => (
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+      <span>FIG 7.2 // BEFORE_AFTER</span>
+      <span className="text-xs text-muted-foreground">ORGANIZATION</span>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="p-3 border border-white/10 rounded bg-white/5">
+        <div className="font-mono text-xs text-gray-400 mb-2 uppercase">Before:</div>
+        <div className="space-y-1 text-sm font-mono">
+          <div className="text-gray-400">your-second-brain/</div>
+          <div className="ml-4 text-gray-500">├── skills/</div>
+          <div className="ml-8 text-gray-600">└── standup/</div>
+          <div className="ml-4 text-gray-500">├── hooks/</div>
+          <div className="ml-8 text-gray-600">└── freshness.py</div>
+        </div>
+      </div>
+      <div className="p-3 border border-green-500/30 rounded bg-green-500/5">
+        <div className="font-mono text-xs text-green-400 mb-2 uppercase">After:</div>
+        <div className="space-y-1 text-sm font-mono">
+          <div className="text-green-400">team-productivity-plugin/</div>
+          <div className="ml-4 text-green-500/80">├── plugin.json</div>
+          <div className="ml-4 text-green-500/80">├── skills/</div>
+          <div className="ml-8 text-green-600">└── standup/</div>
+          <div className="ml-4 text-green-500/80">├── hooks/</div>
+          <div className="ml-8 text-green-600">└── freshness.py</div>
+          <div className="ml-4 text-green-500/80">└── README.md</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const DistributionOptionsDiagram = () => (
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+      <span>FIG 7.3 // DISTRIBUTION_OPTIONS</span>
+      <span className="text-xs text-muted-foreground">COMPARISON</span>
+    </div>
+    <div className="space-y-3">
+      {[
+        { 
+          option: 'Git repository', 
+          label: 'simplest',
+          icon: GitBranch,
+          pros: ['Version control built-in', 'Easy to update', 'No registry needed'],
+          cons: ['Requires repo access', 'Manual versioning'],
+          command: 'claude plugin install github.com/org/plugin-name'
+        },
+        { 
+          option: 'Direct sharing', 
+          label: 'offline',
+          icon: Share2,
+          pros: ['Works offline', 'No external dependencies'],
+          cons: ['No automatic updates', 'Version confusion'],
+          command: 'claude plugin install /path/to/plugin-folder'
+        },
+        { 
+          option: 'Team registry', 
+          label: 'advanced',
+          icon: Layers,
+          pros: ['Central discovery', 'Access control', 'Audit trail'],
+          cons: ['Setup overhead', 'Maintenance burden'],
+          command: 'claude plugin install @team/plugin-name'
+        }
+      ].map((item, i) => (
+        <div key={i} className="p-3 border border-white/10 rounded bg-white/5">
+          <div className="flex items-center gap-2 mb-2">
+            <item.icon className="w-4 h-4 text-secondary" />
+            <span className="font-mono text-sm text-white">{item.option}</span>
+            <span className="text-xs text-gray-500 px-2 py-0.5 bg-white/10 rounded">{item.label}</span>
+          </div>
+          <div className="grid grid-cols-2 gap-2 mb-2">
+            <div className="text-xs">
+              {item.pros.map((pro, j) => (
+                <div key={j} className="flex items-center gap-1 text-green-400">
+                  <CheckCircle className="w-3 h-3" />
+                  <span>{pro}</span>
+                </div>
+              ))}
+            </div>
+            <div className="text-xs">
+              {item.cons.map((con, j) => (
+                <div key={j} className="flex items-center gap-1 text-red-400">
+                  <XCircle className="w-3 h-3" />
+                  <span>{con}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="font-mono text-xs text-gray-500 bg-black/30 p-1.5 rounded">
+            {item.command}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const PluginHierarchyDiagram = () => (
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+      <span>FIG 7.4 // PLUGIN_HIERARCHY</span>
+      <span className="text-xs text-muted-foreground">PRIORITY</span>
+    </div>
+    <div className="space-y-2">
+      {[
+        { level: 'PROJECT PLUGINS', priority: 'highest priority', color: 'primary' },
+        { level: 'TEAM PLUGINS', priority: '', color: 'secondary' },
+        { level: 'PERSONAL PLUGINS', priority: 'lowest priority', color: 'accent' }
+      ].map((item, i) => (
+        <div key={i}>
+          <div className={`p-3 border rounded text-center ${
+            item.color === 'primary' ? 'border-primary/50 bg-primary/10' :
+            item.color === 'secondary' ? 'border-secondary/50 bg-secondary/10' :
+            'border-accent/50 bg-accent/10'
+          }`}>
+            <div className={`font-mono text-sm ${
+              item.color === 'primary' ? 'text-primary' :
+              item.color === 'secondary' ? 'text-secondary' :
+              'text-accent'
+            }`}>{item.level}</div>
+            {item.priority && (
+              <div className="text-xs text-gray-500 mt-1">({item.priority})</div>
+            )}
+          </div>
+          {i < 2 && (
+            <div className="flex justify-center py-1">
+              <ArrowDown className="w-4 h-4 text-gray-600" />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+const PluginPatternsTable = () => (
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-primary mb-4 flex justify-between">
+      <span>FIG 7.5 // PLUGIN_PATTERNS</span>
+      <span className="text-xs text-muted-foreground">STRATEGIES</span>
+    </div>
+    <div className="space-y-2">
+      {[
+        { pattern: 'Team conventions', useCase: 'Standard skills for all projects', icon: Users },
+        { pattern: 'Project-specific', useCase: 'Custom workflows for one project', icon: Folder },
+        { pattern: 'Personal toolkit', useCase: 'Your own productivity hacks', icon: User }
+      ].map((item, i) => (
+        <div key={i} className="flex items-center gap-3 p-2 border border-white/10 rounded bg-white/5">
+          <item.icon className="w-4 h-4 text-primary flex-shrink-0" />
+          <span className="font-mono text-sm text-white w-36">{item.pattern}</span>
+          <span className="text-xs text-gray-400">{item.useCase}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
 const FolderStructureDiagram = () => {
   const folders = [
     { name: 'docs/', icon: FolderOpen, color: 'text-primary', children: [
@@ -1437,6 +1720,44 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isGoodFirstHooks = codeContent.includes('GOOD FIRST HOOKS') && codeContent.includes('NOT YET') && codeContent.includes('Session start reminder');
     const isHooksFolderStructure = codeContent.includes('your-second-brain/') && codeContent.includes('hooks/') && codeContent.includes('session-start.md');
     const isHookSpectrum = codeContent.includes('SILENT') && codeContent.includes('BLOCKING') && codeContent.includes('Inform') && codeContent.includes('Warn') && codeContent.includes('Suggest') && codeContent.includes('Require');
+    
+    // Part 7: Plugin patterns
+    const isPluginEvolution = codeContent.includes('STAGE 1') && codeContent.includes('STAGE 2') && codeContent.includes('Personal automation') && codeContent.includes('Plugin solution');
+    const isPluginFolderStructure = codeContent.includes('my-second-brain-plugin/') && codeContent.includes('plugin.json') && codeContent.includes('skills/');
+    const isPluginComponentsTable = codeContent.includes('COMPONENT') && codeContent.includes('PURPOSE') && codeContent.includes('plugin.json') && codeContent.includes('Tells Claude');
+    const isBeforeAfterPlugin = codeContent.includes('Before:') && codeContent.includes('After:') && codeContent.includes('your-second-brain/') && codeContent.includes('team-productivity-plugin/');
+    const isDistributionOptions = codeContent.includes('Option 1:') && codeContent.includes('Option 2:') && codeContent.includes('Git repository') && codeContent.includes('Direct sharing');
+    const isPluginHierarchy = codeContent.includes('PROJECT PLUGINS') && codeContent.includes('TEAM PLUGINS') && codeContent.includes('PERSONAL PLUGINS') && codeContent.includes('highest priority');
+    const isPluginPatterns = codeContent.includes('PATTERN') && codeContent.includes('USE CASE') && codeContent.includes('Team conventions') && codeContent.includes('Project-specific');
+    
+    // Part 7: Plugin diagram returns
+    if (isPluginEvolution) {
+      return <PluginEvolutionDiagram />;
+    }
+    
+    if (isPluginFolderStructure) {
+      return <PluginFolderStructureDiagram />;
+    }
+    
+    if (isPluginComponentsTable) {
+      return <PluginComponentsTable />;
+    }
+    
+    if (isBeforeAfterPlugin) {
+      return <BeforeAfterPluginDiagram />;
+    }
+    
+    if (isDistributionOptions) {
+      return <DistributionOptionsDiagram />;
+    }
+    
+    if (isPluginHierarchy) {
+      return <PluginHierarchyDiagram />;
+    }
+    
+    if (isPluginPatterns) {
+      return <PluginPatternsTable />;
+    }
     
     if (isSkillsVsHooks) {
       return <SkillsVsHooksDiagram />;
