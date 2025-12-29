@@ -12,7 +12,10 @@ export async function registerRoutes(
   // Blog Posts API Routes
   app.get("/api/blog-posts", async (req, res) => {
     try {
-      const posts = await storage.getAllBlogPosts();
+      const includeAll = req.query.all === 'true';
+      const posts = includeAll 
+        ? await storage.getAllBlogPosts()
+        : await storage.getPublishedBlogPosts();
       res.json(posts);
     } catch (error) {
       console.error("Error fetching blog posts:", error);
