@@ -296,8 +296,8 @@ export default function BlogPostPage() {
               </div>
             </div>
 
-            <aside className="hidden md:block md:sticky md:top-24 md:self-start">
-              <div className="space-y-8">
+            <aside className="hidden md:block md:sticky md:top-24 md:self-start md:max-h-[calc(100vh-7rem)] md:overflow-y-auto md:scrollbar-thin md:scrollbar-thumb-white/10 md:scrollbar-track-transparent">
+              <div className="space-y-6 pr-2">
                 <NeonCard variant="primary" className="p-6">
                   <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">About Author</h4>
                   <div className="flex items-center gap-4 mb-4">
