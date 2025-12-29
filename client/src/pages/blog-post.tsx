@@ -2,22 +2,18 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRoute } from "wouter";
 import { useQuery } from '@tanstack/react-query';
-import { marked } from 'marked';
 import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
+import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4';
 import type { BlogPost, BlogPostWithSeries, SeriesWithPosts } from '@shared/schema';
-
-marked.setOptions({
-  gfm: true,
-  breaks: true,
-});
 
 export default function BlogPostPage() {
   const [match, params] = useRoute("/blog/:id");
   const [copied, setCopied] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(false);
+  const [tableOfContents, setTableOfContents] = React.useState<string[]>([]);
   
   const postId = Number(params?.id);
   
@@ -66,19 +62,6 @@ export default function BlogPostPage() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
-
-  const extractHeadings = (content: string) => {
-    const headingRegex = /^#{2,3}\s+(.+)$/gm;
-    const headings: string[] = [];
-    let match;
-    while ((match = headingRegex.exec(content)) !== null) {
-      headings.push(match[1]);
-    }
-    return headings.slice(0, 6);
-  };
-
-  const tableOfContents = extractHeadings(post.content);
-  const htmlContent = marked(post.content) as string;
 
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
@@ -225,31 +208,12 @@ export default function BlogPostPage() {
                 <span className="font-display font-bold">BACK_TO_INDEX</span>
               </a>
 
-              <div 
-                className="prose prose-invert prose-lg max-w-none
-                  prose-headings:font-display prose-headings:font-bold prose-headings:text-white
-                  prose-h1:text-4xl prose-h1:mt-8 prose-h1:mb-6
-                  prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-6 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4
-                  prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-                  prose-p:text-lg prose-p:leading-8 prose-p:text-gray-300 prose-p:mb-6
-                  prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:my-8 
-                  prose-blockquote:italic prose-blockquote:text-xl prose-blockquote:text-gray-200 
-                  prose-blockquote:bg-primary/5 prose-blockquote:py-4 prose-blockquote:pr-4 prose-blockquote:rounded-r-lg
-                  prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-3 prose-ul:text-gray-300 prose-ul:my-6
-                  prose-ol:list-decimal prose-ol:pl-6 prose-ol:space-y-3 prose-ol:text-gray-300 prose-ol:my-6
-                  prose-li:pl-2 prose-li:text-lg prose-li:leading-relaxed
-                  prose-strong:font-bold prose-strong:text-white
-                  prose-em:italic prose-em:text-gray-200
-                  prose-code:bg-white/10 prose-code:text-primary prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-base prose-code:font-mono
-                  prose-pre:bg-[#0d1117] prose-pre:rounded-lg prose-pre:border prose-pre:border-white/10 prose-pre:overflow-x-auto prose-pre:p-6 prose-pre:my-8
-                  prose-table:w-full prose-table:border-collapse prose-table:my-8 prose-table:overflow-x-auto
-                  prose-th:border prose-th:border-white/20 prose-th:px-4 prose-th:py-3 prose-th:text-left prose-th:font-display prose-th:font-bold prose-th:text-white prose-th:bg-white/10
-                  prose-td:border prose-td:border-white/20 prose-td:px-4 prose-td:py-3 prose-td:text-gray-300
-                  prose-hr:border-t prose-hr:border-white/10 prose-hr:my-10
-                  prose-a:text-primary hover:prose-a:text-accent prose-a:underline prose-a:transition-colors"
-                data-testid="post-content"
-                dangerouslySetInnerHTML={{ __html: htmlContent }}
-              />
+              <div data-testid="post-content">
+                <MarkdownRenderer 
+                  content={post.content} 
+                  onHeadingsExtracted={setTableOfContents}
+                />
+              </div>
             </div>
 
             <aside className="space-y-8">
