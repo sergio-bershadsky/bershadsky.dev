@@ -169,15 +169,15 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
   };
 
   if (isAsciiDiagram) {
-    const isSecondBrainDiagram = codeContent.includes('SECOND BRAIN') || codeContent.includes('KNOWLEDGE') || codeContent.includes('CLAUDE WITH');
-    const isComparisonDiagram = codeContent.includes('TRADITIONAL AI') || codeContent.includes('Session 1:');
-    
-    if (isSecondBrainDiagram) {
-      return <SecondBrainArchitectureDiagram />;
-    }
+    const isComparisonDiagram = codeContent.includes('TRADITIONAL AI') || codeContent.includes('Session 1:') || codeContent.includes('Session 2:');
+    const isSecondBrainDiagram = codeContent.includes('YOUR SECOND BRAIN') || codeContent.includes('AUTOMATED WORKFLOWS') || codeContent.includes('CLAUDE WITH MEMORY');
     
     if (isComparisonDiagram) {
       return <AIComparisonDiagram />;
+    }
+    
+    if (isSecondBrainDiagram) {
+      return <SecondBrainArchitectureDiagram />;
     }
     
     return (
