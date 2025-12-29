@@ -143,7 +143,7 @@ export default function SeriesPage() {
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-3 mb-2 text-xs font-mono text-muted-foreground">
-                      <span>{post.date}</span>
+                      <span>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}</span>
                       <span>•</span>
                       <span className="flex items-center gap-1">
                         <Clock className="w-3 h-3" /> 8 MIN

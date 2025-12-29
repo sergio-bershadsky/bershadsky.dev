@@ -128,7 +128,7 @@ export default function Home() {
                   
                   <div className="mb-4 text-xs font-mono text-accent flex justify-between opacity-70">
                     <span>ID: 00{post.id}</span>
-                    <span>{post.date}</span>
+                    <span>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}</span>
                   </div>
                   
                   <h3 className="text-2xl font-bold mb-3 font-display leading-tight group-hover:text-accent transition-colors">
