@@ -35,114 +35,89 @@ const DiagramBox = ({
 };
 
 const SecondBrainArchitectureDiagram = () => (
-  <NeonCard variant="secondary" className="my-10 p-6 md:p-8">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 1.0 // SECOND_BRAIN_ARCHITECTURE</span>
       <span className="text-xs text-muted-foreground animate-pulse">LIVE</span>
     </div>
-    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-6 md:p-8">
-      <div className="text-center mb-6">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full border border-white/20">
-          <Brain className="w-5 h-5 text-primary" />
-          <span className="font-display font-bold text-white">YOUR SECOND BRAIN</span>
-        </div>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        <DiagramBox icon={BookOpen} variant="primary">
-          KNOWLEDGE<br/>BASE
-        </DiagramBox>
-        <DiagramBox icon={MessageSquare} variant="secondary">
-          DISCUSSIONS<br/>CAPTURED
-        </DiagramBox>
-        <DiagramBox icon={Zap} variant="accent">
-          DECISIONS<br/>TRACKED
-        </DiagramBox>
-      </div>
-      
-      <div className="flex justify-center mb-6">
-        <div className="flex flex-col items-center">
-          <div className="h-8 w-[2px] bg-gradient-to-b from-white/40 to-primary/60"></div>
-          <ArrowDown className="w-4 h-4 text-primary animate-bounce" />
-        </div>
-      </div>
-      
-      <div className="flex justify-center mb-6">
-        <div className="w-full max-w-md p-6 border-2 border-primary rounded-xl bg-gradient-to-br from-primary/20 to-accent/10 text-center">
-          <Bot className="w-10 h-10 mx-auto mb-3 text-primary" />
-          <div className="font-display font-bold text-white text-lg mb-2">CLAUDE WITH MEMORY</div>
-          <div className="text-sm text-gray-400 font-mono">
-            "What did we decide about the API?"
-          </div>
-          <div className="mt-2 text-sm text-secondary">
-            → Returns actual answer with full context
-          </div>
-        </div>
-      </div>
-      
-      <div className="flex justify-center mb-6">
-        <div className="flex flex-col items-center">
-          <div className="h-8 w-[2px] bg-gradient-to-b from-primary/60 to-secondary/60"></div>
-          <ArrowDown className="w-4 h-4 text-secondary" />
-        </div>
-      </div>
-      
-      <div className="flex justify-center">
-        <div className="p-4 border border-secondary rounded-lg bg-secondary/10 text-center">
-          <RefreshCw className="w-6 h-6 mx-auto mb-2 text-secondary" />
-          <div className="font-mono text-sm text-white">AUTOMATED WORKFLOWS</div>
-          <div className="text-xs text-gray-400 mt-1">
-            Morning briefings • Standup generation • Decision tracking
-          </div>
-        </div>
+    <div className="text-center mb-4">
+      <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full border border-white/20">
+        <Brain className="w-4 h-4 text-primary" />
+        <span className="font-display font-bold text-white text-sm">YOUR SECOND BRAIN</span>
       </div>
     </div>
-  </NeonCard>
+    <div className="grid grid-cols-3 gap-2 mb-4">
+      <div className="p-2 border border-primary/40 rounded bg-primary/10 text-center">
+        <BookOpen className="w-4 h-4 mx-auto mb-1 text-primary" />
+        <div className="font-mono text-xs text-primary">KNOWLEDGE</div>
+      </div>
+      <div className="p-2 border border-secondary/40 rounded bg-secondary/10 text-center">
+        <MessageSquare className="w-4 h-4 mx-auto mb-1 text-secondary" />
+        <div className="font-mono text-xs text-secondary">DISCUSSIONS</div>
+      </div>
+      <div className="p-2 border border-accent/40 rounded bg-accent/10 text-center">
+        <Zap className="w-4 h-4 mx-auto mb-1 text-accent" />
+        <div className="font-mono text-xs text-accent">DECISIONS</div>
+      </div>
+    </div>
+    <div className="flex justify-center mb-3">
+      <ArrowDown className="w-4 h-4 text-primary" />
+    </div>
+    <div className="p-4 border border-primary/40 rounded-lg bg-primary/5 text-center mb-3">
+      <Bot className="w-6 h-6 mx-auto mb-2 text-primary" />
+      <div className="font-mono text-sm text-white">CLAUDE WITH MEMORY</div>
+      <div className="text-xs text-gray-400 mt-1">"What did we decide?" → Returns full context</div>
+    </div>
+    <div className="flex justify-center mb-3">
+      <ArrowDown className="w-4 h-4 text-secondary" />
+    </div>
+    <div className="p-3 border border-secondary/40 rounded bg-secondary/10 text-center">
+      <RefreshCw className="w-4 h-4 mx-auto mb-1 text-secondary" />
+      <div className="font-mono text-xs text-white">AUTOMATED WORKFLOWS</div>
+    </div>
+  </div>
 );
 
 const AIComparisonDiagram = () => (
-  <NeonCard variant="primary" className="my-10 p-6 md:p-8">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 0.5 // AI_COMPARISON</span>
       <span className="text-xs text-muted-foreground">ANALYSIS</span>
     </div>
-    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6">
-      <div className="flex flex-col lg:flex-row gap-6">
-        <div className="flex-1 space-y-3">
-          <div className="text-center p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
-            <span className="font-mono text-red-400 text-sm">TRADITIONAL AI</span>
-          </div>
-          {['Session 1', 'Session 2', 'Session 3'].map((session, i) => (
-            <div key={i} className="p-3 border border-white/10 rounded bg-white/5">
-              <div className="font-mono text-xs text-gray-500 mb-1">{session}:</div>
-              <div className="text-sm text-gray-400">"What's our API design?"</div>
-            </div>
-          ))}
-          <div className="text-center text-xs text-red-400 font-mono p-2 border border-dashed border-red-400/30 rounded">
-            (explaining from zero every time)
-          </div>
+    <div className="flex flex-col lg:flex-row gap-4">
+      <div className="flex-1 space-y-2">
+        <div className="text-center p-2 bg-red-500/10 border border-red-500/30 rounded">
+          <span className="font-mono text-red-400 text-xs">TRADITIONAL AI</span>
         </div>
-        
-        <div className="flex-1 space-y-3">
-          <div className="text-center p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
-            <span className="font-mono text-green-400 text-sm">SECOND BRAIN AI</span>
+        {['Session 1', 'Session 2', 'Session 3'].map((session, i) => (
+          <div key={i} className="p-2 border border-white/10 rounded bg-white/5">
+            <div className="font-mono text-xs text-gray-500">{session}:</div>
+            <div className="text-xs text-gray-400">"What's our API design?"</div>
           </div>
-          <div className="p-3 border border-white/10 rounded bg-white/5">
-            <div className="font-mono text-xs text-gray-500 mb-1">Session 1:</div>
-            <div className="text-sm text-gray-400">"What's our API design?"</div>
-          </div>
-          <div className="p-3 border border-green-500/30 rounded bg-green-500/5">
-            <div className="font-mono text-xs text-gray-500 mb-1">Session 2:</div>
-            <div className="text-sm text-green-400">"Remember the API design?"</div>
-            <div className="text-sm text-secondary mt-1">→ "Here's what changed since last time..."</div>
-          </div>
-          <div className="text-center text-xs text-green-400 font-mono p-2 border border-dashed border-green-400/30 rounded">
-            (builds on previous context)
-          </div>
+        ))}
+        <div className="text-center text-xs text-red-400 font-mono py-1">
+          (explaining from zero every time)
+        </div>
+      </div>
+      <div className="flex-1 space-y-2">
+        <div className="text-center p-2 bg-green-500/10 border border-green-500/30 rounded">
+          <span className="font-mono text-green-400 text-xs">SECOND BRAIN AI</span>
+        </div>
+        <div className="p-2 border border-white/10 rounded bg-white/5">
+          <div className="font-mono text-xs text-gray-500">Session 1:</div>
+          <div className="text-xs text-gray-400">"What's our API design?"</div>
+        </div>
+        <div className="p-2 border border-green-500/30 rounded bg-green-500/5">
+          <div className="font-mono text-xs text-gray-500">Session 2:</div>
+          <div className="text-xs text-green-400">"Remember the API design?"</div>
+          <div className="text-xs text-secondary mt-1">→ "Here's what changed..."</div>
+        </div>
+        <div className="text-center text-xs text-green-400 font-mono py-1">
+          (builds on previous context)
         </div>
       </div>
     </div>
-  </NeonCard>
+  </div>
 );
 
 const ThreePillarsDiagram = () => (
