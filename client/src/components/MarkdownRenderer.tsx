@@ -6,7 +6,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeReact from 'rehype-react';
 import * as prod from 'react/jsx-runtime';
-import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight, FileText, History, Lightbulb, Database, CheckCircle, XCircle } from 'lucide-react';
+import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight, FileText, History, Lightbulb, Database, CheckCircle, XCircle, Folder, FolderOpen, File } from 'lucide-react';
 import { NeonCard } from './CyberpunkUI';
 
 const DiagramBox = ({ 
@@ -395,6 +395,67 @@ const DecisionLifecycleDiagram = () => (
   </NeonCard>
 );
 
+const FolderStructureDiagram = () => {
+  const folders = [
+    { name: 'docs/', icon: FolderOpen, color: 'text-primary', children: [
+      { name: 'guides/', icon: Folder, color: 'text-cyan-400', comment: 'Current knowledge', children: [
+        { name: 'getting-started.md', icon: File, color: 'text-gray-400' }
+      ]},
+      { name: 'discussions/', icon: Folder, color: 'text-secondary', comment: 'Historical record', children: [
+        { name: 'TEMPLATE.md', icon: File, color: 'text-gray-400' }
+      ]},
+      { name: 'decisions/', icon: Folder, color: 'text-accent', comment: 'Decision archive', children: [
+        { name: 'TEMPLATE.md', icon: File, color: 'text-gray-400' }
+      ]}
+    ]},
+    { name: 'package.json', icon: File, color: 'text-yellow-400' }
+  ];
+
+  const renderNode = (node: any, depth: number = 0) => {
+    const Icon = node.icon;
+    const isFolder = node.children;
+    
+    return (
+      <div key={node.name} className={depth > 0 ? 'ml-6' : ''}>
+        <div className="flex items-center gap-2 py-1 group">
+          <div className={`w-px h-4 ${depth > 0 ? 'bg-white/20' : 'bg-transparent'}`} />
+          <Icon className={`w-4 h-4 ${node.color} flex-shrink-0`} />
+          <span className={`font-mono text-sm ${isFolder ? 'font-semibold text-white' : 'text-gray-400'}`}>
+            {node.name}
+          </span>
+          {node.comment && (
+            <span className="text-xs text-gray-500 ml-2 hidden sm:inline">// {node.comment}</span>
+          )}
+        </div>
+        {node.children && (
+          <div className="relative">
+            <div className="absolute left-2 top-0 bottom-0 w-px bg-gradient-to-b from-white/20 to-transparent" />
+            {node.children.map((child: any) => renderNode(child, depth + 1))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <NeonCard variant="secondary" className="my-10 p-6 md:p-8">
+      <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+        <span>STRUCTURE // FOLDER_MAP</span>
+        <span className="text-xs text-muted-foreground">my-second-brain/</span>
+      </div>
+      <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6">
+        <div className="flex items-center gap-2 mb-3 pb-2 border-b border-white/10">
+          <FolderOpen className="w-5 h-5 text-primary" />
+          <span className="font-mono font-bold text-white">my-second-brain/</span>
+        </div>
+        <div className="space-y-1">
+          {folders.map(folder => renderNode(folder))}
+        </div>
+      </div>
+    </NeonCard>
+  );
+};
+
 const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const [copied, setCopied] = useState(false);
   const codeContent = typeof children === 'string' ? children : 
@@ -423,6 +484,7 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isCurrentKnowledgeDiagram = codeContent.includes('CURRENT KNOWLEDGE') && codeContent.includes('Changes frequently');
     const isHistoricalRecordDiagram = codeContent.includes('HISTORICAL RECORD') && codeContent.includes('Rarely changes');
     const isDecisionLifecycleDiagram = codeContent.includes('Proposed') && codeContent.includes('Accepted') && codeContent.includes('Implemented');
+    const isFolderStructureDiagram = codeContent.includes('my-second-brain/') && codeContent.includes('├──') && codeContent.includes('docs/');
     
     if (isComparisonDiagram) {
       return <AIComparisonDiagram />;
@@ -446,6 +508,10 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     
     if (isDecisionLifecycleDiagram) {
       return <DecisionLifecycleDiagram />;
+    }
+    
+    if (isFolderStructureDiagram) {
+      return <FolderStructureDiagram />;
     }
     
     if (isThreePillarsDiagram) {
