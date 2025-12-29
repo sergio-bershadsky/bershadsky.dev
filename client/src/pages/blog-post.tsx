@@ -173,14 +173,16 @@ export default function BlogPostPage() {
                 
                 return (
                   <>
-                    <a 
-                      href={prevPost ? `/blog/${prevPost.id}` : '#'}
-                      className={`flex items-center gap-2 ${prevPost ? 'text-muted-foreground hover:text-white' : 'opacity-30 pointer-events-none'} transition-colors`}
-                      data-testid="series-prev"
-                    >
-                      <ChevronLeft className="w-5 h-5" />
-                      <span className="hidden sm:inline text-sm font-mono">PREV</span>
-                    </a>
+                    {prevPost ? (
+                      <a 
+                        href={`/blog/${prevPost.id}`}
+                        className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
+                        data-testid="series-prev"
+                      >
+                        <ChevronLeft className="w-5 h-5" />
+                        <span className="hidden sm:inline text-sm font-mono">PREV</span>
+                      </a>
+                    ) : <div />}
                     
                     <a 
                       href={`/series/${seriesData.slug}`}
@@ -207,14 +209,16 @@ export default function BlogPostPage() {
                       </div>
                     </a>
                     
-                    <a 
-                      href={nextPost ? `/blog/${nextPost.id}` : '#'}
-                      className={`flex items-center gap-2 ${nextPost ? 'text-muted-foreground hover:text-white' : 'opacity-30 pointer-events-none'} transition-colors`}
-                      data-testid="series-next"
-                    >
-                      <span className="hidden sm:inline text-sm font-mono">NEXT</span>
-                      <ChevronRight className="w-5 h-5" />
-                    </a>
+                    {nextPost ? (
+                      <a 
+                        href={`/blog/${nextPost.id}`}
+                        className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
+                        data-testid="series-next"
+                      >
+                        <span className="hidden sm:inline text-sm font-mono">NEXT</span>
+                        <ChevronRight className="w-5 h-5" />
+                      </a>
+                    ) : <div />}
                   </>
                 );
               })()}
