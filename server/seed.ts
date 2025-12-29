@@ -1,8 +1,8 @@
 import { db } from "./db";
-import { blogPosts } from "@shared/schema";
+import { blogPosts, series, seriesPosts } from "@shared/schema";
 import { sql } from "drizzle-orm";
 
-const seedData = [
+const blogPostsData = [
   {
     title: "Scaling Microservices in 2025",
     excerpt: "How to handle 1M+ requests without breaking the bank or your sanity.",
@@ -83,18 +83,64 @@ Remember: the goal isn't to launch fast and crash—it's to launch fast and scal
   }
 ];
 
+const seriesData = [
+  {
+    slug: "architecture-fundamentals",
+    title: "Architecture Fundamentals",
+    description: "Deep dives into system design and scalable architecture patterns",
+    coverImageUrl: "/attached_assets/generated_images/microservices_network_visualization.png",
+    accentColor: "#ec4899",
+    isVisible: 1,
+  },
+  {
+    slug: "startup-playbook",
+    title: "Startup Playbook",
+    description: "Practical guides for building and scaling startups",
+    coverImageUrl: "/attached_assets/generated_images/mvp_rocket_launch_concept.png",
+    accentColor: "#06b6d4",
+    isVisible: 1,
+  }
+];
+
 async function seed() {
   console.log("Starting database seed...");
   
   try {
     // Clear existing data
+    await db.execute(sql`DELETE FROM series_posts`);
+    await db.execute(sql`DELETE FROM series`);
     await db.execute(sql`DELETE FROM blog_posts`);
-    console.log("Cleared existing blog posts");
+    console.log("Cleared existing data");
     
-    for (const post of seedData) {
+    // Create blog posts
+    const createdPosts = [];
+    for (const post of blogPostsData) {
       const [created] = await db.insert(blogPosts).values(post).returning();
+      createdPosts.push(created);
       console.log(`✓ Created blog post: ${created.title}`);
     }
+    
+    // Create series
+    const createdSeries = [];
+    for (const s of seriesData) {
+      const [created] = await db.insert(series).values(s).returning();
+      createdSeries.push(created);
+      console.log(`✓ Created series: ${created.title}`);
+    }
+    
+    // Add posts to series
+    // Architecture series: Microservices + REST APIs
+    await db.insert(seriesPosts).values([
+      { seriesId: createdSeries[0].id, postId: createdPosts[0].id, position: 0 },
+      { seriesId: createdSeries[0].id, postId: createdPosts[1].id, position: 1 },
+    ]);
+    console.log("✓ Added posts to Architecture series");
+    
+    // Startup series: MVP
+    await db.insert(seriesPosts).values([
+      { seriesId: createdSeries[1].id, postId: createdPosts[2].id, position: 0 },
+    ]);
+    console.log("✓ Added posts to Startup series");
     
     console.log("\n✅ Seed completed successfully!");
     process.exit(0);
