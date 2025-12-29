@@ -340,6 +340,82 @@ const DecisionLifecycleDiagram = () => (
   </div>
 );
 
+const SessionFlowDiagram = () => (
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-primary mb-4 flex justify-between">
+      <span>FIG 3.0 // SESSION_FLOW</span>
+      <span className="text-xs text-muted-foreground">MEMORY</span>
+    </div>
+    <div className="flex flex-col md:flex-row gap-4">
+      <div className="flex-1 p-4 border border-secondary/40 rounded bg-secondary/5">
+        <div className="font-mono text-xs text-secondary mb-3">SESSION 1</div>
+        <div className="space-y-2 text-sm">
+          <div className="flex items-center gap-2">
+            <FileText className="w-4 h-4 text-primary" />
+            <span className="text-gray-300">Create doc</span>
+          </div>
+          <ArrowDown className="w-4 h-4 text-white/40 mx-auto" />
+          <div className="flex items-center gap-2">
+            <Database className="w-4 h-4 text-secondary" />
+            <span className="text-gray-300">Save to knowledge base</span>
+          </div>
+          <ArrowDown className="w-4 h-4 text-white/40 mx-auto" />
+          <div className="text-center text-green-400 text-xs font-mono">Done</div>
+        </div>
+      </div>
+      <div className="flex items-center justify-center">
+        <ArrowRight className="w-6 h-6 text-primary rotate-90 md:rotate-0" />
+      </div>
+      <div className="flex-1 p-4 border border-green-500/40 rounded bg-green-500/5">
+        <div className="font-mono text-xs text-green-400 mb-3">SESSION 2</div>
+        <div className="space-y-2 text-sm">
+          <div className="flex items-center gap-2">
+            <MessageSquare className="w-4 h-4 text-secondary" />
+            <span className="text-gray-300">Ask question</span>
+          </div>
+          <ArrowDown className="w-4 h-4 text-white/40 mx-auto" />
+          <div className="flex items-center gap-2">
+            <Brain className="w-4 h-4 text-primary" />
+            <span className="text-gray-300">Claude reads knowledge base</span>
+          </div>
+          <ArrowDown className="w-4 h-4 text-white/40 mx-auto" />
+          <div className="text-center text-green-400 text-xs font-mono">Answers with YOUR context</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const ProcessStepsDiagram = () => (
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+      <span>FIG 3.1 // PROCESS</span>
+      <span className="text-xs text-muted-foreground">WORKFLOW</span>
+    </div>
+    <div className="flex flex-col md:flex-row items-center justify-center gap-2">
+      <div className="p-3 border border-primary/40 rounded bg-primary/10 text-center min-w-[100px]">
+        <div className="font-mono text-xs text-primary">Step 1</div>
+        <div className="text-xs text-gray-400">Tell Claude</div>
+      </div>
+      <ArrowRight className="w-4 h-4 text-white/40 rotate-90 md:rotate-0" />
+      <div className="p-3 border border-secondary/40 rounded bg-secondary/10 text-center min-w-[100px]">
+        <div className="font-mono text-xs text-secondary">Step 2</div>
+        <div className="text-xs text-gray-400">Claude organizes</div>
+      </div>
+      <ArrowRight className="w-4 h-4 text-white/40 rotate-90 md:rotate-0" />
+      <div className="p-3 border border-accent/40 rounded bg-accent/10 text-center min-w-[100px]">
+        <div className="font-mono text-xs text-accent">Step 3</div>
+        <div className="text-xs text-gray-400">Review & refine</div>
+      </div>
+      <ArrowRight className="w-4 h-4 text-white/40 rotate-90 md:rotate-0" />
+      <div className="p-3 border border-green-500/40 rounded bg-green-500/10 text-center min-w-[100px]">
+        <div className="font-mono text-xs text-green-400">Step 4</div>
+        <div className="text-xs text-gray-400">Save</div>
+      </div>
+    </div>
+  </div>
+);
+
 const FolderStructureDiagram = () => {
   const folders = [
     { name: 'docs/', icon: FolderOpen, color: 'text-primary', children: [
@@ -423,6 +499,8 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isHistoricalRecordDiagram = codeContent.includes('HISTORICAL RECORD') && codeContent.includes('Rarely changes');
     const isDecisionLifecycleDiagram = codeContent.includes('Proposed') && codeContent.includes('Accepted') && codeContent.includes('Implemented');
     const isFolderStructureDiagram = codeContent.includes('my-second-brain/') && codeContent.includes('├──') && codeContent.includes('docs/');
+    const isSessionFlowDiagram = codeContent.includes('SESSION 1') && codeContent.includes('SESSION 2') && codeContent.includes('knowledge base');
+    const isProcessStepsDiagram = codeContent.includes('Step 1') && codeContent.includes('Step 2') && codeContent.includes('Step 3') && codeContent.includes('Step 4') && codeContent.includes('Claude');
     
     if (isComparisonDiagram) {
       return <AIComparisonDiagram />;
@@ -450,6 +528,14 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     
     if (isFolderStructureDiagram) {
       return <FolderStructureDiagram />;
+    }
+    
+    if (isSessionFlowDiagram) {
+      return <SessionFlowDiagram />;
+    }
+    
+    if (isProcessStepsDiagram) {
+      return <ProcessStepsDiagram />;
     }
     
     if (isThreePillarsDiagram) {
