@@ -280,9 +280,9 @@ export default function BlogPostPage() {
           </motion.div>
         )}
 
-        <article className="max-w-5xl mx-auto">
-          <div className="grid md:grid-cols-[1fr_280px] gap-10 items-start">
-            <div className="space-y-8 min-w-0">
+        <article className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-[1fr_250px] gap-10">
+            <div className="space-y-8">
               <a href="/" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors group mb-4" data-testid="link-back">
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
                 <span className="font-display font-bold">BACK_TO_INDEX</span>
@@ -296,7 +296,7 @@ export default function BlogPostPage() {
               </div>
             </div>
 
-            <aside className="hidden md:block sticky top-24 h-fit">
+            <aside className="hidden md:block md:sticky md:top-24 md:self-start">
               <div className="space-y-8">
                 <NeonCard variant="primary" className="p-6">
                   <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">About Author</h4>
