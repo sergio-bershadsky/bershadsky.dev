@@ -295,9 +295,23 @@ export default function BlogPostPage() {
                   <div className="border border-white/10 rounded bg-black/20 p-6">
                     <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">Table of Contents</h4>
                     <ul className="space-y-2 text-sm font-light text-muted-foreground">
-                      {tableOfContents.map((heading, i) => (
-                        <li key={i} className="hover:text-primary cursor-pointer transition-colors">▹ {heading}</li>
-                      ))}
+                      {tableOfContents.map((heading, i) => {
+                        const slug = heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+                        return (
+                          <li key={i}>
+                            <a 
+                              href={`#${slug}`}
+                              className="hover:text-primary cursor-pointer transition-colors block"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' });
+                              }}
+                            >
+                              ▹ {heading}
+                            </a>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 )}
