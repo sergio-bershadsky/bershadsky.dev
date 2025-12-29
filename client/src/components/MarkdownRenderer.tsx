@@ -423,6 +423,37 @@ const ConnectionTypesTable = () => (
   </div>
 );
 
+const DataFlowDiagram = () => (
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+      <span>FIG 4.3 // DATA_FLOW</span>
+      <span className="text-xs text-muted-foreground">SECURITY</span>
+    </div>
+    <div className="flex flex-col items-center gap-4">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full">
+        <div className="p-4 border border-primary/40 rounded-lg bg-primary/10 text-center min-w-[120px]">
+          <Database className="w-8 h-8 text-primary mx-auto mb-2" />
+          <div className="font-mono text-xs text-primary">YOUR TOOLS</div>
+        </div>
+        <ArrowRight className="w-6 h-6 text-white/40 rotate-90 md:rotate-0" />
+        <div className="p-4 border border-accent/40 rounded-lg bg-accent/10 text-center min-w-[120px] relative">
+          <RefreshCw className="w-8 h-8 text-accent mx-auto mb-2" />
+          <div className="font-mono text-xs text-accent">MCP SERVER</div>
+          <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs text-green-400 font-mono whitespace-nowrap hidden md:block">
+            ↓ Data stays local
+          </div>
+        </div>
+        <ArrowRight className="w-6 h-6 text-white/40 rotate-90 md:rotate-0" />
+        <div className="p-4 border border-secondary/40 rounded-lg bg-secondary/10 text-center min-w-[120px]">
+          <Brain className="w-8 h-8 text-secondary mx-auto mb-2" />
+          <div className="font-mono text-xs text-secondary">CLAUDE</div>
+        </div>
+      </div>
+      <div className="text-xs text-green-400 font-mono mt-4 md:hidden">Data stays local (usually)</div>
+    </div>
+  </div>
+);
+
 const CapabilitiesTable = () => (
   <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
@@ -858,6 +889,11 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isMCPFlowDiagram = codeContent.includes('Claude') && codeContent.includes('MCP Server') && codeContent.includes('Service');
     const isConnectionTypesTable = codeContent.includes('CONNECTION TYPE') && codeContent.includes('WHAT CLAUDE CAN DO') && codeContent.includes('Team Chat');
     const isCapabilitiesTable = codeContent.includes('QUESTION') && codeContent.includes('SOURCE') && codeContent.includes('What happened overnight');
+    const isDataFlowDiagram = codeContent.includes('YOUR TOOLS') && codeContent.includes('MCP SERVER') && codeContent.includes('CLAUDE') && codeContent.includes('Data stays local');
+    
+    if (isDataFlowDiagram) {
+      return <DataFlowDiagram />;
+    }
     
     if (isMCPFlowDiagram) {
       return <MCPFlowDiagram />;
