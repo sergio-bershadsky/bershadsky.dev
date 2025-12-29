@@ -340,6 +340,170 @@ const DecisionLifecycleDiagram = () => (
   </div>
 );
 
+const ComparisonTableDiagram = ({ leftTitle, rightTitle, leftItems, rightItems, leftColor = 'primary', rightColor = 'secondary' }: { 
+  leftTitle: string; 
+  rightTitle: string; 
+  leftItems: string[]; 
+  rightItems: string[];
+  leftColor?: string;
+  rightColor?: string;
+}) => (
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
+      <span>FIG // COMPARISON</span>
+      <span className="text-xs text-muted-foreground">MATRIX</span>
+    </div>
+    <div className="grid grid-cols-2 gap-4">
+      <div className={`p-4 border border-${leftColor}/40 rounded bg-${leftColor}/10`}>
+        <div className={`font-mono text-sm text-${leftColor} mb-3 flex items-center gap-2`}>
+          <CheckCircle className="w-4 h-4" />
+          {leftTitle}
+        </div>
+        <ul className="space-y-2">
+          {leftItems.map((item, i) => (
+            <li key={i} className="text-sm text-gray-300 flex items-start gap-2">
+              <span className={`text-${leftColor} mt-1`}>+</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className={`p-4 border border-${rightColor}/40 rounded bg-${rightColor}/10`}>
+        <div className={`font-mono text-sm text-${rightColor} mb-3 flex items-center gap-2`}>
+          <XCircle className="w-4 h-4" />
+          {rightTitle}
+        </div>
+        <ul className="space-y-2">
+          {rightItems.map((item, i) => (
+            <li key={i} className="text-sm text-gray-300 flex items-start gap-2">
+              <span className={`text-${rightColor} mt-1`}>-</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+);
+
+const DocumentVsJustDoItDiagram = () => (
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
+      <span>FIG 3.2 // DECISION_MATRIX</span>
+      <span className="text-xs text-muted-foreground">WHEN</span>
+    </div>
+    <div className="grid grid-cols-2 gap-4">
+      <div className="p-4 border border-green-500/40 rounded bg-green-500/10">
+        <div className="font-mono text-sm text-green-400 mb-3 flex items-center gap-2">
+          <FileText className="w-4 h-4" />
+          DOCUMENT
+        </div>
+        <ul className="space-y-2">
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-green-400 mt-0.5">+</span>
+            Explained twice
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-green-400 mt-0.5">+</span>
+            Core to the project
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-green-400 mt-0.5">+</span>
+            Others will need this
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-green-400 mt-0.5">+</span>
+            Complex/easy to forget
+          </li>
+        </ul>
+      </div>
+      <div className="p-4 border border-orange-500/40 rounded bg-orange-500/10">
+        <div className="font-mono text-sm text-orange-400 mb-3 flex items-center gap-2">
+          <Zap className="w-4 h-4" />
+          JUST DO IT
+        </div>
+        <ul className="space-y-2">
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-orange-400 mt-0.5">-</span>
+            One-off tasks
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-orange-400 mt-0.5">-</span>
+            Trivial fixes
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-orange-400 mt-0.5">-</span>
+            Personal preferences
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-orange-400 mt-0.5">-</span>
+            Obvious stuff
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+);
+
+const GoodVsSkipDiagram = () => (
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
+      <span>FIG 3.3 // SELECTION_GUIDE</span>
+      <span className="text-xs text-muted-foreground">ENTRIES</span>
+    </div>
+    <div className="grid grid-cols-2 gap-4">
+      <div className="p-4 border border-green-500/40 rounded bg-green-500/10">
+        <div className="font-mono text-sm text-green-400 mb-3 flex items-center gap-2">
+          <CheckCircle className="w-4 h-4" />
+          GOOD FIRST ENTRIES
+        </div>
+        <ul className="space-y-2">
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-green-400 mt-0.5">+</span>
+            Things you explain repeatedly
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-green-400 mt-0.5">+</span>
+            Project setup steps
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-green-400 mt-0.5">+</span>
+            Team conventions
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-green-400 mt-0.5">+</span>
+            Common commands
+          </li>
+        </ul>
+      </div>
+      <div className="p-4 border border-red-500/40 rounded bg-red-500/10">
+        <div className="font-mono text-sm text-red-400 mb-3 flex items-center gap-2">
+          <XCircle className="w-4 h-4" />
+          SKIP FOR NOW
+        </div>
+        <ul className="space-y-2">
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-red-400 mt-0.5">-</span>
+            Complex architecture docs
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-red-400 mt-0.5">-</span>
+            Comprehensive API reference
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-red-400 mt-0.5">-</span>
+            Everything you know
+          </li>
+          <li className="text-sm text-gray-300 flex items-start gap-2">
+            <span className="text-red-400 mt-0.5">-</span>
+            Your life story
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+);
+
 const ChatConversationDiagram = ({ content }: { content: string }) => {
   const lines = content.split('\n').filter(line => line.trim());
   const messages: { speaker: 'you' | 'claude'; text: string }[] = [];
@@ -562,6 +726,8 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isSessionFlowDiagram = codeContent.includes('SESSION 1') && codeContent.includes('SESSION 2') && codeContent.includes('knowledge base');
     const isProcessStepsDiagram = codeContent.includes('Step 1') && codeContent.includes('Step 2') && codeContent.includes('Step 3') && codeContent.includes('Step 4') && codeContent.includes('Claude');
     const isChatConversation = codeContent.includes('You:') && codeContent.includes('Claude:') && !isProcessStepsDiagram;
+    const isDocumentVsJustDoIt = codeContent.includes('DOCUMENT') && codeContent.includes('JUST DO IT') && codeContent.includes('Explained twice');
+    const isGoodVsSkip = codeContent.includes('GOOD FIRST ENTRIES') && codeContent.includes('SKIP FOR NOW');
     
     if (isComparisonDiagram) {
       return <AIComparisonDiagram />;
@@ -601,6 +767,14 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     
     if (isChatConversation) {
       return <ChatConversationDiagram content={codeContent} />;
+    }
+    
+    if (isDocumentVsJustDoIt) {
+      return <DocumentVsJustDoItDiagram />;
+    }
+    
+    if (isGoodVsSkip) {
+      return <GoodVsSkipDiagram />;
     }
     
     if (isThreePillarsDiagram) {
