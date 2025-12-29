@@ -1281,12 +1281,109 @@ const FolderStructureDiagram = () => {
   );
 };
 
+// Python syntax highlighter
+const highlightPython = (code: string): React.ReactNode[] => {
+  const keywords = ['def', 'class', 'if', 'else', 'elif', 'for', 'while', 'return', 'import', 'from', 'as', 'try', 'except', 'finally', 'with', 'lambda', 'and', 'or', 'not', 'in', 'is', 'True', 'False', 'None', 'raise', 'pass', 'break', 'continue', 'global', 'async', 'await', 'yield'];
+  const builtins = ['print', 'len', 'range', 'str', 'int', 'float', 'list', 'dict', 'set', 'tuple', 'open', 'append', 'extend', 'format'];
+  
+  const lines = code.split('\n');
+  return lines.map((line, lineIndex) => {
+    const tokens: React.ReactNode[] = [];
+    let remaining = line;
+    let tokenKey = 0;
+    
+    // Process the line character by character
+    while (remaining.length > 0) {
+      // Comments
+      if (remaining.startsWith('#')) {
+        tokens.push(<span key={tokenKey++} className="text-gray-500 italic">{remaining}</span>);
+        break;
+      }
+      
+      // Triple-quoted strings (simplified - just match the opening)
+      const tripleMatch = remaining.match(/^("""[\s\S]*?"""|'''[\s\S]*?''')/);
+      if (tripleMatch) {
+        tokens.push(<span key={tokenKey++} className="text-green-400">{tripleMatch[1]}</span>);
+        remaining = remaining.slice(tripleMatch[1].length);
+        continue;
+      }
+      
+      // Strings
+      const stringMatch = remaining.match(/^(f?["'](?:[^"'\\]|\\.)*["'])/);
+      if (stringMatch) {
+        tokens.push(<span key={tokenKey++} className="text-green-400">{stringMatch[1]}</span>);
+        remaining = remaining.slice(stringMatch[1].length);
+        continue;
+      }
+      
+      // Numbers
+      const numMatch = remaining.match(/^(\d+\.?\d*)/);
+      if (numMatch) {
+        tokens.push(<span key={tokenKey++} className="text-orange-400">{numMatch[1]}</span>);
+        remaining = remaining.slice(numMatch[1].length);
+        continue;
+      }
+      
+      // Decorators
+      const decoratorMatch = remaining.match(/^(@\w+)/);
+      if (decoratorMatch) {
+        tokens.push(<span key={tokenKey++} className="text-yellow-400">{decoratorMatch[1]}</span>);
+        remaining = remaining.slice(decoratorMatch[1].length);
+        continue;
+      }
+      
+      // Keywords and identifiers
+      const wordMatch = remaining.match(/^(\w+)/);
+      if (wordMatch) {
+        const word = wordMatch[1];
+        if (keywords.includes(word)) {
+          tokens.push(<span key={tokenKey++} className="text-primary font-semibold">{word}</span>);
+        } else if (builtins.includes(word)) {
+          tokens.push(<span key={tokenKey++} className="text-secondary">{word}</span>);
+        } else if (remaining.slice(word.length).match(/^\s*\(/)) {
+          // Function call
+          tokens.push(<span key={tokenKey++} className="text-yellow-300">{word}</span>);
+        } else {
+          tokens.push(<span key={tokenKey++} className="text-gray-300">{word}</span>);
+        }
+        remaining = remaining.slice(word.length);
+        continue;
+      }
+      
+      // Operators and punctuation
+      const opMatch = remaining.match(/^([+\-*/%=<>!&|^~:,.\[\](){}]+)/);
+      if (opMatch) {
+        tokens.push(<span key={tokenKey++} className="text-gray-400">{opMatch[1]}</span>);
+        remaining = remaining.slice(opMatch[1].length);
+        continue;
+      }
+      
+      // Whitespace and other
+      tokens.push(<span key={tokenKey++} className="text-gray-300">{remaining[0]}</span>);
+      remaining = remaining.slice(1);
+    }
+    
+    return (
+      <React.Fragment key={lineIndex}>
+        {tokens}
+        {lineIndex < lines.length - 1 && '\n'}
+      </React.Fragment>
+    );
+  });
+};
+
 const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const [copied, setCopied] = useState(false);
   const codeContent = typeof children === 'string' ? children : 
     React.Children.toArray(children).map(child => 
       typeof child === 'string' ? child : ''
     ).join('');
+
+  // Detect language from className or content
+  const isPythonCode = className?.includes('python') || 
+                       codeContent.includes('def ') || 
+                       codeContent.includes('import ') ||
+                       (codeContent.includes('# ') && (codeContent.includes('def ') || codeContent.includes('.py')));
 
   const isAsciiDiagram = codeContent.includes('╔') || 
                          codeContent.includes('┌') || 
@@ -1472,10 +1569,12 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     );
   }
 
+  const languageLabel = isPythonCode ? 'PYTHON' : 'CODE_BLOCK';
+
   return (
     <div className="relative group my-8">
       <div className="absolute -top-3 left-4 bg-background px-2 text-xs font-mono text-primary border border-primary/30 rounded z-10">
-        CODE_BLOCK
+        {languageLabel}
       </div>
       <div className="bg-[#0d1117] rounded-lg border border-white/10 overflow-hidden shadow-2xl">
         <div className="flex justify-between items-center px-4 py-2 bg-white/5 border-b border-white/5">
@@ -1494,7 +1593,7 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
           </button>
         </div>
         <pre className="p-6 overflow-x-auto text-sm font-mono leading-relaxed">
-          <code className="text-gray-300">{codeContent}</code>
+          <code>{isPythonCode ? highlightPython(codeContent) : <span className="text-gray-300">{codeContent}</span>}</code>
         </pre>
       </div>
     </div>
