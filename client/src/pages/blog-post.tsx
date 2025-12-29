@@ -43,17 +43,13 @@ export default function BlogPostPage() {
     
     const observer = new IntersectionObserver(
       (entries) => {
-        // Filter to only intersecting entries and find the one closest to top
-        const intersecting = entries.filter(e => e.isIntersecting);
-        if (intersecting.length > 0) {
-          // Sort by top position (ascending) and pick the closest to viewport top
-          const closest = intersecting.sort(
-            (a, b) => a.boundingClientRect.top - b.boundingClientRect.top
-          )[0];
-          setActiveSection(closest.target.id);
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
       },
-      { rootMargin: '0px 0px -90% 0px', threshold: 0 }
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
     );
     
     slugs.forEach((slug) => {
@@ -296,8 +292,8 @@ export default function BlogPostPage() {
               </div>
             </div>
 
-            <aside className="hidden md:block md:sticky md:top-24 md:self-start md:max-h-[calc(100vh-7rem)] md:overflow-y-auto md:scrollbar-thin md:scrollbar-thumb-white/10 md:scrollbar-track-transparent">
-              <div className="space-y-6 pr-2">
+            <aside className="hidden md:block md:sticky md:top-24 md:self-start">
+              <div className="space-y-8">
                 <NeonCard variant="primary" className="p-6">
                   <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">About Author</h4>
                   <div className="flex items-center gap-4 mb-4">
