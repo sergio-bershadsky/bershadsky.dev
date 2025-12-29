@@ -129,8 +129,22 @@ export default function BlogPostPage() {
                 </span>
               ))}
             </div>
+            {post.series && (
+              <div className="flex items-center gap-3 mb-3">
+                <a 
+                  href={`/series/${post.series.slug}`}
+                  className="text-sm font-mono text-secondary hover:text-primary transition-colors"
+                  data-testid="link-series"
+                >
+                  {post.series.title}
+                </a>
+                <span className="px-2 py-1 bg-primary/20 border border-primary/40 rounded text-primary font-mono text-sm font-bold">
+                  PART: {post.series.position}
+                </span>
+              </div>
+            )}
             <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70 mb-4 drop-shadow-lg transition-all duration-300`} data-testid="text-post-title">
-              {post.title}
+              {post.title.replace(/\s*PART:\s*\d+$/i, '')}
             </h1>
             <p className="text-xl text-white/80 max-w-2xl font-light" data-testid="text-post-excerpt">
               {post.excerpt}
