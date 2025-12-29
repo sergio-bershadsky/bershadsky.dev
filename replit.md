@@ -76,6 +76,15 @@ isHookFlowDiagram:      'EVENT HAPPENS' && 'HOOK CHECKS' && 'CONDITION MET' && '
 isGoodFirstHooks:       'GOOD FIRST HOOKS' && 'NOT YET' && 'Session start reminder'
 isHooksFolderStructure: 'your-second-brain/' && 'hooks/' && 'session-start.md'
 isHookSpectrum:         'SILENT' && 'BLOCKING' && 'Inform' && 'Warn' && 'Suggest' && 'Require'
+
+# Part 7: Plugins
+isPluginEvolution:      'STAGE 1' && 'STAGE 2' && 'Personal automation' && 'Plugin solution'
+isPluginFolderStructure: 'my-second-brain-plugin/' && 'plugin.json' && 'skills/'
+isPluginComponentsTable: 'COMPONENT' && 'PURPOSE' && 'plugin.json' && 'Tells Claude'
+isBeforeAfterPlugin:    'Before:' && 'After:' && 'your-second-brain/' && 'team-productivity-plugin/'
+isDistributionOptions:  'Option 1:' && 'Option 2:' && 'Git repository' && 'Direct sharing'
+isPluginHierarchy:      'PROJECT PLUGINS' && 'TEAM PLUGINS' && 'PERSONAL PLUGINS' && 'highest priority'
+isPluginPatterns:       'PATTERN' && 'USE CASE' && 'Team conventions' && 'Project-specific'
 ```
 
 ### Diagram Component Structure
@@ -143,7 +152,10 @@ All diagrams follow a flat structure (no nested containers):
 - Pages in `client/src/pages/`
 
 ## Recent Changes
-- 2024-12-29: Created Part 1 article for Second Brain series
+- 2024-12-29: Created Part 7 article "Sharing Knowledge: Plugins" with 7 visual diagram components
+- 2024-12-29: Added docker-compose.yml and database dump script for local development
+- 2024-12-29: Created Part 6 article with hook diagrams
+- 2024-12-29: Created Parts 1-5 articles for Second Brain series
 - 2024-12-29: Built custom MarkdownRenderer with cyberpunk styling
 - 2024-12-29: Added CSS-based visual diagrams (AIComparisonDiagram, SecondBrainArchitectureDiagram)
 - 2024-12-29: Fixed diagram layout/wrapping issues
