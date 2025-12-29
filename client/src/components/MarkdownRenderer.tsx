@@ -1076,14 +1076,21 @@ const HookFlowDiagram = () => (
         HOOK CHECKS CONDITION
       </div>
       
-      {/* Branching lines using SVG */}
+      {/* Branching lines using SVG with gradient */}
       <svg width="280" height="40" className="my-1">
+        <defs>
+          <linearGradient id="branchGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#9333ea" />
+            <stop offset="50%" stopColor="#9333ea" />
+            <stop offset="100%" stopColor="#9333ea" />
+          </linearGradient>
+        </defs>
         <line x1="140" y1="0" x2="140" y2="15" stroke="#9333ea" strokeWidth="2" />
         <line x1="70" y1="15" x2="210" y2="15" stroke="#9333ea" strokeWidth="2" />
-        <line x1="70" y1="15" x2="70" y2="35" stroke="#22c55e" strokeWidth="2" />
-        <line x1="210" y1="15" x2="210" y2="35" stroke="#6b7280" strokeWidth="2" />
-        <polygon points="70,40 65,30 75,30" fill="#22c55e" />
-        <polygon points="210,40 205,30 215,30" fill="#6b7280" />
+        <line x1="70" y1="15" x2="70" y2="35" stroke="#9333ea" strokeWidth="2" />
+        <line x1="210" y1="15" x2="210" y2="35" stroke="#9333ea" strokeWidth="2" />
+        <polygon points="70,40 65,30 75,30" fill="#9333ea" />
+        <polygon points="210,40 205,30 215,30" fill="#9333ea" />
       </svg>
       
       <div className="grid grid-cols-2 gap-6 w-full max-w-md">
