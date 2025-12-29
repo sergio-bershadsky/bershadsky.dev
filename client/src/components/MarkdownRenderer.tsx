@@ -106,42 +106,42 @@ const AIComparisonDiagram = () => (
       <span>FIG 0.5 // AI_COMPARISON</span>
       <span className="text-xs text-muted-foreground">ANALYSIS</span>
     </div>
-    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6 overflow-x-auto">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 min-w-[500px]">
-        <div className="space-y-3">
-          <div className="text-center p-2 md:p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
-            <span className="font-mono text-red-400 text-xs md:text-sm whitespace-nowrap">TRADITIONAL AI ASSISTANT</span>
+    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6">
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex-1 space-y-3">
+          <div className="text-center p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+            <span className="font-mono text-red-400 text-sm">TRADITIONAL AI</span>
           </div>
           {['Session 1', 'Session 2', 'Session 3'].map((session, i) => (
-            <div key={i} className="flex items-center gap-2 md:gap-3 p-2 md:p-3 border border-white/10 rounded bg-white/5">
-              <div className="w-16 md:w-20 font-mono text-xs text-gray-500 shrink-0">{session}:</div>
-              <div className="text-xs md:text-sm text-gray-400 whitespace-nowrap">"What's our API design?"</div>
+            <div key={i} className="p-3 border border-white/10 rounded bg-white/5">
+              <span className="font-mono text-xs text-gray-500">{session}: </span>
+              <span className="text-sm text-gray-400">"What's our API?"</span>
             </div>
           ))}
-          <div className="text-center text-xs text-red-400 font-mono p-2 border border-dashed border-red-400/30 rounded whitespace-nowrap">
-            (still explaining from zero)
+          <div className="text-center text-xs text-red-400 font-mono p-2 border border-dashed border-red-400/30 rounded">
+            (explaining from zero)
           </div>
         </div>
         
-        <div className="space-y-3">
-          <div className="text-center p-2 md:p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
-            <span className="font-mono text-green-400 text-xs md:text-sm whitespace-nowrap">SECOND BRAIN AI</span>
+        <div className="flex-1 space-y-3">
+          <div className="text-center p-3 bg-green-500/10 border border-green-500/30 rounded-lg">
+            <span className="font-mono text-green-400 text-sm">SECOND BRAIN AI</span>
           </div>
-          <div className="flex items-center gap-2 md:gap-3 p-2 md:p-3 border border-white/10 rounded bg-white/5">
-            <div className="w-16 md:w-20 font-mono text-xs text-gray-500 shrink-0">Session 1:</div>
-            <div className="text-xs md:text-sm text-gray-400 whitespace-nowrap">"What's our API design?"</div>
+          <div className="p-3 border border-white/10 rounded bg-white/5">
+            <span className="font-mono text-xs text-gray-500">Session 1: </span>
+            <span className="text-sm text-gray-400">"What's our API?"</span>
           </div>
-          <div className="p-2 md:p-3 border border-green-500/30 rounded bg-green-500/5">
-            <div className="flex items-center gap-2 md:gap-3 mb-2">
-              <div className="w-16 md:w-20 font-mono text-xs text-gray-500 shrink-0">Session 2:</div>
-              <div className="text-xs md:text-sm text-green-400 whitespace-nowrap">"Remember the API?"</div>
+          <div className="p-3 border border-green-500/30 rounded bg-green-500/5">
+            <div className="mb-1">
+              <span className="font-mono text-xs text-gray-500">Session 2: </span>
+              <span className="text-sm text-green-400">"Remember the API?"</span>
             </div>
-            <div className="pl-16 md:pl-20 text-xs md:text-sm text-secondary whitespace-nowrap">
+            <div className="text-sm text-secondary pl-4">
               "Here's what changed..."
             </div>
           </div>
-          <div className="text-center text-xs text-green-400 font-mono p-2 border border-dashed border-green-400/30 rounded whitespace-nowrap">
-            (builds on previous context)
+          <div className="text-center text-xs text-green-400 font-mono p-2 border border-dashed border-green-400/30 rounded">
+            (builds on context)
           </div>
         </div>
       </div>
