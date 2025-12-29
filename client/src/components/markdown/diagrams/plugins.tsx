@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Bot, RefreshCw, BookOpen, ArrowDown, CheckCircle, XCircle, Folder, FolderOpen, File, Package, GitBranch, Layers, Share2, Settings, Users, User } from 'lucide-react';
+import { Zap, Bot, RefreshCw, BookOpen, ArrowDown, CheckCircle, XCircle, Folder, FolderOpen, File, Package, GitBranch, Layers, Share2, Settings, Users, User, Braces, Hash, Type, List, ToggleLeft } from 'lucide-react';
 import { DiagramEntry } from '../diagramRegistry';
 
 export const PluginEvolutionDiagram = () => (
@@ -284,6 +284,84 @@ export const PluginPatternsTable = () => (
   </div>
 );
 
+export const PluginConfigurationDiagram = () => {
+  const configTree = [
+    { 
+      key: 'configuration', 
+      icon: Settings, 
+      color: 'text-secondary',
+      children: [
+        {
+          key: 'standup_format',
+          icon: Type,
+          color: 'text-primary',
+          children: [
+            { key: 'description', value: 'Output format for standups', icon: BookOpen, color: 'text-gray-400' },
+            { key: 'options', value: '["brief", "detailed"]', icon: List, color: 'text-green-400' },
+            { key: 'default', value: '"brief"', icon: ToggleLeft, color: 'text-yellow-400' }
+          ]
+        },
+        {
+          key: 'freshness_days',
+          icon: Hash,
+          color: 'text-accent',
+          children: [
+            { key: 'description', value: 'Days before content is considered stale', icon: BookOpen, color: 'text-gray-400' },
+            { key: 'type', value: '"number"', icon: Type, color: 'text-secondary' },
+            { key: 'default', value: '30', icon: ToggleLeft, color: 'text-orange-400' }
+          ]
+        }
+      ]
+    }
+  ];
+
+  const renderNode = (node: any, depth: number = 0) => {
+    const Icon = node.icon;
+    const isObject = node.children;
+    
+    return (
+      <div key={node.key} className={depth > 0 ? 'ml-5' : ''}>
+        <div className="flex items-center gap-2 py-1">
+          <Icon className={`w-4 h-4 ${node.color} flex-shrink-0`} />
+          <span className={`font-mono text-sm ${isObject ? 'text-white' : 'text-secondary'}`}>
+            {node.key}
+          </span>
+          {node.value && (
+            <>
+              <span className="text-gray-600">:</span>
+              <span className={`font-mono text-sm ${
+                node.value.startsWith('"') ? 'text-green-400' :
+                node.value.startsWith('[') ? 'text-primary' :
+                'text-orange-400'
+              }`}>
+                {node.value}
+              </span>
+            </>
+          )}
+        </div>
+        {node.children && (
+          <div className="border-l border-white/10 ml-2">
+            {node.children.map((child: any) => renderNode(child, depth + 1))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-secondary mb-3 flex items-center gap-2">
+        <Braces className="w-4 h-4 text-secondary" />
+        <span>plugin.json</span>
+        <span className="text-xs text-muted-foreground ml-auto">CONFIGURATION</span>
+      </div>
+      <div className="space-y-0.5">
+        {configTree.map(node => renderNode(node))}
+      </div>
+    </div>
+  );
+};
+
 export const detectPluginEvolution = (content: string) => 
   content.includes('STAGE 1') && content.includes('STAGE 2') && content.includes('Personal automation') && content.includes('Plugin solution');
 
@@ -305,6 +383,9 @@ export const detectPluginHierarchy = (content: string) =>
 export const detectPluginPatterns = (content: string) => 
   content.includes('PATTERN') && content.includes('USE CASE') && content.includes('Team conventions') && content.includes('Project-specific');
 
+export const detectPluginConfiguration = (content: string) => 
+  content.includes('"configuration"') && content.includes('standup_format') && content.includes('freshness_days');
+
 export const pluginsDiagramEntries: DiagramEntry[] = [
   { id: 'plugin-evolution', detect: detectPluginEvolution, component: PluginEvolutionDiagram },
   { id: 'plugin-folder-structure', detect: detectPluginFolderStructure, component: PluginFolderStructureDiagram },
@@ -313,4 +394,5 @@ export const pluginsDiagramEntries: DiagramEntry[] = [
   { id: 'distribution-options', detect: detectDistributionOptions, component: DistributionOptionsDiagram },
   { id: 'plugin-hierarchy', detect: detectPluginHierarchy, component: PluginHierarchyDiagram },
   { id: 'plugin-patterns', detect: detectPluginPatterns, component: PluginPatternsTable },
+  { id: 'plugin-configuration', detect: detectPluginConfiguration, component: PluginConfigurationDiagram },
 ];

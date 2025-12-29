@@ -64,4 +64,5 @@ export {
   DistributionOptionsDiagram,
   PluginHierarchyDiagram,
   PluginPatternsTable,
+  PluginConfigurationDiagram,
 } from './markdown/diagrams/plugins';
