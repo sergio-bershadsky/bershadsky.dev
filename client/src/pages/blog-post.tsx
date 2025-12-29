@@ -105,14 +105,16 @@ export default function BlogPostPage() {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
           
-          <button 
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="absolute top-4 right-4 z-40 p-2 bg-black/60 backdrop-blur rounded-full border border-white/20 text-white/80 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
-            title={isExpanded ? "Collapse View" : "Expand View"}
-            data-testid="button-expand-video"
-          >
-            {isExpanded ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
-          </button>
+          {post.videoUrl && (
+            <button 
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="absolute top-4 right-4 z-40 p-2 bg-black/60 backdrop-blur rounded-full border border-white/20 text-white/80 hover:text-white hover:bg-black/80 transition-all opacity-0 group-hover:opacity-100"
+              title={isExpanded ? "Collapse View" : "Expand View"}
+              data-testid="button-expand-video"
+            >
+              {isExpanded ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
+            </button>
+          )}
 
           {post.imageUrl ? (
             <img 
