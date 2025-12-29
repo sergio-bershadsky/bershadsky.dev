@@ -31,6 +31,17 @@ A cyberpunk/neon aesthetic blog and portfolio website featuring article series w
 ### AI Disclaimer
 Include in author bio or footer: "I extensively use AI for creating articles but not the content. The ideas are a result of hard work and testing approaches several times in real Software Development work."
 
+### Series Icons (MANDATORY)
+Series MUST use Lucide icons instead of images. Define icons in `getSeriesIcon()` function:
+- `second-brain-claude` → Brain icon
+- `architecture-fundamentals` → Layers icon  
+- `startup-playbook` → Rocket icon
+- Default → BookOpen icon
+
+Located in:
+- `client/src/components/SeriesRail.tsx` (for series bubbles)
+- `client/src/pages/blog-post.tsx` (for series nav in articles)
+
 ## Visual Diagrams System
 
 The blog uses CSS-based visual diagrams instead of ASCII art. ASCII diagrams in markdown are detected and replaced with React components.

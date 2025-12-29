@@ -2,8 +2,23 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRoute } from "wouter";
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
+
+const getSeriesIcon = (slug: string, accentColor: string, size: string = "w-5 h-5") => {
+  const iconProps = { className: size, style: { color: accentColor } };
+  switch (slug) {
+    case 'second-brain-claude':
+      return <Brain {...iconProps} />;
+    case 'architecture-fundamentals':
+      return <Layers {...iconProps} />;
+    case 'startup-playbook':
+      return <Rocket {...iconProps} />;
+    default:
+      return <BookOpen {...iconProps} />;
+  }
+};
+
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4';
@@ -198,16 +213,10 @@ export default function BlogPostPage() {
                       data-testid="series-link"
                     >
                       <div 
-                        className="w-10 h-10 rounded-full overflow-hidden border-2 flex-shrink-0"
+                        className="w-10 h-10 rounded-full overflow-hidden border-2 flex-shrink-0 flex items-center justify-center bg-black/40"
                         style={{ borderColor: seriesData.accentColor || '#ec4899' }}
                       >
-                        {seriesData.coverImageUrl ? (
-                          <img src={seriesData.coverImageUrl} alt={seriesData.title} className="w-full h-full object-cover" />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-black/40 font-display font-bold" style={{ color: seriesData.accentColor || '#ec4899' }}>
-                            {seriesData.title.charAt(0)}
-                          </div>
-                        )}
+                        {getSeriesIcon(seriesData.slug, seriesData.accentColor || '#ec4899')}
                       </div>
                       <div className="text-center min-w-0">
                         <div className="text-xs font-mono text-muted-foreground truncate">{seriesData.title}</div>

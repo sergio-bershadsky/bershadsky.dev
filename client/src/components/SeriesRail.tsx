@@ -1,7 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
+import { Brain, Layers, Rocket, BookOpen, Zap, Code, Server, Database, Globe, Cpu } from 'lucide-react';
 import type { Series } from '@shared/schema';
+
+const getSeriesIcon = (slug: string, accentColor: string) => {
+  const iconProps = { className: "w-8 h-8 md:w-10 md:h-10", style: { color: accentColor } };
+  switch (slug) {
+    case 'second-brain-claude':
+      return <Brain {...iconProps} />;
+    case 'architecture-fundamentals':
+      return <Layers {...iconProps} />;
+    case 'startup-playbook':
+      return <Rocket {...iconProps} />;
+    default:
+      return <BookOpen {...iconProps} />;
+  }
+};
 
 interface SeriesRailProps {
   onSeriesClick?: (series: Series) => void;
@@ -62,22 +77,9 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
             >
               {/* Inner white border */}
               <div className="absolute inset-[3px] rounded-full bg-background p-[2px]">
-                {/* Cover image */}
-                <div className="w-full h-full rounded-full overflow-hidden bg-black/40">
-                  {s.coverImageUrl ? (
-                    <img 
-                      src={s.coverImageUrl} 
-                      alt={s.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                  ) : (
-                    <div 
-                      className="w-full h-full flex items-center justify-center text-2xl font-display font-bold"
-                      style={{ color: s.accentColor || '#ec4899' }}
-                    >
-                      {s.title.charAt(0)}
-                    </div>
-                  )}
+                {/* Series Icon */}
+                <div className="w-full h-full rounded-full overflow-hidden bg-black/40 flex items-center justify-center group-hover:bg-black/60 transition-colors">
+                  {getSeriesIcon(s.slug, s.accentColor || '#ec4899')}
                 </div>
               </div>
               
