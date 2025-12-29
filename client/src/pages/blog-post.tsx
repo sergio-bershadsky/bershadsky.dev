@@ -99,13 +99,21 @@ export default function BlogPostPage() {
             {isExpanded ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
           </button>
 
-          <video 
-            src={blogVideo} 
-            autoPlay 
-            loop 
-            muted 
-            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-          />
+          {post.imageUrl ? (
+            <img 
+              src={post.imageUrl} 
+              alt={post.title}
+              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+            />
+          ) : (
+            <video 
+              src={blogVideo} 
+              autoPlay 
+              loop 
+              muted 
+              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+            />
+          )}
           
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-20">
             <div className="flex flex-wrap gap-4 mb-4 text-xs font-mono">
