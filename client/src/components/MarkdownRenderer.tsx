@@ -291,6 +291,110 @@ const KnowledgeFlowDiagram = () => (
   </NeonCard>
 );
 
+const PillarCharacteristicsDiagram = ({ title, items, examples, variant }: { 
+  title: string; 
+  items: string[]; 
+  examples: string[];
+  variant: 'primary' | 'secondary' | 'accent';
+}) => {
+  const colors = {
+    primary: { border: 'border-primary', bg: 'bg-primary/10', text: 'text-primary', icon: BookOpen },
+    secondary: { border: 'border-secondary', bg: 'bg-secondary/10', text: 'text-secondary', icon: History },
+    accent: { border: 'border-accent', bg: 'bg-accent/10', text: 'text-accent', icon: Lightbulb },
+  };
+  const style = colors[variant];
+  const Icon = style.icon;
+  
+  return (
+    <NeonCard variant={variant} className="my-10 p-6 md:p-8">
+      <div className={`text-sm font-mono ${style.text} mb-4 flex justify-between`}>
+        <span>PILLAR // {title.toUpperCase()}</span>
+        <span className="text-xs text-muted-foreground">CHARACTERISTICS</span>
+      </div>
+      <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6">
+        <div className={`flex items-center gap-3 mb-4 pb-3 border-b ${style.border}/30`}>
+          <Icon className={`w-6 h-6 ${style.text}`} />
+          <span className={`font-mono font-bold ${style.text}`}>{title}</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <div className="text-xs font-mono text-gray-500 mb-2">TRAITS:</div>
+            <ul className="space-y-2">
+              {items.map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-gray-300">
+                  <span className={style.text}>•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="text-xs font-mono text-gray-500 mb-2">EXAMPLES:</div>
+            <ul className="space-y-2">
+              {examples.map((ex, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-gray-400">
+                  <span className="text-gray-600">-</span>
+                  <span>{ex}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </NeonCard>
+  );
+};
+
+const CurrentKnowledgeDiagram = () => (
+  <PillarCharacteristicsDiagram
+    title="CURRENT KNOWLEDGE"
+    variant="primary"
+    items={['Changes frequently', 'Reflects latest understanding', 'Answers "how do I...?"', 'Written for reuse']}
+    examples={['Setup guides', 'Best practices', 'Reference materials', 'Standard procedures']}
+  />
+);
+
+const HistoricalRecordDiagram = () => (
+  <PillarCharacteristicsDiagram
+    title="HISTORICAL RECORD"
+    variant="secondary"
+    items={['Rarely changes after creation', 'Captures moment in time', 'Answers "what did we discuss?"', 'Written for context']}
+    examples={['Team discussions', 'Meeting notes', 'Planning sessions', 'Troubleshooting sessions']}
+  />
+);
+
+const DecisionLifecycleDiagram = () => (
+  <NeonCard variant="accent" className="my-10 p-6 md:p-8">
+    <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+      <span>LIFECYCLE // DECISION_STATES</span>
+      <span className="text-xs text-muted-foreground">FLOW</span>
+    </div>
+    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-3">
+        <div className="px-4 py-2 border border-yellow-500/50 bg-yellow-500/10 rounded text-yellow-400 font-mono text-sm">
+          Proposed
+        </div>
+        <ArrowRight className="w-5 h-5 text-white/40 rotate-90 md:rotate-0" />
+        <div className="px-4 py-2 border border-blue-500/50 bg-blue-500/10 rounded text-blue-400 font-mono text-sm">
+          Accepted
+        </div>
+        <ArrowRight className="w-5 h-5 text-white/40 rotate-90 md:rotate-0" />
+        <div className="px-4 py-2 border border-green-500/50 bg-green-500/10 rounded text-green-400 font-mono text-sm">
+          Implemented
+        </div>
+      </div>
+      <div className="flex justify-center mt-4">
+        <div className="flex items-center gap-2 text-sm">
+          <ArrowDown className="w-4 h-4 text-white/40" />
+          <div className="px-3 py-1 border border-red-500/50 bg-red-500/10 rounded text-red-400 font-mono text-xs">
+            Rejected (with reason)
+          </div>
+        </div>
+      </div>
+    </div>
+  </NeonCard>
+);
+
 const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const [copied, setCopied] = useState(false);
   const codeContent = typeof children === 'string' ? children : 
@@ -316,6 +420,9 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isThreePillarsDiagram = codeContent.includes('CURRENT') && codeContent.includes('HISTORICAL') && codeContent.includes('DECISIONS');
     const isDecisionDiagram = codeContent.includes('DECISION:') && codeContent.includes('OPTIONS CONSIDERED');
     const isFlowDiagram = codeContent.includes('DISCUSSION') && codeContent.includes('▶') && codeContent.includes('KNOWLEDGE');
+    const isCurrentKnowledgeDiagram = codeContent.includes('CURRENT KNOWLEDGE') && codeContent.includes('Changes frequently');
+    const isHistoricalRecordDiagram = codeContent.includes('HISTORICAL RECORD') && codeContent.includes('Rarely changes');
+    const isDecisionLifecycleDiagram = codeContent.includes('Proposed') && codeContent.includes('Accepted') && codeContent.includes('Implemented');
     
     if (isComparisonDiagram) {
       return <AIComparisonDiagram />;
@@ -327,6 +434,18 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     
     if (isFlowDiagram) {
       return <KnowledgeFlowDiagram />;
+    }
+    
+    if (isCurrentKnowledgeDiagram) {
+      return <CurrentKnowledgeDiagram />;
+    }
+    
+    if (isHistoricalRecordDiagram) {
+      return <HistoricalRecordDiagram />;
+    }
+    
+    if (isDecisionLifecycleDiagram) {
+      return <DecisionLifecycleDiagram />;
     }
     
     if (isThreePillarsDiagram) {
