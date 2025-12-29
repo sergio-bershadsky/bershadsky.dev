@@ -51,7 +51,7 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
 
   return (
     <div className="relative">
-      <div className="flex gap-6 overflow-x-auto pb-4 px-4 scrollbar-hide snap-x snap-mandatory">
+      <div className="flex gap-6 justify-center pb-4 px-4">
         {seriesList.map((s, index) => (
           <motion.a
             key={s.id}
@@ -59,7 +59,7 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="flex flex-col items-center gap-3 cursor-pointer group snap-center flex-shrink-0"
+            className="flex flex-col items-center gap-3 cursor-pointer group"
             onClick={(e) => {
               if (onSeriesClick) {
                 e.preventDefault();
@@ -96,23 +96,6 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
             </span>
           </motion.a>
         ))}
-        
-        {/* "View All" button */}
-        <motion.a
-          href="/series"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: seriesList.length * 0.1 }}
-          className="flex flex-col items-center gap-3 cursor-pointer group snap-center flex-shrink-0"
-          data-testid="series-view-all"
-        >
-          <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-dashed border-white/20 group-hover:border-white/40 transition-colors flex items-center justify-center">
-            <span className="text-2xl text-white/40 group-hover:text-white/60 transition-colors">+</span>
-          </div>
-          <span className="text-xs md:text-sm font-mono text-muted-foreground group-hover:text-white transition-colors">
-            ALL
-          </span>
-        </motion.a>
       </div>
     </div>
   );
