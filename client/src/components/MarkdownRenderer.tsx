@@ -526,6 +526,37 @@ const WithoutVsWithSkillsDiagram = () => (
   </div>
 );
 
+const SkillCreationWorkflowDiagram = () => (
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-primary mb-4 flex justify-between">
+      <span>FIG 5.4 // SKILL_CREATION</span>
+      <span className="text-xs text-muted-foreground">WORKFLOW</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      {[
+        { num: 1, text: 'Identify a task you do repeatedly', icon: Search },
+        { num: 2, text: 'Write out the steps (as if teaching someone)', icon: FileText },
+        { num: 3, text: 'Define the expected output format', icon: ClipboardList },
+        { num: 4, text: 'Create the skill file', icon: File },
+        { num: 5, text: 'Test and refine', icon: RefreshCw },
+      ].map((step, i, arr) => (
+        <React.Fragment key={i}>
+          <div className="flex items-center gap-4 p-3 border border-primary/30 rounded-lg bg-primary/5 w-full max-w-md">
+            <div className="w-8 h-8 rounded-full border-2 border-primary bg-primary/20 flex items-center justify-center flex-shrink-0">
+              <span className="text-primary font-mono font-bold text-sm">{step.num}</span>
+            </div>
+            <step.icon className="w-5 h-5 text-primary flex-shrink-0" />
+            <span className="text-sm text-gray-300">{step.text}</span>
+          </div>
+          {i < arr.length - 1 && (
+            <ArrowDown className="w-5 h-5 text-primary/50" />
+          )}
+        </React.Fragment>
+      ))}
+    </div>
+  </div>
+);
+
 const SkillCandidatesDiagram = () => (
   <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
@@ -993,6 +1024,11 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isSkillPatternsDiagram = codeContent.includes('SKILL PATTERNS') && codeContent.includes('GATHER') && codeContent.includes('GENERATE') && codeContent.includes('ANALYZE');
     const isWithoutVsWithSkills = codeContent.includes('WITHOUT SKILLS') && codeContent.includes('WITH SKILLS') && codeContent.includes('/recap');
     const isSkillCandidates = codeContent.includes('REPETITIVE + STRUCTURED') && codeContent.includes('Weekly reporting');
+    const isSkillCreationWorkflow = codeContent.includes('Identify a task you do repeatedly') && codeContent.includes('Test and refine');
+    
+    if (isSkillCreationWorkflow) {
+      return <SkillCreationWorkflowDiagram />;
+    }
     
     if (isSkillPatternsDiagram) {
       return <SkillPatternsDiagram />;
