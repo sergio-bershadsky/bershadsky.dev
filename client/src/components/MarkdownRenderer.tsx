@@ -1170,11 +1170,20 @@ const CyberH3 = ({ children }: { children: React.ReactNode }) => (
   </h3>
 );
 
-const CyberParagraph = ({ children }: { children: React.ReactNode }) => (
-  <p className="text-lg leading-8 text-gray-300 mb-6">
-    {children}
-  </p>
-);
+const CyberParagraph = ({ children }: { children: React.ReactNode }) => {
+  // Filter out reading time/audience metadata lines
+  const textContent = React.Children.toArray(children)
+    .map(child => typeof child === 'string' ? child : '')
+    .join('');
+  if (textContent.includes('Reading time:') && textContent.includes('Audience:')) {
+    return null;
+  }
+  return (
+    <p className="text-lg leading-8 text-gray-300 mb-6">
+      {children}
+    </p>
+  );
+};
 
 const CyberUl = ({ children }: { children: React.ReactNode }) => (
   <ul className="list-disc pl-6 space-y-3 text-gray-300 my-6 marker:text-primary">
