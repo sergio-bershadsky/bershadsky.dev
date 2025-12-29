@@ -133,19 +133,6 @@ export default function BlogPostPage() {
           )}
           
           <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-20">
-            <div className="flex flex-wrap gap-4 mb-4 text-xs font-mono">
-              <span className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-primary">
-                <Calendar className="w-3 h-3" /> {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}
-              </span>
-              <span className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-secondary">
-                <Clock className="w-3 h-3" /> {Math.ceil(post.content.split(' ').length / 200)} MIN READ
-              </span>
-              {post.tags.map(tag => (
-                <span key={tag} className="flex items-center gap-2 bg-black/50 backdrop-blur px-3 py-1 rounded border border-white/10 text-muted-foreground" data-testid={`tag-${tag}`}>
-                  <Hash className="w-3 h-3" /> {tag}
-                </span>
-              ))}
-            </div>
             {post.series && (
               <div className="flex items-center gap-3 mb-3">
                 <a 
@@ -165,6 +152,22 @@ export default function BlogPostPage() {
             </h1>
           </div>
         </motion.div>
+
+        <div className="max-w-4xl mx-auto mb-6">
+          <div className="flex flex-wrap gap-3 text-xs font-mono">
+            <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-primary/30 bg-primary/10 text-primary">
+              <Calendar className="w-3 h-3" /> {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}
+            </span>
+            <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-secondary/30 bg-secondary/10 text-secondary">
+              <Clock className="w-3 h-3" /> {Math.ceil(post.content.split(' ').length / 200)} MIN READ
+            </span>
+            {post.tags.map(tag => (
+              <span key={tag} className="flex items-center gap-2 px-3 py-1.5 rounded border border-white/10 bg-white/5 text-muted-foreground" data-testid={`tag-${tag}`}>
+                <Hash className="w-3 h-3" /> {tag}
+              </span>
+            ))}
+          </div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
