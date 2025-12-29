@@ -6,7 +6,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeReact from 'rehype-react';
 import * as prod from 'react/jsx-runtime';
-import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight } from 'lucide-react';
+import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight, FileText, History, Lightbulb, Database, CheckCircle, XCircle } from 'lucide-react';
 import { NeonCard } from './CyberpunkUI';
 
 const DiagramBox = ({ 
@@ -145,6 +145,152 @@ const AIComparisonDiagram = () => (
   </NeonCard>
 );
 
+const ThreePillarsDiagram = () => (
+  <NeonCard variant="secondary" className="my-10 p-6 md:p-8">
+    <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+      <span>FIG 2.0 // THREE_PILLARS</span>
+      <span className="text-xs text-muted-foreground">ARCHITECTURE</span>
+    </div>
+    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6">
+      <div className="text-center mb-6">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-full border border-white/20">
+          <Brain className="w-5 h-5 text-primary" />
+          <span className="font-display font-bold text-white">YOUR SECOND BRAIN</span>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="p-4 border border-primary rounded-lg bg-primary/5">
+          <div className="flex items-center gap-2 mb-3">
+            <BookOpen className="w-5 h-5 text-primary" />
+            <span className="font-mono text-sm text-primary">CURRENT KNOWLEDGE</span>
+          </div>
+          <div className="text-xs text-gray-400 mb-2">"How we do things now"</div>
+          <ul className="text-xs text-gray-300 space-y-1">
+            <li>• Guides</li>
+            <li>• How-tos</li>
+            <li>• References</li>
+          </ul>
+        </div>
+        <div className="p-4 border border-secondary rounded-lg bg-secondary/5">
+          <div className="flex items-center gap-2 mb-3">
+            <History className="w-5 h-5 text-secondary" />
+            <span className="font-mono text-sm text-secondary">HISTORICAL RECORD</span>
+          </div>
+          <div className="text-xs text-gray-400 mb-2">"What we discussed"</div>
+          <ul className="text-xs text-gray-300 space-y-1">
+            <li>• Discussions</li>
+            <li>• Meetings</li>
+            <li>• Context</li>
+          </ul>
+        </div>
+        <div className="p-4 border border-accent rounded-lg bg-accent/5">
+          <div className="flex items-center gap-2 mb-3">
+            <Lightbulb className="w-5 h-5 text-accent" />
+            <span className="font-mono text-sm text-accent">DECISIONS ARCHIVE</span>
+          </div>
+          <div className="text-xs text-gray-400 mb-2">"Why we chose"</div>
+          <ul className="text-xs text-gray-300 space-y-1">
+            <li>• Choices</li>
+            <li>• Rejected options</li>
+            <li>• Rationale</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </NeonCard>
+);
+
+const DecisionAnatomyDiagram = () => (
+  <NeonCard variant="accent" className="my-10 p-6 md:p-8">
+    <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+      <span>FIG 2.1 // DECISION_RECORD</span>
+      <span className="text-xs text-muted-foreground">TEMPLATE</span>
+    </div>
+    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6">
+      <div className="border border-accent/50 rounded-lg overflow-hidden">
+        <div className="bg-accent/20 p-3 border-b border-accent/30">
+          <div className="flex items-center gap-2">
+            <Database className="w-4 h-4 text-accent" />
+            <span className="font-mono text-sm text-white">DECISION: Which Database to Use</span>
+          </div>
+        </div>
+        <div className="p-4 space-y-4">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-mono text-gray-500">STATUS:</span>
+            <span className="text-xs font-mono text-green-400 flex items-center gap-1">
+              <CheckCircle className="w-3 h-3" /> Implemented
+            </span>
+          </div>
+          <div>
+            <div className="text-xs font-mono text-gray-500 mb-1">CONTEXT:</div>
+            <div className="text-sm text-gray-300">We needed a database that handles high read volume with low latency</div>
+          </div>
+          <div>
+            <div className="text-xs font-mono text-gray-500 mb-2">OPTIONS CONSIDERED:</div>
+            <div className="space-y-2">
+              <div className="flex items-start gap-2 text-sm">
+                <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 shrink-0" />
+                <div>
+                  <span className="text-green-400">PostgreSQL (chosen)</span>
+                  <span className="text-gray-400"> — fits our scale and team expertise</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-2 text-sm">
+                <XCircle className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
+                <div>
+                  <span className="text-red-400">MongoDB (rejected)</span>
+                  <span className="text-gray-400"> — schema flexibility not needed</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-2 text-sm">
+                <XCircle className="w-4 h-4 text-red-400 mt-0.5 shrink-0" />
+                <div>
+                  <span className="text-red-400">Build custom (rejected)</span>
+                  <span className="text-gray-400"> — would take 6 months</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div className="text-xs font-mono text-gray-500 mb-1">CONSEQUENCES:</div>
+            <div className="text-sm text-gray-300">Need to learn advanced indexing, can't easily do document-style data</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </NeonCard>
+);
+
+const KnowledgeFlowDiagram = () => (
+  <NeonCard variant="primary" className="my-10 p-6 md:p-8">
+    <div className="text-sm font-mono text-primary mb-4 flex justify-between">
+      <span>FIG 2.2 // KNOWLEDGE_FLOW</span>
+      <span className="text-xs text-muted-foreground">PROCESS</span>
+    </div>
+    <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+        <div className="p-4 border border-secondary rounded-lg bg-secondary/10 text-center min-w-[140px]">
+          <History className="w-6 h-6 mx-auto mb-2 text-secondary" />
+          <div className="font-mono text-xs text-secondary">DISCUSSION</div>
+          <div className="text-xs text-gray-400 mt-1">"We should use a caching layer"</div>
+        </div>
+        <ArrowRight className="w-6 h-6 text-white/40 rotate-90 md:rotate-0" />
+        <div className="p-4 border border-accent rounded-lg bg-accent/10 text-center min-w-[140px]">
+          <Lightbulb className="w-6 h-6 mx-auto mb-2 text-accent" />
+          <div className="font-mono text-xs text-accent">DECISION</div>
+          <div className="text-xs text-gray-400 mt-1">"We decided to use Redis"</div>
+        </div>
+        <ArrowRight className="w-6 h-6 text-white/40 rotate-90 md:rotate-0" />
+        <div className="p-4 border border-primary rounded-lg bg-primary/10 text-center min-w-[140px]">
+          <BookOpen className="w-6 h-6 mx-auto mb-2 text-primary" />
+          <div className="font-mono text-xs text-primary">KNOWLEDGE</div>
+          <div className="text-xs text-gray-400 mt-1">"Here's how to set it up"</div>
+        </div>
+      </div>
+    </div>
+  </NeonCard>
+);
+
 const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const [copied, setCopied] = useState(false);
   const codeContent = typeof children === 'string' ? children : 
@@ -165,11 +311,26 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
   };
 
   if (isAsciiDiagram) {
-    const isComparisonDiagram = codeContent.includes('TRADITIONAL AI') || codeContent.includes('Session 1:') || codeContent.includes('Session 2:');
-    const isSecondBrainDiagram = codeContent.includes('YOUR SECOND BRAIN') || codeContent.includes('AUTOMATED WORKFLOWS') || codeContent.includes('CLAUDE WITH MEMORY');
+    const isComparisonDiagram = codeContent.includes('TRADITIONAL AI') && (codeContent.includes('Session 1:') || codeContent.includes('Session 2:'));
+    const isSecondBrainDiagram = codeContent.includes('AUTOMATED WORKFLOWS') || codeContent.includes('CLAUDE WITH MEMORY');
+    const isThreePillarsDiagram = codeContent.includes('CURRENT') && codeContent.includes('HISTORICAL') && codeContent.includes('DECISIONS');
+    const isDecisionDiagram = codeContent.includes('DECISION:') && codeContent.includes('OPTIONS CONSIDERED');
+    const isFlowDiagram = codeContent.includes('DISCUSSION') && codeContent.includes('▶') && codeContent.includes('KNOWLEDGE');
     
     if (isComparisonDiagram) {
       return <AIComparisonDiagram />;
+    }
+    
+    if (isDecisionDiagram) {
+      return <DecisionAnatomyDiagram />;
+    }
+    
+    if (isFlowDiagram) {
+      return <KnowledgeFlowDiagram />;
+    }
+    
+    if (isThreePillarsDiagram) {
+      return <ThreePillarsDiagram />;
     }
     
     if (isSecondBrainDiagram) {
