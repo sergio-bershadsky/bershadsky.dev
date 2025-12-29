@@ -256,13 +256,14 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
     return <ChatConversationDiagram content={codeContent} />;
   }
 
-  if (isAsciiDiagram) {
-    const diagramEntry = findDiagram(codeContent);
-    if (diagramEntry) {
-      const DiagramComponent = diagramEntry.component;
-      return <DiagramComponent />;
-    }
+  // Check diagram registry first (before ASCII check) for registered diagram patterns
+  const diagramEntry = findDiagram(codeContent);
+  if (diagramEntry) {
+    const DiagramComponent = diagramEntry.component;
+    return <DiagramComponent />;
+  }
 
+  if (isAsciiDiagram) {
     return (
       <NeonCard variant="secondary" className="my-10 p-6 md:p-8">
         <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
