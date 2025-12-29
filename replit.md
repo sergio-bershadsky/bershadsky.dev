@@ -110,11 +110,29 @@ All diagrams follow a flat structure (no nested containers):
 - **Red:** Bad/rejected options
 - **Yellow:** Pending/proposed states
 
-### Adding New Diagrams
-1. Create a const component in `MarkdownRenderer.tsx`
-2. Add detection pattern in `CyberCodeBlock` (check order matters!)
-3. Return the component when pattern matches
-4. Use lucide-react icons, keep styling consistent
+### Adding New Diagrams (Modular Architecture)
+The diagram system is now modular, organized under `client/src/components/markdown/`:
+
+```
+markdown/
+├── MarkdownRenderer.tsx      # Main pipeline (~190 lines)
+├── primitives.tsx            # Shared building blocks (DiagramFrame, etc.)
+├── diagramRegistry.ts        # Detection + render mapping
+├── CodeBlock.tsx             # CyberCodeBlock with detection logic
+└── diagrams/
+    ├── core.tsx              # Parts 1-3 diagrams
+    ├── connections.tsx       # Part 4 diagrams
+    ├── skills.tsx            # Part 5 diagrams
+    ├── hooks.tsx             # Part 6 diagrams
+    └── plugins.tsx           # Part 7 diagrams
+```
+
+**To add a new diagram for Part 8+:**
+1. Create a new file `client/src/components/markdown/diagrams/part8.tsx` (or add to existing)
+2. Export the diagram component and a detection function
+3. Export a `DiagramEntry[]` array with `{ id, detect, component }`
+4. Register entries in `CodeBlock.tsx` using `registerDiagrams()`
+5. Use lucide-react icons, keep styling consistent with primitives
 
 ### Layout Guidelines
 - Use `flex flex-col md:flex-row` for responsive layouts
@@ -152,6 +170,7 @@ All diagrams follow a flat structure (no nested containers):
 - Pages in `client/src/pages/`
 
 ## Recent Changes
+- 2024-12-29: Refactored MarkdownRenderer into modular architecture under `client/src/components/markdown/`
 - 2024-12-29: Created Part 7 article "Sharing Knowledge: Plugins" with 7 visual diagram components
 - 2024-12-29: Added docker-compose.yml and database dump script for local development
 - 2024-12-29: Created Part 6 article with hook diagrams
