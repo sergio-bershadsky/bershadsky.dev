@@ -6,7 +6,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeRaw from 'rehype-raw';
 import rehypeReact from 'rehype-react';
 import * as prod from 'react/jsx-runtime';
-import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight, FileText, History, Lightbulb, Database, CheckCircle, XCircle, Folder, FolderOpen, File } from 'lucide-react';
+import { Copy, Check, Brain, MessageSquare, Zap, Bot, RefreshCw, BookOpen, ArrowDown, ArrowRight, FileText, History, Lightbulb, Database, CheckCircle, XCircle, Folder, FolderOpen, File, Search } from 'lucide-react';
 import { NeonCard } from './CyberpunkUI';
 
 const DiagramBox = ({ 
@@ -454,6 +454,106 @@ const DataFlowDiagram = () => (
   </div>
 );
 
+const SkillPatternsDiagram = () => (
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+      <span>FIG 5.1 // SKILL_PATTERNS</span>
+      <span className="text-xs text-muted-foreground">TYPES</span>
+    </div>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="p-3 border border-primary/40 rounded bg-primary/10 text-center">
+        <Search className="w-6 h-6 text-primary mx-auto mb-2" />
+        <div className="font-mono text-xs text-primary mb-2">GATHER</div>
+        <div className="text-[10px] text-gray-400 space-y-1">
+          <div>/catchup</div>
+          <div>/status</div>
+        </div>
+      </div>
+      <div className="p-3 border border-secondary/40 rounded bg-secondary/10 text-center">
+        <FileText className="w-6 h-6 text-secondary mx-auto mb-2" />
+        <div className="font-mono text-xs text-secondary mb-2">GENERATE</div>
+        <div className="text-[10px] text-gray-400 space-y-1">
+          <div>/standup</div>
+          <div>/report</div>
+        </div>
+      </div>
+      <div className="p-3 border border-accent/40 rounded bg-accent/10 text-center">
+        <Lightbulb className="w-6 h-6 text-accent mx-auto mb-2" />
+        <div className="font-mono text-xs text-accent mb-2">ANALYZE</div>
+        <div className="text-[10px] text-gray-400 space-y-1">
+          <div>/review</div>
+          <div>/audit</div>
+        </div>
+      </div>
+      <div className="p-3 border border-green-500/40 rounded bg-green-500/10 text-center">
+        <Zap className="w-6 h-6 text-green-400 mx-auto mb-2" />
+        <div className="font-mono text-xs text-green-400 mb-2">AUTOMATE</div>
+        <div className="text-[10px] text-gray-400 space-y-1">
+          <div>/release</div>
+          <div>/deploy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const WithoutVsWithSkillsDiagram = () => (
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
+      <span>FIG 5.2 // EFFICIENCY</span>
+      <span className="text-xs text-muted-foreground">COMPARISON</span>
+    </div>
+    <div className="grid md:grid-cols-2 gap-4">
+      <div className="p-4 border border-red-500/30 rounded bg-red-500/5">
+        <div className="font-mono text-sm text-red-400 mb-3 flex items-center gap-2">
+          <XCircle className="w-4 h-4" />
+          WITHOUT SKILLS
+        </div>
+        <div className="text-xs text-gray-400 italic leading-relaxed">
+          "Can you summarize the week's activity including team chat, issues closed, and decisions made? Format it like last time..."
+        </div>
+        <div className="text-xs text-red-400 mt-3 font-mono">~30 seconds typing</div>
+      </div>
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="font-mono text-sm text-green-400 mb-3 flex items-center gap-2">
+          <CheckCircle className="w-4 h-4" />
+          WITH SKILLS
+        </div>
+        <div className="text-lg font-mono text-green-400">/recap</div>
+        <div className="text-xs text-green-400 mt-3 font-mono">~2 seconds</div>
+      </div>
+    </div>
+  </div>
+);
+
+const SkillCandidatesDiagram = () => (
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
+      <span>FIG 5.3 // CANDIDATES</span>
+      <span className="text-xs text-muted-foreground">SELECTION</span>
+    </div>
+    <div className="text-xs font-mono text-center text-white/40 mb-4">REPETITIVE + STRUCTURED = GOOD SKILL</div>
+    <div className="grid md:grid-cols-2 gap-4">
+      <div className="space-y-2">
+        {['Weekly reporting', 'Meeting preparation', 'Code review checklist', 'Status update generation'].map((item, i) => (
+          <div key={i} className="flex items-center gap-2 p-2 border border-green-500/20 rounded bg-green-500/5">
+            <CheckCircle className="w-4 h-4 text-green-400" />
+            <span className="text-sm text-gray-300">{item}</span>
+          </div>
+        ))}
+      </div>
+      <div className="space-y-2">
+        {['One-off investigations', 'Creative writing'].map((item, i) => (
+          <div key={i} className="flex items-center gap-2 p-2 border border-red-500/20 rounded bg-red-500/5">
+            <XCircle className="w-4 h-4 text-red-400" />
+            <span className="text-sm text-gray-300">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 const CapabilitiesTable = () => (
   <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
@@ -890,6 +990,21 @@ const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; cl
     const isConnectionTypesTable = codeContent.includes('CONNECTION TYPE') && codeContent.includes('WHAT CLAUDE CAN DO') && codeContent.includes('Team Chat');
     const isCapabilitiesTable = codeContent.includes('QUESTION') && codeContent.includes('SOURCE') && codeContent.includes('What happened overnight');
     const isDataFlowDiagram = codeContent.includes('YOUR TOOLS') && codeContent.includes('MCP SERVER') && codeContent.includes('CLAUDE') && codeContent.includes('Data stays local');
+    const isSkillPatternsDiagram = codeContent.includes('SKILL PATTERNS') && codeContent.includes('GATHER') && codeContent.includes('GENERATE') && codeContent.includes('ANALYZE');
+    const isWithoutVsWithSkills = codeContent.includes('WITHOUT SKILLS') && codeContent.includes('WITH SKILLS') && codeContent.includes('/recap');
+    const isSkillCandidates = codeContent.includes('REPETITIVE + STRUCTURED') && codeContent.includes('Weekly reporting');
+    
+    if (isSkillPatternsDiagram) {
+      return <SkillPatternsDiagram />;
+    }
+    
+    if (isWithoutVsWithSkills) {
+      return <WithoutVsWithSkillsDiagram />;
+    }
+    
+    if (isSkillCandidates) {
+      return <SkillCandidatesDiagram />;
+    }
     
     if (isDataFlowDiagram) {
       return <DataFlowDiagram />;
