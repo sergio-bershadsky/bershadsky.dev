@@ -23,14 +23,18 @@ export async function registerRoutes(
     }
   });
 
-  app.get("/api/blog-posts/:id", async (req, res) => {
+  app.get("/api/blog-posts/:idOrSlug", async (req, res) => {
     try {
-      const id = parseInt(req.params.id);
-      if (isNaN(id)) {
-        return res.status(400).json({ error: "Invalid post ID" });
+      const idOrSlug = req.params.idOrSlug;
+      const isNumericId = /^\d+$/.test(idOrSlug);
+      
+      let post;
+      if (isNumericId) {
+        post = await storage.getBlogPostWithSeries(parseInt(idOrSlug));
+      } else {
+        post = await storage.getBlogPostWithSeriesBySlug(idOrSlug);
       }
       
-      const post = await storage.getBlogPostWithSeries(id);
       if (!post) {
         return res.status(404).json({ error: "Blog post not found" });
       }

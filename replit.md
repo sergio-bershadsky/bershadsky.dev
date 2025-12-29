@@ -108,7 +108,8 @@ All diagrams follow a flat structure (no nested containers):
 - `id`, `slug`, `title`, `description`, `coverImageUrl`, `accentColor`, `isVisible`
 
 ### Blog Posts Table
-- `id`, `seriesId`, `seriesPosition`, `title`, `excerpt`, `content`, `date`, `tags[]`, `imageUrl`, `videoUrl`, `status` (draft/scheduled/published), `publishedAt`
+- `id`, `slug` (SEO-friendly URL), `title`, `excerpt`, `content`, `date`, `tags[]`, `imageUrl`, `videoUrl`, `status` (draft/published), `publishedAt`
+- Routes use `/blog/:slug` for SEO-friendly URLs
 
 ## Component Patterns
 

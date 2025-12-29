@@ -16,7 +16,9 @@ export interface IStorage {
   getAllBlogPosts(): Promise<BlogPost[]>;
   getPublishedBlogPosts(): Promise<BlogPost[]>;
   getBlogPost(id: number): Promise<BlogPost | undefined>;
+  getBlogPostBySlug(slug: string): Promise<BlogPost | undefined>;
   getBlogPostWithSeries(id: number): Promise<BlogPostWithSeries | undefined>;
+  getBlogPostWithSeriesBySlug(slug: string): Promise<BlogPostWithSeries | undefined>;
   createBlogPost(post: InsertBlogPost): Promise<BlogPost>;
   updateBlogPost(id: number, post: Partial<InsertBlogPost>): Promise<BlogPost | undefined>;
   deleteBlogPost(id: number): Promise<boolean>;
@@ -76,11 +78,43 @@ export class DatabaseStorage implements IStorage {
     return post || undefined;
   }
 
+  async getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
+    const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug));
+    return post || undefined;
+  }
+
   async getBlogPostWithSeries(id: number): Promise<BlogPostWithSeries | undefined> {
     const [post] = await db.select().from(blogPosts).where(eq(blogPosts.id, id));
     if (!post) return undefined;
 
     const [seriesLink] = await db.select().from(seriesPosts).where(eq(seriesPosts.postId, id));
+    
+    if (!seriesLink) {
+      return post;
+    }
+
+    const [seriesData] = await db.select().from(series).where(eq(series.id, seriesLink.seriesId));
+    const allSeriesPosts = await db.select().from(seriesPosts)
+      .where(eq(seriesPosts.seriesId, seriesLink.seriesId))
+      .orderBy(asc(seriesPosts.position));
+
+    return {
+      ...post,
+      series: {
+        id: seriesData.id,
+        title: seriesData.title,
+        slug: seriesData.slug,
+        position: seriesLink.position,
+        totalPosts: allSeriesPosts.length,
+      }
+    };
+  }
+
+  async getBlogPostWithSeriesBySlug(slug: string): Promise<BlogPostWithSeries | undefined> {
+    const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug));
+    if (!post) return undefined;
+
+    const [seriesLink] = await db.select().from(seriesPosts).where(eq(seriesPosts.postId, post.id));
     
     if (!seriesLink) {
       return post;
