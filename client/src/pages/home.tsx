@@ -220,7 +220,7 @@ export default function Home() {
               </div>
               <button
                 onClick={() => setShowTagFilter(!showTagFilter)}
-                className={`px-4 py-3 rounded-lg border font-mono text-sm transition-all flex items-center gap-2 ${
+                className={`px-4 py-3 rounded-lg border font-mono text-sm transition-all flex items-center gap-2 cursor-pointer ${
                   showTagFilter || selectedTags.length > 0
                     ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
                     : 'bg-black/40 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
