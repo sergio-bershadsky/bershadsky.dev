@@ -80,24 +80,31 @@ registerDiagrams(communicationDiagramEntries);
 registerDiagrams(meetingsDiagramEntries);
 
 const renderSimpleMarkdown = (text: string) => {
-  const lines = text.split(/\n|(?=##)|(?=###)|(?=- \[)/);
+  const lines = text.split('\n');
   const elements: React.ReactNode[] = [];
   
   lines.forEach((line, idx) => {
     const trimmed = line.trim();
     if (!trimmed) return;
+    if (trimmed === '#' || trimmed === '##' || trimmed === '###') return;
     
-    if (trimmed.startsWith('## ')) {
-      elements.push(
-        <h3 key={idx} className="text-secondary font-semibold text-sm mt-3 mb-1.5 first:mt-0">
-          {trimmed.replace('## ', '')}
-        </h3>
-      );
-    } else if (trimmed.startsWith('### ')) {
+    if (trimmed.startsWith('### ')) {
       elements.push(
         <h4 key={idx} className="text-secondary/80 font-medium text-xs mt-2 mb-1 uppercase tracking-wide">
-          {trimmed.replace('### ', '')}
+          {trimmed.replace(/^###\s*/, '')}
         </h4>
+      );
+    } else if (trimmed.startsWith('## ')) {
+      elements.push(
+        <h3 key={idx} className="text-secondary font-semibold text-sm mt-3 mb-1.5 first:mt-0">
+          {trimmed.replace(/^##\s*/, '')}
+        </h3>
+      );
+    } else if (trimmed.startsWith('# ')) {
+      elements.push(
+        <h2 key={idx} className="text-primary font-bold text-base mt-3 mb-2 first:mt-0">
+          {trimmed.replace(/^#\s*/, '')}
+        </h2>
       );
     } else if (trimmed.startsWith('- [ ] ')) {
       elements.push(
