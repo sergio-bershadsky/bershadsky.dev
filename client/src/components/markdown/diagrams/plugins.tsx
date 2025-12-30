@@ -1,6 +1,7 @@
 import React from 'react';
 import { Zap, Bot, RefreshCw, BookOpen, ArrowDown, CheckCircle, XCircle, Folder, FolderOpen, File, Package, GitBranch, Layers, Share2, Settings, Users, User, Braces, Hash, Type, List, ToggleLeft, Tag, Plus, Wrench, AlertTriangle } from 'lucide-react';
 import { DiagramEntry } from '../diagramRegistry';
+import { ScrollableDiagram } from '../primitives';
 
 export const PluginEvolutionDiagram = () => (
   <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
@@ -94,9 +95,11 @@ export const PluginFolderStructureDiagram = () => {
         <span>my-second-brain-plugin/</span>
         <span className="text-xs text-muted-foreground ml-auto">PLUGIN STRUCTURE</span>
       </div>
-      <div className="space-y-0.5">
-        {folders.map(folder => renderNode(folder))}
-      </div>
+      <ScrollableDiagram>
+        <div className="space-y-0.5 min-w-max">
+          {folders.map(folder => renderNode(folder))}
+        </div>
+      </ScrollableDiagram>
     </div>
   );
 };
@@ -107,21 +110,23 @@ export const PluginComponentsTable = () => (
       <span>FIG 7.1 // KEY_COMPONENTS</span>
       <span className="text-xs text-muted-foreground">REFERENCE</span>
     </div>
-    <div className="space-y-2">
-      {[
-        { component: 'plugin.json', purpose: 'Tells Claude what\'s included', icon: Settings },
-        { component: 'skills/', purpose: 'Reusable procedures', icon: Zap },
-        { component: 'hooks/', purpose: 'Automatic behaviors', icon: RefreshCw },
-        { component: 'agents/', purpose: 'Specialized assistants', icon: Bot },
-        { component: 'README.md', purpose: 'How to use this plugin', icon: BookOpen }
-      ].map((item, i) => (
-        <div key={i} className="flex items-center gap-3 p-2 border border-white/10 rounded bg-white/5">
-          <item.icon className="w-4 h-4 text-secondary flex-shrink-0" />
-          <span className="font-mono text-sm text-white w-28">{item.component}</span>
-          <span className="text-xs text-gray-400">{item.purpose}</span>
-        </div>
-      ))}
-    </div>
+    <ScrollableDiagram>
+      <div className="space-y-2 min-w-max">
+        {[
+          { component: 'plugin.json', purpose: 'Tells Claude what\'s included', icon: Settings },
+          { component: 'skills/', purpose: 'Reusable procedures', icon: Zap },
+          { component: 'hooks/', purpose: 'Automatic behaviors', icon: RefreshCw },
+          { component: 'agents/', purpose: 'Specialized assistants', icon: Bot },
+          { component: 'README.md', purpose: 'How to use this plugin', icon: BookOpen }
+        ].map((item, i) => (
+          <div key={i} className="flex items-center gap-3 p-2 border border-white/10 rounded bg-white/5">
+            <item.icon className="w-4 h-4 text-secondary flex-shrink-0" />
+            <span className="font-mono text-sm text-white w-28">{item.component}</span>
+            <span className="text-xs text-gray-400 whitespace-nowrap">{item.purpose}</span>
+          </div>
+        ))}
+      </div>
+    </ScrollableDiagram>
   </div>
 );
 
@@ -176,34 +181,36 @@ export const BeforeAfterPluginDiagram = () => {
         <span>FIG 7.2 // BEFORE_AFTER</span>
         <span className="text-xs text-muted-foreground">ORGANIZATION</span>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="p-4 border border-white/10 rounded bg-white/5">
-          <div className="flex items-center gap-2 mb-3">
-            <XCircle className="w-4 h-4 text-red-400" />
-            <span className="font-mono text-xs text-red-400 uppercase">Before: Scattered</span>
+      <ScrollableDiagram>
+        <div className="grid grid-cols-2 gap-4 min-w-[500px]">
+          <div className="p-4 border border-white/10 rounded bg-white/5">
+            <div className="flex items-center gap-2 mb-3">
+              <XCircle className="w-4 h-4 text-red-400" />
+              <span className="font-mono text-xs text-red-400 uppercase whitespace-nowrap">Before: Scattered</span>
+            </div>
+            <div className="flex items-center gap-2 mb-2">
+              <FolderOpen className="w-4 h-4 text-gray-400" />
+              <span className="font-mono text-sm text-gray-300 whitespace-nowrap">your-second-brain/</span>
+            </div>
+            <div className="border-l border-white/10 ml-2 space-y-0.5">
+              {beforeFolders.map(folder => renderNode(folder, 1, false))}
+            </div>
           </div>
-          <div className="flex items-center gap-2 mb-2">
-            <FolderOpen className="w-4 h-4 text-gray-400" />
-            <span className="font-mono text-sm text-gray-300">your-second-brain/</span>
-          </div>
-          <div className="border-l border-white/10 ml-2 space-y-0.5">
-            {beforeFolders.map(folder => renderNode(folder, 1, false))}
+          <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+            <div className="flex items-center gap-2 mb-3">
+              <CheckCircle className="w-4 h-4 text-green-400" />
+              <span className="font-mono text-xs text-green-400 uppercase whitespace-nowrap">After: Packaged</span>
+            </div>
+            <div className="flex items-center gap-2 mb-2">
+              <Package className="w-4 h-4 text-green-400" />
+              <span className="font-mono text-sm text-green-300 whitespace-nowrap">team-productivity-plugin/</span>
+            </div>
+            <div className="border-l border-green-500/20 ml-2 space-y-0.5">
+              {afterFolders.map(folder => renderNode(folder, 1, true))}
+            </div>
           </div>
         </div>
-        <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
-          <div className="flex items-center gap-2 mb-3">
-            <CheckCircle className="w-4 h-4 text-green-400" />
-            <span className="font-mono text-xs text-green-400 uppercase">After: Packaged</span>
-          </div>
-          <div className="flex items-center gap-2 mb-2">
-            <Package className="w-4 h-4 text-green-400" />
-            <span className="font-mono text-sm text-green-300">team-productivity-plugin/</span>
-          </div>
-          <div className="border-l border-green-500/20 ml-2 space-y-0.5">
-            {afterFolders.map(folder => renderNode(folder, 1, true))}
-          </div>
-        </div>
-      </div>
+      </ScrollableDiagram>
     </div>
   );
 };
@@ -218,7 +225,8 @@ export const DistributionOptionsDiagram = () => (
       <div className="text-lg font-display font-semibold text-white mb-1">How do you want to share your plugin?</div>
       <div className="text-xs text-gray-400">Choose the distribution method that fits your team's workflow</div>
     </div>
-    <div className="space-y-3">
+    <ScrollableDiagram>
+    <div className="space-y-3 min-w-max">
       {[
         { 
           option: 'Git repository', 
@@ -269,12 +277,13 @@ export const DistributionOptionsDiagram = () => (
               ))}
             </div>
           </div>
-          <div className="font-mono text-xs text-gray-500 bg-black/30 p-1.5 rounded">
+          <div className="font-mono text-xs text-gray-500 bg-black/30 p-1.5 rounded whitespace-nowrap">
             {item.command}
           </div>
         </div>
       ))}
     </div>
+    </ScrollableDiagram>
   </div>
 );
 

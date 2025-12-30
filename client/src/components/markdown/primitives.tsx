@@ -1,5 +1,5 @@
-import React from 'react';
-import { ArrowDown, ArrowRight } from 'lucide-react';
+import React, { useRef, useState, useEffect } from 'react';
+import { ArrowDown, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const DiagramFrame = ({
   children,
@@ -216,6 +216,75 @@ export const FolderTree = ({
       <div className="space-y-0.5">
         {folders.map(folder => renderNode(folder))}
       </div>
+    </div>
+  );
+};
+
+export const ScrollableDiagram = ({
+  children,
+  className = ''
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  const checkScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 0);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 1);
+    }
+  };
+
+  useEffect(() => {
+    checkScroll();
+    const el = scrollRef.current;
+    if (el) {
+      el.addEventListener('scroll', checkScroll);
+      window.addEventListener('resize', checkScroll);
+      return () => {
+        el.removeEventListener('scroll', checkScroll);
+        window.removeEventListener('resize', checkScroll);
+      };
+    }
+  }, []);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const amount = direction === 'left' ? -200 : 200;
+      scrollRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className={`relative ${className}`}>
+      {canScrollLeft && (
+        <button
+          onClick={() => scroll('left')}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-black/80 border border-white/20 rounded-full text-white/70 hover:text-white hover:border-primary/50 transition-colors"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+      )}
+      <div
+        ref={scrollRef}
+        className="overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent"
+      >
+        {children}
+      </div>
+      {canScrollRight && (
+        <button
+          onClick={() => scroll('right')}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center bg-black/80 border border-white/20 rounded-full text-white/70 hover:text-white hover:border-primary/50 transition-colors"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
+      )}
     </div>
   );
 };
