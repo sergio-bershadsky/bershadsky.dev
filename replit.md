@@ -169,6 +169,20 @@ markdown/
 - Components in `client/src/components/`
 - Pages in `client/src/pages/`
 
+## Code Syntax Highlighting Rules (MANDATORY)
+
+When rendering code blocks, the CyberCodeBlock component MUST apply syntax highlighting:
+- **Python:** Pink keywords, cyan builtins, green strings, orange numbers, gray italic comments
+- **JavaScript:** Pink keywords, cyan property names, green strings, orange numbers, gray italic comments
+- **JSON:** Cyan keys, green string values, orange numbers, pink true/false/null
+
+Detection patterns:
+- Python: `def `, `import `, `# ` with `.py`
+- JavaScript: `const `, `let `, `function `, `=>`, `// ` with quotes
+- JSON: Starts with `{`, ends with `}`, contains `"`, no `//` comments
+
+**NEVER render code blocks as plain gray text** - always apply appropriate highlighting!
+
 ## Recent Changes
 - 2024-12-29: Refactored MarkdownRenderer into modular architecture under `client/src/components/markdown/`
 - 2024-12-29: Created Part 7 article "Sharing Knowledge: Plugins" with 7 visual diagram components

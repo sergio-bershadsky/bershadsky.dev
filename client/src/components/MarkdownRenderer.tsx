@@ -1,6 +1,6 @@
 export { MarkdownRenderer } from './markdown/MarkdownRenderer';
 export { MarkdownRenderer as default } from './markdown/MarkdownRenderer';
-export { CyberCodeBlock, ChatConversationDiagram, highlightPython, highlightJson } from './markdown/CodeBlock';
+export { CyberCodeBlock, ChatConversationDiagram, highlightPython, highlightJavaScript, highlightJson } from './markdown/CodeBlock';
 export { DiagramBox, DiagramFrame, TwoColumnComparison, StepList, IconRow, FolderTree } from './markdown/primitives';
 export { 
   registerDiagram, 
