@@ -116,4 +116,33 @@
     80% { transform: translate(2px, -2px) }
     100% { transform: translate(0) }
   }
+
+  /* Mobile diagram scaling - zoom out to fit instead of breaking layout */
+  .diagram-mobile-scale {
+    @apply origin-top-left;
+  }
+  
+  @media (max-width: 640px) {
+    .diagram-mobile-scale {
+      transform: scale(0.85);
+      width: 117.6%;
+      margin-bottom: -15%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .diagram-mobile-scale {
+      transform: scale(0.75);
+      width: 133.3%;
+      margin-bottom: -25%;
+    }
+  }
+  
+  @media (max-width: 380px) {
+    .diagram-mobile-scale {
+      transform: scale(0.65);
+      width: 153.8%;
+      margin-bottom: -35%;
+    }
+  }
 }

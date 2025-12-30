@@ -17,7 +17,7 @@ const PillarCharacteristicsDiagram = ({ title, items, examples, variant }: {
   const Icon = style.icon;
   
   return (
-    <div className={`my-8 border ${style.border} rounded-lg bg-black/40 p-5`}>
+    <div className={`my-8 border ${style.border} rounded-lg bg-black/40 p-5 diagram-mobile-scale`}>
       <div className={`text-sm font-mono ${style.text} mb-3 flex items-center gap-2`}>
         <Icon className={`w-4 h-4 ${style.text}`} />
         <span>{title}</span>
@@ -49,7 +49,7 @@ const PillarCharacteristicsDiagram = ({ title, items, examples, variant }: {
 };
 
 export const SecondBrainArchitectureDiagram = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 1.0 // SECOND_BRAIN_ARCHITECTURE</span>
       <span className="text-xs text-muted-foreground animate-pulse">LIVE</span>
