@@ -230,18 +230,18 @@ export default function BlogPostPage() {
                   <>
                     <div className="w-20 flex-shrink-0">
                       {prevPost && (
-                        <a 
+                        <Link 
                           href={`/blog/${prevPost.slug || prevPost.id}`}
                           className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
                           data-testid="series-prev"
                         >
                           <ChevronLeft className="w-5 h-5" />
                           <span className="hidden sm:inline text-sm font-mono">PREV</span>
-                        </a>
+                        </Link>
                       )}
                     </div>
                     
-                    <a 
+                    <Link 
                       href={`/series/${seriesData.slug}`}
                       className="flex items-center gap-3 group flex-1 justify-center min-w-0"
                       data-testid="series-link"
@@ -258,18 +258,18 @@ export default function BlogPostPage() {
                           Part {currentIndex + 1} of {seriesData.posts.length}
                         </div>
                       </div>
-                    </a>
+                    </Link>
                     
                     <div className="w-20 flex-shrink-0 flex justify-end">
                       {nextPost && (
-                        <a 
+                        <Link 
                           href={`/blog/${nextPost.slug || nextPost.id}`}
                           className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
                           data-testid="series-next"
                         >
                           <span className="hidden sm:inline text-sm font-mono">NEXT</span>
                           <ChevronRight className="w-5 h-5" />
-                        </a>
+                        </Link>
                       )}
                     </div>
                   </>
@@ -371,7 +371,7 @@ export default function BlogPostPage() {
           <SectionHeader title="RELATED_DATA" subtitle="Continue Reading" />
           <div className="grid md:grid-cols-2 gap-6">
             {allPosts.filter(p => p.id !== post.id).slice(0, 2).map(related => (
-               <a key={related.id} href={`/blog/${related.slug || related.id}`} data-testid={`link-related-${related.slug || related.id}`}>
+               <Link key={related.id} href={`/blog/${related.slug || related.id}`} data-testid={`link-related-${related.slug || related.id}`}>
                  <NeonCard variant="accent" className="cursor-pointer group h-full">
                     <div className="flex justify-between items-start mb-4">
                       <h4 className="font-display font-bold text-lg group-hover:text-accent transition-colors">{related.title}</h4>
@@ -379,7 +379,7 @@ export default function BlogPostPage() {
                     </div>
                     <p className="text-sm text-muted-foreground">{related.excerpt}</p>
                  </NeonCard>
-               </a>
+               </Link>
             ))}
           </div>
         </div>
