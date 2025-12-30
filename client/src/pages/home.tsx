@@ -197,6 +197,20 @@ export default function Home() {
       <section className="py-8 relative z-20 border-b border-white/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-4 relative">
+            {hasActiveFilters && (
+              <div className="flex items-center justify-between text-sm font-mono">
+                <span className="text-muted-foreground">
+                  FOUND: <span className="text-primary">{filteredPosts.length}</span> ARTICLES
+                </span>
+                <button 
+                  onClick={clearFilters}
+                  className="text-secondary hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
+                  data-testid="button-clear-filters"
+                >
+                  <X className="w-3 h-3" /> CLEAR_FILTERS
+                </button>
+              </div>
+            )}
             <div className="flex gap-2">
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -264,22 +278,6 @@ export default function Home() {
                 </>
               )}
             </div>
-            
-            
-            {hasActiveFilters && (
-              <div className="flex items-center justify-between text-sm font-mono">
-                <span className="text-muted-foreground">
-                  FOUND: <span className="text-primary">{filteredPosts.length}</span> ARTICLES
-                </span>
-                <button 
-                  onClick={clearFilters}
-                  className="text-secondary hover:text-white transition-colors flex items-center gap-1"
-                  data-testid="button-clear-filters"
-                >
-                  <X className="w-3 h-3" /> CLEAR_FILTERS
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </section>
