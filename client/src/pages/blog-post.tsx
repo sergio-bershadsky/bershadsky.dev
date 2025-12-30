@@ -160,7 +160,7 @@ export default function BlogPostPage() {
           </div>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto mb-6">
+        <div className="max-w-4xl mx-auto mb-6 px-4 sm:px-0">
           <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
             <a href="/" className="flex items-center gap-2 px-3 py-1.5 rounded border border-white/20 bg-white/5 text-white hover:text-primary hover:border-primary/50 transition-colors group" data-testid="link-back">
               <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" />
@@ -182,7 +182,7 @@ export default function BlogPostPage() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.15 }}
-          className="max-w-4xl mx-auto mb-8"
+          className="max-w-4xl mx-auto mb-8 px-4 sm:px-0"
         >
           <p className="text-xl text-gray-300 font-light leading-relaxed mt-[4px] mb-[4px]" data-testid="text-post-excerpt">
             {post.excerpt}
@@ -194,7 +194,7 @@ export default function BlogPostPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
-            className="max-w-4xl mx-auto mb-8"
+            className="max-w-4xl mx-auto mb-8 px-4 sm:px-0"
           >
             <div 
               className="border rounded-lg p-4 flex items-center justify-between gap-4 backdrop-blur-sm"
@@ -261,10 +261,10 @@ export default function BlogPostPage() {
           </motion.div>
         )}
 
-        <article className="max-w-4xl mx-auto">
+        <article className="max-w-4xl mx-auto px-4 sm:px-0">
           <div className="grid md:grid-cols-[1fr_250px] gap-10">
-            <div className="space-y-8">
-              <div data-testid="post-content">
+            <div className="space-y-8 min-w-0">
+              <div data-testid="post-content" className="min-w-0">
                 <MarkdownRenderer 
                   content={post.content} 
                   onHeadingsExtracted={setTableOfContents}
@@ -333,7 +333,7 @@ export default function BlogPostPage() {
           </div>
         </article>
 
-        <div className="max-w-4xl mx-auto mt-16">
+        <div className="max-w-4xl mx-auto mt-16 px-4 sm:px-0">
           <div className="border border-white/10 rounded-lg bg-black/30 backdrop-blur-sm p-6">
             <div className="flex items-start gap-4">
               <div className="w-8 h-8 rounded-full border border-accent/50 bg-accent/10 flex items-center justify-center flex-shrink-0 mt-1">
@@ -349,7 +349,7 @@ export default function BlogPostPage() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto mt-20">
+        <div className="max-w-4xl mx-auto mt-20 px-4 sm:px-0">
           <SectionHeader title="RELATED_DATA" subtitle="Continue Reading" />
           <div className="grid md:grid-cols-2 gap-6">
             {allPosts.filter(p => p.id !== post.id).slice(0, 2).map(related => (
