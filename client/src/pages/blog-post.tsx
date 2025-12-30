@@ -39,6 +39,45 @@ export default function BlogPostPage() {
     enabled: !!postSlug,
     retry: false
   });
+
+  React.useEffect(() => {
+    if (post) {
+      const title = post.seoTitle || post.title;
+      const description = post.seoDescription || post.excerpt;
+      const keywords = post.seoKeywords || post.tags.join(', ');
+      const imageUrl = post.imageUrl ? `https://bershadsky.dev${post.imageUrl}` : 'https://bershadsky.dev/images/avatar-big.webp';
+      const canonicalUrl = `https://bershadsky.dev/blog/${post.slug}`;
+
+      document.title = `${title} | Sergey Bershadsky`;
+
+      const updateMeta = (name: string, content: string, property?: boolean) => {
+        const attr = property ? 'property' : 'name';
+        let el = document.querySelector(`meta[${attr}="${name}"]`);
+        if (!el) {
+          el = document.createElement('meta');
+          el.setAttribute(attr, name);
+          document.head.appendChild(el);
+        }
+        el.setAttribute('content', content);
+      };
+
+      updateMeta('description', description);
+      updateMeta('keywords', keywords);
+      updateMeta('og:title', title, true);
+      updateMeta('og:description', description, true);
+      updateMeta('og:image', imageUrl, true);
+      updateMeta('og:url', canonicalUrl, true);
+      updateMeta('og:type', 'article', true);
+      updateMeta('twitter:title', title);
+      updateMeta('twitter:description', description);
+      updateMeta('twitter:image', imageUrl);
+
+      let canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) {
+        canonical.setAttribute('href', canonicalUrl);
+      }
+    }
+  }, [post]);
   
   const { data: allPosts = [] } = useQuery<BlogPost[]>({
     queryKey: ['blog-posts'],
