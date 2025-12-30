@@ -116,51 +116,54 @@ export default function SeriesPage() {
         <div className="container mx-auto max-w-4xl">
           <div className="space-y-6">
             {seriesData.posts.map((post, index) => (
-              <motion.a
+              <motion.div
                 key={post.id}
-                href={`/blog/${post.slug || post.id}`}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="block group"
-                data-testid={`series-post-${post.slug || post.id}`}
               >
-                <NeonCard 
-                  variant="accent" 
-                  className="flex gap-6 items-center hover:bg-accent/5 transition-all duration-300"
+                <Link
+                  href={`/blog/${post.slug || post.id}`}
+                  className="block group"
+                  data-testid={`series-post-${post.slug || post.id}`}
                 >
-                  {/* Part number */}
-                  <div 
-                    className="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-display font-bold border-2"
-                    style={{ 
-                      borderColor: seriesData.accentColor || '#ec4899',
-                      color: seriesData.accentColor || '#ec4899',
-                    }}
+                  <NeonCard 
+                    variant="accent" 
+                    className="flex gap-6 items-center hover:bg-accent/5 transition-all duration-300"
                   >
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-2 text-xs font-mono text-muted-foreground">
-                      <span>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}</span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" /> 8 MIN
-                      </span>
+                    {/* Part number */}
+                    <div 
+                      className="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-2xl font-display font-bold border-2"
+                      style={{ 
+                        borderColor: seriesData.accentColor || '#ec4899',
+                        color: seriesData.accentColor || '#ec4899',
+                      }}
+                    >
+                      {String(index + 1).padStart(2, '0')}
                     </div>
-                    <h3 className="text-xl font-bold font-display group-hover:text-accent transition-colors truncate">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1 line-clamp-1">
-                      {post.excerpt}
-                    </p>
-                  </div>
 
-                  {/* Arrow */}
-                  <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all flex-shrink-0" />
-                </NeonCard>
-              </motion.a>
+                    {/* Content */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-3 mb-2 text-xs font-mono text-muted-foreground">
+                        <span>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}</span>
+                        <span>•</span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3 h-3" /> 8 MIN
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold font-display group-hover:text-accent transition-colors truncate">
+                        {post.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1 line-clamp-1">
+                        {post.excerpt}
+                      </p>
+                    </div>
+
+                    {/* Arrow */}
+                    <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all flex-shrink-0" />
+                  </NeonCard>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
