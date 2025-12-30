@@ -1,8 +1,9 @@
-# Block all robots and AI crawlers on replit.app domain
+# Allow search engines to index bershadsky.dev
+# The replit.app domain is blocked via meta tags in index.html
 User-agent: *
-Disallow: /
+Allow: /
 
-# Block specific AI crawlers
+# Block AI training crawlers (applies to all domains)
 User-agent: GPTBot
 Disallow: /
 
@@ -26,3 +27,6 @@ Disallow: /
 
 User-agent: cohere-ai
 Disallow: /
+
+# Sitemap location
+Sitemap: https://bershadsky.dev/sitemap.xml
