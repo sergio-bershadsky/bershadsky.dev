@@ -167,19 +167,25 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
   const isJsonCode = className?.includes('json') || 
                      (codeContent.trim().startsWith('{') && codeContent.trim().endsWith('}') && codeContent.includes('"') && !codeContent.includes('//'));
 
+  const hasMarkdownHeadings = codeContent.match(/^#{1,6}\s+\w/m);
+  const hasMarkdownCheckboxes = codeContent.includes('- [ ]') || codeContent.includes('- [x]');
+  const hasMultipleMarkdownHeadings = (codeContent.match(/^#{1,6}\s/gm) || []).length >= 2;
+  
+  const isMarkdownCode = className?.includes('markdown') || className?.includes('md') ||
+                         hasMultipleMarkdownHeadings ||
+                         (hasMarkdownHeadings && hasMarkdownCheckboxes) ||
+                         (codeContent.includes('## ') && codeContent.includes('### ')) ||
+                         (codeContent.includes('# ') && codeContent.includes('## ') && !codeContent.includes('npm '));
+
   const isYamlCode = className?.includes('yaml') || className?.includes('yml') ||
-                     (codeContent.includes(': ') && 
+                     (!isMarkdownCode && codeContent.includes(': ') && 
                       !codeContent.includes('{') &&
-                      !codeContent.includes('## ') &&
+                      !hasMarkdownHeadings &&
                       (codeContent.includes('.yaml') || codeContent.includes('.yml') || 
                        codeContent.match(/^#\s*\w+.*\.ya?ml/m) ||
                        (codeContent.match(/^\s*\w+:\s*$/m) && codeContent.includes('  - ')) ||
                        (codeContent.match(/^- \w+:/m) && codeContent.match(/\n\s+\w+:/)) ||
                        (codeContent.match(/^\w+:\s*\n/m) && codeContent.match(/\s{2,}\w+:/))));
-
-  const isMarkdownCode = className?.includes('markdown') || className?.includes('md') ||
-                         (codeContent.includes('## ') && codeContent.includes('### ')) ||
-                         (codeContent.includes('# ') && codeContent.includes('## ') && !codeContent.includes('npm '));
 
   const isBashCode = className?.includes('bash') || className?.includes('shell') || className?.includes('sh') ||
                      codeContent.includes('npm ') || codeContent.includes('npx ') ||
@@ -243,8 +249,8 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
     if (className?.includes('html')) return 'markup';
     if (className?.includes('sql')) return 'sql';
     if (className?.includes('yaml') || className?.includes('yml')) return 'yaml';
-    if (isYamlCode) return 'yaml';
     if (isMarkdownCode) return 'markdown';
+    if (isYamlCode) return 'yaml';
     if (isPythonCode) return 'python';
     if (isJavaScriptCode) return 'javascript';
     if (isJsonCode) return 'json';
