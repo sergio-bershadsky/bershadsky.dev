@@ -17,7 +17,7 @@ const PillarCharacteristicsDiagram = ({ title, items, examples, variant }: {
   const Icon = style.icon;
   
   return (
-    <div className={`my-8 notranslate border ${style.border} rounded-lg bg-black/40 p-5`} translate="no">
+    <div className={`my-8 border ${style.border} rounded-lg bg-black/40 p-5`}>
       <div className={`text-sm font-mono ${style.text} mb-3 flex items-center gap-2`}>
         <Icon className={`w-4 h-4 ${style.text}`} />
         <span>{title}</span>
@@ -49,7 +49,7 @@ const PillarCharacteristicsDiagram = ({ title, items, examples, variant }: {
 };
 
 export const SecondBrainArchitectureDiagram = () => (
-  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 1.0 // SECOND_BRAIN_ARCHITECTURE</span>
       <span className="text-xs text-muted-foreground animate-pulse">LIVE</span>
@@ -93,7 +93,7 @@ export const SecondBrainArchitectureDiagram = () => (
 );
 
 export const AIComparisonDiagram = () => (
-  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 0.5 // AI_COMPARISON</span>
       <span className="text-xs text-muted-foreground">ANALYSIS</span>
@@ -135,7 +135,7 @@ export const AIComparisonDiagram = () => (
 );
 
 export const ThreePillarsDiagram = () => (
-  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 2.0 // THREE_PILLARS</span>
       <span className="text-xs text-muted-foreground">ARCHITECTURE</span>
@@ -188,7 +188,7 @@ export const ThreePillarsDiagram = () => (
 );
 
 export const DecisionAnatomyDiagram = () => (
-  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 overflow-hidden" translate="no">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 overflow-hidden">
     <div className="text-sm font-mono text-accent p-4 flex justify-between border-b border-accent/20">
       <span>FIG 2.1 // DECISION_RECORD</span>
       <span className="text-xs text-muted-foreground">TEMPLATE</span>
@@ -234,7 +234,7 @@ export const DecisionAnatomyDiagram = () => (
 );
 
 export const KnowledgeFlowDiagram = () => (
-  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 2.2 // KNOWLEDGE_FLOW</span>
       <span className="text-xs text-muted-foreground">PROCESS</span>
@@ -280,7 +280,7 @@ export const HistoricalRecordDiagram = () => (
 );
 
 export const DecisionLifecycleDiagram = () => (
-  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>LIFECYCLE // DECISION_STATES</span>
       <span className="text-xs text-muted-foreground">FLOW</span>
@@ -349,7 +349,7 @@ export const FolderStructureDiagram = () => {
   };
 
   return (
-    <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
       <div className="text-sm font-mono text-secondary mb-3 flex items-center gap-2">
         <FolderOpen className="w-4 h-4 text-primary" />
         <span>my-second-brain/</span>
@@ -363,7 +363,7 @@ export const FolderStructureDiagram = () => {
 };
 
 export const SessionFlowDiagram = () => (
-  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 3.0 // SESSION_FLOW</span>
       <span className="text-xs text-muted-foreground">MEMORY</span>
@@ -409,7 +409,7 @@ export const SessionFlowDiagram = () => (
 );
 
 export const ProcessStepsDiagram = () => (
-  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 3.1 // PROCESS</span>
       <span className="text-xs text-muted-foreground">WORKFLOW</span>
@@ -439,7 +439,7 @@ export const ProcessStepsDiagram = () => (
 );
 
 export const DocumentVsJustDoItDiagram = () => (
-  <div className="my-8 notranslate border border-white/20 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
       <span>FIG 3.2 // DECISION_MATRIX</span>
       <span className="text-xs text-muted-foreground">WHEN</span>
@@ -498,7 +498,7 @@ export const DocumentVsJustDoItDiagram = () => (
 );
 
 export const GoodVsSkipDiagram = () => (
-  <div className="my-8 notranslate border border-white/20 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
       <span>FIG 3.3 // SELECTION_GUIDE</span>
       <span className="text-xs text-muted-foreground">ENTRIES</span>

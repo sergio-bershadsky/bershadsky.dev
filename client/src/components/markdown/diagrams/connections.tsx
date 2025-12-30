@@ -3,7 +3,7 @@ import { Brain, MessageSquare, RefreshCw, BookOpen, ArrowRight, FileText, Databa
 import { DiagramEntry } from '../diagramRegistry';
 
 export const MCPFlowDiagram = () => (
-  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 4.0 // MCP_ARCHITECTURE</span>
       <span className="text-xs text-muted-foreground">FLOW</span>
@@ -31,7 +31,7 @@ export const MCPFlowDiagram = () => (
 );
 
 export const ConnectionTypesTable = () => (
-  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 4.1 // CONNECTION_TYPES</span>
       <span className="text-xs text-muted-foreground">CAPABILITIES</span>
@@ -86,7 +86,7 @@ export const ConnectionTypesTable = () => (
 );
 
 export const DataFlowDiagram = () => (
-  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 4.3 // DATA_FLOW</span>
       <span className="text-xs text-muted-foreground">SECURITY</span>
@@ -117,7 +117,7 @@ export const DataFlowDiagram = () => (
 );
 
 export const CapabilitiesTable = () => (
-  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 4.2 // CAPABILITIES</span>
       <span className="text-xs text-muted-foreground">QUERIES</span>

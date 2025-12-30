@@ -3,7 +3,7 @@ import { FileText, ArrowRight, Check, X, Clock, AlertTriangle, Brain, Layers, Gi
 import type { DiagramEntry } from '../diagramRegistry';
 
 export const DecisionDecayDiagram = () => (
-  <div className="my-8 notranslate border border-red-500/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-red-500/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-red-400 mb-4 flex justify-between">
       <span>FIG 11.1 // DECISION_DECAY_TIMELINE</span>
       <span className="text-xs text-muted-foreground">PROBLEM</span>
@@ -24,7 +24,7 @@ export const DecisionDecayDiagram = () => (
 );
 
 export const ADRAnatomyDiagram = () => (
-  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 11.2 // DECISION_RECORD_ANATOMY</span>
       <span className="text-xs text-muted-foreground">STRUCTURE</span>
@@ -69,7 +69,7 @@ export const ADRAnatomyDiagram = () => (
 );
 
 export const ADRSectionPurposeDiagram = () => (
-  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 11.3 // ADR_SECTION_PURPOSE</span>
       <span className="text-xs text-muted-foreground">TEMPLATE</span>
@@ -93,7 +93,7 @@ export const ADRSectionPurposeDiagram = () => (
 );
 
 export const DecisionSignalsDiagram = () => (
-  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 11.4 // DECISION_SIGNAL_PATTERNS</span>
       <span className="text-xs text-muted-foreground">DETECTION</span>
@@ -117,7 +117,7 @@ export const DecisionSignalsDiagram = () => (
 );
 
 export const DecisionFlowDiagram = () => (
-  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 11.5 // DECISION_FLOW</span>
       <span className="text-xs text-muted-foreground">PROCESS</span>
@@ -150,7 +150,7 @@ export const DecisionFlowDiagram = () => (
 );
 
 export const DecisionNumberingDiagram = () => (
-  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 11.6 // DECISION_NUMBERING_SCHEME</span>
       <span className="text-xs text-muted-foreground">ORGANIZATION</span>
@@ -172,7 +172,7 @@ export const DecisionNumberingDiagram = () => (
 );
 
 export const DecisionStatesDiagram = () => (
-  <div className="my-8 notranslate border border-green-500/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
       <span>FIG 11.7 // DECISION_STATES</span>
       <span className="text-xs text-muted-foreground">LIFECYCLE</span>
