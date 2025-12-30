@@ -161,7 +161,7 @@ export default function SeriesPage() {
                         </span>
                       </div>
                       <h3 className="text-xl font-bold font-display group-hover:text-accent transition-colors truncate">
-                        {post.title}
+                        {post.title.replace(/^Second Brain:\s*/i, '')}
                       </h3>
                       <p className="text-sm text-muted-foreground mt-1 line-clamp-1">
                         {post.excerpt}
