@@ -212,31 +212,22 @@ const CyberLink = ({ href, children }: { href?: string; children: React.ReactNod
   </a>
 );
 
-export interface HeadingItem {
-  id: string;
-  text: string;
-  level: number;
-}
-
 interface MarkdownRendererProps {
   content: string;
-  onHeadingsExtracted?: (headings: HeadingItem[]) => void;
+  onHeadingsExtracted?: (headings: string[]) => void;
 }
 
 export function MarkdownRenderer({ content, onHeadingsExtracted }: MarkdownRendererProps) {
-  const headingsRef = useRef<HeadingItem[]>([]);
+  const headingsRef = useRef<string[]>([]);
   
   const renderedContent = useMemo(() => {
-    const headings: HeadingItem[] = [];
-    const headingRegex = /^(#{2,3})\s+(.+)$/gm;
+    const headings: string[] = [];
+    const headingRegex = /^#{2,3}\s+(.+)$/gm;
     let match;
     while ((match = headingRegex.exec(content)) !== null) {
-      const level = match[1].length;
-      const text = match[2];
-      const id = generateSlug(text);
-      headings.push({ id, text, level });
+      headings.push(match[1]);
     }
-    headingsRef.current = headings;
+    headingsRef.current = headings.slice(0, 6);
 
     const processor = unified()
       .use(remarkParse)
@@ -283,7 +274,7 @@ export function MarkdownRenderer({ content, onHeadingsExtracted }: MarkdownRende
   }, [content]);
   
   useEffect(() => {
-    if (onHeadingsExtracted) {
+    if (onHeadingsExtracted && headingsRef.current.length > 0) {
       onHeadingsExtracted(headingsRef.current);
     }
   }, [content, onHeadingsExtracted]);

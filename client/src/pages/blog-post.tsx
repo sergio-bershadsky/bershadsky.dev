@@ -2,9 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from "wouter";
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, Clock, Calendar, Hash, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen, Users } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen, Users } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
-import { BlogSidebar, type HeadingItem } from '@/components/BlogSidebar';
 
 const getSeriesIcon = (slug: string, accentColor: string, size: string = "w-5 h-5") => {
   const iconProps = { className: size, style: { color: accentColor } };
@@ -28,8 +27,9 @@ import { getBlogPostBySlug, getSeriesWithPosts, getAllBlogPosts, type BlogPost, 
 
 export default function BlogPostPage() {
   const params = useParams<{ slug: string }>();
+  const [copied, setCopied] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(false);
-  const [headings, setHeadings] = React.useState<HeadingItem[]>([]);
+  const [tableOfContents, setTableOfContents] = React.useState<string[]>([]);
   
   const postSlug = params.slug;
   
@@ -78,7 +78,11 @@ export default function BlogPostPage() {
     );
   }
 
-  const postUrl = typeof window !== 'undefined' ? window.location.href : '';
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
@@ -252,22 +256,75 @@ export default function BlogPostPage() {
           </div>
         )}
 
-        <article className="max-w-6xl mx-auto px-4 sm:px-0">
-          <div className="flex gap-10">
-            <div className="flex-1 min-w-0 max-w-4xl">
+        <article className="max-w-4xl mx-auto px-4 sm:px-0">
+          <div className="grid md:grid-cols-[1fr_250px] gap-10">
+            <div className="space-y-8 min-w-0">
               <div data-testid="post-content" className="min-w-0">
                 <MarkdownRenderer 
                   content={post.content} 
-                  onHeadingsExtracted={setHeadings}
+                  onHeadingsExtracted={setTableOfContents}
                 />
               </div>
             </div>
 
-            <BlogSidebar 
-              headings={headings}
-              postTitle={post.title}
-              postUrl={postUrl}
-            />
+            <aside className="hidden md:block self-start">
+              <div className="sticky top-24 space-y-8">
+                <NeonCard variant="primary" className="p-6">
+                  <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">About Author</h4>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-md overflow-hidden border border-white/20">
+                      <img src={authorAvatar} alt="Sergey Bershadsky" className="w-12 h-12 object-cover aspect-square" />
+                    </div>
+                    <div>
+                      <div className="font-bold font-display">Sergey Bershadsky</div>
+                      <div className="text-xs text-muted-foreground">Architect</div>
+                    </div>
+                  </div>
+                  <CyberButton size="sm" className="w-full text-xs" data-testid="button-follow">FOLLOW_UPDATES</CyberButton>
+                </NeonCard>
+
+                <div className="border border-white/10 rounded bg-black/20 p-6">
+                  <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">Share Protocol</h4>
+                  <div className="flex gap-2">
+                    <button className="p-2 border border-white/10 rounded hover:bg-white/5 hover:border-primary/50 transition-colors" data-testid="button-share">
+                      <Share2 className="w-4 h-4" />
+                    </button>
+                    <button 
+                      onClick={() => copyToClipboard(window.location.href)}
+                      className="p-2 border border-white/10 rounded hover:bg-white/5 hover:border-secondary/50 transition-colors" 
+                      data-testid="button-copy-link"
+                    >
+                      <Copy className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+
+                {tableOfContents.length > 0 && (
+                  <div className="border border-white/10 rounded bg-black/20 p-6">
+                    <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">Table of Contents</h4>
+                    <ul className="space-y-2 text-sm font-light text-muted-foreground">
+                      {tableOfContents.map((heading, i) => {
+                        const slug = heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+                        return (
+                          <li key={i}>
+                            <a 
+                              href={`#${slug}`}
+                              className="hover:text-primary cursor-pointer transition-colors block"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' });
+                              }}
+                            >
+                              ▹ {heading}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </aside>
           </div>
         </article>
 
