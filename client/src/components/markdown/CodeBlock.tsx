@@ -77,8 +77,63 @@ registerDiagrams(pluginsDiagramEntries);
 registerDiagrams(trackingDiagramEntries);
 registerDiagrams(communicationDiagramEntries);
 
+const renderSimpleMarkdown = (text: string) => {
+  const lines = text.split(/\n|(?=##)|(?=###)|(?=- \[)/);
+  const elements: React.ReactNode[] = [];
+  
+  lines.forEach((line, idx) => {
+    const trimmed = line.trim();
+    if (!trimmed) return;
+    
+    if (trimmed.startsWith('## ')) {
+      elements.push(
+        <h3 key={idx} className="text-secondary font-semibold text-sm mt-3 mb-1.5 first:mt-0">
+          {trimmed.replace('## ', '')}
+        </h3>
+      );
+    } else if (trimmed.startsWith('### ')) {
+      elements.push(
+        <h4 key={idx} className="text-secondary/80 font-medium text-xs mt-2 mb-1 uppercase tracking-wide">
+          {trimmed.replace('### ', '')}
+        </h4>
+      );
+    } else if (trimmed.startsWith('- [ ] ')) {
+      elements.push(
+        <div key={idx} className="flex items-start gap-2 text-xs text-gray-300 ml-2">
+          <span className="w-3.5 h-3.5 border border-gray-500 rounded mt-0.5 flex-shrink-0" />
+          <span>{trimmed.replace('- [ ] ', '')}</span>
+        </div>
+      );
+    } else if (trimmed.startsWith('- [x] ')) {
+      elements.push(
+        <div key={idx} className="flex items-start gap-2 text-xs text-gray-300 ml-2">
+          <span className="w-3.5 h-3.5 bg-green-500/30 border border-green-500 rounded mt-0.5 flex-shrink-0 flex items-center justify-center">
+            <Check className="w-2.5 h-2.5 text-green-400" />
+          </span>
+          <span>{trimmed.replace('- [x] ', '')}</span>
+        </div>
+      );
+    } else if (trimmed.startsWith('- ')) {
+      elements.push(
+        <div key={idx} className="flex items-start gap-2 text-xs text-gray-300 ml-2">
+          <span className="text-secondary mt-0.5">•</span>
+          <span>{trimmed.replace('- ', '')}</span>
+        </div>
+      );
+    } else if (trimmed.startsWith('---')) {
+      elements.push(<div key={idx} className="border-t border-gray-600/50 my-2" />);
+    } else {
+      elements.push(
+        <p key={idx} className="text-xs text-gray-300">{trimmed}</p>
+      );
+    }
+  });
+  
+  return elements;
+};
+
 export const ChatConversationDiagram = ({ content }: { content: string }) => {
-  const lines = content.split('\n').filter(line => line.trim());
+  const lines = content.split('\n');
   const messages: { speaker: 'you' | 'claude'; text: string }[] = [];
   
   let currentSpeaker: 'you' | 'claude' | null = null;
@@ -101,13 +156,18 @@ export const ChatConversationDiagram = ({ content }: { content: string }) => {
       currentSpeaker = 'claude';
       currentText = claudeMatch[1];
     } else if (currentSpeaker) {
-      currentText += ' ' + line.trim();
+      currentText += '\n' + line;
     }
   });
   
   if (currentSpeaker && currentText) {
     messages.push({ speaker: currentSpeaker, text: currentText.trim() });
   }
+
+  const hasMarkdownContent = (text: string) => 
+    text.includes('## ') || text.includes('### ') || 
+    text.includes('- [ ]') || text.includes('- [x]') ||
+    (text.includes('- ') && text.includes('\n'));
   
   return (
     <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
@@ -117,7 +177,7 @@ export const ChatConversationDiagram = ({ content }: { content: string }) => {
       </div>
       <div className="space-y-4">
         {messages.map((msg, i) => (
-          <div key={i} className={`flex items-end gap-2 ${msg.speaker === 'you' ? 'flex-row-reverse' : 'flex-row'}`}>
+          <div key={i} className={`flex items-start gap-2 ${msg.speaker === 'you' ? 'flex-row-reverse' : 'flex-row'}`}>
             <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
               msg.speaker === 'you' 
                 ? 'bg-primary/30 border border-primary/50' 
@@ -128,7 +188,7 @@ export const ChatConversationDiagram = ({ content }: { content: string }) => {
                 : <Bot className="w-4 h-4 text-secondary" />
               }
             </div>
-            <div className={`relative max-w-[80%] px-4 py-3 ${
+            <div className={`relative max-w-[85%] px-4 py-3 ${
               msg.speaker === 'you' 
                 ? 'bg-primary/20 border border-primary/40 rounded-2xl rounded-br-md' 
                 : 'bg-secondary/20 border border-secondary/40 rounded-2xl rounded-bl-md'
@@ -136,8 +196,11 @@ export const ChatConversationDiagram = ({ content }: { content: string }) => {
               <div className={`text-xs font-mono mb-1.5 ${msg.speaker === 'you' ? 'text-primary text-right' : 'text-secondary text-left'}`}>
                 {msg.speaker === 'you' ? 'YOU' : 'CLAUDE'}
               </div>
-              <div className={`text-sm leading-relaxed text-gray-200 ${msg.speaker === 'you' ? 'text-right' : 'text-left'}`}>
-                {msg.text.replace(/"/g, '')}
+              <div className={`leading-relaxed ${msg.speaker === 'you' ? 'text-right text-sm text-gray-200' : 'text-left'}`}>
+                {msg.speaker === 'claude' && hasMarkdownContent(msg.text) 
+                  ? <div className="space-y-1">{renderSimpleMarkdown(msg.text)}</div>
+                  : <span className="text-sm text-gray-200">{msg.text.replace(/"/g, '')}</span>
+                }
               </div>
             </div>
           </div>
