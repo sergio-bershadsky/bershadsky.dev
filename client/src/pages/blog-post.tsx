@@ -81,7 +81,6 @@ export default function BlogPostPage() {
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
       <CyberpunkBackground />
-
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-white/10 px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
           <a href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors group" data-testid="link-home">
@@ -93,7 +92,6 @@ export default function BlogPostPage() {
           </div>
         </div>
       </nav>
-
       <div className="container mx-auto px-4 pt-24 pb-20">
         <motion.div 
           layout
@@ -182,7 +180,7 @@ export default function BlogPostPage() {
           transition={{ duration: 0.4, delay: 0.15 }}
           className="max-w-4xl mx-auto mb-8"
         >
-          <p className="text-xl text-gray-300 font-light leading-relaxed" data-testid="text-post-excerpt">
+          <p className="text-xl text-gray-300 font-light leading-relaxed mt-[4px] mb-[4px]" data-testid="text-post-excerpt">
             {post.excerpt}
           </p>
         </motion.div>
