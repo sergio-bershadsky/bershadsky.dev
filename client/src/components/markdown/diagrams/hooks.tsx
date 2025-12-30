@@ -3,7 +3,7 @@ import { Zap, RefreshCw, ArrowDown, ArrowRight, FileText, CheckCircle, XCircle, 
 import { DiagramEntry } from '../diagramRegistry';
 
 export const SkillsVsHooksDiagram = () => (
-  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 6.0 // SKILLS_VS_HOOKS</span>
       <span className="text-xs text-muted-foreground">COMPARISON</span>
@@ -38,7 +38,7 @@ export const SkillsVsHooksDiagram = () => (
 );
 
 export const HookEventsTable = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 6.1 // HOOK_EVENTS</span>
       <span className="text-xs text-muted-foreground">TRIGGERS</span>
@@ -63,7 +63,7 @@ export const HookEventsTable = () => (
 );
 
 export const HookTimelineDiagram = () => (
-  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 6.2 // HOOK_TIMELINE</span>
       <span className="text-xs text-muted-foreground">SESSION FLOW</span>
