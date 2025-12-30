@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight, Instagram, Youtube, Send, Brain, Layers, Rocket, BookOpen } from 'lucide-react';
+import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight, Instagram, Youtube, Send, Brain, Layers, Rocket, BookOpen, Search, Hash, X } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
+import MiniSearch from 'minisearch';
 import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
@@ -23,11 +24,96 @@ const getSeriesFromTitle = (title: string): { name: string; slug: string; icon: 
   return null;
 };
 
+const createSearchIndex = () => new MiniSearch<BlogPost>({
+  fields: ['title', 'excerpt', 'content', 'tags'],
+  storeFields: ['id', 'slug'],
+  idField: 'id',
+  extractField: (document, fieldName) => {
+    if (fieldName === 'tags') {
+      return document.tags.join(' ');
+    }
+    return (document as any)[fieldName];
+  },
+  searchOptions: {
+    boost: { title: 3, excerpt: 2, tags: 1.5 },
+    prefix: true,
+    fuzzy: 0.2
+  }
+});
+
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const miniSearchRef = useRef<MiniSearch<BlogPost> | null>(null);
+  const indexedPostsRef = useRef<string>('');
+  
   const { data: blogPosts = [], isLoading } = useQuery<BlogPost[]>({
     queryKey: ['blog-posts'],
     queryFn: getAllBlogPosts
   });
+
+  const postsFingerprint = useMemo(() => 
+    blogPosts.map(p => p.id).join(','), 
+    [blogPosts]
+  );
+
+  if (postsFingerprint !== indexedPostsRef.current && blogPosts.length > 0) {
+    miniSearchRef.current = createSearchIndex();
+    miniSearchRef.current.addAll(blogPosts);
+    indexedPostsRef.current = postsFingerprint;
+  }
+
+  const allTags = useMemo(() => {
+    const tagCounts = new Map<string, number>();
+    blogPosts.forEach(post => {
+      post.tags.forEach(tag => {
+        const normalizedTag = tag.toLowerCase();
+        tagCounts.set(normalizedTag, (tagCounts.get(normalizedTag) || 0) + 1);
+      });
+    });
+    return Array.from(tagCounts.entries())
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 15)
+      .map(([tag]) => tag);
+  }, [blogPosts]);
+
+  const filteredPosts = useMemo(() => {
+    let results = [...blogPosts];
+    
+    if (searchQuery.trim() && miniSearchRef.current) {
+      const searchResults = miniSearchRef.current.search(searchQuery);
+      const matchedIds = new Set(searchResults.map(r => r.id));
+      results = results.filter(post => matchedIds.has(post.id));
+    }
+    
+    if (selectedTags.length > 0) {
+      results = results.filter(post => 
+        selectedTags.every(selectedTag => 
+          post.tags.some(tag => tag.toLowerCase() === selectedTag)
+        )
+      );
+    }
+    
+    return results.sort((a, b) => 
+      new Date(b.publishedAt || b.date).getTime() - new Date(a.publishedAt || a.date).getTime()
+    );
+  }, [blogPosts, searchQuery, selectedTags, postsFingerprint]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev => 
+      prev.includes(tag) 
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
+
+  const clearFilters = () => {
+    setSearchQuery('');
+    setSelectedTags([]);
+  };
+
+  const hasActiveFilters = searchQuery.trim() || selectedTags.length > 0;
+
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
       <CyberpunkBackground />
@@ -106,6 +192,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Search & Filter Section */}
+      <section className="py-8 relative z-10 border-b border-white/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto space-y-4">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="SEARCH_KNOWLEDGE_BASE..."
+                className="w-full pl-12 pr-12 py-3 bg-black/40 border border-white/10 rounded-lg font-mono text-sm focus:outline-none focus:border-primary/50 focus:shadow-[0_0_10px_rgba(236,72,153,0.2)] transition-all placeholder:text-muted-foreground/50"
+                data-testid="input-search"
+              />
+              {searchQuery && (
+                <button 
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-white transition-colors"
+                  data-testid="button-clear-search"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+            
+            <div className="flex flex-wrap gap-2 items-center">
+              <span className="text-xs font-mono text-muted-foreground mr-2">FILTER_BY_TAG:</span>
+              {allTags.map(tag => (
+                <button
+                  key={tag}
+                  onClick={() => toggleTag(tag)}
+                  className={`px-3 py-1.5 text-xs font-mono rounded border transition-all flex items-center gap-1.5 ${
+                    selectedTags.includes(tag)
+                      ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
+                      : 'bg-black/20 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
+                  }`}
+                  data-testid={`button-tag-${tag}`}
+                >
+                  <Hash className="w-3 h-3" />
+                  {tag}
+                </button>
+              ))}
+            </div>
+            
+            {hasActiveFilters && (
+              <div className="flex items-center justify-between text-sm font-mono">
+                <span className="text-muted-foreground">
+                  FOUND: <span className="text-primary">{filteredPosts.length}</span> ARTICLES
+                </span>
+                <button 
+                  onClick={clearFilters}
+                  className="text-secondary hover:text-white transition-colors flex items-center gap-1"
+                  data-testid="button-clear-filters"
+                >
+                  <X className="w-3 h-3" /> CLEAR_FILTERS
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* Blog Grid Section */}
       <section className="py-20 relative z-10">
         <div className="container mx-auto px-4">
@@ -113,13 +261,15 @@ export default function Home() {
             <div className="text-center py-20 font-mono text-muted-foreground">
               LOADING_KNOWLEDGE_BASE...
             </div>
+          ) : filteredPosts.length === 0 ? (
+            <div className="text-center py-20">
+              <div className="font-mono text-muted-foreground mb-4">NO_RESULTS_FOUND</div>
+              <p className="text-sm text-muted-foreground/60">Try adjusting your search or filter criteria</p>
+            </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...blogPosts]
-                .sort((a, b) => new Date(b.publishedAt || b.date).getTime() - new Date(a.publishedAt || a.date).getTime())
-                .slice(0, 12)
-                .map((post, index) => (
-              <Link key={index} href={`/blog/${post.slug || post.id}`} className="block group" data-testid={`card-blog-${post.slug || post.id}`}>
+              {filteredPosts.slice(0, 12).map((post, index) => (
+              <Link key={post.id} href={`/blog/${post.slug || post.id}`} className="block group" data-testid={`card-blog-${post.slug || post.id}`}>
                 <NeonCard variant="accent" className="h-full flex flex-col hover:bg-accent/5 transition-all duration-300 hover:scale-[1.02]">
                   <div className="mb-6 relative overflow-hidden rounded border border-white/10 aspect-video bg-black/40 group-hover:border-accent/50 transition-colors">
                      {post.imageUrl && (
