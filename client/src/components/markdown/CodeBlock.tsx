@@ -11,6 +11,7 @@ import { hooksDiagramEntries } from './diagrams/hooks';
 import { pluginsDiagramEntries } from './diagrams/plugins';
 import { trackingDiagramEntries } from './diagrams/tracking';
 import { communicationDiagramEntries } from './diagrams/communication';
+import { meetingsDiagramEntries } from './diagrams/meetings';
 import { registerDiagrams } from './diagramRegistry';
 
 const cyberpunkTheme: { [key: string]: React.CSSProperties } = {
@@ -76,6 +77,7 @@ registerDiagrams(hooksDiagramEntries);
 registerDiagrams(pluginsDiagramEntries);
 registerDiagrams(trackingDiagramEntries);
 registerDiagrams(communicationDiagramEntries);
+registerDiagrams(meetingsDiagramEntries);
 
 const renderSimpleMarkdown = (text: string) => {
   const lines = text.split(/\n|(?=##)|(?=###)|(?=- \[)/);
