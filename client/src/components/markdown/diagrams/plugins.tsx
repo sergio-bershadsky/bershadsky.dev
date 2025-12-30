@@ -125,38 +125,88 @@ export const PluginComponentsTable = () => (
   </div>
 );
 
-export const BeforeAfterPluginDiagram = () => (
-  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
-    <div className="text-sm font-mono text-accent mb-4 flex justify-between">
-      <span>FIG 7.2 // BEFORE_AFTER</span>
-      <span className="text-xs text-muted-foreground">ORGANIZATION</span>
-    </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div className="p-3 border border-white/10 rounded bg-white/5">
-        <div className="font-mono text-xs text-gray-400 mb-2 uppercase">Before:</div>
-        <div className="space-y-1 text-sm font-mono">
-          <div className="text-gray-400">your-second-brain/</div>
-          <div className="ml-4 text-gray-500">├── skills/</div>
-          <div className="ml-8 text-gray-600">└── standup/</div>
-          <div className="ml-4 text-gray-500">├── hooks/</div>
-          <div className="ml-8 text-gray-600">└── freshness.py</div>
+export const BeforeAfterPluginDiagram = () => {
+  const beforeFolders = [
+    { name: 'skills/', icon: FolderOpen, color: 'text-gray-400', children: [
+      { name: 'standup/', icon: Folder, color: 'text-gray-500' }
+    ]},
+    { name: 'hooks/', icon: FolderOpen, color: 'text-gray-400', children: [
+      { name: 'freshness.py', icon: File, color: 'text-gray-500' }
+    ]}
+  ];
+
+  const afterFolders = [
+    { name: 'plugin.json', icon: File, color: 'text-yellow-400', comment: 'NEW' },
+    { name: 'skills/', icon: FolderOpen, color: 'text-green-400', children: [
+      { name: 'standup/', icon: Folder, color: 'text-green-500' }
+    ]},
+    { name: 'hooks/', icon: FolderOpen, color: 'text-green-400', children: [
+      { name: 'freshness.py', icon: File, color: 'text-green-500' }
+    ]},
+    { name: 'README.md', icon: File, color: 'text-green-400', comment: 'NEW' }
+  ];
+
+  const renderNode = (node: any, depth: number = 0, isGreen: boolean = false) => {
+    const Icon = node.icon;
+    const isFolder = node.children;
+    
+    return (
+      <div key={node.name} className={depth > 0 ? 'ml-5' : ''}>
+        <div className="flex items-center gap-2 py-0.5">
+          <Icon className={`w-4 h-4 ${node.color} flex-shrink-0`} />
+          <span className={`font-mono text-sm ${isFolder ? (isGreen ? 'text-green-300' : 'text-gray-300') : (isGreen ? 'text-green-400' : 'text-gray-400')}`}>
+            {node.name}
+          </span>
+          {node.comment && (
+            <span className="text-xs text-green-400 px-1.5 py-0.5 bg-green-500/20 rounded font-mono">{node.comment}</span>
+          )}
+        </div>
+        {node.children && (
+          <div className="border-l border-white/10 ml-2">
+            {node.children.map((child: any) => renderNode(child, depth + 1, isGreen))}
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  return (
+    <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+        <span>FIG 7.2 // BEFORE_AFTER</span>
+        <span className="text-xs text-muted-foreground">ORGANIZATION</span>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="p-4 border border-white/10 rounded bg-white/5">
+          <div className="flex items-center gap-2 mb-3">
+            <XCircle className="w-4 h-4 text-red-400" />
+            <span className="font-mono text-xs text-red-400 uppercase">Before: Scattered</span>
+          </div>
+          <div className="flex items-center gap-2 mb-2">
+            <FolderOpen className="w-4 h-4 text-gray-400" />
+            <span className="font-mono text-sm text-gray-300">your-second-brain/</span>
+          </div>
+          <div className="border-l border-white/10 ml-2 space-y-0.5">
+            {beforeFolders.map(folder => renderNode(folder, 1, false))}
+          </div>
+        </div>
+        <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+          <div className="flex items-center gap-2 mb-3">
+            <CheckCircle className="w-4 h-4 text-green-400" />
+            <span className="font-mono text-xs text-green-400 uppercase">After: Packaged</span>
+          </div>
+          <div className="flex items-center gap-2 mb-2">
+            <Package className="w-4 h-4 text-green-400" />
+            <span className="font-mono text-sm text-green-300">team-productivity-plugin/</span>
+          </div>
+          <div className="border-l border-green-500/20 ml-2 space-y-0.5">
+            {afterFolders.map(folder => renderNode(folder, 1, true))}
+          </div>
         </div>
       </div>
-      <div className="p-3 border border-green-500/30 rounded bg-green-500/5">
-        <div className="font-mono text-xs text-green-400 mb-2 uppercase">After:</div>
-        <div className="space-y-1 text-sm font-mono">
-          <div className="text-green-400">team-productivity-plugin/</div>
-          <div className="ml-4 text-green-500/80">├── plugin.json</div>
-          <div className="ml-4 text-green-500/80">├── skills/</div>
-          <div className="ml-8 text-green-600">└── standup/</div>
-          <div className="ml-4 text-green-500/80">├── hooks/</div>
-          <div className="ml-8 text-green-600">└── freshness.py</div>
-          <div className="ml-4 text-green-500/80">└── README.md</div>
-        </div>
-      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const DistributionOptionsDiagram = () => (
   <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
