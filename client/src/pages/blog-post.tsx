@@ -358,19 +358,62 @@ export default function BlogPostPage() {
 
         <div className="max-w-4xl mx-auto mt-20 px-4 sm:px-0">
           <SectionHeader title="RELATED_DATA" subtitle="Continue Reading" />
-          <div className="grid md:grid-cols-2 gap-6">
-            {allPosts.filter(p => p.id !== post.id).slice(0, 2).map(related => (
-               <Link key={related.id} href={`/blog/${related.slug || related.id}`} data-testid={`link-related-${related.slug || related.id}`}>
-                 <NeonCard variant="accent" className="cursor-pointer group h-full">
-                    <div className="flex justify-between items-start mb-4">
-                      <h4 className="font-display font-bold text-lg group-hover:text-accent transition-colors">{related.title}</h4>
-                      <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </div>
-                    <p className="text-sm text-muted-foreground">{related.excerpt}</p>
-                 </NeonCard>
-               </Link>
-            ))}
-          </div>
+          {(() => {
+            let prevArticle: BlogPost | null = null;
+            let nextArticle: BlogPost | null = null;
+            
+            if (seriesData) {
+              const currentIndex = seriesData.posts.findIndex(p => p.id === post.id);
+              prevArticle = currentIndex > 0 ? seriesData.posts[currentIndex - 1] : null;
+              nextArticle = currentIndex < seriesData.posts.length - 1 ? seriesData.posts[currentIndex + 1] : null;
+            }
+            
+            if (!prevArticle || !nextArticle) {
+              const sortedPosts = [...allPosts].sort((a, b) => 
+                new Date(b.publishedAt || b.date).getTime() - new Date(a.publishedAt || a.date).getTime()
+              );
+              const currentDateIndex = sortedPosts.findIndex(p => p.id === post.id);
+              if (!prevArticle && currentDateIndex > 0) {
+                prevArticle = sortedPosts[currentDateIndex - 1];
+              }
+              if (!nextArticle && currentDateIndex < sortedPosts.length - 1) {
+                nextArticle = sortedPosts[currentDateIndex + 1];
+              }
+            }
+            
+            const articles = [prevArticle, nextArticle].filter(Boolean) as BlogPost[];
+            
+            if (articles.length === 0) return null;
+            
+            return (
+              <div className={`grid gap-6 ${articles.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-1 max-w-xl mx-auto'}`}>
+                {prevArticle && (
+                  <Link href={`/blog/${prevArticle.slug || prevArticle.id}`} data-testid="link-prev-article">
+                    <NeonCard variant="secondary" className="cursor-pointer group h-full">
+                      <div className="flex items-center gap-2 text-xs font-mono text-secondary mb-3">
+                        <ChevronLeft className="w-4 h-4" />
+                        PREVIOUS
+                      </div>
+                      <h4 className="font-display font-bold text-lg group-hover:text-secondary transition-colors mb-2">{prevArticle.title}</h4>
+                      <p className="text-sm text-muted-foreground line-clamp-2">{prevArticle.excerpt}</p>
+                    </NeonCard>
+                  </Link>
+                )}
+                {nextArticle && (
+                  <Link href={`/blog/${nextArticle.slug || nextArticle.id}`} data-testid="link-next-article">
+                    <NeonCard variant="primary" className="cursor-pointer group h-full">
+                      <div className="flex items-center justify-end gap-2 text-xs font-mono text-primary mb-3">
+                        NEXT
+                        <ChevronRight className="w-4 h-4" />
+                      </div>
+                      <h4 className="font-display font-bold text-lg group-hover:text-primary transition-colors mb-2 text-right">{nextArticle.title}</h4>
+                      <p className="text-sm text-muted-foreground line-clamp-2 text-right">{nextArticle.excerpt}</p>
+                    </NeonCard>
+                  </Link>
+                )}
+              </div>
+            );
+          })()}
         </div>
       </div>
     </div>
