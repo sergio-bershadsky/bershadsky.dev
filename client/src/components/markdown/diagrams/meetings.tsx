@@ -43,40 +43,48 @@ export const MeetingIdealDiagram = () => (
       <span>FIG 10.2 // MEETING_KNOWLEDGE_IDEAL</span>
       <span className="text-xs text-muted-foreground">SOLUTION</span>
     </div>
-    <div className="flex flex-col items-center gap-4">
-      <div className="flex items-center gap-2 flex-wrap justify-center">
-        <div className="text-center">
-          <div className="px-3 py-2 border border-primary/40 rounded bg-primary/10 mb-1">
+    <div className="overflow-x-auto">
+      <div className="flex items-start gap-1 min-w-max justify-center">
+        <div className="flex flex-col items-center w-20">
+          <div className="px-3 py-2.5 border border-primary/40 rounded bg-primary/10 w-full text-center">
             <span className="text-xs text-primary">Meeting</span>
           </div>
         </div>
-        <ArrowRight className="w-4 h-4 text-gray-500" />
-        <div className="text-center">
-          <div className="px-3 py-2 border border-secondary/40 rounded bg-secondary/10 mb-1">
+        <div className="flex items-center h-10 px-1">
+          <ArrowRight className="w-5 h-5 text-gray-500" />
+        </div>
+        <div className="flex flex-col items-center w-24">
+          <div className="px-3 py-2.5 border border-secondary/40 rounded bg-secondary/10 w-full text-center">
             <span className="text-xs text-secondary">Transcript</span>
           </div>
-          <span className="text-[10px] text-gray-500">Auto-processed</span>
+          <span className="text-[10px] text-gray-500 mt-1">Auto-processed</span>
         </div>
-        <ArrowRight className="w-4 h-4 text-gray-500" />
-        <div className="text-center">
-          <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 mb-1">
+        <div className="flex items-center h-10 px-1">
+          <ArrowRight className="w-5 h-5 text-gray-500" />
+        </div>
+        <div className="flex flex-col items-center w-28">
+          <div className="px-3 py-2.5 border border-accent/40 rounded bg-accent/10 w-full text-center">
             <span className="text-xs text-accent">Structured Doc</span>
           </div>
-          <span className="text-[10px] text-gray-500">With context</span>
+          <span className="text-[10px] text-gray-500 mt-1">With context</span>
         </div>
-        <ArrowRight className="w-4 h-4 text-gray-500" />
-        <div className="text-center">
-          <div className="px-3 py-2 border border-green-500/40 rounded bg-green-500/10 mb-1">
+        <div className="flex items-center h-10 px-1">
+          <ArrowRight className="w-5 h-5 text-gray-500" />
+        </div>
+        <div className="flex flex-col items-center w-24">
+          <div className="px-3 py-2.5 border border-green-500/40 rounded bg-green-500/10 w-full text-center">
             <span className="text-xs text-green-400">Decisions</span>
           </div>
-          <span className="text-[10px] text-gray-500">Linked to ADRs</span>
+          <span className="text-[10px] text-gray-500 mt-1">Linked to ADRs</span>
         </div>
-        <ArrowRight className="w-4 h-4 text-gray-500" />
-        <div className="text-center">
-          <div className="px-3 py-2 border border-green-500/40 rounded bg-green-500/10 mb-1">
-            <CheckCircle className="w-4 h-4 text-green-400 mx-auto" />
+        <div className="flex items-center h-10 px-1">
+          <ArrowRight className="w-5 h-5 text-gray-500" />
+        </div>
+        <div className="flex flex-col items-center w-20">
+          <div className="px-3 py-2.5 border border-green-500/40 rounded bg-green-500/10 w-full flex justify-center">
+            <CheckCircle className="w-4 h-4 text-green-400" />
           </div>
-          <span className="text-[10px] text-gray-500">Searchable</span>
+          <span className="text-[10px] text-gray-500 mt-1">Searchable</span>
         </div>
       </div>
     </div>
