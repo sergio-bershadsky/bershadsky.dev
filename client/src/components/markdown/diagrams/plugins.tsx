@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Bot, RefreshCw, BookOpen, ArrowDown, CheckCircle, XCircle, Folder, FolderOpen, File, Package, GitBranch, Layers, Share2, Settings, Users, User, Braces, Hash, Type, List, ToggleLeft } from 'lucide-react';
+import { Zap, Bot, RefreshCw, BookOpen, ArrowDown, CheckCircle, XCircle, Folder, FolderOpen, File, Package, GitBranch, Layers, Share2, Settings, Users, User, Braces, Hash, Type, List, ToggleLeft, Tag, Plus, Wrench, AlertTriangle } from 'lucide-react';
 import { DiagramEntry } from '../diagramRegistry';
 
 export const PluginEvolutionDiagram = () => (
@@ -416,6 +416,72 @@ export const PluginConfigurationDiagram = () => {
   );
 };
 
+export const VersionTimelineDiagram = () => {
+  const versions = [
+    { version: '1.0.0', type: 'initial', description: 'Initial release', icon: Tag, color: 'gray' },
+    { version: '1.1.0', type: 'minor', description: 'Added new skill', icon: Plus, color: 'green' },
+    { version: '1.2.0', type: 'minor', description: 'New configuration option', icon: Wrench, color: 'secondary' },
+    { version: '2.0.0', type: 'major', description: 'Breaking change (different output format)', icon: AlertTriangle, color: 'yellow' }
+  ];
+
+  return (
+    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
+        <span>FIG 7.6 // VERSION_HISTORY</span>
+        <span className="text-xs text-muted-foreground">CHANGELOG</span>
+      </div>
+      <div className="text-center mb-4 pb-3 border-b border-white/10">
+        <div className="text-sm font-display font-semibold text-white">Semantic Versioning for Plugins</div>
+        <div className="text-xs text-gray-400">MAJOR.MINOR.PATCH</div>
+      </div>
+      <div className="relative">
+        <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-gray-500 via-green-500 to-yellow-500"></div>
+        <div className="space-y-3 pl-10">
+          {versions.map((v, i) => {
+            const Icon = v.icon;
+            const colorClasses = {
+              gray: 'border-gray-500/50 bg-gray-500/20 text-gray-400',
+              green: 'border-green-500/50 bg-green-500/20 text-green-400',
+              secondary: 'border-secondary/50 bg-secondary/20 text-secondary',
+              yellow: 'border-yellow-500/50 bg-yellow-500/20 text-yellow-400'
+            };
+            const dotColors = {
+              gray: 'bg-gray-500 border-gray-400',
+              green: 'bg-green-500 border-green-400',
+              secondary: 'bg-secondary border-secondary',
+              yellow: 'bg-yellow-500 border-yellow-400'
+            };
+            return (
+              <div key={i} className="relative flex items-start gap-3">
+                <div className={`absolute -left-10 top-1 w-3 h-3 rounded-full border-2 ${dotColors[v.color as keyof typeof dotColors]}`}></div>
+                <div className={`px-2 py-1 rounded font-mono text-sm font-bold ${colorClasses[v.color as keyof typeof colorClasses]}`}>
+                  {v.version}
+                </div>
+                <div className="flex-1 pt-0.5">
+                  <div className="flex items-center gap-2">
+                    <Icon className={`w-4 h-4 ${v.color === 'gray' ? 'text-gray-400' : v.color === 'green' ? 'text-green-400' : v.color === 'secondary' ? 'text-secondary' : 'text-yellow-400'}`} />
+                    <span className="text-sm text-gray-300">{v.description}</span>
+                  </div>
+                  {v.type === 'major' && (
+                    <div className="text-xs text-yellow-400/70 mt-1 flex items-center gap-1">
+                      <AlertTriangle className="w-3 h-3" />
+                      Breaking change - update with caution
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const detectVersionTimeline = (content: string) =>
+  content.includes('1.0.0') && content.includes('→') && 
+  (content.includes('Initial release') || content.includes('Breaking change'));
+
 export const detectPluginEvolution = (content: string) => 
   content.includes('STAGE 1') && content.includes('STAGE 2') && content.includes('Personal automation') && content.includes('Plugin solution');
 
@@ -443,6 +509,7 @@ export const detectPluginConfiguration = (content: string) =>
   content.includes('"configuration"') && content.includes('standup_format') && content.includes('freshness_days');
 
 export const pluginsDiagramEntries: DiagramEntry[] = [
+  { id: 'version-timeline', detect: detectVersionTimeline, component: VersionTimelineDiagram },
   { id: 'plugin-evolution', detect: detectPluginEvolution, component: PluginEvolutionDiagram },
   { id: 'plugin-folder-structure', detect: detectPluginFolderStructure, component: PluginFolderStructureDiagram },
   { id: 'plugin-components', detect: detectPluginComponents, component: PluginComponentsTable },
