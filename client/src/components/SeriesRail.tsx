@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { Brain, Layers, Rocket, BookOpen, Zap, Code, Server, Database, Globe, Cpu } from 'lucide-react';
-import type { Series } from '@shared/schema';
+import { getAllSeries, type Series } from '@/lib/dataLoader';
 
 const getSeriesIcon = (slug: string, accentColor: string) => {
   const iconProps = { className: "w-8 h-8 md:w-10 md:h-10", style: { color: accentColor } };
@@ -25,12 +25,8 @@ interface SeriesRailProps {
 
 export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
   const { data: seriesList = [], isLoading } = useQuery<Series[]>({
-    queryKey: ['/api/series'],
-    queryFn: async () => {
-      const response = await fetch('/api/series');
-      if (!response.ok) throw new Error('Failed to fetch series');
-      return response.json();
-    }
+    queryKey: ['series'],
+    queryFn: getAllSeries
   });
 
   if (isLoading) {

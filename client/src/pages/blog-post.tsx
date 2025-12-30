@@ -23,7 +23,7 @@ import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4';
 import authorAvatar from '@assets/avatar-squere.png';
-import type { BlogPost, BlogPostWithSeries, SeriesWithPosts } from '@shared/schema';
+import { getBlogPostBySlug, getSeriesWithPosts, getAllBlogPosts, type BlogPost, type BlogPostWithSeries, type SeriesWithPosts } from '@/lib/dataLoader';
 
 export default function BlogPostPage() {
   const params = useParams<{ slug: string }>();
@@ -33,33 +33,21 @@ export default function BlogPostPage() {
   
   const postSlug = params.slug;
   
-  const { data: post, isLoading, isError } = useQuery<BlogPostWithSeries>({
-    queryKey: ['/api/blog-posts', postSlug],
-    queryFn: async () => {
-      const response = await fetch(`/api/blog-posts/${postSlug}`);
-      if (!response.ok) throw new Error('Failed to fetch blog post');
-      return response.json();
-    },
+  const { data: post, isLoading, isError } = useQuery<BlogPostWithSeries | null>({
+    queryKey: ['blog-post', postSlug],
+    queryFn: () => getBlogPostBySlug(postSlug || ''),
     enabled: !!postSlug,
     retry: false
   });
   
   const { data: allPosts = [] } = useQuery<BlogPost[]>({
-    queryKey: ['/api/blog-posts'],
-    queryFn: async () => {
-      const response = await fetch('/api/blog-posts');
-      if (!response.ok) throw new Error('Failed to fetch blog posts');
-      return response.json();
-    }
+    queryKey: ['blog-posts'],
+    queryFn: getAllBlogPosts
   });
 
-  const { data: seriesData } = useQuery<SeriesWithPosts>({
-    queryKey: ['/api/series', post?.series?.slug],
-    queryFn: async () => {
-      const response = await fetch(`/api/series/${post?.series?.slug}`);
-      if (!response.ok) throw new Error('Failed to fetch series');
-      return response.json();
-    },
+  const { data: seriesData } = useQuery<SeriesWithPosts | null>({
+    queryKey: ['series', post?.series?.slug],
+    queryFn: () => getSeriesWithPosts(post?.series?.slug || ''),
     enabled: !!post?.series?.slug
   });
   
