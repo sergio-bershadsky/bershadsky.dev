@@ -212,22 +212,31 @@ const CyberLink = ({ href, children }: { href?: string; children: React.ReactNod
   </a>
 );
 
+export interface HeadingItem {
+  id: string;
+  text: string;
+  level: number;
+}
+
 interface MarkdownRendererProps {
   content: string;
-  onHeadingsExtracted?: (headings: string[]) => void;
+  onHeadingsExtracted?: (headings: HeadingItem[]) => void;
 }
 
 export function MarkdownRenderer({ content, onHeadingsExtracted }: MarkdownRendererProps) {
-  const headingsRef = useRef<string[]>([]);
+  const headingsRef = useRef<HeadingItem[]>([]);
   
   const renderedContent = useMemo(() => {
-    const headings: string[] = [];
-    const headingRegex = /^#{2,3}\s+(.+)$/gm;
+    const headings: HeadingItem[] = [];
+    const headingRegex = /^(#{2,3})\s+(.+)$/gm;
     let match;
     while ((match = headingRegex.exec(content)) !== null) {
-      headings.push(match[1]);
+      const level = match[1].length;
+      const text = match[2];
+      const id = generateSlug(text);
+      headings.push({ id, text, level });
     }
-    headingsRef.current = headings.slice(0, 6);
+    headingsRef.current = headings;
 
     const processor = unified()
       .use(remarkParse)
