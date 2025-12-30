@@ -92,10 +92,10 @@ async function fetchContent(path: string): Promise<string> {
 export async function loadBlogPosts(): Promise<BlogPost[]> {
   if (postsCache) return postsCache;
   
-  const rawPosts = await fetchYaml<RawBlogPost[]>('/src/assets/data/blog-posts/data.yaml');
+  const rawPosts = await fetchYaml<RawBlogPost[]>('/data/blog-posts/data.yaml');
   
   const posts = await Promise.all(rawPosts.map(async (post) => {
-    const contentPath = `/src/assets/data/${post.content}`;
+    const contentPath = `/data/${post.content}`;
     const content = await fetchContent(contentPath);
     
     return {
@@ -120,7 +120,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
 export async function loadSeries(): Promise<Series[]> {
   if (seriesCache) return seriesCache;
   
-  const rawSeries = await fetchYaml<RawSeries[]>('/src/assets/data/series/data.yaml');
+  const rawSeries = await fetchYaml<RawSeries[]>('/data/series/data.yaml');
   
   seriesCache = rawSeries.map(s => ({
     id: s.id,
@@ -138,7 +138,7 @@ export async function loadSeries(): Promise<Series[]> {
 export async function loadSeriesPosts(): Promise<SeriesPost[]> {
   if (seriesPostsCache) return seriesPostsCache;
   
-  const rawSeriesPosts = await fetchYaml<RawSeriesPost[]>('/src/assets/data/series-posts/data.yaml');
+  const rawSeriesPosts = await fetchYaml<RawSeriesPost[]>('/data/series-posts/data.yaml');
   
   seriesPostsCache = rawSeriesPosts.map(sp => ({
     seriesId: sp.series_id,
