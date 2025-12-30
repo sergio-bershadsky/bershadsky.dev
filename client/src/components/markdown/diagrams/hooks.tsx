@@ -391,7 +391,7 @@ export const detectHookExecutionFlow = (content: string) =>
   content.includes('TRIGGER:') && content.includes('CHECK:') && content.includes('ACTION:') && content.includes('Output:');
 
 export const detectHookDefinition = (content: string) => 
-  content.includes('# ') && content.includes('Hook') && content.match(/\d+\.\s+Are\s/) !== null && content.includes('check:');
+  content.includes('# ') && content.includes('Hook') && /\d+\.\s+Are\s/.test(content) && content.includes('check:');
 
 export const detectSkillsVsHooks = (content: string) => 
   content.includes('SKILLS') && content.includes('HOOKS') && content.includes('You trigger them') && content.includes('They trigger themselves');
