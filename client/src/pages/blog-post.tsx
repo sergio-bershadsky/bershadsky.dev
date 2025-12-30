@@ -278,7 +278,7 @@ export default function BlogPostPage() {
                 <NeonCard variant="primary" className="p-6">
                   <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">About Author</h4>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border border-white/20">
+                    <div className="w-12 h-12 rounded-md overflow-hidden border border-white/20">
                       <img src={authorAvatar} alt="Sergey Bershadsky" className="w-12 h-12 object-cover aspect-square" />
                     </div>
                     <div>
