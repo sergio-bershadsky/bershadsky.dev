@@ -383,10 +383,10 @@ export default function Home() {
               </Link>
             </div>
             
-            <div className="mt-8 flex justify-center gap-8 font-mono text-sm text-muted-foreground/60">
-              <span>// ARCHITECTURE</span>
-              <span>// LEADERSHIP</span>
-              <span>// SCALING</span>
+            <div className="mt-8 flex justify-center gap-8 font-mono text-sm text-muted-foreground/60 flex-wrap">
+              <span className="whitespace-nowrap">//&nbsp;ARCHITECTURE</span>
+              <span className="whitespace-nowrap">//&nbsp;LEADERSHIP</span>
+              <span className="whitespace-nowrap">//&nbsp;SCALING</span>
             </div>
           </NeonCard>
         </div>
