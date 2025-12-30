@@ -173,7 +173,7 @@ export const NameGlitch: React.FC = () => {
 
 export const SectionHeader: React.FC<{ title: string; subtitle?: string }> = ({ title, subtitle }) => (
   <div className="mb-12 relative">
-    <h2 className="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary animate-gradient-x">
+    <h2 className="text-2xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary via-accent to-secondary animate-gradient-x">
       {title}
     </h2>
     {subtitle && (
