@@ -218,47 +218,53 @@ export default function Home() {
                   </button>
                 )}
               </div>
-              <button
-                onClick={() => setShowTagFilter(!showTagFilter)}
-                className={`px-4 py-3 rounded-lg border font-mono text-sm transition-all flex items-center gap-2 ${
-                  showTagFilter || selectedTags.length > 0
-                    ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
-                    : 'bg-black/40 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
-                }`}
-                data-testid="button-toggle-tags"
-              >
-                <Hash className="w-4 h-4" />
-                {selectedTags.length > 0 && (
-                  <span className="bg-primary text-white text-[10px] px-1.5 py-0.5 rounded-full">{selectedTags.length}</span>
+              <div className="relative">
+                <button
+                  onClick={() => setShowTagFilter(!showTagFilter)}
+                  className={`px-4 py-3 rounded-lg border font-mono text-sm transition-all flex items-center gap-2 ${
+                    showTagFilter || selectedTags.length > 0
+                      ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
+                      : 'bg-black/40 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
+                  }`}
+                  data-testid="button-toggle-tags"
+                >
+                  <Hash className="w-4 h-4" />
+                  {selectedTags.length > 0 && (
+                    <span className="bg-primary text-white text-[10px] px-1.5 py-0.5 rounded-full">{selectedTags.length}</span>
+                  )}
+                </button>
+                
+                {showTagFilter && (
+                  <>
+                    <div 
+                      className="fixed inset-0 z-40" 
+                      onClick={() => setShowTagFilter(false)}
+                    />
+                    <div className="absolute right-0 top-full mt-2 z-50 w-80 p-4 bg-black/95 backdrop-blur-md rounded-lg border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                      <span className="text-xs font-mono text-muted-foreground block mb-3">FILTER_BY_TAG:</span>
+                      <div className="flex flex-wrap gap-2">
+                        {allTags.map(tag => (
+                          <button
+                            key={tag}
+                            onClick={() => toggleTag(tag)}
+                            className={`px-3 py-1.5 text-xs font-mono rounded border transition-all flex items-center gap-1.5 ${
+                              selectedTags.includes(tag)
+                                ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
+                                : 'bg-black/20 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
+                            }`}
+                            data-testid={`button-tag-${tag}`}
+                          >
+                            <Hash className="w-3 h-3" />
+                            {tag}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </>
                 )}
-              </button>
+              </div>
             </div>
             
-            {showTagFilter && (
-              <motion.div 
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                className="flex flex-wrap gap-2 items-center p-4 bg-black/20 rounded-lg border border-white/5"
-              >
-                <span className="text-xs font-mono text-muted-foreground mr-2 w-full mb-2">FILTER_BY_TAG:</span>
-                {allTags.map(tag => (
-                  <button
-                    key={tag}
-                    onClick={() => toggleTag(tag)}
-                    className={`px-3 py-1.5 text-xs font-mono rounded border transition-all flex items-center gap-1.5 ${
-                      selectedTags.includes(tag)
-                        ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
-                        : 'bg-black/20 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
-                    }`}
-                    data-testid={`button-tag-${tag}`}
-                  >
-                    <Hash className="w-3 h-3" />
-                    {tag}
-                  </button>
-                ))}
-              </motion.div>
-            )}
             
             {hasActiveFilters && (
               <div className="flex items-center justify-between text-sm font-mono">
