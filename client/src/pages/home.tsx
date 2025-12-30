@@ -44,6 +44,7 @@ const createSearchIndex = () => new MiniSearch<BlogPost>({
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [showTagFilter, setShowTagFilter] = useState(false);
   const miniSearchRef = useRef<MiniSearch<BlogPost> | null>(null);
   const indexedPostsRef = useRef<string>('');
   
@@ -196,45 +197,68 @@ export default function Home() {
       <section className="py-8 relative z-10 border-b border-white/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-4">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="SEARCH_KNOWLEDGE_BASE..."
-                className="w-full pl-12 pr-12 py-3 bg-black/40 border border-white/10 rounded-lg font-mono text-sm focus:outline-none focus:border-primary/50 focus:shadow-[0_0_10px_rgba(236,72,153,0.2)] transition-all placeholder:text-muted-foreground/50"
-                data-testid="input-search"
-              />
-              {searchQuery && (
-                <button 
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-white transition-colors"
-                  data-testid="button-clear-search"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
+            <div className="flex gap-2">
+              <div className="relative flex-1">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="SEARCH_KNOWLEDGE_BASE..."
+                  className="w-full pl-12 pr-12 py-3 bg-black/40 border border-white/10 rounded-lg font-mono text-sm focus:outline-none focus:border-primary/50 focus:shadow-[0_0_10px_rgba(236,72,153,0.2)] transition-all placeholder:text-muted-foreground/50"
+                  data-testid="input-search"
+                />
+                {searchQuery && (
+                  <button 
+                    onClick={() => setSearchQuery('')}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-white transition-colors"
+                    data-testid="button-clear-search"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
+              <button
+                onClick={() => setShowTagFilter(!showTagFilter)}
+                className={`px-4 py-3 rounded-lg border font-mono text-sm transition-all flex items-center gap-2 ${
+                  showTagFilter || selectedTags.length > 0
+                    ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
+                    : 'bg-black/40 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
+                }`}
+                data-testid="button-toggle-tags"
+              >
+                <Hash className="w-4 h-4" />
+                {selectedTags.length > 0 && (
+                  <span className="bg-primary text-white text-[10px] px-1.5 py-0.5 rounded-full">{selectedTags.length}</span>
+                )}
+              </button>
             </div>
             
-            <div className="flex flex-wrap gap-2 items-center">
-              <span className="text-xs font-mono text-muted-foreground mr-2">FILTER_BY_TAG:</span>
-              {allTags.map(tag => (
-                <button
-                  key={tag}
-                  onClick={() => toggleTag(tag)}
-                  className={`px-3 py-1.5 text-xs font-mono rounded border transition-all flex items-center gap-1.5 ${
-                    selectedTags.includes(tag)
-                      ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
-                      : 'bg-black/20 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
-                  }`}
-                  data-testid={`button-tag-${tag}`}
-                >
-                  <Hash className="w-3 h-3" />
-                  {tag}
-                </button>
-              ))}
-            </div>
+            {showTagFilter && (
+              <motion.div 
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="flex flex-wrap gap-2 items-center p-4 bg-black/20 rounded-lg border border-white/5"
+              >
+                <span className="text-xs font-mono text-muted-foreground mr-2 w-full mb-2">FILTER_BY_TAG:</span>
+                {allTags.map(tag => (
+                  <button
+                    key={tag}
+                    onClick={() => toggleTag(tag)}
+                    className={`px-3 py-1.5 text-xs font-mono rounded border transition-all flex items-center gap-1.5 ${
+                      selectedTags.includes(tag)
+                        ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
+                        : 'bg-black/20 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
+                    }`}
+                    data-testid={`button-tag-${tag}`}
+                  >
+                    <Hash className="w-3 h-3" />
+                    {tag}
+                  </button>
+                ))}
+              </motion.div>
+            )}
             
             {hasActiveFilters && (
               <div className="flex items-center justify-between text-sm font-mono">
