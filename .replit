@@ -23,6 +23,16 @@ build = ["npm", "run", "build"]
 run = ["node", "./dist/index.cjs"]
 publicDir = "dist/public"
 
+[[deployment.rewrites]]
+from = "/blog/*"
+to = "/index.html"
+[[deployment.rewrites]]
+from = "/series/*"
+to = "/index.html"
+[[deployment.rewrites]]
+from = "/*"
+to = "/index.html"
+
 [workflows]
 runButton = "Project"
 
