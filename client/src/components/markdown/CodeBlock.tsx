@@ -239,25 +239,29 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
   const isJsonCode = className?.includes('json') || 
                      (codeContent.trim().startsWith('{') && codeContent.trim().endsWith('}') && codeContent.includes('"') && !codeContent.includes('//'));
 
-  const hasMarkdownHeadings = codeContent.match(/^#{1,6}\s+\w/m);
+  const isYamlFileComment = codeContent.match(/^#\s*\S+\.ya?ml/m);
+  const hasYamlStructure = codeContent.includes(': ') && 
+                           !codeContent.includes('{') &&
+                           (codeContent.match(/^\s*\w+:\s*$/m) || codeContent.match(/^\w+:\s*\n/m));
+  
+  const isYamlCode = className?.includes('yaml') || className?.includes('yml') ||
+                     isYamlFileComment ||
+                     (hasYamlStructure && (
+                       codeContent.includes('.yaml') || codeContent.includes('.yml') || 
+                       (codeContent.match(/^\s*\w+:\s*$/m) && codeContent.includes('  - ')) ||
+                       (codeContent.match(/^- \w+:/m) && codeContent.match(/\n\s+\w+:/)) ||
+                       (codeContent.match(/^\w+:\s*\n/m) && codeContent.match(/\s{2,}\w+:/))
+                     ));
+  
+  const hasMarkdownHeadings = !isYamlCode && codeContent.match(/^#{1,6}\s+\w/m);
   const hasMarkdownCheckboxes = codeContent.includes('- [ ]') || codeContent.includes('- [x]');
-  const hasMultipleMarkdownHeadings = (codeContent.match(/^#{1,6}\s/gm) || []).length >= 2;
+  const hasMultipleMarkdownHeadings = !isYamlCode && (codeContent.match(/^#{1,6}\s/gm) || []).length >= 2;
   
   const isMarkdownCode = className?.includes('markdown') || className?.includes('md') ||
                          hasMultipleMarkdownHeadings ||
                          (hasMarkdownHeadings && hasMarkdownCheckboxes) ||
-                         (codeContent.includes('## ') && codeContent.includes('### ')) ||
-                         (codeContent.includes('# ') && codeContent.includes('## ') && !codeContent.includes('npm '));
-
-  const isYamlCode = className?.includes('yaml') || className?.includes('yml') ||
-                     (!isMarkdownCode && codeContent.includes(': ') && 
-                      !codeContent.includes('{') &&
-                      !hasMarkdownHeadings &&
-                      (codeContent.includes('.yaml') || codeContent.includes('.yml') || 
-                       codeContent.match(/^#\s*\w+.*\.ya?ml/m) ||
-                       (codeContent.match(/^\s*\w+:\s*$/m) && codeContent.includes('  - ')) ||
-                       (codeContent.match(/^- \w+:/m) && codeContent.match(/\n\s+\w+:/)) ||
-                       (codeContent.match(/^\w+:\s*\n/m) && codeContent.match(/\s{2,}\w+:/))));
+                         (!isYamlCode && codeContent.includes('## ') && codeContent.includes('### ')) ||
+                         (!isYamlCode && codeContent.includes('# ') && codeContent.includes('## ') && !codeContent.includes('npm '));
 
   const isBashCode = className?.includes('bash') || className?.includes('shell') || className?.includes('sh') ||
                      codeContent.includes('npm ') || codeContent.includes('npx ') ||
