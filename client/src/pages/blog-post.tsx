@@ -147,7 +147,7 @@ export default function BlogPostPage() {
                 </span>
               </div>
             )}
-            <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-white transition-all duration-300`} style={{ WebkitTextStroke: '1px black' }} data-testid="text-post-title">
+            <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-white transition-all duration-300`} style={{ textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000' }} data-testid="text-post-title">
               {post.title.replace(/\s*PART:\s*\d+$/i, '')}
             </h1>
           </div>
