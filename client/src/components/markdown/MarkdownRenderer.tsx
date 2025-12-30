@@ -116,11 +116,15 @@ const generateSlug = (text: string): string => {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 };
 
-const CyberH1 = ({ children }: { children: React.ReactNode }) => (
-  <h1 className="text-2xl md:text-4xl font-display font-bold text-white mt-6 md:mt-8 mb-4 md:mb-6 tracking-wide">
-    {children}
-  </h1>
-);
+const CyberH1 = ({ children }: { children: React.ReactNode }) => {
+  const text = extractText(children);
+  const cleanedTitle = text.replace(/^Part \d+:\s*/i, '');
+  return (
+    <h1 className="md:text-4xl font-display font-bold text-white mt-6 md:mt-8 mb-4 md:mb-6 tracking-wide text-[32px]">
+      {cleanedTitle}
+    </h1>
+  );
+};
 
 const CyberH2 = ({ children }: { children: React.ReactNode }) => {
   const text = extractText(children);
