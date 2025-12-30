@@ -283,7 +283,7 @@ export function MarkdownRenderer({ content, onHeadingsExtracted }: MarkdownRende
   }, [content]);
   
   useEffect(() => {
-    if (onHeadingsExtracted && headingsRef.current.length > 0) {
+    if (onHeadingsExtracted) {
       onHeadingsExtracted(headingsRef.current);
     }
   }, [content, onHeadingsExtracted]);
