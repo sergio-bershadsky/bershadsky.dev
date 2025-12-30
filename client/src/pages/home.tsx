@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight, Instagram, Youtube, Send } from 'lucide-react';
+import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight, Instagram, Youtube, Send, Brain, Layers, Rocket, BookOpen } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
@@ -9,6 +9,19 @@ import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { SeriesRail } from '@/components/SeriesRail';
 import avatarImage from '@assets/generated_images/cyberpunk_portrait_of_bearded_man_with_glasses.png';
 import type { BlogPost } from '@shared/schema';
+
+const getSeriesFromTitle = (title: string): { name: string; slug: string; icon: React.ReactNode; color: string } | null => {
+  if (title.startsWith('Second Brain:')) {
+    return { name: 'Second Brain', slug: 'second-brain-claude', icon: <Brain className="w-3 h-3" />, color: '#ec4899' };
+  }
+  if (title.startsWith('Architecture:')) {
+    return { name: 'Architecture', slug: 'architecture-fundamentals', icon: <Layers className="w-3 h-3" />, color: '#06b6d4' };
+  }
+  if (title.startsWith('Startup:')) {
+    return { name: 'Startup', slug: 'startup-playbook', icon: <Rocket className="w-3 h-3" />, color: '#9333ea' };
+  }
+  return null;
+};
 
 export default function Home() {
   const { data: blogPosts = [], isLoading } = useQuery<BlogPost[]>({
@@ -118,8 +131,23 @@ export default function Home() {
                        />
                      )}
                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                     <div className="absolute bottom-3 left-3 flex gap-2 z-10">
-                        {post.tags.map(tag => (
+                     <div className="absolute bottom-3 left-3 flex gap-2 z-10 flex-wrap">
+                        {(() => {
+                          const series = getSeriesFromTitle(post.title);
+                          if (series) {
+                            return (
+                              <span 
+                                className="text-[10px] bg-black/80 backdrop-blur px-2 py-1 border rounded flex items-center gap-1"
+                                style={{ borderColor: series.color, color: series.color }}
+                              >
+                                {series.icon}
+                                {series.name}
+                              </span>
+                            );
+                          }
+                          return null;
+                        })()}
+                        {post.tags.slice(0, 2).map(tag => (
                           <span key={tag} className="text-[10px] bg-black/80 backdrop-blur px-2 py-1 border border-white/20 text-white rounded">
                             {tag}
                           </span>
