@@ -83,6 +83,28 @@ registerDiagrams(meetingsDiagramEntries);
 registerDiagrams(decisionsDiagramEntries);
 registerDiagrams(capstoneDiagramEntries);
 
+const processInlineFormatting = (text: string, keyBase: string = ''): React.ReactNode => {
+  const parts: React.ReactNode[] = [];
+  let remaining = text;
+  let partIdx = 0;
+  
+  while (remaining.length > 0) {
+    const boldMatch = remaining.match(/\*\*(.+?)\*\*/);
+    if (boldMatch && boldMatch.index !== undefined) {
+      if (boldMatch.index > 0) {
+        parts.push(<span key={`${keyBase}-${partIdx++}`}>{remaining.slice(0, boldMatch.index)}</span>);
+      }
+      parts.push(<strong key={`${keyBase}-${partIdx++}`} className="font-semibold text-white">{boldMatch[1]}</strong>);
+      remaining = remaining.slice(boldMatch.index + boldMatch[0].length);
+    } else {
+      parts.push(<span key={`${keyBase}-${partIdx++}`}>{remaining}</span>);
+      break;
+    }
+  }
+  
+  return parts.length === 1 ? parts[0] : <>{parts}</>;
+};
+
 const renderSimpleMarkdown = (text: string) => {
   const lines = text.split('\n');
   const elements: React.ReactNode[] = [];
@@ -142,26 +164,26 @@ const renderSimpleMarkdown = (text: string) => {
     if (trimmed.startsWith('### ')) {
       elements.push(
         <h4 key={idx} className="text-secondary/80 font-medium text-xs mt-2 mb-1 uppercase tracking-wide">
-          {trimmed.replace(/^###\s*/, '')}
+          {processInlineFormatting(trimmed.replace(/^###\s*/, ''), `h4-${idx}`)}
         </h4>
       );
     } else if (trimmed.startsWith('## ')) {
       elements.push(
         <h3 key={idx} className="text-secondary font-semibold text-sm mt-3 mb-1.5 first:mt-0">
-          {trimmed.replace(/^##\s*/, '')}
+          {processInlineFormatting(trimmed.replace(/^##\s*/, ''), `h3-${idx}`)}
         </h3>
       );
     } else if (trimmed.startsWith('# ')) {
       elements.push(
         <h2 key={idx} className="text-primary font-bold text-base mt-3 mb-2 first:mt-0">
-          {trimmed.replace(/^#\s*/, '')}
+          {processInlineFormatting(trimmed.replace(/^#\s*/, ''), `h2-${idx}`)}
         </h2>
       );
     } else if (trimmed.startsWith('- [ ] ')) {
       elements.push(
         <div key={idx} className="flex items-start gap-2 text-xs text-gray-300 ml-2">
           <span className="w-3.5 h-3.5 border border-gray-500 rounded mt-0.5 flex-shrink-0" />
-          <span>{trimmed.replace('- [ ] ', '')}</span>
+          <span>{processInlineFormatting(trimmed.replace('- [ ] ', ''), `cb-${idx}`)}</span>
         </div>
       );
     } else if (trimmed.startsWith('- [x] ')) {
@@ -170,21 +192,21 @@ const renderSimpleMarkdown = (text: string) => {
           <span className="w-3.5 h-3.5 bg-green-500/30 border border-green-500 rounded mt-0.5 flex-shrink-0 flex items-center justify-center">
             <Check className="w-2.5 h-2.5 text-green-400" />
           </span>
-          <span>{trimmed.replace('- [x] ', '')}</span>
+          <span>{processInlineFormatting(trimmed.replace('- [x] ', ''), `cbx-${idx}`)}</span>
         </div>
       );
     } else if (trimmed.startsWith('- ')) {
       elements.push(
         <div key={idx} className="flex items-start gap-2 text-xs text-gray-300 ml-2">
           <span className="text-secondary mt-0.5">•</span>
-          <span>{trimmed.replace('- ', '')}</span>
+          <span>{processInlineFormatting(trimmed.replace('- ', ''), `li-${idx}`)}</span>
         </div>
       );
     } else if (trimmed.startsWith('---')) {
       elements.push(<div key={idx} className="border-t border-gray-600/50 my-2" />);
     } else {
       elements.push(
-        <p key={idx} className="text-xs text-gray-300">{trimmed}</p>
+        <p key={idx} className="text-xs text-gray-300">{processInlineFormatting(trimmed, `p-${idx}`)}</p>
       );
     }
   });
