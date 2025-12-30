@@ -33,3 +33,5 @@ export { pluginsDiagramEntries } from './diagrams/plugins';
 export { trackingDiagramEntries } from './diagrams/tracking';
 export { communicationDiagramEntries } from './diagrams/communication';
 export { meetingsDiagramEntries } from './diagrams/meetings';
+export { decisionsDiagramEntries } from './diagrams/decisions';
+export { capstoneDiagramEntries } from './diagrams/capstone';
