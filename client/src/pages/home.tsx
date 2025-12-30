@@ -194,7 +194,7 @@ export default function Home() {
       </section>
 
       {/* Search & Filter Section */}
-      <section className="py-8 relative z-10 border-b border-white/5">
+      <section className="py-8 relative z-20 border-b border-white/5">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto space-y-4">
             <div className="flex gap-2">
