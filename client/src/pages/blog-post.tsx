@@ -33,8 +33,6 @@ export default function BlogPostPage() {
   
   const postSlug = params.slug;
   
-  console.log('[BlogPost] URL:', window.location.pathname, 'params:', params, 'slug:', postSlug);
-  
   const { data: post, isLoading, isError } = useQuery<BlogPostWithSeries>({
     queryKey: ['/api/blog-posts', postSlug],
     queryFn: async () => {
