@@ -169,11 +169,13 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
 
   const isYamlCode = className?.includes('yaml') || className?.includes('yml') ||
                      (codeContent.includes(': ') && 
-                      (codeContent.includes('- ') || codeContent.match(/^\w+:/m)) &&
                       !codeContent.includes('{') &&
+                      !codeContent.includes('## ') &&
                       (codeContent.includes('.yaml') || codeContent.includes('.yml') || 
                        codeContent.match(/^#\s*\w+.*\.ya?ml/m) ||
-                       (codeContent.match(/^\s*\w+:\s*$/m) && codeContent.includes('  - '))));
+                       (codeContent.match(/^\s*\w+:\s*$/m) && codeContent.includes('  - ')) ||
+                       (codeContent.match(/^- \w+:/m) && codeContent.match(/\n\s+\w+:/)) ||
+                       (codeContent.match(/^\w+:\s*\n/m) && codeContent.match(/\s{2,}\w+:/))));
 
   const isMarkdownCode = className?.includes('markdown') || className?.includes('md') ||
                          (codeContent.includes('## ') && codeContent.includes('### ')) ||
