@@ -8,7 +8,7 @@ import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { SeriesRail } from '@/components/SeriesRail';
 import avatarImage from '@assets/generated_images/cyberpunk_portrait_of_bearded_man_with_glasses.png';
-import type { BlogPost } from '@shared/schema';
+import { getAllBlogPosts, type BlogPost } from '@/lib/dataLoader';
 
 const getSeriesFromTitle = (title: string): { name: string; slug: string; icon: React.ReactNode; color: string } | null => {
   if (title.startsWith('Second Brain:')) {
@@ -25,12 +25,8 @@ const getSeriesFromTitle = (title: string): { name: string; slug: string; icon: 
 
 export default function Home() {
   const { data: blogPosts = [], isLoading } = useQuery<BlogPost[]>({
-    queryKey: ['/api/blog-posts'],
-    queryFn: async () => {
-      const response = await fetch('/api/blog-posts');
-      if (!response.ok) throw new Error('Failed to fetch blog posts');
-      return response.json();
-    }
+    queryKey: ['blog-posts'],
+    queryFn: getAllBlogPosts
   });
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">

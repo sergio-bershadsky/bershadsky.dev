@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft, ArrowRight, Clock, Hash, Brain, Layers, Rocket, BookOpen } from 'lucide-react';
 import { NeonCard, CyberButton } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
-import type { SeriesWithPosts } from '@shared/schema';
+import { getSeriesWithPosts, type SeriesWithPosts } from '@/lib/dataLoader';
 
 const getSeriesIcon = (slug: string, accentColor: string) => {
   const iconProps = { className: "w-16 h-16", style: { color: accentColor } };
@@ -24,13 +24,9 @@ const getSeriesIcon = (slug: string, accentColor: string) => {
 export default function SeriesPage() {
   const [match, params] = useRoute("/series/:slug");
   
-  const { data: seriesData, isLoading } = useQuery<SeriesWithPosts>({
-    queryKey: ['/api/series', params?.slug],
-    queryFn: async () => {
-      const response = await fetch(`/api/series/${params?.slug}`);
-      if (!response.ok) throw new Error('Failed to fetch series');
-      return response.json();
-    },
+  const { data: seriesData, isLoading } = useQuery<SeriesWithPosts | null>({
+    queryKey: ['series', params?.slug],
+    queryFn: () => getSeriesWithPosts(params?.slug || ''),
     enabled: !!params?.slug
   });
 
