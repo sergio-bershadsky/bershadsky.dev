@@ -132,7 +132,7 @@ export default function BlogPostPage() {
             />
           )}
           
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-20">
+          <div className="absolute top-0 left-0 right-0 p-6 md:p-10 z-20">
             {post.series && (
               <div className="flex items-center gap-3 mb-3">
                 <a 
@@ -147,7 +147,7 @@ export default function BlogPostPage() {
                 </span>
               </div>
             )}
-            <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-white drop-shadow-lg transition-all duration-300`} style={{ WebkitTextStroke: '2px black', textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }} data-testid="text-post-title">
+            <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-white transition-all duration-300`} style={{ WebkitTextStroke: '1px black' }} data-testid="text-post-title">
               {post.title.replace(/\s*PART:\s*\d+$/i, '')}
             </h1>
           </div>
