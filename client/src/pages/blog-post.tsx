@@ -168,7 +168,7 @@ export default function BlogPostPage() {
 
         <div className="max-w-4xl mx-auto mb-6 px-4 sm:px-0">
           <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
-            <Link href="/" className="flex items-center gap-2 px-3 py-1.5 rounded border border-white/20 bg-white/5 text-white hover:text-primary hover:border-primary/50 transition-colors group" data-testid="link-back">
+            <Link href="/" className="flex items-center gap-2 px-3 py-1.5 rounded border border-white/20 bg-white/5 text-white hover:text-primary hover:border-primary/50 transition-colors group w-full sm:w-auto" data-testid="link-back">
               <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" />
               BACK
             </Link>
