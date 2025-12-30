@@ -120,7 +120,7 @@ const CyberH1 = ({ children }: { children: React.ReactNode }) => {
   const text = extractText(children);
   const cleanedTitle = text.replace(/^Part \d+:\s*/i, '');
   return (
-    <h1 className="md:text-4xl font-display font-bold text-white mt-6 md:mt-8 mb-4 md:mb-6 tracking-wide text-[28px]">
+    <h1 className="text-[24px] md:text-[28px] font-display font-bold text-white mt-6 md:mt-8 mb-4 md:mb-6 tracking-wide">
       {cleanedTitle}
     </h1>
   );
@@ -130,7 +130,7 @@ const CyberH2 = ({ children }: { children: React.ReactNode }) => {
   const text = extractText(children);
   const id = generateSlug(text);
   return (
-    <h2 id={id} className="text-[24px] md:text-3xl font-display font-bold text-white mt-8 md:mt-12 mb-4 md:mb-6 tracking-wide scroll-mt-24">
+    <h2 id={id} className="text-[20px] md:text-[24px] font-display font-bold text-white mt-8 md:mt-12 mb-4 md:mb-6 tracking-wide scroll-mt-24">
       {children}
     </h2>
   );
@@ -140,9 +140,19 @@ const CyberH3 = ({ children }: { children: React.ReactNode }) => {
   const text = extractText(children);
   const id = generateSlug(text);
   return (
-    <h3 id={id} className="text-lg md:text-2xl font-display font-semibold text-white mt-6 md:mt-8 mb-3 md:mb-4 scroll-mt-24">
+    <h3 id={id} className="text-[18px] md:text-[20px] font-display font-semibold text-white mt-6 md:mt-8 mb-3 md:mb-4 scroll-mt-24">
       {children}
     </h3>
+  );
+};
+
+const CyberH4 = ({ children }: { children: React.ReactNode }) => {
+  const text = extractText(children);
+  const id = generateSlug(text);
+  return (
+    <h4 id={id} className="text-[16px] md:text-[18px] font-display font-semibold text-white mt-4 md:mt-6 mb-2 md:mb-3 scroll-mt-24">
+      {children}
+    </h4>
   );
 };
 
