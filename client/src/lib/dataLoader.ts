@@ -16,6 +16,9 @@ interface RawBlogPost {
   published_at: string | null;
   content: string;
   audience: string;
+  seo_title?: string | null;
+  seo_description?: string | null;
+  seo_keywords?: string | null;
 }
 
 interface RawSeries {
@@ -77,6 +80,9 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
       status: post.status,
       publishedAt: post.published_at,
       audience: post.audience,
+      seoTitle: post.seo_title,
+      seoDescription: post.seo_description,
+      seoKeywords: post.seo_keywords,
     };
   }));
   
