@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, FileText, Lightbulb, Zap, ClipboardList, File, RefreshCw, CheckCircle, XCircle, Folder, FolderOpen, ArrowDown } from 'lucide-react';
+import { Search, FileText, Lightbulb, Zap, ClipboardList, File, RefreshCw, CheckCircle, XCircle, Folder, FolderOpen, ArrowDown, ArrowRight, Play, MessageSquare } from 'lucide-react';
 import { DiagramEntry } from '../diagramRegistry';
 
 export const SkillPatternsDiagram = () => (
@@ -184,6 +184,85 @@ export const SkillsFolderStructureDiagram = () => {
   );
 };
 
+export const SkillDefinitionDiagram = ({ content }: { content: string }) => {
+  const lines = content.split('\n');
+  let skillName = '';
+  let whenTrigger = '';
+  const steps: string[] = [];
+  let output = '';
+  let inDo = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('SKILL:')) {
+      skillName = trimmed.replace('SKILL:', '').trim();
+    } else if (trimmed.startsWith('WHEN:')) {
+      whenTrigger = trimmed.replace('WHEN:', '').trim();
+    } else if (trimmed === 'DO:') {
+      inDo = true;
+    } else if (trimmed.startsWith('OUTPUT:')) {
+      inDo = false;
+      output = trimmed.replace('OUTPUT:', '').trim();
+    } else if (inDo && trimmed.match(/^\d+\./)) {
+      steps.push(trimmed.replace(/^\d+\.\s*/, ''));
+    }
+  }
+
+  return (
+    <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-accent mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Zap className="w-4 h-4 text-accent" />
+          <span>{skillName || 'SKILL'}</span>
+        </div>
+        <span className="text-xs text-muted-foreground">DEFINITION</span>
+      </div>
+      
+      {whenTrigger && (
+        <div className="flex items-center gap-3 mb-4 p-3 border border-secondary/30 rounded bg-secondary/5">
+          <Play className="w-4 h-4 text-secondary flex-shrink-0" />
+          <div>
+            <div className="text-xs font-mono text-secondary mb-1">WHEN</div>
+            <div className="text-sm text-gray-300">{whenTrigger}</div>
+          </div>
+        </div>
+      )}
+      
+      {steps.length > 0 && (
+        <div className="mb-4">
+          <div className="text-xs font-mono text-primary mb-2 flex items-center gap-2">
+            <ClipboardList className="w-3 h-3" />
+            DO
+          </div>
+          <div className="space-y-2">
+            {steps.map((step, i) => (
+              <div key={i} className="flex items-center gap-3 p-2 border border-white/10 rounded bg-white/5">
+                <div className="w-6 h-6 rounded-full border border-primary/50 bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-mono text-xs">{i + 1}</span>
+                </div>
+                <span className="text-sm text-gray-300">{step}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      
+      {output && (
+        <div className="p-3 border border-green-500/30 rounded bg-green-500/5">
+          <div className="flex items-center gap-2 mb-1">
+            <MessageSquare className="w-4 h-4 text-green-400" />
+            <span className="font-mono text-xs text-green-400">OUTPUT</span>
+          </div>
+          <div className="text-sm text-green-300 pl-6">{output}</div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const detectSkillDefinition = (content: string) => 
+  content.includes('SKILL:') && content.includes('WHEN:') && content.includes('DO:') && content.includes('OUTPUT:');
+
 export const detectSkillPatterns = (content: string) => 
   content.includes('SKILL PATTERNS') && content.includes('GATHER') && content.includes('GENERATE') && content.includes('ANALYZE');
 
@@ -200,6 +279,7 @@ export const detectSkillsFolderStructure = (content: string) =>
   content.includes('your-second-brain/') && content.includes('skills/') && content.includes('SKILL.md');
 
 export const skillsDiagramEntries: DiagramEntry[] = [
+  { id: 'skill-definition', detect: detectSkillDefinition, component: SkillDefinitionDiagram, passContent: true },
   { id: 'skill-patterns', detect: detectSkillPatterns, component: SkillPatternsDiagram },
   { id: 'without-vs-with-skills', detect: detectWithoutVsWithSkills, component: WithoutVsWithSkillsDiagram },
   { id: 'skill-candidates', detect: detectSkillCandidates, component: SkillCandidatesDiagram },
