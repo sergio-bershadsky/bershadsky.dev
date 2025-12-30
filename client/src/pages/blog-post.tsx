@@ -110,7 +110,7 @@ export default function BlogPostPage() {
           </div>
         </div>
       </nav>
-      <div className="container mx-auto px-4 pt-24 pb-20">
+      <div className="container mx-auto px-4 pt-24 pb-20 pl-[0px] pr-[0px]">
         <motion.div 
           layout
           className={`relative rounded-lg overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(236,72,153,0.2)] mb-10 group transition-all duration-500 ease-in-out ${
@@ -164,7 +164,7 @@ export default function BlogPostPage() {
                   </span>
                 </div>
               )}
-              <h1 className="md:text-6xl font-display font-bold text-white transition-all duration-300 text-[48px]" style={{ textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000' }} data-testid="text-post-title">
+              <h1 className="text-[24px] md:text-[46px] font-display font-bold text-white transition-all duration-300" style={{ textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000' }} data-testid="text-post-title">
                 {post.title.replace(/\s*PART:\s*\d+$/i, '')}
               </h1>
             </div>
