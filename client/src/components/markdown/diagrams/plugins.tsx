@@ -214,6 +214,10 @@ export const DistributionOptionsDiagram = () => (
       <span>FIG 7.3 // DISTRIBUTION_OPTIONS</span>
       <span className="text-xs text-muted-foreground">COMPARISON</span>
     </div>
+    <div className="text-center mb-4 pb-4 border-b border-white/10">
+      <div className="text-lg font-display font-semibold text-white mb-1">How do you want to share your plugin?</div>
+      <div className="text-xs text-gray-400">Choose the distribution method that fits your team's workflow</div>
+    </div>
     <div className="space-y-3">
       {[
         { 
