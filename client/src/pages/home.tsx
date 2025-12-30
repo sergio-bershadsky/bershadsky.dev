@@ -234,34 +234,36 @@ export default function Home() {
               </button>
             </div>
             
-            {showTagFilter && (
-              <>
-                <div 
-                  className="fixed inset-0 z-40" 
-                  onClick={() => setShowTagFilter(false)}
-                />
-                <div className="absolute left-0 right-0 top-full mt-2 z-50 p-4 bg-black/95 backdrop-blur-md rounded-lg border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-                  <span className="text-xs font-mono text-muted-foreground block mb-3">FILTER_BY_TAG:</span>
-                  <div className="flex flex-wrap gap-2">
-                    {allTags.map(tag => (
-                      <button
-                        key={tag}
-                        onClick={() => toggleTag(tag)}
-                        className={`px-3 py-1.5 text-xs font-mono rounded border transition-all flex items-center gap-1.5 ${
-                          selectedTags.includes(tag)
-                            ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
-                            : 'bg-black/20 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
-                        }`}
-                        data-testid={`button-tag-${tag}`}
-                      >
-                        <Hash className="w-3 h-3" />
-                        {tag}
-                      </button>
-                    ))}
+            <div className="h-0 overflow-visible relative">
+              {showTagFilter && (
+                <>
+                  <div 
+                    className="fixed inset-0 z-40" 
+                    onClick={() => setShowTagFilter(false)}
+                  />
+                  <div className="absolute left-0 right-0 top-0 mt-2 z-50 p-4 bg-black/95 backdrop-blur-md rounded-lg border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                    <span className="text-xs font-mono text-muted-foreground block mb-3">FILTER_BY_TAG:</span>
+                    <div className="flex flex-wrap gap-2">
+                      {allTags.map(tag => (
+                        <button
+                          key={tag}
+                          onClick={() => toggleTag(tag)}
+                          className={`px-3 py-1.5 text-xs font-mono rounded border transition-all flex items-center gap-1.5 ${
+                            selectedTags.includes(tag)
+                              ? 'bg-primary/20 border-primary text-primary shadow-[0_0_10px_rgba(236,72,153,0.3)]'
+                              : 'bg-black/20 border-white/10 text-muted-foreground hover:border-white/30 hover:text-white'
+                          }`}
+                          data-testid={`button-tag-${tag}`}
+                        >
+                          <Hash className="w-3 h-3" />
+                          {tag}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </>
-            )}
+                </>
+              )}
+            </div>
             
             
             {hasActiveFilters && (
