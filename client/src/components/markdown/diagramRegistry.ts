@@ -31,3 +31,4 @@ export { skillsDiagramEntries } from './diagrams/skills';
 export { hooksDiagramEntries } from './diagrams/hooks';
 export { pluginsDiagramEntries } from './diagrams/plugins';
 export { trackingDiagramEntries } from './diagrams/tracking';
+export { communicationDiagramEntries } from './diagrams/communication';

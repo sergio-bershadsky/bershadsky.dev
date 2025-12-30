@@ -10,6 +10,7 @@ import { skillsDiagramEntries } from './diagrams/skills';
 import { hooksDiagramEntries } from './diagrams/hooks';
 import { pluginsDiagramEntries } from './diagrams/plugins';
 import { trackingDiagramEntries } from './diagrams/tracking';
+import { communicationDiagramEntries } from './diagrams/communication';
 import { registerDiagrams } from './diagramRegistry';
 
 const cyberpunkTheme: { [key: string]: React.CSSProperties } = {
@@ -74,6 +75,7 @@ registerDiagrams(skillsDiagramEntries);
 registerDiagrams(hooksDiagramEntries);
 registerDiagrams(pluginsDiagramEntries);
 registerDiagrams(trackingDiagramEntries);
+registerDiagrams(communicationDiagramEntries);
 
 export const ChatConversationDiagram = ({ content }: { content: string }) => {
   const lines = content.split('\n').filter(line => line.trim());
