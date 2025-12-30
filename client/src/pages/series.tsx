@@ -2,10 +2,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRoute, Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, ArrowRight, Clock, Hash } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock, Hash, Brain, Layers, Rocket, BookOpen } from 'lucide-react';
 import { NeonCard, CyberButton } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import type { SeriesWithPosts } from '@shared/schema';
+
+const getSeriesIcon = (slug: string, accentColor: string) => {
+  const iconProps = { className: "w-16 h-16", style: { color: accentColor } };
+  switch (slug) {
+    case 'second-brain-claude':
+      return <Brain {...iconProps} />;
+    case 'architecture-fundamentals':
+      return <Layers {...iconProps} />;
+    case 'startup-playbook':
+      return <Rocket {...iconProps} />;
+    default:
+      return <BookOpen {...iconProps} />;
+  }
+};
 
 export default function SeriesPage() {
   const [match, params] = useRoute("/series/:slug");
@@ -78,7 +92,7 @@ export default function SeriesPage() {
                 background: `linear-gradient(135deg, ${seriesData.accentColor || '#ec4899'}, ${seriesData.accentColor ? seriesData.accentColor + '60' : '#06b6d4'})`,
               }}
             >
-              <div className="w-full h-full rounded-full overflow-hidden bg-background p-[3px]">
+              <div className="w-full h-full rounded-full overflow-hidden bg-black/40 flex items-center justify-center">
                 {seriesData.coverImageUrl ? (
                   <img 
                     src={seriesData.coverImageUrl} 
@@ -86,12 +100,7 @@ export default function SeriesPage() {
                     className="w-full h-full object-cover rounded-full"
                   />
                 ) : (
-                  <div 
-                    className="w-full h-full rounded-full flex items-center justify-center text-4xl font-display font-bold"
-                    style={{ color: seriesData.accentColor || '#ec4899' }}
-                  >
-                    {seriesData.title.charAt(0)}
-                  </div>
+                  getSeriesIcon(seriesData.slug, seriesData.accentColor || '#ec4899')
                 )}
               </div>
             </div>
