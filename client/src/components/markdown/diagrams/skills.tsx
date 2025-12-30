@@ -260,6 +260,76 @@ export const SkillDefinitionDiagram = ({ content }: { content: string }) => {
   );
 };
 
+export const SkillTypeDiagram = ({ content }: { content: string }) => {
+  const lines = content.split('\n');
+  let purpose = '';
+  let examples: string[] = [];
+  let flow: string[] = [];
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('Purpose:')) {
+      purpose = trimmed.replace('Purpose:', '').trim();
+    } else if (trimmed.startsWith('Example:')) {
+      const exampleStr = trimmed.replace('Example:', '').trim();
+      examples = exampleStr.split(',').map(e => e.trim());
+    } else if (trimmed.startsWith('Flow:')) {
+      const flowStr = trimmed.replace('Flow:', '').trim();
+      flow = flowStr.split('→').map(f => f.trim());
+    }
+  }
+
+  return (
+    <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+        <span>SKILL_TYPE</span>
+        <span className="text-xs text-muted-foreground">PATTERN</span>
+      </div>
+      
+      {purpose && (
+        <div className="mb-4">
+          <div className="text-xs font-mono text-gray-500 mb-1">PURPOSE</div>
+          <div className="text-sm text-gray-300">{purpose}</div>
+        </div>
+      )}
+      
+      {examples.length > 0 && (
+        <div className="mb-4">
+          <div className="text-xs font-mono text-gray-500 mb-2">EXAMPLES</div>
+          <div className="flex flex-wrap gap-2">
+            {examples.map((ex, i) => (
+              <span key={i} className="px-2 py-1 bg-primary/20 border border-primary/40 rounded font-mono text-xs text-primary">
+                {ex}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      
+      {flow.length > 0 && (
+        <div>
+          <div className="text-xs font-mono text-gray-500 mb-2">FLOW</div>
+          <div className="flex items-center gap-2 flex-wrap">
+            {flow.map((step, i) => (
+              <React.Fragment key={i}>
+                <span className="px-3 py-1.5 bg-secondary/10 border border-secondary/30 rounded font-mono text-xs text-secondary">
+                  {step}
+                </span>
+                {i < flow.length - 1 && (
+                  <ArrowRight className="w-4 h-4 text-secondary/50 flex-shrink-0" />
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const detectSkillType = (content: string) => 
+  content.includes('Purpose:') && content.includes('Example:') && content.includes('Flow:') && content.includes('→');
+
 export const detectSkillDefinition = (content: string) => 
   content.includes('SKILL:') && content.includes('WHEN:') && content.includes('DO:') && content.includes('OUTPUT:');
 
@@ -279,6 +349,7 @@ export const detectSkillsFolderStructure = (content: string) =>
   content.includes('your-second-brain/') && content.includes('skills/') && content.includes('SKILL.md');
 
 export const skillsDiagramEntries: DiagramEntry[] = [
+  { id: 'skill-type', detect: detectSkillType, component: SkillTypeDiagram, passContent: true },
   { id: 'skill-definition', detect: detectSkillDefinition, component: SkillDefinitionDiagram, passContent: true },
   { id: 'skill-patterns', detect: detectSkillPatterns, component: SkillPatternsDiagram },
   { id: 'without-vs-with-skills', detect: detectWithoutVsWithSkills, component: WithoutVsWithSkillsDiagram },
