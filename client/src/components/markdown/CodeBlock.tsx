@@ -83,8 +83,55 @@ const renderSimpleMarkdown = (text: string) => {
   const lines = text.split('\n');
   const elements: React.ReactNode[] = [];
   
+  let tableRows: string[][] = [];
+  let inTable = false;
+  
+  const flushTable = (keyPrefix: number) => {
+    if (tableRows.length > 0) {
+      const headerRow = tableRows[0];
+      const dataRows = tableRows.slice(2);
+      elements.push(
+        <div key={`table-${keyPrefix}`} className="overflow-x-auto my-2">
+          <table className="text-xs border-collapse w-full">
+            <thead>
+              <tr className="border-b border-secondary/40">
+                {headerRow.map((cell, ci) => (
+                  <th key={ci} className="text-left px-2 py-1 text-secondary font-medium">{cell.trim()}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {dataRows.map((row, ri) => (
+                <tr key={ri} className="border-b border-gray-700/30">
+                  {row.map((cell, ci) => (
+                    <td key={ci} className="px-2 py-1 text-gray-300">{cell.trim()}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+      tableRows = [];
+    }
+    inTable = false;
+  };
+  
   lines.forEach((line, idx) => {
     const trimmed = line.trim();
+    
+    if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+      inTable = true;
+      if (trimmed.match(/^\|[\s\-:|]+\|$/)) {
+        return;
+      }
+      const cells = trimmed.split('|').slice(1, -1);
+      tableRows.push(cells);
+      return;
+    } else if (inTable) {
+      flushTable(idx);
+    }
+    
     if (!trimmed) return;
     if (trimmed === '#' || trimmed === '##' || trimmed === '###') return;
     
@@ -138,6 +185,10 @@ const renderSimpleMarkdown = (text: string) => {
     }
   });
   
+  if (inTable) {
+    flushTable(lines.length);
+  }
+  
   return elements;
 };
 
@@ -176,7 +227,8 @@ export const ChatConversationDiagram = ({ content }: { content: string }) => {
   const hasMarkdownContent = (text: string) => 
     text.includes('## ') || text.includes('### ') || 
     text.includes('- [ ]') || text.includes('- [x]') ||
-    (text.includes('- ') && text.includes('\n'));
+    (text.includes('- ') && text.includes('\n')) ||
+    (text.includes('|') && text.match(/\|.*\|/));
   
   return (
     <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
