@@ -260,7 +260,7 @@ export const ScrollableDiagram = ({
   };
 
   return (
-    <div className={`relative ${className}`}>
+    <div className={`relative w-full max-w-full overflow-hidden ${className}`}>
       {canScrollLeft && (
         <button
           onClick={() => scroll('left')}
@@ -272,7 +272,7 @@ export const ScrollableDiagram = ({
       )}
       <div
         ref={scrollRef}
-        className="overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent"
+        className="w-full overflow-x-auto scrollbar-thin scrollbar-thumb-white/20 scrollbar-track-transparent"
       >
         {children}
       </div>
