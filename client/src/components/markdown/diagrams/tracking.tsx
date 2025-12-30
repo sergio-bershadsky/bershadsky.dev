@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Database, Folder, FolderOpen, FileCode, CheckCircle, XCircle, GitBranch, Search, Zap, HelpCircle, ClipboardList, MessageSquare, BarChart3, ArrowRight, User } from 'lucide-react';
+import { FileText, Database, Folder, FolderOpen, FileCode, CheckCircle, XCircle, GitBranch, Search, Zap, HelpCircle, ClipboardList, MessageSquare, BarChart3, ArrowRight } from 'lucide-react';
 import type { DiagramEntry } from '../diagramRegistry';
 
 export const MarkdownVsStructuredDiagram = () => (
@@ -449,8 +449,9 @@ export const trackingDiagramEntries: DiagramEntry[] = [
     detect: (content: string) => 
       content.includes('MARKDOWN FILES') && 
       content.includes('STRUCTURED DATA') && 
+      content.includes('──────────────────') &&
       content.includes('Read 50 files') &&
-      content.includes('Read 1 file'),
+      content.includes('0.1 seconds'),
     component: MarkdownVsStructuredDiagram,
   },
   {
@@ -458,34 +459,38 @@ export const trackingDiagramEntries: DiagramEntry[] = [
     detect: (content: string) =>
       content.includes('YAML') &&
       content.includes('JSON') &&
-      content.includes('Human-friendly') &&
-      content.includes('Strict validation') &&
-      content.includes('USE BOTH TOGETHER'),
+      content.includes('────') &&
+      content.includes('Human-friendly format') &&
+      content.includes('Use both together:') &&
+      content.includes('config.yaml') &&
+      content.includes('schema.json'),
     component: YamlVsJsonDiagram,
   },
   {
     id: 'minimal-schema',
     detect: (content: string) =>
-      content.includes('BAD: Overengineered') &&
+      content.includes('BAD: Overengineered from day one') &&
       content.includes('GOOD: Just what you need') &&
-      content.includes('decision-uuid'),
+      content.includes('decision-uuid-123-abc') &&
+      content.includes('status_history'),
     component: MinimalSchemaDiagram,
   },
   {
     id: 'field-questions',
     detect: (content: string) =>
       content.includes('DECISION RECORD') &&
-      content.includes('Which decision?') &&
-      content.includes('What was decided?'),
+      content.includes('───────────────') &&
+      content.includes('→ "Which decision?"') &&
+      content.includes('→ "What was decided?"') &&
+      content.includes('→ "Where\'s the detail?"'),
     component: FieldQuestionsDiagram,
   },
   {
     id: 'normalized-vs-denormalized',
     detect: (content: string) =>
-      content.includes('NORMALIZED') &&
-      content.includes('DENORMALIZED') &&
-      content.includes('participant_ids') &&
-      content.includes('self-contained'),
+      content.includes('NORMALIZED (requires lookups)') &&
+      content.includes('DENORMALIZED (self-contained)') &&
+      content.includes('participant_ids: [101, 102]'),
     component: NormalizedVsDenormalizedDiagram,
   },
   {
@@ -493,37 +498,41 @@ export const trackingDiagramEntries: DiagramEntry[] = [
     detect: (content: string) =>
       content.includes('BAD') &&
       content.includes('GOOD') &&
+      content.includes('───') &&
       content.includes('n: 1') &&
       content.includes('t: "Thing"') &&
-      content.includes('s: "p"'),
+      content.includes('s: "p"') &&
+      content.includes('d: "2024-01-15"'),
     component: AbbreviationsDiagram,
   },
   {
     id: 'core-entities',
     detect: (content: string) =>
       content.includes('CORE ENTITIES') &&
+      content.includes('─────────────────────────────────────────') &&
       content.includes('DECISIONS') &&
       content.includes('DISCUSSIONS') &&
-      content.includes('REPORTS'),
+      content.includes('REPORTS') &&
+      content.includes('─────────'),
     component: CoreEntitiesDiagram,
   },
   {
     id: 'tracking-folder-structure',
     detect: (content: string) =>
       content.includes('.claude/data/') &&
+      content.includes('├── config.yaml') &&
       content.includes('decisions/') &&
-      content.includes('discussions/') &&
-      content.includes('schema.json'),
+      content.includes('│   ├── schema.json') &&
+      content.includes('│   └── records.yaml'),
     component: TrackingFolderStructureDiagram,
   },
   {
     id: 'validation-flow',
     detect: (content: string) =>
       content.includes('VALIDATION FLOW') &&
-      content.includes('Load data') &&
-      content.includes('Make changes') &&
-      content.includes('Validate') &&
-      content.includes('Save'),
+      content.includes('───────────────────────────────────────────') &&
+      content.includes('Load data → Make changes → Validate → Save') &&
+      content.includes('If invalid:'),
     component: ValidationFlowDiagram,
   },
   {
@@ -531,8 +540,10 @@ export const trackingDiagramEntries: DiagramEntry[] = [
     detect: (content: string) =>
       content.includes('BEFORE TRACKING') &&
       content.includes('AFTER TRACKING') &&
-      content.includes('scan 50 files') &&
-      content.includes('one file read'),
+      content.includes('───────────────') &&
+      content.includes('→ scan 50 files') &&
+      content.includes('→ one file read') &&
+      content.includes('→ grep and hope'),
     component: BeforeAfterTrackingDiagram,
   },
 ];
