@@ -3,7 +3,8 @@ import React from 'react';
 export interface DiagramEntry {
   id: string;
   detect: (content: string) => boolean;
-  component: React.ComponentType;
+  component: React.ComponentType<any>;
+  passContent?: boolean;
 }
 
 const registry: DiagramEntry[] = [];

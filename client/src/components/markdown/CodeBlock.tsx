@@ -335,6 +335,9 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
   const diagramEntry = findDiagram(codeContent);
   if (diagramEntry) {
     const DiagramComponent = diagramEntry.component;
+    if (diagramEntry.passContent) {
+      return <DiagramComponent content={codeContent} />;
+    }
     return <DiagramComponent />;
   }
 

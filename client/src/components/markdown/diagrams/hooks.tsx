@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, RefreshCw, ArrowDown, ArrowRight, FileText, CheckCircle, XCircle, File, FolderOpen, AlertTriangle, Wrench } from 'lucide-react';
+import { Zap, RefreshCw, ArrowDown, ArrowRight, FileText, CheckCircle, XCircle, File, FolderOpen, AlertTriangle, Wrench, Play, HelpCircle, MessageSquare, Square } from 'lucide-react';
 import { DiagramEntry } from '../diagramRegistry';
 
 export const SkillsVsHooksDiagram = () => (
@@ -254,6 +254,145 @@ export const HookSpectrumDiagram = () => (
   </div>
 );
 
+export const HookExecutionFlowDiagram = ({ content }: { content: string }) => {
+  const lines = content.split('\n');
+  let trigger = '', check = '', action = '', output = '';
+  let inOutput = false;
+  const outputLines: string[] = [];
+
+  for (const line of lines) {
+    if (line.startsWith('TRIGGER:')) {
+      trigger = line.replace('TRIGGER:', '').trim();
+    } else if (line.startsWith('CHECK:')) {
+      check = line.replace('CHECK:', '').trim();
+    } else if (line.startsWith('ACTION:')) {
+      action = line.replace('ACTION:', '').trim();
+    } else if (line.startsWith('Output:')) {
+      inOutput = true;
+      const inlineOutput = line.replace('Output:', '').trim();
+      if (inlineOutput) {
+        outputLines.push(inlineOutput.replace(/^["']|["']$/g, ''));
+      }
+    } else if (inOutput && line.trim()) {
+      outputLines.push(line.replace(/^["']|["']$/g, '').trim());
+    }
+  }
+  output = outputLines.join(' ').replace(/^["']|["']$/g, '');
+
+  return (
+    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-primary mb-4 flex justify-between">
+        <span>HOOK_EXECUTION</span>
+        <span className="text-xs text-muted-foreground">FLOW</span>
+      </div>
+      <div className="flex flex-col gap-3">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 px-3 py-2 border border-primary/40 rounded bg-primary/10 flex-shrink-0">
+            <Play className="w-4 h-4 text-primary" />
+            <span className="font-mono text-xs text-primary">TRIGGER</span>
+          </div>
+          <ArrowRight className="w-4 h-4 text-primary flex-shrink-0" />
+          <div className="text-sm text-gray-300">{trigger}</div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 px-3 py-2 border border-secondary/40 rounded bg-secondary/10 flex-shrink-0">
+            <HelpCircle className="w-4 h-4 text-secondary" />
+            <span className="font-mono text-xs text-secondary">CHECK</span>
+          </div>
+          <ArrowRight className="w-4 h-4 text-secondary flex-shrink-0" />
+          <div className="text-sm text-gray-300">{check}</div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 px-3 py-2 border border-accent/40 rounded bg-accent/10 flex-shrink-0">
+            <Zap className="w-4 h-4 text-accent" />
+            <span className="font-mono text-xs text-accent">ACTION</span>
+          </div>
+          <ArrowRight className="w-4 h-4 text-accent flex-shrink-0" />
+          <div className="text-sm text-gray-300">{action}</div>
+        </div>
+        {output && (
+          <div className="mt-2 p-3 border border-green-500/30 rounded bg-green-500/5">
+            <div className="flex items-center gap-2 mb-2">
+              <MessageSquare className="w-4 h-4 text-green-400" />
+              <span className="font-mono text-xs text-green-400">OUTPUT</span>
+            </div>
+            <div className="text-sm text-green-300 italic pl-6">"{output}"</div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export const HookDefinitionDiagram = ({ content }: { content: string }) => {
+  const lines = content.split('\n');
+  let title = '';
+  let intro = '';
+  const checks: string[] = [];
+  const rules: string[] = [];
+  let inChecks = false;
+  let pastChecks = false;
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('# ')) {
+      title = trimmed.replace('# ', '');
+    } else if (trimmed.match(/^When.*check:$/i) || trimmed.match(/^.*starts?, check:$/i)) {
+      intro = trimmed;
+      inChecks = true;
+    } else if (inChecks && trimmed.match(/^\d+\./)) {
+      checks.push(trimmed.replace(/^\d+\.\s*/, ''));
+    } else if (inChecks && trimmed && !trimmed.match(/^\d+\./)) {
+      inChecks = false;
+      pastChecks = true;
+      rules.push(trimmed);
+    } else if (pastChecks && trimmed) {
+      rules.push(trimmed);
+    }
+  }
+
+  return (
+    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+      <div className="text-sm font-mono text-secondary mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Play className="w-4 h-4 text-secondary" />
+          <span>{title.toUpperCase().replace(' HOOK', '')}</span>
+        </div>
+        <span className="text-xs text-muted-foreground">HOOK</span>
+      </div>
+      {intro && (
+        <div className="text-xs text-gray-400 mb-3 italic">{intro}</div>
+      )}
+      <div className="space-y-2 mb-4">
+        {checks.map((check, i) => (
+          <div key={i} className="flex items-start gap-3 p-2 border border-white/10 rounded bg-white/5">
+            <Square className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
+            <span className="text-sm text-gray-300">{check}</span>
+          </div>
+        ))}
+      </div>
+      {rules.length > 0 && (
+        <div className="pt-3 border-t border-white/10">
+          <div className="text-xs text-gray-500 space-y-1">
+            {rules.map((rule, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <ArrowRight className="w-3 h-3 text-gray-600" />
+                <span>{rule}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const detectHookExecutionFlow = (content: string) => 
+  content.includes('TRIGGER:') && content.includes('CHECK:') && content.includes('ACTION:') && content.includes('Output:');
+
+export const detectHookDefinition = (content: string) => 
+  content.includes('# ') && content.includes('Hook') && content.match(/\d+\.\s+Are\s/) !== null && content.includes('check:');
+
 export const detectSkillsVsHooks = (content: string) => 
   content.includes('SKILLS') && content.includes('HOOKS') && content.includes('You trigger them') && content.includes('They trigger themselves');
 
@@ -276,6 +415,8 @@ export const detectHookSpectrum = (content: string) =>
   content.includes('SILENT') && content.includes('BLOCKING') && content.includes('Inform') && content.includes('Warn') && content.includes('Suggest') && content.includes('Require');
 
 export const hooksDiagramEntries: DiagramEntry[] = [
+  { id: 'hook-execution-flow', detect: detectHookExecutionFlow, component: HookExecutionFlowDiagram, passContent: true },
+  { id: 'hook-definition', detect: detectHookDefinition, component: HookDefinitionDiagram, passContent: true },
   { id: 'skills-vs-hooks', detect: detectSkillsVsHooks, component: SkillsVsHooksDiagram },
   { id: 'hook-events', detect: detectHookEvents, component: HookEventsTable },
   { id: 'hook-timeline', detect: detectHookTimeline, component: HookTimelineDiagram },
