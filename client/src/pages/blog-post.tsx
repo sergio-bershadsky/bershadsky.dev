@@ -141,7 +141,7 @@ export default function BlogPostPage() {
                   >
                     {post.series.title}
                   </a>
-                  <span className="px-2 py-1 bg-primary/20 border border-primary/40 rounded text-primary font-mono text-sm font-bold">
+                  <span className="px-2 py-1 bg-primary/20 border border-primary/40 rounded text-primary font-mono text-sm font-bold whitespace-nowrap">
                     PART: {post.series.position}
                   </span>
                 </div>
