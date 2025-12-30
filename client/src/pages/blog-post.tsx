@@ -22,6 +22,7 @@ const getSeriesIcon = (slug: string, accentColor: string, size: string = "w-5 h-
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4';
+import authorAvatar from '@assets/avatar-big_1765956076319.png';
 import type { BlogPost, BlogPostWithSeries, SeriesWithPosts } from '@shared/schema';
 
 export default function BlogPostPage() {
@@ -277,8 +278,8 @@ export default function BlogPostPage() {
                 <NeonCard variant="primary" className="p-6">
                   <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">About Author</h4>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-full overflow-hidden border border-white/20 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                      <span className="text-xl font-display font-bold text-primary">S</span>
+                    <div className="w-12 h-12 rounded-full overflow-hidden border border-white/20">
+                      <img src={authorAvatar} alt="Sergey Bershadsky" className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <div className="font-bold font-display">Sergey Bershadsky</div>
