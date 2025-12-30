@@ -161,7 +161,11 @@ export default function BlogPostPage() {
         </motion.div>
 
         <div className="max-w-4xl mx-auto mb-6">
-          <div className="flex flex-wrap gap-3 text-xs font-mono">
+          <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
+            <a href="/" className="flex items-center gap-2 px-3 py-1.5 rounded border border-white/20 bg-white/5 text-white hover:text-primary hover:border-primary/50 transition-colors group" data-testid="link-back">
+              <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" />
+              BACK
+            </a>
             <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-primary/30 bg-primary/10 text-primary">
               <Calendar className="w-3 h-3" /> {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}
             </span>
@@ -256,11 +260,6 @@ export default function BlogPostPage() {
         <article className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-[1fr_250px] gap-10">
             <div className="space-y-8">
-              <a href="/" className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors group mb-4" data-testid="link-back">
-                <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                <span className="font-display font-bold">BACK_TO_INDEX</span>
-              </a>
-
               <div data-testid="post-content">
                 <MarkdownRenderer 
                   content={post.content} 
