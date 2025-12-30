@@ -236,7 +236,7 @@ export default function BlogPostPage() {
                       </div>
                       <div className="text-center min-w-0">
                         <div className="text-xs font-mono text-muted-foreground truncate">{seriesData.title}</div>
-                        <div className="text-sm font-display group-hover:text-accent transition-colors" style={{ color: seriesData.accentColor || '#ec4899' }}>
+                        <div className="text-sm font-display group-hover:text-accent transition-colors whitespace-nowrap" style={{ color: seriesData.accentColor || '#ec4899' }}>
                           Part {currentIndex + 1} of {seriesData.posts.length}
                         </div>
                       </div>
