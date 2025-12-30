@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { Brain, Layers, Rocket, BookOpen, Zap, Code, Server, Database, Globe, Cpu } from 'lucide-react';
 import type { Series } from '@shared/schema';
@@ -53,21 +54,23 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
     <div className="relative">
       <div className="flex gap-6 justify-center pb-4 px-4">
         {seriesList.map((s, index) => (
-          <motion.a
+          <motion.div
             key={s.id}
-            href={`/series/${s.slug}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
-            className="flex flex-col items-center gap-3 cursor-pointer group"
-            onClick={(e) => {
-              if (onSeriesClick) {
-                e.preventDefault();
-                onSeriesClick(s);
-              }
-            }}
-            data-testid={`series-bubble-${s.id}`}
           >
+            <Link
+              href={`/series/${s.slug}`}
+              className="flex flex-col items-center gap-3 cursor-pointer group"
+              onClick={(e) => {
+                if (onSeriesClick) {
+                  e.preventDefault();
+                  onSeriesClick(s);
+                }
+              }}
+              data-testid={`series-bubble-${s.id}`}
+            >
             {/* Story-style circular bubble */}
             <div 
               className="relative w-20 h-20 md:w-24 md:h-24 rounded-full p-[3px] group-hover:scale-105 transition-transform duration-300"
@@ -94,7 +97,8 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
             <span className="text-xs md:text-sm font-mono text-center text-muted-foreground group-hover:text-white transition-colors max-w-[80px] md:max-w-[100px] truncate">
               {s.slug === 'second-brain-claude' ? 'Second Brain' : s.title}
             </span>
-          </motion.a>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </div>

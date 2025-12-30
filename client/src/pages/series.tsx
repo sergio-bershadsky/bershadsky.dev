@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useRoute } from 'wouter';
+import { useRoute, Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft, ArrowRight, Clock, Hash } from 'lucide-react';
 import { NeonCard, CyberButton } from '@/components/CyberpunkUI';
@@ -37,9 +37,9 @@ export default function SeriesPage() {
         <CyberpunkBackground />
         <div className="text-center">
           <h1 className="text-4xl font-display font-bold mb-4">SERIES_NOT_FOUND</h1>
-          <a href="/" className="text-primary hover:text-accent transition-colors">
+          <Link href="/" className="text-primary hover:text-accent transition-colors">
             RETURN_TO_BASE
-          </a>
+          </Link>
         </div>
       </div>
     );
@@ -52,10 +52,10 @@ export default function SeriesPage() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-white/10 px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
-          <a href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors group">
+          <Link href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors group">
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             <span className="font-display font-bold">RETURN_TO_BASE</span>
-          </a>
+          </Link>
           <div className="font-mono text-xs text-muted-foreground hidden md:block">
             SERIES: {seriesData.title.toUpperCase()} // {seriesData.posts.length} ARTICLES
           </div>

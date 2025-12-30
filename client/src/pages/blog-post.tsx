@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useParams } from "wouter";
+import { useParams, Link } from "wouter";
 import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen, Users } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
@@ -81,10 +81,10 @@ export default function BlogPostPage() {
         <div className="text-center">
           <div className="font-mono text-6xl text-primary mb-4">404</div>
           <div className="font-mono text-muted-foreground mb-6">ARTICLE_NOT_FOUND</div>
-          <a href="/" className="inline-flex items-center gap-2 text-secondary hover:text-white transition-colors font-mono">
+          <Link href="/" className="inline-flex items-center gap-2 text-secondary hover:text-white transition-colors font-mono">
             <ArrowLeft className="w-4 h-4" />
             RETURN_TO_BASE
-          </a>
+          </Link>
         </div>
       </div>
     );
@@ -101,10 +101,10 @@ export default function BlogPostPage() {
       <CyberpunkBackground />
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-white/10 px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
-          <a href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors group" data-testid="link-home">
+          <Link href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors group" data-testid="link-home">
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             <span className="font-display font-bold">RETURN_TO_BASE</span>
-          </a>
+          </Link>
           <div className="font-mono text-xs text-muted-foreground hidden md:block">
             READING_MODE: ACTIVE // ID: {String(post.id).padStart(3, '0')}
           </div>
@@ -152,13 +152,13 @@ export default function BlogPostPage() {
             <div>
               {post.series && (
                 <div className="flex items-center gap-3 mb-3">
-                  <a 
+                  <Link 
                     href={`/series/${post.series.slug}`}
                     className="text-sm font-mono text-secondary hover:text-primary transition-colors"
                     data-testid="link-series"
                   >
                     {post.series.title}
-                  </a>
+                  </Link>
                   <span className="px-2 py-1 bg-primary/20 border border-primary/40 rounded text-primary font-mono text-sm font-bold whitespace-nowrap">
                     PART: {post.series.position}
                   </span>
@@ -180,10 +180,10 @@ export default function BlogPostPage() {
 
         <div className="max-w-4xl mx-auto mb-6 px-4 sm:px-0">
           <div className="flex flex-wrap items-center gap-3 text-xs font-mono">
-            <a href="/" className="flex items-center gap-2 px-3 py-1.5 rounded border border-white/20 bg-white/5 text-white hover:text-primary hover:border-primary/50 transition-colors group" data-testid="link-back">
+            <Link href="/" className="flex items-center gap-2 px-3 py-1.5 rounded border border-white/20 bg-white/5 text-white hover:text-primary hover:border-primary/50 transition-colors group" data-testid="link-back">
               <ArrowLeft className="w-3 h-3 group-hover:-translate-x-0.5 transition-transform" />
               BACK
-            </a>
+            </Link>
             <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-primary/30 bg-primary/10 text-primary">
               <Calendar className="w-3 h-3" /> {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}
             </span>
