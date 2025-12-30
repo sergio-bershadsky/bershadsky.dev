@@ -426,7 +426,7 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
                         'CODE_BLOCK';
 
   return (
-    <div className="relative group my-8">
+    <div className="relative group my-8 notranslate" translate="no">
       <div className="absolute -top-3 left-4 bg-background px-2 text-xs font-mono text-primary border border-primary/30 rounded z-10">
         {languageLabel}
       </div>
