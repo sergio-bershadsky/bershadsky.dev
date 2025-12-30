@@ -1,0 +1,189 @@
+- id: 13
+  slug: second-brain-concept
+  title: "Second Brain: Concept"
+  excerpt: "Learn what a \"second brain\" really means and why your AI assistant deserves a memory upgrade."
+  date: "2024-12-29"
+  tags:
+    - AI
+    - Claude
+    - Productivity
+    - Knowledge-Management
+    - Second-Brain
+  image_url: /attached_assets/generated_images/cyberpunk_second_brain_neural_network.png
+  status: published
+  published_at: "2025-12-08T00:00:00Z"
+  content: blog-posts/13.content.md
+
+- id: 14
+  slug: second-brain-core-building-blocks
+  title: "Second Brain: Core Building Blocks"
+  excerpt: "The three pillars that make a second brain actually work: current knowledge, historical record, and decision archive."
+  date: "2024-12-29"
+  tags:
+    - AI
+    - Claude
+    - Productivity
+    - Knowledge-Management
+    - Second-Brain
+  image_url: /attached_assets/generated_images/three_pillars_knowledge_architecture.png
+  status: published
+  published_at: "2025-12-15T00:00:00Z"
+  content: blog-posts/14.content.md
+
+- id: 15
+  slug: second-brain-your-first-entry
+  title: "Second Brain: Your First Entry"
+  excerpt: "Stop reading about second brains. Let's build something in the next 10 minutes and experience the magic moment when your AI actually remembers."
+  date: "2024-12-29"
+  tags:
+    - ai
+    - productivity
+    - knowledge-management
+    - claude
+  image_url: /attached_assets/generated_images/first_knowledge_entry_cyberpunk_brain.png
+  status: published
+  published_at: "2025-12-22T00:00:00Z"
+  content: blog-posts/15.content.md
+
+- id: 16
+  slug: second-brain-connecting-tools-mcp
+  title: "Second Brain: Connecting Your Tools"
+  excerpt: "Your second brain is smart, but it's been living in isolation. Time to introduce it to your other tools and unlock true contextual awareness."
+  date: "2024-12-29"
+  tags:
+    - ai
+    - productivity
+    - mcp
+    - integrations
+    - claude
+  image_url: /attached_assets/generated_images/mcp_connections_cyberpunk_brain_network.png
+  status: published
+  published_at: "2025-12-29T00:00:00Z"
+  content: blog-posts/16.content.md
+
+- id: 17
+  slug: second-brain-teaching-skills
+  title: "Second Brain: Teaching Skills"
+  excerpt: "Your second brain knows facts. Now let's teach it how you actually work — turning repetitive tasks into one-command magic."
+  date: "2024-12-29"
+  tags:
+    - Second Brain
+    - Claude
+    - AI
+    - Skills
+  image_url: /attached_assets/generated_images/cyberpunk_skills_brain_automation.png
+  status: published
+  published_at: "2025-12-29T15:26:00Z"
+  content: blog-posts/17.content.md
+
+- id: 18
+  slug: second-brain-hooks
+  title: "Second Brain: Automatic Behaviors"
+  excerpt: "Skills wait for you to call them. Hooks don't wait — they just happen. Learn to create automatic triggers that catch your blind spots before they become problems."
+  date: "2024-12-29"
+  tags:
+    - Second Brain
+    - Claude
+    - AI
+    - Hooks
+    - Automation
+  image_url: /attached_assets/generated_images/cyberpunk_automation_hooks_concept.png
+  status: published
+  published_at: "2025-12-29T16:00:00Z"
+  content: blog-posts/18.content.md
+
+- id: 19
+  slug: second-brain-plugins
+  title: "Second Brain: Sharing Knowledge with Plugins"
+  excerpt: "Turn your personal automation into team infrastructure. One package, instant capability."
+  date: "2024-12-29"
+  tags:
+    - claude
+    - second-brain
+    - plugins
+    - automation
+    - team-productivity
+  image_url: /attached_assets/generated_images/cyberpunk_plugin_system_concept.png
+  status: published
+  published_at: "2025-12-29T18:26:52Z"
+  content: blog-posts/19.content.md
+
+- id: 20
+  slug: second-brain-memory-layer
+  title: "Second Brain: The Memory Layer"
+  excerpt: "Your second brain has skills and hooks. But ask it \"how many decisions did we make last month?\" and it has to read every file. There's a better way."
+  date: "2024-12-30"
+  tags:
+    - second-brain
+    - structured-data
+    - yaml
+    - tracking
+    - memory
+  image_url: /attached_assets/generated_images/cyberpunk_structured_data_memory.png
+  status: published
+  published_at: "2025-12-30T08:38:21Z"
+  content: blog-posts/20.content.md
+
+- id: 21
+  slug: second-brain-communication-hub
+  title: "Second Brain: Team Communication Hub"
+  excerpt: "Monday morning. 47 unread messages. Somewhere in there is something important. Build a communication hub that filters signal from noise."
+  date: "2024-12-30"
+  tags:
+    - second-brain
+    - communication
+    - team
+    - slack
+    - productivity
+  image_url: /attached_assets/generated_images/cyberpunk_team_communication_hub.png
+  status: published
+  published_at: "2025-12-30T08:51:19Z"
+  content: blog-posts/21.content.md
+
+- id: 22
+  slug: second-brain-meeting-memory
+  title: "Second Brain: Meeting Memory"
+  excerpt: "Three weeks ago, we definitely discussed the API changes. What did we decide? Nobody remembers. Turn every meeting into searchable, permanent context."
+  date: "2024-12-30"
+  tags:
+    - second-brain
+    - meetings
+    - transcription
+    - productivity
+    - documentation
+  image_url: /attached_assets/generated_images/cyberpunk_meeting_memory_system.png
+  status: published
+  published_at: "2025-12-30T09:21:01Z"
+  content: blog-posts/22.content.md
+
+- id: 23
+  slug: second-brain-decision-intelligence
+  title: "Second Brain: Decision Intelligence"
+  excerpt: "Why do we use this framework? Decisions without context become arbitrary rules. Decision intelligence makes the \"why\" permanent and queryable."
+  date: "2024-12-30"
+  tags:
+    - second-brain
+    - decisions
+    - adr
+    - architecture
+    - documentation
+  image_url: /attached_assets/generated_images/cyberpunk_decision_intelligence_system.png
+  status: published
+  published_at: "2025-12-30T09:34:49Z"
+  content: blog-posts/23.content.md
+
+- id: 24
+  slug: second-brain-autonomous-workflow
+  title: "Second Brain: The Autonomous Workflow"
+  excerpt: "Imagine starting your day with everything summarized. Standup prepared. Context loaded. Wire it all together into a workflow that runs itself."
+  date: "2024-12-30"
+  tags:
+    - second-brain
+    - automation
+    - workflow
+    - productivity
+    - capstone
+  image_url: /attached_assets/generated_images/cyberpunk_autonomous_workflow_system.png
+  status: published
+  published_at: "2025-12-30T09:35:50Z"
+  content: blog-posts/24.content.md
