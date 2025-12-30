@@ -3,7 +3,7 @@ import { Search, FileText, Lightbulb, Zap, ClipboardList, File, RefreshCw, Check
 import { DiagramEntry } from '../diagramRegistry';
 
 export const SkillPatternsDiagram = () => (
-  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 5.1 // SKILL_PATTERNS</span>
       <span className="text-xs text-muted-foreground">TYPES</span>
@@ -46,7 +46,7 @@ export const SkillPatternsDiagram = () => (
 );
 
 export const WithoutVsWithSkillsDiagram = () => (
-  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
       <span>FIG 5.2 // EFFICIENCY</span>
       <span className="text-xs text-muted-foreground">COMPARISON</span>
@@ -75,7 +75,7 @@ export const WithoutVsWithSkillsDiagram = () => (
 );
 
 export const SkillCandidatesDiagram = () => (
-  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
       <span>FIG 5.3 // CANDIDATES</span>
       <span className="text-xs text-muted-foreground">SELECTION</span>

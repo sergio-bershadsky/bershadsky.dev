@@ -3,7 +3,7 @@ import { Zap, Bot, RefreshCw, BookOpen, ArrowDown, CheckCircle, XCircle, Folder,
 import { DiagramEntry } from '../diagramRegistry';
 
 export const PluginEvolutionDiagram = () => (
-  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 7.0 // PLUGIN_EVOLUTION</span>
       <span className="text-xs text-muted-foreground">JOURNEY</span>
@@ -88,7 +88,7 @@ export const PluginFolderStructureDiagram = () => {
   };
 
   return (
-    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
       <div className="text-sm font-mono text-primary mb-3 flex items-center gap-2">
         <Package className="w-4 h-4 text-primary" />
         <span>my-second-brain-plugin/</span>
@@ -102,7 +102,7 @@ export const PluginFolderStructureDiagram = () => {
 };
 
 export const PluginComponentsTable = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 7.1 // KEY_COMPONENTS</span>
       <span className="text-xs text-muted-foreground">REFERENCE</span>
@@ -171,7 +171,7 @@ export const BeforeAfterPluginDiagram = () => {
   };
 
   return (
-    <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+    <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
       <div className="text-sm font-mono text-accent mb-4 flex justify-between">
         <span>FIG 7.2 // BEFORE_AFTER</span>
         <span className="text-xs text-muted-foreground">ORGANIZATION</span>
@@ -209,7 +209,7 @@ export const BeforeAfterPluginDiagram = () => {
 };
 
 export const DistributionOptionsDiagram = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 7.3 // DISTRIBUTION_OPTIONS</span>
       <span className="text-xs text-muted-foreground">COMPARISON</span>
@@ -279,7 +279,7 @@ export const DistributionOptionsDiagram = () => (
 );
 
 export const PluginHierarchyDiagram = () => (
-  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 7.4 // PLUGIN_HIERARCHY</span>
       <span className="text-xs text-muted-foreground">PRIORITY</span>
@@ -317,7 +317,7 @@ export const PluginHierarchyDiagram = () => (
 );
 
 export const PluginPatternsTable = () => (
-  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 7.5 // PLUGIN_PATTERNS</span>
       <span className="text-xs text-muted-foreground">STRATEGIES</span>
@@ -403,7 +403,7 @@ export const PluginConfigurationDiagram = () => {
   };
 
   return (
-    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
       <div className="text-sm font-mono text-secondary mb-3 flex items-center gap-2">
         <Braces className="w-4 h-4 text-secondary" />
         <span>plugin.json</span>
@@ -425,7 +425,7 @@ export const VersionTimelineDiagram = () => {
   ];
 
   return (
-    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
+    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
       <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
         <span>FIG 7.6 // VERSION_HISTORY</span>
         <span className="text-xs text-muted-foreground">CHANGELOG</span>
