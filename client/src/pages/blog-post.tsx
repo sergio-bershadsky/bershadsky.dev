@@ -107,7 +107,7 @@ export default function BlogPostPage() {
               : 'w-full aspect-video max-w-4xl mx-auto'
           }`}
         >
-          <div className="absolute inset-0 bg-black/50 z-10" />
+          <div className="absolute inset-0 bg-black/35 z-10" />
           
           {post.videoUrl && (
             <button 
