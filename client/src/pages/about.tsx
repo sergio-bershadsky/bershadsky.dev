@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
 import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft } from 'lucide-react';
 import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
@@ -14,10 +15,10 @@ export default function About() {
       {/* Navigation Bar */}
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-white/10 px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
-          <a href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors group">
+          <Link href="/" className="flex items-center gap-2 text-primary hover:text-accent transition-colors group">
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             <span className="font-display font-bold">RETURN_TO_BASE</span>
-          </a>
+          </Link>
           <div className="font-mono text-xs text-muted-foreground hidden md:block">
             SECTOR: PROFILE // ID: SERGEY_B
           </div>

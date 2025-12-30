@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'wouter';
 import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight, Instagram, Youtube, Send } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { cvData } from '@/data/cv';
@@ -106,7 +107,7 @@ export default function Home() {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.slice(0, 12).map((post, index) => (
-              <a key={index} href={`/blog/${post.slug || post.id}`} className="block group" data-testid={`card-blog-${post.slug || post.id}`}>
+              <Link key={index} href={`/blog/${post.slug || post.id}`} className="block group" data-testid={`card-blog-${post.slug || post.id}`}>
                 <NeonCard variant="accent" className="h-full flex flex-col hover:bg-accent/5 transition-all duration-300 hover:scale-[1.02]">
                   <div className="mb-6 relative overflow-hidden rounded border border-white/10 aspect-video bg-black/40 group-hover:border-accent/50 transition-colors">
                      {post.imageUrl && (
@@ -142,7 +143,7 @@ export default function Home() {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </NeonCard>
-              </a>
+              </Link>
               ))}
             </div>
           )}
@@ -163,11 +164,11 @@ export default function Home() {
             </p>
             
             <div className="flex justify-center gap-6">
-              <a href="/about">
+              <Link href="/about">
                 <CyberButton size="lg" className="flex items-center gap-2">
                   ACCESS_PROFILE <ExternalLink className="w-4 h-4" />
                 </CyberButton>
-              </a>
+              </Link>
             </div>
             
             <div className="mt-8 flex justify-center gap-8 font-mono text-sm text-muted-foreground/60">
