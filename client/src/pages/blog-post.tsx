@@ -108,7 +108,7 @@ export default function BlogPostPage() {
           }`}
         >
           <div className="absolute inset-0 bg-black/35 z-10" />
-          <div className="absolute inset-0 backdrop-blur-sm z-10 [mask-image:linear-gradient(to_bottom,black_0%,black_30%,transparent_50%)]" />
+          <div className="absolute inset-0 backdrop-blur-sm z-10 [mask-image:linear-gradient(to_bottom,black_0%,black_25%,transparent_75%)]" />
           
           {post.videoUrl && (
             <button 
