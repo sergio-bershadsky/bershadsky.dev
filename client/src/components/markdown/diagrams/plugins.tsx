@@ -425,7 +425,9 @@ export const detectBeforeAfterPlugin = (content: string) =>
   content.includes('Before:') && content.includes('After:') && content.includes('your-second-brain/') && content.includes('team-productivity-plugin/');
 
 export const detectDistributionOptions = (content: string) => 
-  content.includes('Option 1:') && content.includes('Option 2:') && content.includes('Git repository') && content.includes('Direct sharing');
+  (content.includes('Option 1:') || content.includes('Option 2:') || content.includes('Option 3:')) && 
+  (content.includes('Git repository') || content.includes('Direct sharing') || content.includes('Team registry')) &&
+  content.includes('Pros:') && content.includes('Cons:');
 
 export const detectPluginHierarchy = (content: string) => 
   content.includes('PROJECT PLUGINS') && content.includes('TEAM PLUGINS') && content.includes('PERSONAL PLUGINS') && content.includes('highest priority');
