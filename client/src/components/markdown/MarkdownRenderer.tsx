@@ -117,7 +117,7 @@ const generateSlug = (text: string): string => {
 };
 
 const CyberH1 = ({ children }: { children: React.ReactNode }) => (
-  <h1 className="text-4xl font-display font-bold text-white mt-8 mb-6 tracking-wide">
+  <h1 className="text-2xl md:text-4xl font-display font-bold text-white mt-6 md:mt-8 mb-4 md:mb-6 tracking-wide">
     {children}
   </h1>
 );
@@ -126,7 +126,7 @@ const CyberH2 = ({ children }: { children: React.ReactNode }) => {
   const text = extractText(children);
   const id = generateSlug(text);
   return (
-    <h2 id={id} className="text-3xl font-display font-bold text-white mt-12 mb-6 tracking-wide scroll-mt-24">
+    <h2 id={id} className="text-xl md:text-3xl font-display font-bold text-white mt-8 md:mt-12 mb-4 md:mb-6 tracking-wide scroll-mt-24">
       {children}
     </h2>
   );
@@ -136,7 +136,7 @@ const CyberH3 = ({ children }: { children: React.ReactNode }) => {
   const text = extractText(children);
   const id = generateSlug(text);
   return (
-    <h3 id={id} className="text-2xl font-display font-semibold text-white mt-8 mb-4 scroll-mt-24">
+    <h3 id={id} className="text-lg md:text-2xl font-display font-semibold text-white mt-6 md:mt-8 mb-3 md:mb-4 scroll-mt-24">
       {children}
     </h3>
   );
