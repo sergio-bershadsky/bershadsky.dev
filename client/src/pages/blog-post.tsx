@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useRoute } from "wouter";
+import { useParams } from "wouter";
 import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen, Users } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
@@ -26,12 +26,12 @@ import authorAvatar from '@assets/avatar-squere.png';
 import type { BlogPost, BlogPostWithSeries, SeriesWithPosts } from '@shared/schema';
 
 export default function BlogPostPage() {
-  const [match, params] = useRoute("/blog/:slug");
+  const params = useParams<{ slug: string }>();
   const [copied, setCopied] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [tableOfContents, setTableOfContents] = React.useState<string[]>([]);
   
-  const postSlug = params?.slug;
+  const postSlug = params.slug;
   
   const { data: post, isLoading } = useQuery<BlogPostWithSeries>({
     queryKey: ['/api/blog-posts', postSlug],
