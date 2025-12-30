@@ -175,12 +175,15 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
                        codeContent.match(/^#\s*\w+.*\.ya?ml/m) ||
                        (codeContent.match(/^\s*\w+:\s*$/m) && codeContent.includes('  - '))));
 
+  const isMarkdownCode = className?.includes('markdown') || className?.includes('md') ||
+                         (codeContent.includes('## ') && codeContent.includes('### ')) ||
+                         (codeContent.includes('# ') && codeContent.includes('## ') && !codeContent.includes('npm '));
+
   const isBashCode = className?.includes('bash') || className?.includes('shell') || className?.includes('sh') ||
                      codeContent.includes('npm ') || codeContent.includes('npx ') ||
                      codeContent.includes('yarn ') || codeContent.includes('git ') ||
                      codeContent.includes('claude ') || codeContent.includes('cd ') ||
-                     (codeContent.includes('# ') && (codeContent.includes('./') || codeContent.includes('install'))) ||
-                     codeContent.match(/^\/\w+/m);
+                     (codeContent.includes('# ') && (codeContent.includes('./') || codeContent.includes('install')));
 
   const isAsciiDiagram = codeContent.includes('╔') || 
                          codeContent.includes('┌') || 
@@ -239,6 +242,7 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
     if (className?.includes('sql')) return 'sql';
     if (className?.includes('yaml') || className?.includes('yml')) return 'yaml';
     if (isYamlCode) return 'yaml';
+    if (isMarkdownCode) return 'markdown';
     if (isPythonCode) return 'python';
     if (isJavaScriptCode) return 'javascript';
     if (isJsonCode) return 'json';
