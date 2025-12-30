@@ -434,9 +434,7 @@ export const VersionTimelineDiagram = () => {
         <div className="text-sm font-display font-semibold text-white">Semantic Versioning for Plugins</div>
         <div className="text-xs text-gray-400">MAJOR.MINOR.PATCH</div>
       </div>
-      <div className="relative">
-        <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-gray-500 via-green-500 to-yellow-500"></div>
-        <div className="space-y-3 pl-10">
+      <div className="space-y-3">
           {versions.map((v, i) => {
             const Icon = v.icon;
             const colorClasses = {
@@ -445,15 +443,8 @@ export const VersionTimelineDiagram = () => {
               secondary: 'border-secondary/50 bg-secondary/20 text-secondary',
               yellow: 'border-yellow-500/50 bg-yellow-500/20 text-yellow-400'
             };
-            const dotColors = {
-              gray: 'bg-gray-500 border-gray-400',
-              green: 'bg-green-500 border-green-400',
-              secondary: 'bg-secondary border-secondary',
-              yellow: 'bg-yellow-500 border-yellow-400'
-            };
             return (
-              <div key={i} className="relative flex items-start gap-3">
-                <div className={`absolute -left-10 top-1 w-3 h-3 rounded-full border-2 ${dotColors[v.color as keyof typeof dotColors]}`}></div>
+              <div key={i} className="flex items-start gap-3">
                 <div className={`px-2 py-1 rounded font-mono text-sm font-bold ${colorClasses[v.color as keyof typeof colorClasses]}`}>
                   {v.version}
                 </div>
@@ -473,7 +464,6 @@ export const VersionTimelineDiagram = () => {
             );
           })}
         </div>
-      </div>
     </div>
   );
 };
