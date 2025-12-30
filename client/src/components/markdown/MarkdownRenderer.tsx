@@ -130,7 +130,7 @@ const CyberH2 = ({ children }: { children: React.ReactNode }) => {
   const text = extractText(children);
   const id = generateSlug(text);
   return (
-    <h2 id={id} className="text-xl md:text-3xl font-display font-bold text-white mt-8 md:mt-12 mb-4 md:mb-6 tracking-wide scroll-mt-24">
+    <h2 id={id} className="text-[24px] md:text-3xl font-display font-bold text-white mt-8 md:mt-12 mb-4 md:mb-6 tracking-wide scroll-mt-24">
       {children}
     </h2>
   );
