@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Copy, Check, MessageSquare, Bot } from 'lucide-react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { NeonCard } from '../CyberpunkUI';
 import { findDiagram } from './diagramRegistry';
 
@@ -9,6 +10,62 @@ import { skillsDiagramEntries } from './diagrams/skills';
 import { hooksDiagramEntries } from './diagrams/hooks';
 import { pluginsDiagramEntries } from './diagrams/plugins';
 import { registerDiagrams } from './diagramRegistry';
+
+const cyberpunkTheme: { [key: string]: React.CSSProperties } = {
+  'code[class*="language-"]': {
+    color: '#e2e8f0',
+    background: 'none',
+    fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
+    fontSize: '0.875rem',
+    textAlign: 'left',
+    whiteSpace: 'pre',
+    wordSpacing: 'normal',
+    wordBreak: 'normal',
+    wordWrap: 'normal',
+    lineHeight: '1.6',
+    tabSize: 2,
+  },
+  'pre[class*="language-"]': {
+    color: '#e2e8f0',
+    background: 'transparent',
+    margin: 0,
+    padding: '1.5rem',
+    overflow: 'auto',
+  },
+  comment: { color: '#6b7280', fontStyle: 'italic' },
+  prolog: { color: '#6b7280' },
+  doctype: { color: '#6b7280' },
+  cdata: { color: '#6b7280' },
+  punctuation: { color: '#9ca3af' },
+  property: { color: '#06b6d4' },
+  tag: { color: '#ec4899' },
+  boolean: { color: '#ec4899' },
+  number: { color: '#fb923c' },
+  constant: { color: '#fb923c' },
+  symbol: { color: '#fb923c' },
+  deleted: { color: '#f87171' },
+  selector: { color: '#4ade80' },
+  'attr-name': { color: '#06b6d4' },
+  string: { color: '#4ade80' },
+  char: { color: '#4ade80' },
+  builtin: { color: '#06b6d4' },
+  inserted: { color: '#4ade80' },
+  operator: { color: '#9ca3af' },
+  entity: { color: '#fbbf24', cursor: 'help' },
+  url: { color: '#06b6d4' },
+  '.language-css .token.string': { color: '#fb923c' },
+  '.style .token.string': { color: '#fb923c' },
+  atrule: { color: '#ec4899' },
+  'attr-value': { color: '#4ade80' },
+  keyword: { color: '#ec4899', fontWeight: '600' },
+  function: { color: '#fbbf24' },
+  'class-name': { color: '#06b6d4' },
+  regex: { color: '#fb923c' },
+  important: { color: '#ec4899', fontWeight: 'bold' },
+  variable: { color: '#9333ea' },
+  bold: { fontWeight: 'bold' },
+  italic: { fontStyle: 'italic' },
+};
 
 registerDiagrams(coreDiagramEntries);
 registerDiagrams(connectionsDiagramEntries);
@@ -86,287 +143,6 @@ export const ChatConversationDiagram = ({ content }: { content: string }) => {
   );
 };
 
-export const highlightJavaScript = (code: string): React.ReactNode[] => {
-  const keywords = ['const', 'let', 'var', 'function', 'return', 'if', 'else', 'for', 'while', 'class', 'new', 'this', 'import', 'export', 'from', 'async', 'await', 'try', 'catch', 'throw', 'typeof', 'instanceof'];
-  
-  const lines = code.split('\n');
-  return lines.map((line, lineIndex) => {
-    const tokens: React.ReactNode[] = [];
-    let remaining = line;
-    let tokenKey = 0;
-    
-    while (remaining.length > 0) {
-      if (remaining.startsWith('//')) {
-        tokens.push(<span key={tokenKey++} className="text-gray-500 italic">{remaining}</span>);
-        break;
-      }
-      
-      const stringMatch = remaining.match(/^(["'`](?:[^"'`\\]|\\.)*["'`])/);
-      if (stringMatch) {
-        tokens.push(<span key={tokenKey++} className="text-green-400">{stringMatch[1]}</span>);
-        remaining = remaining.slice(stringMatch[1].length);
-        continue;
-      }
-      
-      const numMatch = remaining.match(/^(-?\d+\.?\d*)/);
-      if (numMatch) {
-        tokens.push(<span key={tokenKey++} className="text-orange-400">{numMatch[1]}</span>);
-        remaining = remaining.slice(numMatch[1].length);
-        continue;
-      }
-      
-      const boolNullMatch = remaining.match(/^(true|false|null|undefined)\b/);
-      if (boolNullMatch) {
-        tokens.push(<span key={tokenKey++} className="text-primary font-semibold">{boolNullMatch[1]}</span>);
-        remaining = remaining.slice(boolNullMatch[1].length);
-        continue;
-      }
-      
-      const wordMatch = remaining.match(/^(\w+)/);
-      if (wordMatch) {
-        const word = wordMatch[1];
-        if (keywords.includes(word)) {
-          tokens.push(<span key={tokenKey++} className="text-primary font-semibold">{word}</span>);
-        } else if (remaining.slice(word.length).match(/^\s*[:(]/)) {
-          tokens.push(<span key={tokenKey++} className="text-secondary">{word}</span>);
-        } else {
-          tokens.push(<span key={tokenKey++} className="text-gray-300">{word}</span>);
-        }
-        remaining = remaining.slice(word.length);
-        continue;
-      }
-      
-      const punctMatch = remaining.match(/^([{}\[\]:,;()=>]+)/);
-      if (punctMatch) {
-        tokens.push(<span key={tokenKey++} className="text-gray-400">{punctMatch[1]}</span>);
-        remaining = remaining.slice(punctMatch[1].length);
-        continue;
-      }
-      
-      tokens.push(<span key={tokenKey++} className="text-gray-300">{remaining[0]}</span>);
-      remaining = remaining.slice(1);
-    }
-    
-    return (
-      <React.Fragment key={lineIndex}>
-        {tokens}
-        {lineIndex < lines.length - 1 && '\n'}
-      </React.Fragment>
-    );
-  });
-};
-
-export const highlightJson = (code: string): React.ReactNode[] => {
-  const lines = code.split('\n');
-  return lines.map((line, lineIndex) => {
-    const tokens: React.ReactNode[] = [];
-    let remaining = line;
-    let tokenKey = 0;
-    
-    while (remaining.length > 0) {
-      const keyMatch = remaining.match(/^("(?:[^"\\]|\\.)*")\s*:/);
-      if (keyMatch) {
-        tokens.push(<span key={tokenKey++} className="text-secondary">{keyMatch[1]}</span>);
-        remaining = remaining.slice(keyMatch[1].length);
-        continue;
-      }
-      
-      const stringMatch = remaining.match(/^("(?:[^"\\]|\\.)*")/);
-      if (stringMatch) {
-        tokens.push(<span key={tokenKey++} className="text-green-400">{stringMatch[1]}</span>);
-        remaining = remaining.slice(stringMatch[1].length);
-        continue;
-      }
-      
-      const numMatch = remaining.match(/^(-?\d+\.?\d*)/);
-      if (numMatch) {
-        tokens.push(<span key={tokenKey++} className="text-orange-400">{numMatch[1]}</span>);
-        remaining = remaining.slice(numMatch[1].length);
-        continue;
-      }
-      
-      const boolNullMatch = remaining.match(/^(true|false|null)\b/);
-      if (boolNullMatch) {
-        tokens.push(<span key={tokenKey++} className="text-primary font-semibold">{boolNullMatch[1]}</span>);
-        remaining = remaining.slice(boolNullMatch[1].length);
-        continue;
-      }
-      
-      const punctMatch = remaining.match(/^([{}\[\]:,])/);
-      if (punctMatch) {
-        tokens.push(<span key={tokenKey++} className="text-gray-400">{punctMatch[1]}</span>);
-        remaining = remaining.slice(punctMatch[1].length);
-        continue;
-      }
-      
-      tokens.push(<span key={tokenKey++} className="text-gray-300">{remaining[0]}</span>);
-      remaining = remaining.slice(1);
-    }
-    
-    return (
-      <React.Fragment key={lineIndex}>
-        {tokens}
-        {lineIndex < lines.length - 1 && '\n'}
-      </React.Fragment>
-    );
-  });
-};
-
-export const highlightPython = (code: string): React.ReactNode[] => {
-  const keywords = ['def', 'class', 'if', 'else', 'elif', 'for', 'while', 'return', 'import', 'from', 'as', 'try', 'except', 'finally', 'with', 'lambda', 'and', 'or', 'not', 'in', 'is', 'True', 'False', 'None', 'raise', 'pass', 'break', 'continue', 'global', 'async', 'await', 'yield'];
-  const builtins = ['print', 'len', 'range', 'str', 'int', 'float', 'list', 'dict', 'set', 'tuple', 'open', 'append', 'extend', 'format'];
-  
-  const lines = code.split('\n');
-  return lines.map((line, lineIndex) => {
-    const tokens: React.ReactNode[] = [];
-    let remaining = line;
-    let tokenKey = 0;
-    
-    while (remaining.length > 0) {
-      if (remaining.startsWith('#')) {
-        tokens.push(<span key={tokenKey++} className="text-gray-500 italic">{remaining}</span>);
-        break;
-      }
-      
-      const tripleMatch = remaining.match(/^("""[\s\S]*?"""|'''[\s\S]*?''')/);
-      if (tripleMatch) {
-        tokens.push(<span key={tokenKey++} className="text-green-400">{tripleMatch[1]}</span>);
-        remaining = remaining.slice(tripleMatch[1].length);
-        continue;
-      }
-      
-      const stringMatch = remaining.match(/^(f?["'](?:[^"'\\]|\\.)*["'])/);
-      if (stringMatch) {
-        tokens.push(<span key={tokenKey++} className="text-green-400">{stringMatch[1]}</span>);
-        remaining = remaining.slice(stringMatch[1].length);
-        continue;
-      }
-      
-      const numMatch = remaining.match(/^(\d+\.?\d*)/);
-      if (numMatch) {
-        tokens.push(<span key={tokenKey++} className="text-orange-400">{numMatch[1]}</span>);
-        remaining = remaining.slice(numMatch[1].length);
-        continue;
-      }
-      
-      const decoratorMatch = remaining.match(/^(@\w+)/);
-      if (decoratorMatch) {
-        tokens.push(<span key={tokenKey++} className="text-yellow-400">{decoratorMatch[1]}</span>);
-        remaining = remaining.slice(decoratorMatch[1].length);
-        continue;
-      }
-      
-      const wordMatch = remaining.match(/^(\w+)/);
-      if (wordMatch) {
-        const word = wordMatch[1];
-        if (keywords.includes(word)) {
-          tokens.push(<span key={tokenKey++} className="text-primary font-semibold">{word}</span>);
-        } else if (builtins.includes(word)) {
-          tokens.push(<span key={tokenKey++} className="text-secondary">{word}</span>);
-        } else if (remaining.slice(word.length).match(/^\s*\(/)) {
-          tokens.push(<span key={tokenKey++} className="text-yellow-300">{word}</span>);
-        } else {
-          tokens.push(<span key={tokenKey++} className="text-gray-300">{word}</span>);
-        }
-        remaining = remaining.slice(word.length);
-        continue;
-      }
-      
-      const opMatch = remaining.match(/^([+\-*/%=<>!&|^~:,.\[\](){}]+)/);
-      if (opMatch) {
-        tokens.push(<span key={tokenKey++} className="text-gray-400">{opMatch[1]}</span>);
-        remaining = remaining.slice(opMatch[1].length);
-        continue;
-      }
-      
-      tokens.push(<span key={tokenKey++} className="text-gray-300">{remaining[0]}</span>);
-      remaining = remaining.slice(1);
-    }
-    
-    return (
-      <React.Fragment key={lineIndex}>
-        {tokens}
-        {lineIndex < lines.length - 1 && '\n'}
-      </React.Fragment>
-    );
-  });
-};
-
-export const highlightBash = (code: string): React.ReactNode[] => {
-  const commands = ['npm', 'npx', 'node', 'yarn', 'pnpm', 'git', 'cd', 'ls', 'mkdir', 'rm', 'cp', 'mv', 'cat', 'echo', 'export', 'source', 'curl', 'wget', 'sudo', 'apt', 'brew', 'pip', 'python', 'claude', 'docker', 'kubectl'];
-  
-  const lines = code.split('\n');
-  return lines.map((line, lineIndex) => {
-    const tokens: React.ReactNode[] = [];
-    let remaining = line;
-    let tokenKey = 0;
-    
-    while (remaining.length > 0) {
-      if (remaining.startsWith('#')) {
-        tokens.push(<span key={tokenKey++} className="text-gray-500 italic">{remaining}</span>);
-        break;
-      }
-      
-      const slashCommandMatch = remaining.match(/^(\/\w+)/);
-      if (slashCommandMatch) {
-        tokens.push(<span key={tokenKey++} className="text-primary font-semibold">{slashCommandMatch[1]}</span>);
-        remaining = remaining.slice(slashCommandMatch[1].length);
-        continue;
-      }
-      
-      const flagMatch = remaining.match(/^(--?\w[\w-]*)/);
-      if (flagMatch) {
-        tokens.push(<span key={tokenKey++} className="text-yellow-400">{flagMatch[1]}</span>);
-        remaining = remaining.slice(flagMatch[1].length);
-        continue;
-      }
-      
-      const pathMatch = remaining.match(/^(\.\/[\w./-]+|\/[\w./-]+)/);
-      if (pathMatch) {
-        tokens.push(<span key={tokenKey++} className="text-orange-400">{pathMatch[1]}</span>);
-        remaining = remaining.slice(pathMatch[1].length);
-        continue;
-      }
-      
-      const stringMatch = remaining.match(/^(["'](?:[^"'\\]|\\.)*["'])/);
-      if (stringMatch) {
-        tokens.push(<span key={tokenKey++} className="text-green-400">{stringMatch[1]}</span>);
-        remaining = remaining.slice(stringMatch[1].length);
-        continue;
-      }
-      
-      const envVarMatch = remaining.match(/^(\$\w+|\$\{[^}]+\})/);
-      if (envVarMatch) {
-        tokens.push(<span key={tokenKey++} className="text-accent">{envVarMatch[1]}</span>);
-        remaining = remaining.slice(envVarMatch[1].length);
-        continue;
-      }
-      
-      const wordMatch = remaining.match(/^(\w[\w.-]*)/);
-      if (wordMatch) {
-        const word = wordMatch[1];
-        if (commands.includes(word.toLowerCase())) {
-          tokens.push(<span key={tokenKey++} className="text-secondary font-semibold">{word}</span>);
-        } else {
-          tokens.push(<span key={tokenKey++} className="text-gray-300">{word}</span>);
-        }
-        remaining = remaining.slice(word.length);
-        continue;
-      }
-      
-      tokens.push(<span key={tokenKey++} className="text-gray-300">{remaining[0]}</span>);
-      remaining = remaining.slice(1);
-    }
-    
-    return (
-      <React.Fragment key={lineIndex}>
-        {tokens}
-        {lineIndex < lines.length - 1 && '\n'}
-      </React.Fragment>
-    );
-  });
-};
-
 export const CyberCodeBlock = ({ children, className }: { children: React.ReactNode; className?: string }) => {
   const [copied, setCopied] = useState(false);
   const codeContent = typeof children === 'string' ? children : 
@@ -439,15 +215,36 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
     );
   }
 
-  const languageLabel = isPythonCode ? 'PYTHON' : isJavaScriptCode ? 'JAVASCRIPT' : isJsonCode ? 'JSON' : isBashCode ? 'TERMINAL' : 'CODE_BLOCK';
-
-  const getHighlightedCode = () => {
-    if (isPythonCode) return highlightPython(codeContent);
-    if (isJavaScriptCode) return highlightJavaScript(codeContent);
-    if (isJsonCode) return highlightJson(codeContent);
-    if (isBashCode) return highlightBash(codeContent);
-    return <span className="text-gray-300">{codeContent}</span>;
+  const getLanguage = (): string => {
+    if (className?.includes('python')) return 'python';
+    if (className?.includes('javascript') || className?.includes('js')) return 'javascript';
+    if (className?.includes('typescript') || className?.includes('ts')) return 'typescript';
+    if (className?.includes('json')) return 'json';
+    if (className?.includes('bash') || className?.includes('shell') || className?.includes('sh')) return 'bash';
+    if (className?.includes('markdown') || className?.includes('md')) return 'markdown';
+    if (className?.includes('css')) return 'css';
+    if (className?.includes('html')) return 'markup';
+    if (className?.includes('sql')) return 'sql';
+    if (className?.includes('yaml') || className?.includes('yml')) return 'yaml';
+    if (isPythonCode) return 'python';
+    if (isJavaScriptCode) return 'javascript';
+    if (isJsonCode) return 'json';
+    if (isBashCode) return 'bash';
+    return 'text';
   };
+
+  const language = getLanguage();
+  const languageLabel = language === 'python' ? 'PYTHON' : 
+                        language === 'javascript' ? 'JAVASCRIPT' : 
+                        language === 'typescript' ? 'TYPESCRIPT' :
+                        language === 'json' ? 'JSON' : 
+                        language === 'bash' ? 'TERMINAL' : 
+                        language === 'markdown' ? 'MARKDOWN' :
+                        language === 'css' ? 'CSS' :
+                        language === 'markup' ? 'HTML' :
+                        language === 'sql' ? 'SQL' :
+                        language === 'yaml' ? 'YAML' :
+                        'CODE_BLOCK';
 
   return (
     <div className="relative group my-8">
@@ -470,9 +267,23 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
             {copied ? 'COPIED' : 'COPY_SOURCE'}
           </button>
         </div>
-        <pre className="p-6 overflow-x-auto text-sm font-mono leading-relaxed">
-          <code>{getHighlightedCode()}</code>
-        </pre>
+        <SyntaxHighlighter 
+          language={language}
+          style={cyberpunkTheme}
+          customStyle={{
+            margin: 0,
+            padding: '1.5rem',
+            background: 'transparent',
+            fontSize: '0.875rem',
+          }}
+          codeTagProps={{
+            style: {
+              fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace',
+            }
+          }}
+        >
+          {codeContent}
+        </SyntaxHighlighter>
       </div>
     </div>
   );
