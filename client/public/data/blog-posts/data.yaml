@@ -11,7 +11,7 @@
     - Second-Brain
   image_url: /images/cyberpunk_second_brain_neural_network.webp
   status: published
-  published_at: "2025-12-08T00:00:00Z"
+  published_at: "2025-10-15T00:00:00Z"
   content: blog-posts/13.content.md
   audience: Everyone
 
@@ -28,7 +28,7 @@
     - Second-Brain
   image_url: /images/three_pillars_knowledge_architecture.webp
   status: published
-  published_at: "2025-12-15T00:00:00Z"
+  published_at: "2025-10-22T00:00:00Z"
   content: blog-posts/14.content.md
   audience: Everyone
 
@@ -44,7 +44,7 @@
     - claude
   image_url: /images/first_knowledge_entry_cyberpunk_brain.webp
   status: published
-  published_at: "2025-12-22T00:00:00Z"
+  published_at: "2025-10-27T00:00:00Z"
   content: blog-posts/15.content.md
   audience: Developers
 
@@ -61,7 +61,7 @@
     - claude
   image_url: /images/mcp_connections_cyberpunk_brain_network.webp
   status: published
-  published_at: "2025-12-29T00:00:00Z"
+  published_at: "2025-11-03T00:00:00Z"
   content: blog-posts/16.content.md
   audience: Developers
 
@@ -77,7 +77,7 @@
     - Skills
   image_url: /images/cyberpunk_skills_brain_automation.webp
   status: published
-  published_at: "2025-12-29T15:26:00Z"
+  published_at: "2025-11-10T15:26:00Z"
   content: blog-posts/17.content.md
   audience: Developers
 
@@ -94,7 +94,7 @@
     - Automation
   image_url: /images/cyberpunk_automation_hooks_concept.webp
   status: published
-  published_at: "2025-12-29T16:00:00Z"
+  published_at: "2025-11-17T16:00:00Z"
   content: blog-posts/18.content.md
   audience: Developers
 
@@ -111,7 +111,7 @@
     - team-productivity
   image_url: /images/cyberpunk_plugin_system_concept.webp
   status: published
-  published_at: "2025-12-29T18:26:52Z"
+  published_at: "2025-11-24T18:26:52Z"
   content: blog-posts/19.content.md
   audience: Tech Teams
 
@@ -128,7 +128,7 @@
     - memory
   image_url: /images/cyberpunk_structured_data_memory.webp
   status: published
-  published_at: "2025-12-30T08:38:21Z"
+  published_at: "2025-12-01T08:38:21Z"
   content: blog-posts/20.content.md
   audience: Developers
 
@@ -145,7 +145,7 @@
     - productivity
   image_url: /images/cyberpunk_team_communication_hub.webp
   status: published
-  published_at: "2025-12-30T08:51:19Z"
+  published_at: "2025-12-08T08:51:19Z"
   content: blog-posts/21.content.md
   audience: Tech Teams
 
@@ -162,7 +162,7 @@
     - documentation
   image_url: /images/cyberpunk_meeting_memory_system.webp
   status: published
-  published_at: "2025-12-30T09:21:01Z"
+  published_at: "2025-12-15T09:21:01Z"
   content: blog-posts/22.content.md
   audience: Tech Teams
 
@@ -179,7 +179,7 @@
     - documentation
   image_url: /images/cyberpunk_decision_intelligence_system.webp
   status: published
-  published_at: "2025-12-30T09:34:49Z"
+  published_at: "2025-12-22T09:34:49Z"
   content: blog-posts/23.content.md
   audience: Tech Leaders
 
@@ -196,6 +196,6 @@
     - capstone
   image_url: /images/cyberpunk_autonomous_workflow_system.webp
   status: published
-  published_at: "2025-12-30T09:35:50Z"
+  published_at: "2025-12-29T09:35:50Z"
   content: blog-posts/24.content.md
   audience: Tech Teams
