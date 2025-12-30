@@ -165,6 +165,14 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
   const isJsonCode = className?.includes('json') || 
                      (codeContent.trim().startsWith('{') && codeContent.trim().endsWith('}') && codeContent.includes('"') && !codeContent.includes('//'));
 
+  const isYamlCode = className?.includes('yaml') || className?.includes('yml') ||
+                     (codeContent.includes(': ') && 
+                      (codeContent.includes('- ') || codeContent.match(/^\w+:/m)) &&
+                      !codeContent.includes('{') &&
+                      (codeContent.includes('.yaml') || codeContent.includes('.yml') || 
+                       codeContent.match(/^#\s*\w+.*\.ya?ml/m) ||
+                       (codeContent.match(/^\s*\w+:\s*$/m) && codeContent.includes('  - '))));
+
   const isBashCode = className?.includes('bash') || className?.includes('shell') || className?.includes('sh') ||
                      codeContent.includes('npm ') || codeContent.includes('npx ') ||
                      codeContent.includes('yarn ') || codeContent.includes('git ') ||
@@ -228,6 +236,7 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
     if (className?.includes('html')) return 'markup';
     if (className?.includes('sql')) return 'sql';
     if (className?.includes('yaml') || className?.includes('yml')) return 'yaml';
+    if (isYamlCode) return 'yaml';
     if (isPythonCode) return 'python';
     if (isJavaScriptCode) return 'javascript';
     if (isJsonCode) return 'json';
