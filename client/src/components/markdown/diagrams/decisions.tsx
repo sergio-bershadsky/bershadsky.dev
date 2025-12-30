@@ -123,7 +123,7 @@ export const DecisionFlowDiagram = () => (
       <span className="text-xs text-muted-foreground">PROCESS</span>
     </div>
     <div className="overflow-x-auto">
-      <div className="flex items-start gap-2 min-w-max justify-center">
+      <div className="flex items-start gap-1 min-w-max justify-center">
         {[
           { stage: 'EXPLORATION', quote: '"What options do we have?"', color: 'border-gray-500', textColor: 'text-gray-400' },
           { stage: 'PROPOSAL', quote: '"I propose Redis"', color: 'border-yellow-500', textColor: 'text-yellow-400' },
@@ -132,13 +132,13 @@ export const DecisionFlowDiagram = () => (
         ].map((item, i, arr) => (
           <React.Fragment key={i}>
             <div className="flex flex-col items-center w-28">
-              <div className={`px-3 py-2 border ${item.color} rounded bg-black/40 w-full text-center`}>
+              <div className={`px-2 py-1 border ${item.color} rounded bg-black/40 w-full text-center`}>
                 <span className={`text-xs ${item.textColor}`}>{item.stage}</span>
               </div>
               <span className="text-[10px] text-gray-500 mt-1 text-center">{item.quote}</span>
             </div>
             {i < arr.length - 1 && (
-              <div className="flex items-center h-10 px-1">
+              <div className="flex items-center h-10 px-0">
                 <ArrowRight className="w-4 h-4 text-gray-500" />
               </div>
             )}
