@@ -11,6 +11,9 @@ export interface BlogPost {
   status: string;
   publishedAt: string | null;
   audience: string;
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  seoKeywords?: string | null;
 }
 
 export interface Series {
