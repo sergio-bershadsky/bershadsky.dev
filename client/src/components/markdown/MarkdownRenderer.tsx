@@ -120,7 +120,7 @@ const CyberH1 = ({ children }: { children: React.ReactNode }) => {
   const text = extractText(children);
   const cleanedTitle = text.replace(/^Part \d+:\s*/i, '');
   return (
-    <h1 className="md:text-4xl font-display font-bold text-white mt-6 md:mt-8 mb-4 md:mb-6 tracking-wide text-[32px]">
+    <h1 className="md:text-4xl font-display font-bold text-white mt-6 md:mt-8 mb-4 md:mb-6 tracking-wide text-[28px]">
       {cleanedTitle}
     </h1>
   );
