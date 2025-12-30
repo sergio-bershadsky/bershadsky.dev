@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRoute } from "wouter";
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen, Users } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
 
 const getSeriesIcon = (slug: string, accentColor: string, size: string = "w-5 h-5") => {
@@ -150,24 +150,26 @@ export default function BlogPostPage() {
             <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-white transition-all duration-300`} style={{ textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000' }} data-testid="text-post-title">
               {post.title.replace(/\s*PART:\s*\d+$/i, '')}
             </h1>
+            <div className="flex flex-wrap gap-3 text-xs font-mono mt-4">
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-primary/30 bg-black/60 text-primary backdrop-blur-sm">
+                <Calendar className="w-3 h-3" /> {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}
+              </span>
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-secondary/30 bg-black/60 text-secondary backdrop-blur-sm">
+                <Clock className="w-3 h-3" /> {Math.ceil(post.content.split(' ').length / 200)} MIN READ
+              </span>
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-accent/30 bg-black/60 text-accent backdrop-blur-sm">
+                <Users className="w-3 h-3" /> DEVELOPERS
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2 mt-3">
+              {post.tags.map(tag => (
+                <span key={tag} className="flex items-center gap-1.5 px-2 py-1 rounded border border-white/20 bg-black/40 text-white/70 text-xs backdrop-blur-sm" data-testid={`tag-${tag}`}>
+                  <Hash className="w-3 h-3" /> {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </motion.div>
-
-        <div className="max-w-4xl mx-auto mb-6">
-          <div className="flex flex-wrap gap-3 text-xs font-mono">
-            <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-primary/30 bg-primary/10 text-primary">
-              <Calendar className="w-3 h-3" /> {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}
-            </span>
-            <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-secondary/30 bg-secondary/10 text-secondary">
-              <Clock className="w-3 h-3" /> {Math.ceil(post.content.split(' ').length / 200)} MIN READ
-            </span>
-            {post.tags.map(tag => (
-              <span key={tag} className="flex items-center gap-2 px-3 py-1.5 rounded border border-white/10 bg-white/5 text-muted-foreground" data-testid={`tag-${tag}`}>
-                <Hash className="w-3 h-3" /> {tag}
-              </span>
-            ))}
-          </div>
-        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
