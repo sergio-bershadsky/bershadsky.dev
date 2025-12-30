@@ -33,14 +33,15 @@ export default function BlogPostPage() {
   
   const postSlug = params.slug;
   
-  const { data: post, isLoading } = useQuery<BlogPostWithSeries>({
+  const { data: post, isLoading, isError } = useQuery<BlogPostWithSeries>({
     queryKey: ['/api/blog-posts', postSlug],
     queryFn: async () => {
       const response = await fetch(`/api/blog-posts/${postSlug}`);
       if (!response.ok) throw new Error('Failed to fetch blog post');
       return response.json();
     },
-    enabled: !!postSlug
+    enabled: !!postSlug,
+    retry: false
   });
   
   const { data: allPosts = [] } = useQuery<BlogPost[]>({
@@ -62,12 +63,28 @@ export default function BlogPostPage() {
     enabled: !!post?.series?.slug
   });
   
-  if (isLoading || !post) {
+  if (isLoading) {
     return (
       <div className="min-h-screen text-foreground relative overflow-x-hidden flex items-center justify-center">
         <CyberpunkBackground />
         <div className="text-center font-mono text-muted-foreground">
           LOADING_ARTICLE...
+        </div>
+      </div>
+    );
+  }
+
+  if (isError || !post) {
+    return (
+      <div className="min-h-screen text-foreground relative overflow-x-hidden flex items-center justify-center">
+        <CyberpunkBackground />
+        <div className="text-center">
+          <div className="font-mono text-6xl text-primary mb-4">404</div>
+          <div className="font-mono text-muted-foreground mb-6">ARTICLE_NOT_FOUND</div>
+          <a href="/" className="inline-flex items-center gap-2 text-secondary hover:text-white transition-colors font-mono">
+            <ArrowLeft className="w-4 h-4" />
+            RETURN_TO_BASE
+          </a>
         </div>
       </div>
     );
