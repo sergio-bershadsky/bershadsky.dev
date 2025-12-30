@@ -22,7 +22,7 @@ const getSeriesIcon = (slug: string, accentColor: string, size: string = "w-5 h-
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
 import blogVideo from '@assets/generated_videos/cyberpunk_digital_interface_with_code_scrolling_and_data_visualization.mp4';
-import authorAvatar from '@assets/avatar-squere.png';
+import authorAvatar from '@assets/avatar-squere.webp';
 import { getBlogPostBySlug, getSeriesWithPosts, getAllBlogPosts, type BlogPost, type BlogPostWithSeries, type SeriesWithPosts } from '@/lib/dataLoader';
 
 export default function BlogPostPage() {
