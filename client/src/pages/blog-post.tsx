@@ -196,24 +196,14 @@ export default function BlogPostPage() {
           </div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          className="max-w-4xl mx-auto mb-8 px-4 sm:px-0"
-        >
+        <div className="max-w-4xl mx-auto mb-8 px-4 sm:px-0">
           <p className="text-xl text-gray-300 font-light leading-relaxed mt-[4px] mb-[4px]" data-testid="text-post-excerpt">
             {post.excerpt}
           </p>
-        </motion.div>
+        </div>
 
         {seriesData && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="max-w-4xl mx-auto mb-8 px-4 sm:px-0"
-          >
+          <div className="max-w-4xl mx-auto mb-8 px-4 sm:px-0">
             <div 
               className="border rounded-lg p-4 flex items-center justify-between gap-4 backdrop-blur-sm"
               style={{ 
@@ -276,7 +266,7 @@ export default function BlogPostPage() {
                 );
               })()}
             </div>
-          </motion.div>
+          </div>
         )}
 
         <article className="max-w-4xl mx-auto px-4 sm:px-0">
