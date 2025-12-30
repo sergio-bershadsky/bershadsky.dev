@@ -15,6 +15,7 @@ interface RawBlogPost {
   status: string;
   published_at: string | null;
   content: string;
+  audience: string;
 }
 
 interface RawSeries {
@@ -75,6 +76,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
       videoUrl: post.video_url,
       status: post.status,
       publishedAt: post.published_at,
+      audience: post.audience,
     };
   }));
   

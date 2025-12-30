@@ -10,6 +10,7 @@ export interface BlogPost {
   videoUrl?: string | null;
   status: string;
   publishedAt: string | null;
+  audience: string;
 }
 
 export interface Series {
