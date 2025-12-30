@@ -1,0 +1,7 @@
+- id: 5
+  slug: second-brain-claude
+  title: "Building Your Second Brain with Claude"
+  description: "A 12-part series on transforming Claude from a coding assistant into a persistent knowledge companion that remembers your projects, decisions, and team context."
+  cover_image_url: null
+  accent_color: "#06b6d4"
+  is_visible: true
