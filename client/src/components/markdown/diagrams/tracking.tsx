@@ -301,7 +301,7 @@ export const CoreEntitiesDiagram = () => (
 );
 
 export const TrackingFolderStructureDiagram = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5 notranslate" translate="no">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 8.8 // FOLDER_STRUCTURE</span>
       <span className="text-xs text-muted-foreground">FILE SYSTEM</span>
@@ -360,7 +360,7 @@ export const TrackingFolderStructureDiagram = () => (
 );
 
 export const ValidationFlowDiagram = () => (
-  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5 notranslate" translate="no">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 8.9 // VALIDATION_FLOW</span>
       <span className="text-xs text-muted-foreground">PROCESS</span>
@@ -393,7 +393,7 @@ export const ValidationFlowDiagram = () => (
 );
 
 export const BeforeAfterTrackingDiagram = () => (
-  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5 notranslate" translate="no">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 8.10 // BEFORE_AFTER</span>
       <span className="text-xs text-muted-foreground">TRANSFORMATION</span>

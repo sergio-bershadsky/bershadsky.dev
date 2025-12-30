@@ -21,7 +21,7 @@ export const DiagramFrame = ({
   };
 
   return (
-    <div className={`my-8 border ${colors[variant].split(' ')[0]} rounded-lg bg-black/40 p-5`}>
+    <div className={`my-8 border ${colors[variant].split(' ')[0]} rounded-lg bg-black/40 p-5 notranslate`} translate="no">
       <div className={`text-sm font-mono ${colors[variant].split(' ')[1]} mb-4 flex justify-between`}>
         <span>FIG {figNumber} // {title}</span>
         {label && <span className="text-xs text-muted-foreground">{label}</span>}
@@ -207,7 +207,7 @@ export const FolderTree = ({
   };
 
   return (
-    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5 notranslate" translate="no">
       <div className="text-sm font-mono text-primary mb-3 flex items-center gap-2">
         <RootIcon className="w-4 h-4 text-primary" />
         <span>{rootName}</span>
