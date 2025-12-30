@@ -3,7 +3,7 @@ import { Brain, MessageSquare, RefreshCw, BookOpen, ArrowRight, FileText, Databa
 import { DiagramEntry } from '../diagramRegistry';
 
 export const MCPFlowDiagram = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 4.0 // MCP_ARCHITECTURE</span>
       <span className="text-xs text-muted-foreground">FLOW</span>
@@ -31,7 +31,7 @@ export const MCPFlowDiagram = () => (
 );
 
 export const ConnectionTypesTable = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5 diagram-mobile-scale">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 4.1 // CONNECTION_TYPES</span>
       <span className="text-xs text-muted-foreground">CAPABILITIES</span>
