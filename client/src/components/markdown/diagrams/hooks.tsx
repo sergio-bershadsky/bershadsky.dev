@@ -3,7 +3,7 @@ import { Zap, RefreshCw, ArrowDown, ArrowRight, FileText, CheckCircle, XCircle, 
 import { DiagramEntry } from '../diagramRegistry';
 
 export const SkillsVsHooksDiagram = () => (
-  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 6.0 // SKILLS_VS_HOOKS</span>
       <span className="text-xs text-muted-foreground">COMPARISON</span>
@@ -38,7 +38,7 @@ export const SkillsVsHooksDiagram = () => (
 );
 
 export const HookEventsTable = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 6.1 // HOOK_EVENTS</span>
       <span className="text-xs text-muted-foreground">TRIGGERS</span>
@@ -63,7 +63,7 @@ export const HookEventsTable = () => (
 );
 
 export const HookTimelineDiagram = () => (
-  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 6.2 // HOOK_TIMELINE</span>
       <span className="text-xs text-muted-foreground">SESSION FLOW</span>
@@ -90,7 +90,7 @@ export const HookTimelineDiagram = () => (
 );
 
 export const HookFlowDiagram = () => (
-  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 6.3 // HOOK_FLOW</span>
       <span className="text-xs text-muted-foreground">LOGIC</span>
@@ -145,7 +145,7 @@ export const HookFlowDiagram = () => (
 );
 
 export const GoodFirstHooksDiagram = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 6.4 // HOOK_SELECTION</span>
       <span className="text-xs text-muted-foreground">GUIDE</span>
@@ -211,7 +211,7 @@ export const HooksFolderStructureDiagram = () => {
   };
 
   return (
-    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+    <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
       <div className="text-sm font-mono text-primary mb-3 flex items-center gap-2">
         <FolderOpen className="w-4 h-4 text-primary" />
         <span>your-second-brain/</span>
@@ -225,7 +225,7 @@ export const HooksFolderStructureDiagram = () => {
 };
 
 export const HookSpectrumDiagram = () => (
-  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 6.5 // HOOK_SPECTRUM</span>
       <span className="text-xs text-muted-foreground">INTENSITY</span>
@@ -280,7 +280,7 @@ export const HookExecutionFlowDiagram = ({ content }: { content: string }) => {
   output = outputLines.join(' ').replace(/^["']|["']$/g, '');
 
   return (
-    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+    <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
       <div className="text-sm font-mono text-primary mb-4 flex justify-between">
         <span>HOOK_EXECUTION</span>
         <span className="text-xs text-muted-foreground">FLOW</span>
@@ -352,7 +352,7 @@ export const HookDefinitionDiagram = ({ content }: { content: string }) => {
   }
 
   return (
-    <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+    <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
       <div className="text-sm font-mono text-secondary mb-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Play className="w-4 h-4 text-secondary" />

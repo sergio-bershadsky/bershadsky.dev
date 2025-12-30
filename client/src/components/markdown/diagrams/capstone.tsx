@@ -3,7 +3,7 @@ import { ArrowRight, Clock, MessageSquare, FileText, Zap, Brain, CheckCircle, Ca
 import type { DiagramEntry } from '../diagramRegistry';
 
 export const BeforeAfterComparisonDiagram = () => (
-  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-green-500/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
       <span>FIG 12.1 // BEFORE_AND_AFTER_COMPARISON</span>
       <span className="text-xs text-muted-foreground">TRANSFORMATION</span>
@@ -40,7 +40,7 @@ export const BeforeAfterComparisonDiagram = () => (
 );
 
 export const AutonomousDefinitionDiagram = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 12.2 // AUTONOMOUS_DEFINITION</span>
       <span className="text-xs text-muted-foreground">CLARITY</span>
@@ -77,7 +77,7 @@ export const AutonomousDefinitionDiagram = () => (
 );
 
 export const AutonomousWorkflowDiagram = () => (
-  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 12.3 // AUTONOMOUS_WORKFLOW</span>
       <span className="text-xs text-muted-foreground">DAILY FLOW</span>
@@ -111,7 +111,7 @@ export const AutonomousWorkflowDiagram = () => (
 );
 
 export const ComponentIntegrationDiagram = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 12.4 // COMPONENT_INTEGRATION_TABLE</span>
       <span className="text-xs text-muted-foreground">SYSTEM</span>
@@ -149,7 +149,7 @@ export const ComponentIntegrationDiagram = () => (
 );
 
 export const FeedbackLoopDiagram = () => (
-  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 12.5 // FEEDBACK_LOOP</span>
       <span className="text-xs text-muted-foreground">IMPROVEMENT</span>
@@ -173,7 +173,7 @@ export const FeedbackLoopDiagram = () => (
 );
 
 export const ExpansionPossibilitiesDiagram = () => (
-  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 12.6 // EXPANSION_POSSIBILITIES</span>
       <span className="text-xs text-muted-foreground">FUTURE</span>
@@ -196,7 +196,7 @@ export const ExpansionPossibilitiesDiagram = () => (
 );
 
 export const SprintPlanningComparisonDiagram = () => (
-  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
+  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 12.7 // SPRINT_PLANNING_COMPARISON</span>
       <span className="text-xs text-muted-foreground">CONTEXT</span>
