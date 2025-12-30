@@ -349,7 +349,7 @@ export default function BlogPostPage() {
           </div>
         </div>
 
-        <div className="max-w-4xl mx-auto mt-20 pt-10 border-t border-white/10">
+        <div className="max-w-4xl mx-auto mt-20">
           <SectionHeader title="RELATED_DATA" subtitle="Continue Reading" />
           <div className="grid md:grid-cols-2 gap-6">
             {allPosts.filter(p => p.id !== post.id).slice(0, 2).map(related => (
