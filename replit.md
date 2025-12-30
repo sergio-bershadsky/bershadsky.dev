@@ -142,14 +142,34 @@ markdown/
 - Icons at 4-5px (`w-4 h-4` or `w-5 h-5`)
 - Text sizes: headers `text-sm`, content `text-xs`
 
-## Database Schema
+## Data Architecture (Static YAML/MD)
 
-### Series Table
-- `id`, `slug`, `title`, `description`, `coverImageUrl`, `accentColor`, `isVisible`
+The blog uses a fully static data architecture with no database dependencies. Content is stored in YAML metadata files and Markdown content files.
 
-### Blog Posts Table
-- `id`, `slug` (SEO-friendly URL), `title`, `excerpt`, `content`, `date`, `tags[]`, `imageUrl`, `videoUrl`, `status` (draft/published), `publishedAt`
-- Routes use `/blog/:slug` for SEO-friendly URLs
+### Data Location
+- **Blog posts metadata:** `client/public/data/blog-posts/data.yaml`
+- **Blog posts content:** `client/public/data/blog-posts/{id}.content.md`
+- **Series metadata:** `client/public/data/series/data.yaml`
+- **Series-posts relationships:** `client/public/data/series-posts/data.yaml`
+
+### Data Loader
+The `client/src/lib/dataLoader.ts` utility handles:
+- Fetching and parsing YAML files
+- Loading Markdown content
+- Transforming snake_case YAML to camelCase TypeScript
+- Caching loaded data to prevent redundant fetches
+
+### Type Definitions
+Pure TypeScript interfaces in `shared/schema.ts`:
+- `BlogPost`: id, slug, title, excerpt, content, date, tags[], imageUrl, status, publishedAt
+- `Series`: id, slug, title, description, coverImageUrl, accentColor, isVisible
+- `SeriesPost`: seriesId, postId, position
+- `BlogPostWithSeries`: BlogPost with optional series navigation info
+- `SeriesWithPosts`: Series with its ordered posts array
+
+### Routes
+- `/blog/:slug` for SEO-friendly blog post URLs
+- `/series/:slug` for series pages
 
 ## Component Patterns
 
@@ -165,10 +185,12 @@ markdown/
 - Table of contents extracted from headings
 
 ## File Organization
-- Articles stored in `attached_assets/articles/`
+- Article content in `client/public/data/blog-posts/` (YAML + MD files)
 - Generated images in `attached_assets/generated_images/`
 - Components in `client/src/components/`
 - Pages in `client/src/pages/`
+- Data loader in `client/src/lib/dataLoader.ts`
+- Type definitions in `shared/schema.ts`
 
 ## Code Syntax Highlighting Rules (MANDATORY)
 
@@ -185,6 +207,10 @@ Detection patterns:
 **NEVER render code blocks as plain gray text** - always apply appropriate highlighting!
 
 ## Recent Changes
+- 2024-12-30: Migrated from PostgreSQL database to fully static YAML/MD data structure
+- 2024-12-30: Created dataLoader.ts utility for static content fetching
+- 2024-12-30: Removed database dependencies (Drizzle, pg, Express routes)
+- 2024-12-30: Converted shared/schema.ts to pure TypeScript types
 - 2024-12-29: Refactored MarkdownRenderer into modular architecture under `client/src/components/markdown/`
 - 2024-12-29: Created Part 7 article "Sharing Knowledge: Plugins" with 7 visual diagram components
 - 2024-12-29: Added docker-compose.yml and database dump script for local development
