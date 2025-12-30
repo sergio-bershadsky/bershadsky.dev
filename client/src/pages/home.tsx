@@ -168,7 +168,7 @@ export default function Home() {
                 <Youtube className="w-6 h-6 text-red-500 group-hover:text-white transition-colors" />
               </div>
             </a>
-            <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" className="group">
+            <a href="https://t.me/bershadskydev" target="_blank" rel="noopener noreferrer" className="group">
                <div className="p-3 border border-secondary/30 rounded-full bg-secondary/5 hover:bg-secondary/20 hover:border-secondary transition-all duration-300 hover:scale-110 shadow-[0_0_10px_rgba(6,182,212,0.2)] hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]">
                 <Send className="w-6 h-6 text-secondary group-hover:text-white transition-colors" />
               </div>
