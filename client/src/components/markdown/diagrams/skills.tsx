@@ -3,7 +3,7 @@ import { Search, FileText, Lightbulb, Zap, ClipboardList, File, RefreshCw, Check
 import { DiagramEntry } from '../diagramRegistry';
 
 export const SkillPatternsDiagram = () => (
-  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 5.1 // SKILL_PATTERNS</span>
       <span className="text-xs text-muted-foreground">TYPES</span>
@@ -46,7 +46,7 @@ export const SkillPatternsDiagram = () => (
 );
 
 export const WithoutVsWithSkillsDiagram = () => (
-  <div className="my-8 notranslate border border-white/20 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
       <span>FIG 5.2 // EFFICIENCY</span>
       <span className="text-xs text-muted-foreground">COMPARISON</span>
@@ -75,7 +75,7 @@ export const WithoutVsWithSkillsDiagram = () => (
 );
 
 export const SkillCandidatesDiagram = () => (
-  <div className="my-8 notranslate border border-white/20 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-white/20 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-white/60 mb-4 flex justify-between">
       <span>FIG 5.3 // CANDIDATES</span>
       <span className="text-xs text-muted-foreground">SELECTION</span>
@@ -103,7 +103,7 @@ export const SkillCandidatesDiagram = () => (
 );
 
 export const SkillCreationWorkflowDiagram = () => (
-  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 5.4 // SKILL_CREATION</span>
       <span className="text-xs text-muted-foreground">WORKFLOW</span>
@@ -171,7 +171,7 @@ export const SkillsFolderStructureDiagram = () => {
   };
 
   return (
-    <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
+    <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
       <div className="text-sm font-mono text-primary mb-3 flex items-center gap-2">
         <FolderOpen className="w-4 h-4 text-primary" />
         <span>your-second-brain/</span>
@@ -209,7 +209,7 @@ export const SkillDefinitionDiagram = ({ content }: { content: string }) => {
   }
 
   return (
-    <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
+    <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
       <div className="text-sm font-mono text-accent mb-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Zap className="w-4 h-4 text-accent" />
@@ -280,7 +280,7 @@ export const SkillTypeDiagram = ({ content }: { content: string }) => {
   }
 
   return (
-    <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
+    <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
       <div className="text-sm font-mono text-accent mb-4 flex justify-between">
         <span>SKILL_TYPE</span>
         <span className="text-xs text-muted-foreground">PATTERN</span>

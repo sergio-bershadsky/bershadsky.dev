@@ -3,7 +3,7 @@ import { MessageSquare, Filter, FileText, CheckCircle, AlertTriangle, HelpCircle
 import type { DiagramEntry } from '../diagramRegistry';
 
 export const FirehoseDiagram = () => (
-  <div className="my-8 notranslate border border-red-500/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-red-500/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-red-400 mb-4 flex justify-between">
       <span>FIG 9.1 // THE_FIREHOSE</span>
       <span className="text-xs text-muted-foreground">PROBLEM</span>
@@ -38,7 +38,7 @@ export const FirehoseDiagram = () => (
 );
 
 export const SummaryDiagram = () => (
-  <div className="my-8 notranslate border border-green-500/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
       <span>FIG 9.2 // THE_SUMMARY</span>
       <span className="text-xs text-muted-foreground">SOLUTION</span>
@@ -68,7 +68,7 @@ export const SummaryDiagram = () => (
 );
 
 export const CommunicationHubDiagram = () => (
-  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 9.3 // COMMUNICATION_HUB</span>
       <span className="text-xs text-muted-foreground">ARCHITECTURE</span>
@@ -122,7 +122,7 @@ export const CommunicationHubDiagram = () => (
 );
 
 export const SignalWordsDiagram = () => (
-  <div className="my-8 notranslate border border-primary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-primary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-primary mb-4 flex justify-between">
       <span>FIG 9.4 // SIGNAL_WORDS</span>
       <span className="text-xs text-muted-foreground">DETECTION</span>
@@ -153,7 +153,7 @@ export const SignalWordsDiagram = () => (
 );
 
 export const MessageToRecordDiagram = () => (
-  <div className="my-8 notranslate border border-accent/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <span>FIG 9.5 // MESSAGE_TO_RECORD</span>
       <span className="text-xs text-muted-foreground">EXTRACTION</span>
@@ -188,7 +188,7 @@ export const MessageToRecordDiagram = () => (
 );
 
 export const CaptureVsSkipDiagram = () => (
-  <div className="my-8 notranslate border border-secondary/30 rounded-lg bg-black/40 p-5" translate="no">
+  <div className="my-8 border border-secondary/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-secondary mb-4 flex justify-between">
       <span>FIG 9.6 // CAPTURE_VS_SKIP</span>
       <span className="text-xs text-muted-foreground">PRIVACY</span>
