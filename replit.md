@@ -26,6 +26,7 @@ A cyberpunk/neon aesthetic blog and portfolio website featuring article series w
 - **DO NOT** include "Reading time / Audience / Words" metadata in article content - this info is already displayed in the hero block
 - **MANDATORY:** Use Lucide line-based icons instead of emojis in all content, diagrams, and tables
 - **MANDATORY:** Generate a hero image for every new article using the image generation tool with cyberpunk/neon aesthetic, then update the `image_url` field in the database
+- **MANDATORY:** Do NOT use `<hr>` or `---` horizontal rules in article content - they are hidden in rendering and section breaks should use headers instead
 
 ### Title Format
 - Series articles use format: `[SERIES NAME]: [TOPIC]` (e.g., "Second Brain: The Second Brain Concept")

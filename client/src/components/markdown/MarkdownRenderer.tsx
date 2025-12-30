@@ -190,9 +190,7 @@ const CyberInlineCode = ({ children }: { children: React.ReactNode }) => (
   </code>
 );
 
-const CyberHr = () => (
-  <hr className="border-t border-white/10 my-10" />
-);
+const CyberHr = () => null;
 
 const CyberLink = ({ href, children }: { href?: string; children: React.ReactNode }) => (
   <a href={href} className="text-primary hover:text-accent underline transition-colors">
