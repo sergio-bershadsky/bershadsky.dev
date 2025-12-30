@@ -14,6 +14,9 @@
   published_at: "2025-10-15T00:00:00Z"
   content: blog-posts/13.content.md
   audience: Everyone
+  seo_title: "What is a Second Brain for AI? Give Claude Persistent Memory"
+  seo_description: "Discover how to build a second brain for Claude AI. Learn the concept behind giving your AI assistant permanent memory that persists across sessions."
+  seo_keywords: "second brain, Claude AI, AI memory, persistent AI context, knowledge management AI"
 
 - id: 14
   slug: second-brain-core-building-blocks
@@ -31,6 +34,9 @@
   published_at: "2025-10-22T00:00:00Z"
   content: blog-posts/14.content.md
   audience: Everyone
+  seo_title: "Second Brain Architecture: 3 Pillars for AI Memory Systems"
+  seo_description: "Learn the three core building blocks for AI second brains: current knowledge, historical records, and decision archives. Build lasting AI context."
+  seo_keywords: "AI architecture, knowledge management, decision records, second brain structure, Claude memory"
 
 - id: 15
   slug: second-brain-your-first-entry
@@ -47,6 +53,9 @@
   published_at: "2025-10-27T00:00:00Z"
   content: blog-posts/15.content.md
   audience: Developers
+  seo_title: "Build Your First Second Brain Entry in 10 Minutes | Tutorial"
+  seo_description: "Hands-on tutorial to create your first AI second brain entry. Experience the moment Claude remembers your context across sessions."
+  seo_keywords: "second brain tutorial, Claude tutorial, AI memory setup, CLAUDE.md, knowledge entry"
 
 - id: 16
   slug: second-brain-connecting-tools-mcp
@@ -64,6 +73,9 @@
   published_at: "2025-11-03T00:00:00Z"
   content: blog-posts/16.content.md
   audience: Developers
+  seo_title: "Connect Claude to Your Tools with MCP | Second Brain Integration"
+  seo_description: "Learn how to connect Claude AI to your development tools using Model Context Protocol. Integrate GitHub, Slack, databases and more."
+  seo_keywords: "MCP, Model Context Protocol, Claude integration, AI tool connections, second brain integrations"
 
 - id: 17
   slug: second-brain-teaching-skills
@@ -80,6 +92,9 @@
   published_at: "2025-11-10T15:26:00Z"
   content: blog-posts/17.content.md
   audience: Developers
+  seo_title: "Teach Claude Custom Skills | AI Automation Guide"
+  seo_description: "Transform repetitive development tasks into one-command automations. Teach Claude AI your personal workflows and coding patterns."
+  seo_keywords: "Claude skills, AI automation, custom AI commands, workflow automation, second brain skills"
 
 - id: 18
   slug: second-brain-hooks
@@ -97,6 +112,9 @@
   published_at: "2025-11-17T16:00:00Z"
   content: blog-posts/18.content.md
   audience: Developers
+  seo_title: "Claude Hooks: Automatic AI Triggers for Developers"
+  seo_description: "Create automatic AI behaviors that trigger on events. Learn hooks for session start, file changes, and code reviews with Claude."
+  seo_keywords: "Claude hooks, AI triggers, automatic behaviors, event-driven AI, second brain automation"
 
 - id: 19
   slug: second-brain-plugins
@@ -114,6 +132,9 @@
   published_at: "2025-11-24T18:26:52Z"
   content: blog-posts/19.content.md
   audience: Tech Teams
+  seo_title: "Second Brain Plugins: Share AI Knowledge Across Teams"
+  seo_description: "Package your Claude automations into shareable plugins. Deploy team-wide AI capabilities with a single install."
+  seo_keywords: "Claude plugins, AI team sharing, second brain distribution, knowledge sharing, team automation"
 
 - id: 20
   slug: second-brain-memory-layer
@@ -131,6 +152,9 @@
   published_at: "2025-12-01T08:38:21Z"
   content: blog-posts/20.content.md
   audience: Developers
+  seo_title: "Structured Memory for Claude | YAML Data Tracking"
+  seo_description: "Build queryable structured memory for your AI second brain. Track decisions, projects, and knowledge with YAML data layers."
+  seo_keywords: "AI memory layer, structured data, YAML tracking, queryable knowledge, second brain data"
 
 - id: 21
   slug: second-brain-communication-hub
@@ -148,6 +172,9 @@
   published_at: "2025-12-08T08:51:19Z"
   content: blog-posts/21.content.md
   audience: Tech Teams
+  seo_title: "AI Communication Hub: Filter Signal from Noise"
+  seo_description: "Build an AI-powered team communication hub. Automatically summarize Slack, filter important messages, and never miss critical updates."
+  seo_keywords: "AI communication, team messaging, Slack AI, message filtering, second brain communication"
 
 - id: 22
   slug: second-brain-meeting-memory
@@ -165,6 +192,9 @@
   published_at: "2025-12-15T09:21:01Z"
   content: blog-posts/22.content.md
   audience: Tech Teams
+  seo_title: "AI Meeting Memory: Never Forget What Was Decided"
+  seo_description: "Transform meetings into searchable, permanent knowledge. Build AI-powered meeting transcription and decision extraction systems."
+  seo_keywords: "AI meeting notes, meeting transcription, decision tracking, meeting memory, second brain meetings"
 
 - id: 23
   slug: second-brain-decision-intelligence
@@ -182,6 +212,9 @@
   published_at: "2025-12-22T09:34:49Z"
   content: blog-posts/23.content.md
   audience: Tech Leaders
+  seo_title: "Decision Intelligence: ADRs with AI Context"
+  seo_description: "Build decision intelligence systems that preserve the 'why' behind every choice. Architecture Decision Records powered by AI memory."
+  seo_keywords: "decision records, ADR, architecture decisions, decision intelligence, AI documentation"
 
 - id: 24
   slug: second-brain-autonomous-workflow
@@ -199,3 +232,6 @@
   published_at: "2025-12-29T09:35:50Z"
   content: blog-posts/24.content.md
   audience: Tech Teams
+  seo_title: "Autonomous AI Workflow: Full Second Brain Automation"
+  seo_description: "Wire your entire second brain into an autonomous workflow. Morning summaries, prepared standups, and AI context that loads itself."
+  seo_keywords: "autonomous workflow, AI automation, morning summary, standup automation, second brain capstone"
