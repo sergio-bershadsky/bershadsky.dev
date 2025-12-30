@@ -283,24 +283,29 @@ export default function Home() {
                      <div className="absolute bottom-3 left-3 flex gap-2 z-10 flex-wrap">
                         {(() => {
                           const series = getSeriesFromTitle(post.title);
-                          if (series) {
-                            return (
-                              <span 
-                                className="text-[10px] bg-black/80 backdrop-blur px-2 py-1 border rounded flex items-center gap-1"
-                                style={{ borderColor: series.color, color: series.color }}
-                              >
-                                {series.icon}
-                                {series.name}
-                              </span>
-                            );
-                          }
-                          return null;
+                          const seriesKeywords = series ? [series.name.toLowerCase(), series.slug.toLowerCase()] : [];
+                          const filteredTags = post.tags.filter(tag => 
+                            !seriesKeywords.some(kw => tag.toLowerCase().includes(kw) || kw.includes(tag.toLowerCase()))
+                          );
+                          return (
+                            <>
+                              {series && (
+                                <span 
+                                  className="text-[10px] bg-black/80 backdrop-blur px-2 py-1 border rounded flex items-center gap-1"
+                                  style={{ borderColor: series.color, color: series.color }}
+                                >
+                                  {series.icon}
+                                  {series.name}
+                                </span>
+                              )}
+                              {filteredTags.slice(0, 2).map(tag => (
+                                <span key={tag} className="text-[10px] bg-black/80 backdrop-blur px-2 py-1 border border-white/20 text-white rounded">
+                                  {tag}
+                                </span>
+                              ))}
+                            </>
+                          );
                         })()}
-                        {post.tags.slice(0, 2).map(tag => (
-                          <span key={tag} className="text-[10px] bg-black/80 backdrop-blur px-2 py-1 border border-white/20 text-white rounded">
-                            {tag}
-                          </span>
-                        ))}
                      </div>
                   </div>
                   
