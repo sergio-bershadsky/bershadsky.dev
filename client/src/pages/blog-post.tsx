@@ -210,16 +210,18 @@ export default function BlogPostPage() {
                 
                 return (
                   <>
-                    {prevPost ? (
-                      <a 
-                        href={`/blog/${prevPost.slug || prevPost.id}`}
-                        className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
-                        data-testid="series-prev"
-                      >
-                        <ChevronLeft className="w-5 h-5" />
-                        <span className="hidden sm:inline text-sm font-mono">PREV</span>
-                      </a>
-                    ) : <div />}
+                    <div className="w-20 flex-shrink-0">
+                      {prevPost && (
+                        <a 
+                          href={`/blog/${prevPost.slug || prevPost.id}`}
+                          className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
+                          data-testid="series-prev"
+                        >
+                          <ChevronLeft className="w-5 h-5" />
+                          <span className="hidden sm:inline text-sm font-mono">PREV</span>
+                        </a>
+                      )}
+                    </div>
                     
                     <a 
                       href={`/series/${seriesData.slug}`}
@@ -240,16 +242,18 @@ export default function BlogPostPage() {
                       </div>
                     </a>
                     
-                    {nextPost ? (
-                      <a 
-                        href={`/blog/${nextPost.slug || nextPost.id}`}
-                        className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
-                        data-testid="series-next"
-                      >
-                        <span className="hidden sm:inline text-sm font-mono">NEXT</span>
-                        <ChevronRight className="w-5 h-5" />
-                      </a>
-                    ) : <div />}
+                    <div className="w-20 flex-shrink-0 flex justify-end">
+                      {nextPost && (
+                        <a 
+                          href={`/blog/${nextPost.slug || nextPost.id}`}
+                          className="flex items-center gap-2 text-muted-foreground hover:text-white transition-colors"
+                          data-testid="series-next"
+                        >
+                          <span className="hidden sm:inline text-sm font-mono">NEXT</span>
+                          <ChevronRight className="w-5 h-5" />
+                        </a>
+                      )}
+                    </div>
                   </>
                 );
               })()}
