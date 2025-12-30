@@ -7,7 +7,7 @@ import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { SeriesRail } from '@/components/SeriesRail';
-import avatarImage from '@assets/generated_images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
+const avatarImage = '/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
 import { getAllBlogPosts, type BlogPost } from '@/lib/dataLoader';
 
 const getSeriesFromTitle = (title: string): { name: string; slug: string; icon: React.ReactNode; color: string } | null => {
