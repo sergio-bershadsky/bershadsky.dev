@@ -132,25 +132,27 @@ export default function BlogPostPage() {
             />
           )}
           
-          <div className="absolute top-0 left-0 right-0 p-6 md:p-10 z-20">
-            {post.series && (
-              <div className="flex items-center gap-3 mb-3">
-                <a 
-                  href={`/series/${post.series.slug}`}
-                  className="text-sm font-mono text-secondary hover:text-primary transition-colors"
-                  data-testid="link-series"
-                >
-                  {post.series.title}
-                </a>
-                <span className="px-2 py-1 bg-primary/20 border border-primary/40 rounded text-primary font-mono text-sm font-bold">
-                  PART: {post.series.position}
-                </span>
-              </div>
-            )}
-            <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-white transition-all duration-300`} style={{ textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000' }} data-testid="text-post-title">
-              {post.title.replace(/\s*PART:\s*\d+$/i, '')}
-            </h1>
-            <div className="flex flex-wrap gap-2 mt-4">
+          <div className="absolute inset-0 p-6 md:p-10 z-20 flex flex-col justify-between">
+            <div>
+              {post.series && (
+                <div className="flex items-center gap-3 mb-3">
+                  <a 
+                    href={`/series/${post.series.slug}`}
+                    className="text-sm font-mono text-secondary hover:text-primary transition-colors"
+                    data-testid="link-series"
+                  >
+                    {post.series.title}
+                  </a>
+                  <span className="px-2 py-1 bg-primary/20 border border-primary/40 rounded text-primary font-mono text-sm font-bold">
+                    PART: {post.series.position}
+                  </span>
+                </div>
+              )}
+              <h1 className={`${isExpanded ? 'text-5xl md:text-7xl' : 'text-4xl md:text-6xl'} font-display font-bold leading-tight text-white transition-all duration-300`} style={{ textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000' }} data-testid="text-post-title">
+                {post.title.replace(/\s*PART:\s*\d+$/i, '')}
+              </h1>
+            </div>
+            <div className="flex flex-wrap gap-2">
               {post.tags.map(tag => (
                 <span key={tag} className="flex items-center gap-1.5 px-2 py-1 rounded border border-white/20 bg-black/40 text-white/70 text-xs backdrop-blur-sm" data-testid={`tag-${tag}`}>
                   <Hash className="w-3 h-3" /> {tag}
