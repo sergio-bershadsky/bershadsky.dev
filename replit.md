@@ -186,11 +186,19 @@ Pure TypeScript interfaces in `shared/schema.ts`:
 
 ## File Organization
 - Article content in `client/public/data/blog-posts/` (YAML + MD files)
-- Generated images in `attached_assets/generated_images/`
+- **Images in `client/public/images/`** (WebP format, served as `/images/...`)
 - Components in `client/src/components/`
 - Pages in `client/src/pages/`
 - Data loader in `client/src/lib/dataLoader.ts`
 - Type definitions in `shared/schema.ts`
+
+## Image Guidelines (MANDATORY)
+
+1. **All images must be in `client/public/images/`** - Never use attached_assets for production images
+2. **Use WebP format** - Convert PNGs to WebP for 90% smaller file sizes
+3. **Reference images as `/images/filename.webp`** - Use absolute paths from public folder
+4. **Update data.yaml image_url fields** to point to `/images/...` paths
+5. **In TSX files**, use string paths instead of imports: `const img = '/images/file.webp';`
 
 ## Code Syntax Highlighting Rules (MANDATORY)
 
@@ -207,6 +215,7 @@ Detection patterns:
 **NEVER render code blocks as plain gray text** - always apply appropriate highlighting!
 
 ## Recent Changes
+- 2024-12-30: Moved all images to client/public/images/ and converted to WebP format
 - 2024-12-30: Migrated from PostgreSQL database to fully static YAML/MD data structure
 - 2024-12-30: Created dataLoader.ts utility for static content fetching
 - 2024-12-30: Removed database dependencies (Drizzle, pg, Express routes)

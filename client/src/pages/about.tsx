@@ -5,7 +5,7 @@ import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, P
 import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
-import avatarImage from '@assets/generated_images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
+const avatarImage = '/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
 
 export default function About() {
   return (
