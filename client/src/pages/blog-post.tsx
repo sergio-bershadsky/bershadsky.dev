@@ -107,7 +107,7 @@ export default function BlogPostPage() {
               : 'w-full aspect-video max-w-4xl mx-auto'
           }`}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
+          <div className="absolute inset-0 bg-black/50 z-10" />
           
           {post.videoUrl && (
             <button 
@@ -152,7 +152,7 @@ export default function BlogPostPage() {
                   </span>
                 </div>
               )}
-              <h1 className="text-[24px] md:text-[46px] font-display font-bold text-white transition-all duration-300" style={{ textShadow: '1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000' }} data-testid="text-post-title">
+              <h1 className="text-[24px] md:text-[46px] font-display font-bold text-white transition-all duration-300" data-testid="text-post-title">
                 {post.title.replace(/\s*PART:\s*\d+$/i, '')}
               </h1>
             </div>
