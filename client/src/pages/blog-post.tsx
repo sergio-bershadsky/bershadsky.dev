@@ -395,26 +395,24 @@ export default function BlogPostPage() {
                       {tableOfContents.map((heading, i) => {
                         const slug = heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
                         const visibility = sectionVisibility[slug] || 0;
-                        const isVisible = visibility > 0;
                         
-                        const textColor = isVisible 
-                          ? `rgba(236, 72, 153, ${0.4 + visibility * 0.6})` 
-                          : undefined;
-                        const borderOpacity = visibility;
+                        const baseGray = { r: 156, g: 163, b: 175 };
+                        const pink = { r: 236, g: 72, b: 153 };
+                        const r = Math.round(baseGray.r + (pink.r - baseGray.r) * visibility);
+                        const g = Math.round(baseGray.g + (pink.g - baseGray.g) * visibility);
+                        const b = Math.round(baseGray.b + (pink.b - baseGray.b) * visibility);
                         
                         return (
                           <li key={i} className="relative">
                             <a 
                               href={`#${slug}`}
-                              className={`block pl-4 py-1 cursor-pointer transition-all duration-150 ${
-                                isVisible 
-                                  ? 'font-medium -ml-[1px]' 
-                                  : 'text-muted-foreground hover:text-white'
-                              }`}
-                              style={isVisible ? {
-                                color: textColor,
-                                borderLeft: `2px solid rgba(236, 72, 153, ${borderOpacity})`,
-                              } : undefined}
+                              className="block pl-4 py-1 cursor-pointer -ml-[1px]"
+                              style={{
+                                color: `rgb(${r}, ${g}, ${b})`,
+                                borderLeft: `2px solid rgba(236, 72, 153, ${visibility})`,
+                                fontWeight: visibility > 0.3 ? 500 : 400,
+                                transition: 'color 0.1s ease-out, border-color 0.1s ease-out',
+                              }}
                             >
                               {heading}
                             </a>
