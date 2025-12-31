@@ -87,27 +87,45 @@ export default function BlogPostPage() {
       h.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
     );
 
-    const visibilityMap: Record<string, number> = {};
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          visibilityMap[entry.target.id] = entry.intersectionRatio;
-        });
-        setSectionVisibility({ ...visibilityMap });
-      },
-      {
-        rootMargin: '-80px 0px -40% 0px',
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
-      }
-    );
-
-    headingSlugs.forEach((slug) => {
+    const sectionPositions: { slug: string; top: number; bottom: number }[] = [];
+    
+    headingSlugs.forEach((slug, index) => {
       const element = document.getElementById(slug);
-      if (element) observer.observe(element);
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        const nextSlug = headingSlugs[index + 1];
+        const nextElement = nextSlug ? document.getElementById(nextSlug) : null;
+        const bottom = nextElement 
+          ? nextElement.getBoundingClientRect().top + window.scrollY 
+          : document.body.scrollHeight;
+        sectionPositions.push({ slug, top, bottom });
+      }
     });
 
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const viewportTop = scrollY + 100;
+      const viewportBottom = scrollY + viewportHeight * 0.7;
+      
+      const newVisibility: Record<string, number> = {};
+      
+      sectionPositions.forEach(({ slug, top, bottom }) => {
+        const sectionHeight = bottom - top;
+        const visibleTop = Math.max(top, viewportTop);
+        const visibleBottom = Math.min(bottom, viewportBottom);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visibleRatio = Math.min(1, visibleHeight / Math.min(sectionHeight, viewportHeight * 0.5));
+        newVisibility[slug] = visibleRatio;
+      });
+      
+      setSectionVisibility(newVisibility);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [tableOfContents]);
   
   const { data: allPosts = [] } = useQuery<BlogPost[]>({
