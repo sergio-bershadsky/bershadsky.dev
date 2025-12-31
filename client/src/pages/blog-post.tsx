@@ -30,7 +30,7 @@ export default function BlogPostPage() {
   const [copied, setCopied] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [tableOfContents, setTableOfContents] = React.useState<string[]>([]);
-  const [activeSection, setActiveSection] = React.useState<string>('');
+  const [sectionVisibility, setSectionVisibility] = React.useState<Record<string, number>>({});
   
   const postSlug = params.slug;
   
@@ -87,17 +87,18 @@ export default function BlogPostPage() {
       h.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
     );
 
+    const visibilityMap: Record<string, number> = {};
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          visibilityMap[entry.target.id] = entry.intersectionRatio;
         });
+        setSectionVisibility({ ...visibilityMap });
       },
       {
-        rootMargin: '-20% 0px -60% 0px',
-        threshold: 0
+        rootMargin: '-80px 0px -40% 0px',
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
       }
     );
 
@@ -375,17 +376,27 @@ export default function BlogPostPage() {
                     <ul className="space-y-2 text-sm font-light border-l border-white/10">
                       {tableOfContents.map((heading, i) => {
                         const slug = heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-                        const isActive = activeSection === slug;
+                        const visibility = sectionVisibility[slug] || 0;
+                        const isVisible = visibility > 0;
+                        
+                        const textColor = isVisible 
+                          ? `rgba(236, 72, 153, ${0.4 + visibility * 0.6})` 
+                          : undefined;
+                        const borderOpacity = visibility;
+                        
                         return (
                           <li key={i} className="relative">
                             <a 
                               href={`#${slug}`}
-                              className={`block pl-4 py-1 cursor-pointer transition-all duration-200 ${
-                                isActive 
-                                  ? 'text-primary border-l-2 border-primary -ml-[1px] font-medium' 
+                              className={`block pl-4 py-1 cursor-pointer transition-all duration-150 ${
+                                isVisible 
+                                  ? 'font-medium -ml-[1px]' 
                                   : 'text-muted-foreground hover:text-white'
                               }`}
-                              onClick={() => setActiveSection(slug)}
+                              style={isVisible ? {
+                                color: textColor,
+                                borderLeft: `2px solid rgba(236, 72, 153, ${borderOpacity})`,
+                              } : undefined}
                             >
                               {heading}
                             </a>
