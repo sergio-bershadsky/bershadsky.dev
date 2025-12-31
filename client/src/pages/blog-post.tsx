@@ -410,7 +410,6 @@ export default function BlogPostPage() {
                               style={{
                                 color: `rgb(${r}, ${g}, ${b})`,
                                 borderLeft: `2px solid rgba(236, 72, 153, ${visibility})`,
-                                fontWeight: visibility > 0.3 ? 500 : 400,
                                 transition: 'color 0.1s ease-out, border-color 0.1s ease-out',
                               }}
                             >
