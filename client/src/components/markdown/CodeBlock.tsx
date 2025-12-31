@@ -264,7 +264,7 @@ export const ChatConversationDiagram = ({ content }: { content: string }) => {
       </div>
       <div className="space-y-4">
         {messages.map((msg, i) => (
-          <div key={i} className={`flex items-start gap-2 ${msg.speaker === 'you' ? 'flex-row-reverse' : 'flex-row'}`}>
+          <div key={i} className={`flex items-end gap-2 ${msg.speaker === 'you' ? 'flex-row-reverse' : 'flex-row'}`}>
             <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
               msg.speaker === 'you' 
                 ? 'bg-primary/30 border border-primary/50' 
