@@ -387,7 +387,12 @@ export default function BlogPostPage() {
                               }`}
                               onClick={(e) => {
                                 e.preventDefault();
-                                document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' });
+                                const element = document.getElementById(slug);
+                                if (element) {
+                                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                  setActiveSection(slug);
+                                  window.history.pushState(null, '', `#${slug}`);
+                                }
                               }}
                             >
                               {heading}
