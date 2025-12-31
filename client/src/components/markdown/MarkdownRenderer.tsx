@@ -227,7 +227,7 @@ export function MarkdownRenderer({ content, onHeadingsExtracted }: MarkdownRende
     while ((match = headingRegex.exec(content)) !== null) {
       headings.push(match[1]);
     }
-    headingsRef.current = headings.slice(0, 6);
+    headingsRef.current = headings;
 
     const processor = unified()
       .use(remarkParse)
