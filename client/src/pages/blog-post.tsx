@@ -337,7 +337,7 @@ export default function BlogPostPage() {
               </div>
             </div>
 
-            <aside className="hidden md:block self-start">
+            <aside className="hidden md:block">
               <div className="sticky top-24 space-y-8">
                 <NeonCard variant="primary" className="p-6">
                   <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">About Author</h4>
