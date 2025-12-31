@@ -30,6 +30,7 @@ export default function BlogPostPage() {
   const [copied, setCopied] = React.useState(false);
   const [isExpanded, setIsExpanded] = React.useState(false);
   const [tableOfContents, setTableOfContents] = React.useState<string[]>([]);
+  const [activeSection, setActiveSection] = React.useState<string>('');
   
   const postSlug = params.slug;
   
@@ -78,6 +79,35 @@ export default function BlogPostPage() {
       }
     }
   }, [post]);
+
+  React.useEffect(() => {
+    if (tableOfContents.length === 0) return;
+
+    const headingSlugs = tableOfContents.map(h => 
+      h.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0
+      }
+    );
+
+    headingSlugs.forEach((slug) => {
+      const element = document.getElementById(slug);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [tableOfContents]);
   
   const { data: allPosts = [] } = useQuery<BlogPost[]>({
     queryKey: ['blog-posts'],
@@ -342,20 +372,25 @@ export default function BlogPostPage() {
                 {tableOfContents.length > 0 && (
                   <div className="border border-white/10 rounded bg-black/20 p-6">
                     <h4 className="text-sm font-mono text-muted-foreground mb-4 uppercase tracking-widest">Table of Contents</h4>
-                    <ul className="space-y-2 text-sm font-light text-muted-foreground">
+                    <ul className="space-y-2 text-sm font-light border-l border-white/10">
                       {tableOfContents.map((heading, i) => {
                         const slug = heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+                        const isActive = activeSection === slug;
                         return (
-                          <li key={i}>
+                          <li key={i} className="relative">
                             <a 
                               href={`#${slug}`}
-                              className="hover:text-primary cursor-pointer transition-colors block"
+                              className={`block pl-4 py-1 cursor-pointer transition-all duration-200 ${
+                                isActive 
+                                  ? 'text-primary border-l-2 border-primary -ml-[1px] font-medium' 
+                                  : 'text-muted-foreground hover:text-white'
+                              }`}
                               onClick={(e) => {
                                 e.preventDefault();
                                 document.getElementById(slug)?.scrollIntoView({ behavior: 'smooth' });
                               }}
                             >
-                              ▹ {heading}
+                              {heading}
                             </a>
                           </li>
                         );
