@@ -385,15 +385,7 @@ export default function BlogPostPage() {
                                   ? 'text-primary border-l-2 border-primary -ml-[1px] font-medium' 
                                   : 'text-muted-foreground hover:text-white'
                               }`}
-                              onClick={(e) => {
-                                e.preventDefault();
-                                const element = document.getElementById(slug);
-                                if (element) {
-                                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                  setActiveSection(slug);
-                                  window.history.pushState(null, '', `#${slug}`);
-                                }
-                              }}
+                              onClick={() => setActiveSection(slug)}
                             >
                               {heading}
                             </a>
