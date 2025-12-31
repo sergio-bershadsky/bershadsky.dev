@@ -222,9 +222,10 @@ export function MarkdownRenderer({ content, onHeadingsExtracted }: MarkdownRende
   
   const renderedContent = useMemo(() => {
     const headings: string[] = [];
+    const contentWithoutCodeBlocks = content.replace(/```[\s\S]*?```/g, '');
     const headingRegex = /^#{2,3}\s+(.+)$/gm;
     let match;
-    while ((match = headingRegex.exec(content)) !== null) {
+    while ((match = headingRegex.exec(contentWithoutCodeBlocks)) !== null) {
       headings.push(match[1]);
     }
     headingsRef.current = headings;
