@@ -154,7 +154,7 @@ export default function BlogPostPage() {
   };
 
   return (
-    <div className="min-h-screen text-foreground relative overflow-x-hidden">
+    <div className="min-h-screen text-foreground relative overflow-x-clip">
       <CyberpunkBackground />
       <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-md border-b border-white/10 px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
