@@ -2,10 +2,12 @@ export const cvData = {
   personal: {
     name: "Sergey Bershadsky",
     title: "Tech Lead & Solution Architect",
+    subtitle: "12 years of experience • 11 years at Toptal",
     email: "sergio.bershadsky@gmail.com",
     location: "Lisbon, Portugal",
     phone: "+351 913 543 706",
-    summary: "I am a solution architect, a backend developer, and a supervisor with 15+ years of experience. I began my career as a junior developer and eventually rose to the position of CEO. In addition to working with small teams of five or more members, I also managed a company with over fifty developers. My professional experience includes building highly efficient, load-tolerant, and scalable systems both on-premises and in the cloud, as well as mentoring in the fields of DevOps and technology."
+    toptalUrl: "https://talent.toptal.com/resume/developers/sergey-nikitin",
+    summary: "Boasting over a decade of Python and Django expertise, I now specialize in consulting, focusing on optimizing Django's impact on your business. From DevOps to architecture and APIs, I'm here to enhance your project's efficiency. Beyond problem-solving, I offer team training to master Django, aiming to cut costs and empower teams for seamless management across AWS, GCP, or Kubernetes platforms. Let's unlock your project's full potential together."
   },
   skills: {
     languages: ["Python", "JavaScript", "GO", "SQL", "Dart"],
@@ -15,35 +17,54 @@ export const cvData = {
   },
   experience: [
     {
-      role: "Lead Backend Python Developer",
-      company: "Ricoh USA (via TopTal)",
-      period: "2023 – 2024",
+      role: "Back-end Python Developer",
+      company: "Ricoh Corporation (via Toptal)",
+      period: "2024 – 2025",
       location: "Remote, USA",
-      description: "Part of the global Ricoh Group, providing digital services, information management, and print solutions. Led critical backend infrastructure improvements with a strong focus on MySQL database performance and scalability.",
+      description: "Enterprise experience with global Ricoh Group, providing digital services, information management, and print solutions. Led critical backend infrastructure improvements with focus on MySQL database performance and scalability.",
+      industries: ["Information & Document Management", "Commercial Printing", "Business Services"],
       achievements: [
-        "Refactored and optimized MySQL database architecture, resolving key performance bottlenecks and enhancing system scalability",
-        "Developed over 30 MySQL Stored Procedures to automate complex business logic and streamline data processing workflows",
+        "Refactored and optimized MySQL database architecture, resolving key performance bottlenecks and enhancing overall system scalability",
+        "Developed over 30 new MySQL Stored Procedures to automate complex business logic and streamline data processing workflows",
         "Engineered a code generation tool that automatically generates Python type annotations and Pydantic data models from MySQL schema metadata",
-        "Designed and implemented dozens of RESTful API endpoints using AWS Powertools",
-        "Established an event-driven system architecture leveraging AWS Pub/Sub and EventBridge",
-        "Authored more than 20 technical articles enhancing development culture and documenting best practices",
-        "Produced a comprehensive report with 1,200 actionable recommendations for MySQL storage enhancements"
+        "Designed and implemented dozens of RESTful API endpoints using AWS Powertools, enabling robust and scalable integrations",
+        "Established an event-driven system architecture leveraging AWS Pub/Sub and EventBridge scheduled tasks",
+        "Authored more than 20 technical articles to enhance development culture and document best practices",
+        "Pioneered innovative methods for working with MySQL Stored Procedures, introducing reusable patterns and advanced debugging techniques",
+        "Produced a comprehensive report with 1,200 actionable recommendations for enhancements and refactoring of the primary MySQL storage"
       ]
     },
     {
-      role: "Team Lead & Backend Lead",
-      company: "Truely eSIM",
+      role: "Tech Lead and CTO",
+      company: "Truely",
+      period: "2023 – 2024",
+      location: "Remote",
+      description: "Leadership experience managing 11-20 reports. Digital-first telecom company specializing in global eSIM solutions for travelers, remote workers, and international users.",
+      industries: ["AI", "Media & Internet", "Telecommunications", "eCommerce"],
+      achievements: [
+        "Built a scalable eCommerce system from scratch, leveraging Django and GraphQL, supporting dynamic catalog management and high-volume transactions",
+        "Integrated more than 12 eSIM providers into a unified, intelligent system, enabling seamless global mobile connectivity",
+        "Led and managed a cross-functional development team of 14 engineers, fostering a collaborative and high-performance technical culture",
+        "Oversaw end-to-end production of core technology components: Django back end, React-powered CMS, and Flutter cross-platform mobile app",
+        "Delivered a fully functional MVP in record time, meeting aggressive deadlines and ensuring alignment with business objectives",
+        "Established and promoted best practices in code quality, DevOps, and agile methodologies",
+        "Drove key technology decisions and architecture choices, aligning them with both short-term deliverables and long-term company vision",
+        "Conducted internal audits to ensure compliance with privacy policies and private data storage strategies"
+      ]
+    },
+    {
+      role: "Full-stack and Django Developer",
+      company: "Zoetis (via Toptal)",
       period: "2022 – 2023",
       location: "Remote",
-      description: "Digital-first telecom company specializing in global eSIM solutions for travelers, remote workers, and international users. Led development of a scalable eCommerce platform from the ground up.",
+      description: "Enterprise experience with global leader in animal health. Refactored legacy systems and implemented modern data pipeline architecture.",
+      industries: ["Veterinary Services", "Pharmaceuticals", "Healthcare"],
       achievements: [
-        "Built a scalable eCommerce system from scratch using Django and GraphQL, supporting high-volume transactions",
-        "Integrated more than 12 eSIM providers into a unified, intelligent system",
-        "Led and managed a cross-functional development team of 14 engineers",
-        "Oversaw end-to-end production of Django backend, React CMS, and Flutter mobile app",
-        "Delivered a fully functional MVP in record time, meeting aggressive deadlines",
-        "Established best practices in code quality, DevOps, and agile methodologies",
-        "Conducted internal audits ensuring compliance with privacy policies and data protection"
+        "Refactored legacy data pipelines into a more strict and clear approach, wrapping data handlers with Schemas as primary contracts",
+        "Provided 100% test coverage for all newly implemented data pipelines",
+        "Migrated similar application features into standalone Django applications with safe migrations",
+        "Refactoring touched more than 200 files without breaking any previously implemented features",
+        "Provided full knowledge transfer, architecture discovery, and roadmap proposals for refactoring and solution improvements"
       ]
     },
     {
