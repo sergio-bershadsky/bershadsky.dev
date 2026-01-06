@@ -47,6 +47,19 @@ export default function About() {
             <p className="text-lg md:text-2xl text-muted-foreground font-mono whitespace-nowrap">
               &lt; {cvData.personal.title} /&gt;
             </p>
+            {cvData.personal.subtitle && (
+              <a 
+                href={cvData.personal.toptalUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-mono text-secondary hover:text-primary transition-colors group"
+              >
+                <span className="px-3 py-1 border border-secondary/50 bg-secondary/10 group-hover:border-primary/50 group-hover:bg-primary/10 transition-colors">
+                  {cvData.personal.subtitle}
+                </span>
+                <ExternalLink className="w-4 h-4 opacity-50 group-hover:opacity-100" />
+              </a>
+            )}
             <p className="text-lg max-w-xl text-foreground/80 leading-relaxed">
               {cvData.personal.summary}
             </p>
