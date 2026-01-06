@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft } from 'lucide-react';
+import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users } from 'lucide-react';
 import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
+import { TestimonialsCarousel } from '@/components/TestimonialsCarousel';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 const avatarImage = '/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
 
@@ -222,6 +223,66 @@ export default function About() {
                   </div>
                 </div>
               </NeonCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <SectionHeader title="SIGNAL_RECEIVED" subtitle="What Others Say" />
+          <TestimonialsCarousel testimonials={cvData.testimonials} />
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section className="py-20 bg-background/50 border-y border-white/5">
+        <div className="container mx-auto px-4">
+          <SectionHeader title="VERIFIED_CREDENTIALS" subtitle="Certifications" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {cvData.certifications.map((cert, index) => (
+              <NeonCard key={index} variant="accent">
+                <div className="flex flex-col items-center text-center">
+                  <div className="p-4 bg-accent/10 rounded-full border border-accent/30 mb-4">
+                    <Award className="w-8 h-8 text-accent" />
+                  </div>
+                  <h3 className="text-lg font-bold font-display text-white mb-2">{cert.name}</h3>
+                  <p className="text-accent font-mono text-sm">{cert.issuer}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{cert.date}</p>
+                </div>
+              </NeonCard>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Non-Profit Section */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <SectionHeader title="COMMUNITY_IMPACT" subtitle="Non-Profit & Community" />
+          <div className="grid md:grid-cols-2 gap-8">
+            {cvData.nonProfit.map((org, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <NeonCard variant={index === 0 ? 'primary' : 'secondary'} className="h-full">
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className={`p-3 rounded border ${index === 0 ? 'bg-primary/10 border-primary/30' : 'bg-secondary/10 border-secondary/30'}`}>
+                      {index === 0 ? <Users className="w-6 h-6 text-primary" /> : <Heart className="w-6 h-6 text-secondary" />}
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold font-display text-white">{org.name}</h3>
+                      <p className={`font-mono text-sm ${index === 0 ? 'text-primary' : 'text-secondary'}`}>{org.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-foreground/80 leading-relaxed">{org.description}</p>
+                </NeonCard>
+              </motion.div>
             ))}
           </div>
         </div>
