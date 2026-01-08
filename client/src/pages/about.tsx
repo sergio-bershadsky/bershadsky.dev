@@ -1,7 +1,37 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe } from 'lucide-react';
+import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe, Database, Cloud, Container, Boxes, Workflow, Zap, FileCode, Layers, Search, Flame, Bird, Box, Settings, HardDrive } from 'lucide-react';
+
+const getTechIcon = (tech: string) => {
+  const iconMap: Record<string, React.ReactNode> = {
+    'Python': <Flame className="w-3.5 h-3.5" />,
+    'JavaScript': <FileCode className="w-3.5 h-3.5" />,
+    'GO': <Zap className="w-3.5 h-3.5" />,
+    'SQL': <Database className="w-3.5 h-3.5" />,
+    'Dart': <Bird className="w-3.5 h-3.5" />,
+    'Django': <Layers className="w-3.5 h-3.5" />,
+    'FastAPI': <Zap className="w-3.5 h-3.5" />,
+    'Flask': <Flame className="w-3.5 h-3.5" />,
+    'Scrapy': <Search className="w-3.5 h-3.5" />,
+    'React': <Workflow className="w-3.5 h-3.5" />,
+    'Svelte': <Zap className="w-3.5 h-3.5" />,
+    'Flutter': <Bird className="w-3.5 h-3.5" />,
+    'PostgreSQL': <Database className="w-3.5 h-3.5" />,
+    'MySQL': <Database className="w-3.5 h-3.5" />,
+    'ElasticSearch': <Search className="w-3.5 h-3.5" />,
+    'Redis': <Zap className="w-3.5 h-3.5" />,
+    'MongoDB': <HardDrive className="w-3.5 h-3.5" />,
+    'AWS': <Cloud className="w-3.5 h-3.5" />,
+    'GCP': <Cloud className="w-3.5 h-3.5" />,
+    'Kubernetes': <Boxes className="w-3.5 h-3.5" />,
+    'Terraform': <Settings className="w-3.5 h-3.5" />,
+    'Ansible': <Settings className="w-3.5 h-3.5" />,
+    'HELM': <Box className="w-3.5 h-3.5" />,
+    'Docker': <Container className="w-3.5 h-3.5" />,
+  };
+  return iconMap[tech] || <Code className="w-3.5 h-3.5" />;
+};
 import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { TestimonialsCarousel } from '@/components/TestimonialsCarousel';
@@ -119,7 +149,8 @@ export default function About() {
               <h3 className="text-xl font-bold mb-3 font-display">LANGUAGES</h3>
               <div className="flex flex-wrap gap-2">
                 {cvData.skills.languages.map(skill => (
-                  <span key={skill} className="px-2 py-1 bg-primary/10 border border-primary/30 text-xs font-mono text-primary-foreground/80">
+                  <span key={skill} className="inline-flex items-center gap-1.5 px-2 py-1 bg-primary/10 border border-primary/30 text-xs font-mono text-primary-foreground/80">
+                    {getTechIcon(skill)}
                     {skill}
                   </span>
                 ))}
@@ -131,7 +162,8 @@ export default function About() {
               <h3 className="text-xl font-bold mb-3 font-display">FRAMEWORKS</h3>
               <div className="flex flex-wrap gap-2">
                 {cvData.skills.frameworks.map(skill => (
-                  <span key={skill} className="px-2 py-1 bg-secondary/10 border border-secondary/30 text-xs font-mono text-secondary">
+                  <span key={skill} className="inline-flex items-center gap-1.5 px-2 py-1 bg-secondary/10 border border-secondary/30 text-xs font-mono text-secondary">
+                    {getTechIcon(skill)}
                     {skill}
                   </span>
                 ))}
@@ -143,7 +175,8 @@ export default function About() {
               <h3 className="text-xl font-bold mb-3 font-display">DEVOPS</h3>
               <div className="flex flex-wrap gap-2">
                 {cvData.skills.devops.map(skill => (
-                  <span key={skill} className="px-2 py-1 bg-accent/10 border border-accent/30 text-xs font-mono text-accent-foreground/80">
+                  <span key={skill} className="inline-flex items-center gap-1.5 px-2 py-1 bg-accent/10 border border-accent/30 text-xs font-mono text-accent-foreground/80">
+                    {getTechIcon(skill)}
                     {skill}
                   </span>
                 ))}
@@ -155,7 +188,8 @@ export default function About() {
               <h3 className="text-xl font-bold mb-3 font-display">DATA</h3>
               <div className="flex flex-wrap gap-2">
                 {cvData.skills.databases.map(skill => (
-                  <span key={skill} className="px-2 py-1 bg-white/10 border border-white/30 text-xs font-mono text-white/80">
+                  <span key={skill} className="inline-flex items-center gap-1.5 px-2 py-1 bg-white/10 border border-white/30 text-xs font-mono text-white/80">
+                    {getTechIcon(skill)}
                     {skill}
                   </span>
                 ))}
