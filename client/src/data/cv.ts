@@ -17,19 +17,63 @@ export const cvData = {
   },
   journey: [
     {
+      chapter: "🏥 MedTech: City Healthcare",
+      companies: ["UMIAS/EMIAS"],
+      featured: true,
+      tech: ["Python", "PostgreSQL", "EHR", "HL7", "Cloud"],
+      story: "Built Moscow's unified medical information system. Electronic health records, e-prescriptions, appointment booking for 557+ clinics. PWC recognized as global leader in healthcare informatization.",
+      highlight: "1.2M+ monthly users",
+      color: "primary"
+    },
+    {
+      chapter: "🏥 MedTech: AI Healthcare",
+      companies: ["Arya Health"],
+      featured: true,
+      tech: ["Python", "AI Agents", "Healthcare", "HIPAA", "SOC2"],
+      story: "Digital agents automating healthcare admin: onboarding, staffing, payroll, compliance. 24/7 automation that mimics front-office staff at scale.",
+      highlight: "Series A $18.2M",
+      color: "primary"
+    },
+    {
+      chapter: "🏥 MedTech: Pharma",
+      companies: ["Zoetis"],
+      via: "Toptal",
+      featured: true,
+      tech: ["Python", "Django", "Azure", "ETL", "PostgreSQL"],
+      story: "Global leader in animal health. Refactored legacy data pipelines, 100% test coverage, migrated 200+ files without breaking features.",
+      highlight: "100% test coverage",
+      color: "primary"
+    },
+    {
+      chapter: "📦 ERP: Food Tech",
+      companies: ["Farm to People"],
+      tech: ["ERPNext", "Python", "PostgreSQL", "eCommerce", "API"],
+      story: "NYC's farm-to-table delivery platform. ERPNext implementation for inventory, subscriptions, and logistics. Featured in NYT, WSJ, Bon Appetit.",
+      highlight: "800+ products",
+      color: "accent"
+    },
+    {
+      chapter: "📦 ERP: Telecom",
+      companies: ["AloBro eSIM"],
+      tech: ["ODOO", "Python", "eSIM", "Payments", "Telecom"],
+      story: "Russian eSIM platform built on ODOO ERP. Multi-country coverage, Russian payment integration, automated provisioning.",
+      highlight: "50+ countries",
+      color: "accent"
+    },
+    {
       chapter: "Enterprise Backend",
       companies: ["Ricoh USA"],
       via: "Toptal",
       tech: ["Python", "MySQL", "AWS", "Lambda", "EventBridge"],
-      story: "Leading backend infrastructure for a Fortune 500 company. MySQL optimization, event-driven architecture, 30+ stored procedures, and 1,200 actionable recommendations.",
+      story: "Leading backend infrastructure for a Fortune 500 company. MySQL optimization, event-driven architecture, 30+ stored procedures.",
       highlight: "1,200+ recommendations",
-      color: "primary"
+      color: "secondary"
     },
     {
       chapter: "Telecom Startup",
       companies: ["Truely eSIM"],
       tech: ["Django", "GraphQL", "React", "Flutter", "Kubernetes"],
-      story: "Built a global eSIM platform from scratch. Led 14 engineers, integrated 12+ providers, shipped full-stack: Django backend, React CMS, Flutter mobile.",
+      story: "Built a global eSIM platform from scratch. Led 14 engineers, integrated 12+ providers, shipped full-stack.",
       highlight: "CTO • 14 engineers",
       color: "secondary"
     },
@@ -38,51 +82,33 @@ export const cvData = {
       companies: ["AppDirect"],
       via: "Toptal",
       tech: ["Python", "Django", "Elastic", "Scrapy", "Vue.js"],
-      story: "Microservice architecture for Microsoft, Google, Deutsche Telekom clients. Real-time search with 0.05s response, universal JS widget, content parser.",
+      story: "Microservice architecture for Microsoft, Google, Deutsche Telekom. Real-time search with 0.05s response.",
       highlight: "Fortune 500 clients",
-      color: "accent"
+      color: "secondary"
     },
     {
       chapter: "Cloud Architecture",
       companies: ["LYKA"],
       via: "Toptal",
       tech: ["AWS", "Lambda", "Kubernetes", "Terraform", "PostgreSQL"],
-      story: "Optimized infrastructure costs from $500K to $120K/month. Migrated Lambda to K8s, reduced team size while doubling productivity.",
+      story: "Optimized infrastructure costs from $500K to $120K/month. Migrated Lambda to K8s, doubled productivity.",
       highlight: "$380K/mo saved",
-      color: "primary"
+      color: "secondary"
     },
     {
       chapter: "Consulting Practice",
       companies: ["DjangoHeads"],
       clients: ["HipNode", "TopTravel", "GeoNode", "Apollo Suite", "Moxy"],
       tech: ["Django", "FastAPI", "Celery", "Redis", "GCP"],
-      story: "Founded a Python consultancy. Training teams, refining architectures, building roadmaps. Focused on team morale and sustainable productivity.",
+      story: "Founded a Python consultancy. Training teams, refining architectures, building roadmaps.",
       highlight: "10+ clients",
       color: "secondary"
-    },
-    {
-      chapter: "IP & Search",
-      companies: ["PatentSeekers"],
-      via: "Toptal",
-      tech: ["AWS", "Elastic", "Terraform", "Ansible", ".NET"],
-      story: "Intellectual property analysis platform. Automated Elastic cluster deployment, 10TB backup in 30 minutes, any config in 5 minutes.",
-      highlight: "10TB in 30min",
-      color: "accent"
-    },
-    {
-      chapter: "Logistics ETL",
-      companies: ["FleetOps"],
-      via: "Toptal",
-      tech: ["Python", "Django", "Scrapy", "Docker", "ETL"],
-      story: "Fastest growing CRM for US/Canada cargo. Reduced ETL from 6 hours to 30 minutes, improved SLA from 82% to 99.9%.",
-      highlight: "99.9% SLA",
-      color: "primary"
     },
     {
       chapter: "Agency Founder",
       companies: ["Urbamatica"],
       tech: ["Django", "React", "PostgreSQL", "GCP", "Kubernetes"],
-      story: "Built a software agency from 2 to 50 people. Full product cycle: mobile, frontend, backend, DevOps. NPS 9.2, profit up 24%.",
+      story: "Built a software agency from 2 to 50 people. Full product cycle: mobile, frontend, backend, DevOps.",
       highlight: "2 → 50 employees",
       color: "secondary"
     }
