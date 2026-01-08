@@ -140,7 +140,7 @@ export const cvData = {
     {
       name: "12,000+ Hours Core Developer",
       issuer: "TopTal",
-      date: "2024"
+      date: "Member since 2014"
     },
     {
       name: "AWS Solutions Architect",
