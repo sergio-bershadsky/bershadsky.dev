@@ -10,7 +10,7 @@ export const cvData = {
     summary: "Boasting over a decade of Python and Django expertise, I now specialize in consulting, focusing on optimizing Django's impact on your business. From DevOps to architecture and APIs, I'm here to enhance your project's efficiency. Beyond problem-solving, I offer team training to master Django, aiming to cut costs and empower teams for seamless management across AWS, GCP, or Kubernetes platforms. Let's unlock your project's full potential together."
   },
   skills: {
-    languages: ["Python", "JavaScript", "GO", "SQL", "Dart"],
+    languages: ["Python", "JavaScript", "GO", "C/C++", "SQL", "Dart"],
     frameworks: ["Django", "FastAPI", "Flask", "Scrapy", "React", "Svelte", "Flutter"],
     databases: ["PostgreSQL", "MySQL", "ElasticSearch", "Redis", "MongoDB"],
     devops: ["AWS", "GCP", "Kubernetes", "Terraform", "Ansible", "HELM", "Docker"]
