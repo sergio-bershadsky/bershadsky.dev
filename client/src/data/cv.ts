@@ -22,7 +22,7 @@ export const cvData = {
       companies: ["UMIAS/EMIAS"],
       featured: true,
       tech: ["Python", "PostgreSQL", "EHR", "HL7", "Cloud"],
-      story: "Built Moscow's unified medical information system. Electronic health records, e-prescriptions, appointment booking for 557+ clinics. PWC recognized as global leader in healthcare informatization.",
+      story: "Built Moscow's unified medical information system. Electronic health records, e-prescriptions, appointment booking for 1,400+ clinics and hospitals. PWC recognized as global leader in healthcare informatization.",
       highlight: "1.2M+ monthly users",
       color: "primary"
     },
