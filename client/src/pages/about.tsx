@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe, Database, Cloud, Container, Boxes, Workflow, Zap, FileCode, Layers, Search, Flame, Bird, Box, Settings, HardDrive, Instagram } from 'lucide-react';
+import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe, Database, Cloud, Container, Boxes, Workflow, Zap, FileCode, Layers, Search, Flame, Bird, Box, Settings, HardDrive, Instagram, X, Clock } from 'lucide-react';
 
 const getTechIcon = (tech: string) => {
   const iconMap: Record<string, React.ReactNode> = {
@@ -39,6 +39,8 @@ import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 const avatarImage = '/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
 
 export default function About() {
+  const [showHirePopup, setShowHirePopup] = useState(false);
+
   useEffect(() => {
     document.title = 'Sergey Bershadsky | Tech Lead & Solution Architect | Python Django Expert';
     
@@ -462,9 +464,54 @@ export default function About() {
               </a>
             </div>
 
-            <CyberButton size="lg" className="w-full md:w-auto px-16 text-xl">
+            <CyberButton size="lg" className="w-full md:w-auto px-16 text-xl" onClick={() => setShowHirePopup(true)}>
               HIRE_ME_NOW
             </CyberButton>
+
+            {showHirePopup && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+                onClick={() => setShowHirePopup(false)}
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  className="relative max-w-md mx-4 p-8 bg-black border border-primary/50 rounded-lg shadow-[0_0_50px_rgba(236,72,153,0.3)]"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <button
+                    onClick={() => setShowHirePopup(false)}
+                    className="absolute top-4 right-4 text-muted-foreground hover:text-white transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                  
+                  <div className="text-center">
+                    <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
+                    <h3 className="text-2xl font-display font-bold text-white mb-4">
+                      AVAILABILITY_STATUS
+                    </h3>
+                    <p className="text-lg text-muted-foreground mb-6">
+                      Sorry, my current availability is <span className="text-primary font-bold">8 days a week</span>. 
+                      Request waitlist on LinkedIn!
+                    </p>
+                    <a 
+                      href="https://linkedin.com/in/bershadsky" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-secondary/20 border border-secondary/50 text-secondary hover:bg-secondary/30 transition-colors font-mono"
+                    >
+                      <Linkedin className="w-5 h-5" />
+                      JOIN_WAITLIST
+                    </a>
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
             
             <div className="mt-12 flex justify-center gap-4 text-muted-foreground">
               <MapPin className="w-5 h-5" />
