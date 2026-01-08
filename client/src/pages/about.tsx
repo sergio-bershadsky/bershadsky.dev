@@ -496,8 +496,7 @@ export default function About() {
                       AVAILABILITY_STATUS
                     </h3>
                     <p className="text-lg text-muted-foreground mb-6">
-                      Sorry, my current availability is <span className="text-primary font-bold">8 hours a week</span>. 
-                      Request waitlist on LinkedIn!
+                      Appreciate you reaching out! I can currently take on up to <span className="text-primary font-bold">8 hours per week</span>. To reserve a spot, please request the waitlist on LinkedIn.
                     </p>
                     <a 
                       href="https://linkedin.com/in/bershadsky" 
