@@ -464,7 +464,17 @@ export default function About() {
               </a>
             </div>
 
-            <CyberButton size="lg" className="w-full md:w-auto px-16 text-xl" onClick={() => setShowHirePopup(true)}>
+            <CyberButton size="lg" className="w-full md:w-auto px-16 text-xl" onClick={() => {
+              // Track goal in Google Analytics
+              if (typeof window !== 'undefined' && (window as any).gtag) {
+                (window as any).gtag('event', 'hire_button_click', {
+                  event_category: 'engagement',
+                  event_label: 'HIRE_ME_NOW',
+                  value: 1
+                });
+              }
+              setShowHirePopup(true);
+            }}>
               HIRE_ME_NOW
             </CyberButton>
 
