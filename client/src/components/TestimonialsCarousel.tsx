@@ -72,7 +72,7 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
                 <Quote className="absolute top-6 left-6 w-8 h-8 text-primary/30" />
                 
                 <blockquote className="relative z-10 mb-6">
-                  <p className="text-lg md:text-xl leading-relaxed text-gray-200 italic pl-8">
+                  <p className="text-lg md:text-xl leading-relaxed text-[#e5e7eb] text-solid italic pl-8">
                     "{testimonial.quote}"
                   </p>
                 </blockquote>

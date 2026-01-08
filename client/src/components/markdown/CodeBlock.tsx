@@ -384,7 +384,7 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
           <span className="text-xs text-muted-foreground">RENDERED</span>
         </div>
         <div className="relative border border-dashed border-white/20 rounded bg-black/40 p-4 md:p-6 overflow-x-auto">
-          <pre className="font-mono text-sm md:text-base leading-relaxed text-gray-200 whitespace-pre">
+          <pre className="font-mono text-sm md:text-base leading-relaxed text-[#e5e7eb] text-solid whitespace-pre">
             {codeContent}
           </pre>
         </div>
