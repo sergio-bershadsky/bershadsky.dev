@@ -206,6 +206,11 @@ export default function About() {
                         {chapter.via}
                       </span>
                     )}
+                    {chapter.clients?.map((client, i) => (
+                      <span key={`cl-${i}`} className="text-xs font-mono px-2 py-1 bg-white/5 border border-white/10 text-white/60">
+                        {client}
+                      </span>
+                    ))}
                     {chapter.tech?.map((t, i) => (
                       <span key={`t-${i}`} className={`text-xs font-mono px-2 py-1 ${
                         chapter.color === 'primary' ? 'bg-primary/5 border border-primary/20 text-primary/80' :

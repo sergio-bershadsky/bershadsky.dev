@@ -17,44 +17,73 @@ export const cvData = {
   },
   journey: [
     {
-      chapter: "Enterprise Scale",
-      companies: ["Ricoh", "Zoetis"],
+      chapter: "Enterprise Backend",
+      companies: ["Ricoh USA"],
       via: "Toptal",
-      tech: ["Python", "MySQL", "AWS", "Pydantic", "EventBridge"],
-      story: "Optimizing database architectures and building event-driven systems for Fortune 500 companies. From MySQL performance tuning to AWS serverless patterns.",
-      highlight: "1,200+ recommendations delivered",
+      tech: ["Python", "MySQL", "AWS", "Lambda", "EventBridge"],
+      story: "Leading backend infrastructure for a Fortune 500 company. MySQL optimization, event-driven architecture, 30+ stored procedures, and 1,200 actionable recommendations.",
+      highlight: "1,200+ recommendations",
       color: "primary"
     },
     {
-      chapter: "Startup Leadership",
+      chapter: "Telecom Startup",
       companies: ["Truely eSIM"],
-      tech: ["Django", "GraphQL", "React", "Flutter", "PostgreSQL"],
-      story: "Built a global telecom platform from zero. Led 14 engineers, integrated 12+ eSIM providers, shipped Django + React + Flutter stack.",
+      tech: ["Django", "GraphQL", "React", "Flutter", "Kubernetes"],
+      story: "Built a global eSIM platform from scratch. Led 14 engineers, integrated 12+ providers, shipped full-stack: Django backend, React CMS, Flutter mobile.",
       highlight: "CTO • 14 engineers",
       color: "secondary"
     },
     {
-      chapter: "Consulting Practice",
-      companies: ["DjangoHeads"],
-      tech: ["Django", "FastAPI", "Docker", "Kubernetes", "Terraform"],
-      story: "Founded a boutique Python consultancy. Helping startups ship faster with Django expertise, DevOps automation, and team mentoring.",
-      highlight: "10+ clients served",
+      chapter: "B2B Platform",
+      companies: ["AppDirect"],
+      via: "Toptal",
+      tech: ["Python", "Django", "Elastic", "Scrapy", "Vue.js"],
+      story: "Microservice architecture for Microsoft, Google, Deutsche Telekom clients. Real-time search with 0.05s response, universal JS widget, content parser.",
+      highlight: "Fortune 500 clients",
       color: "accent"
     },
     {
-      chapter: "Healthcare Revolution",
-      companies: ["UMIAS"],
-      tech: ["Python", "PostgreSQL", "OpenEHR", "HL7", "Redis"],
-      story: "Transformed a healthcare platform from 10% to 80% market share. Scaled to 1.2M monthly users with zero marketing budget.",
-      highlight: "1.2M users • 80% market",
+      chapter: "Cloud Architecture",
+      companies: ["LYKA"],
+      via: "Toptal",
+      tech: ["AWS", "Lambda", "Kubernetes", "Terraform", "PostgreSQL"],
+      story: "Optimized infrastructure costs from $500K to $120K/month. Migrated Lambda to K8s, reduced team size while doubling productivity.",
+      highlight: "$380K/mo saved",
       color: "primary"
     },
     {
-      chapter: "The Foundation",
-      companies: ["Early Career"],
-      tech: ["PHP", "MySQL", "JavaScript", "Linux", "Apache"],
-      story: "From junior developer to tech lead across government, education, and eCommerce. 30+ platforms, 30M+ users.",
-      highlight: "30M+ users reached",
+      chapter: "Consulting Practice",
+      companies: ["DjangoHeads"],
+      clients: ["HipNode", "TopTravel", "GeoNode", "Apollo Suite", "Moxy"],
+      tech: ["Django", "FastAPI", "Celery", "Redis", "GCP"],
+      story: "Founded a Python consultancy. Training teams, refining architectures, building roadmaps. Focused on team morale and sustainable productivity.",
+      highlight: "10+ clients",
+      color: "secondary"
+    },
+    {
+      chapter: "IP & Search",
+      companies: ["PatentSeekers"],
+      via: "Toptal",
+      tech: ["AWS", "Elastic", "Terraform", "Ansible", ".NET"],
+      story: "Intellectual property analysis platform. Automated Elastic cluster deployment, 10TB backup in 30 minutes, any config in 5 minutes.",
+      highlight: "10TB in 30min",
+      color: "accent"
+    },
+    {
+      chapter: "Logistics ETL",
+      companies: ["FleetOps"],
+      via: "Toptal",
+      tech: ["Python", "Django", "Scrapy", "Docker", "ETL"],
+      story: "Fastest growing CRM for US/Canada cargo. Reduced ETL from 6 hours to 30 minutes, improved SLA from 82% to 99.9%.",
+      highlight: "99.9% SLA",
+      color: "primary"
+    },
+    {
+      chapter: "Agency Founder",
+      companies: ["Urbamatica"],
+      tech: ["Django", "React", "PostgreSQL", "GCP", "Kubernetes"],
+      story: "Built a software agency from 2 to 50 people. Full product cycle: mobile, frontend, backend, DevOps. NPS 9.2, profit up 24%.",
+      highlight: "2 → 50 employees",
       color: "secondary"
     }
   ],
