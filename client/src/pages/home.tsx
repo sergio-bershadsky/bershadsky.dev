@@ -158,7 +158,7 @@ export default function Home() {
           </p>
 
           <div className="flex justify-center gap-6 mt-8">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="group">
+            <a href="https://instagram.com/bershadsky.dev" target="_blank" rel="noopener noreferrer" className="group">
               <div className="p-3 border border-primary/30 rounded-full bg-primary/5 hover:bg-primary/20 hover:border-primary transition-all duration-300 hover:scale-110 shadow-[0_0_10px_rgba(236,72,153,0.2)] hover:shadow-[0_0_20px_rgba(236,72,153,0.5)]">
                 <Instagram className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
               </div>

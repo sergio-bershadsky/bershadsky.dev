@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe, Database, Cloud, Container, Boxes, Workflow, Zap, FileCode, Layers, Search, Flame, Bird, Box, Settings, HardDrive } from 'lucide-react';
+import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe, Database, Cloud, Container, Boxes, Workflow, Zap, FileCode, Layers, Search, Flame, Bird, Box, Settings, HardDrive, Instagram } from 'lucide-react';
 
 const getTechIcon = (tech: string) => {
   const iconMap: Record<string, React.ReactNode> = {
@@ -91,8 +91,9 @@ export default function About() {
         "addressCountry": "Portugal"
       },
       "sameAs": [
-        "https://github.com/bershadsky",
-        "https://www.linkedin.com/in/bershadsky/",
+        "https://github.com/sergio-bershadsky/ai",
+        "https://linkedin.com/in/bershadsky",
+        "https://instagram.com/bershadsky.dev",
         "https://talent.toptal.com/resume/developers/sergey-nikitin"
       ],
       "knowsAbout": ["Python", "Django", "FastAPI", "AWS", "PostgreSQL", "Kubernetes", "MedTech", "ERP", "Solution Architecture"],
@@ -447,13 +448,17 @@ export default function About() {
             </p>
             
             <div className="flex flex-col md:flex-row justify-center gap-6 mb-12">
-              <a href="https://github.com/bershadsky" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-6 py-4 border border-primary/50 hover:bg-primary/10 transition-colors group">
+              <a href="https://github.com/sergio-bershadsky/ai" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-6 py-4 border border-primary/50 hover:bg-primary/10 transition-colors group">
                 <Github className="w-5 h-5 text-primary group-hover:text-white" />
                 <span className="font-mono text-lg">GitHub</span>
               </a>
-              <a href="https://www.linkedin.com/in/bershadsky/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-6 py-4 border border-secondary/50 hover:bg-secondary/10 transition-colors group">
+              <a href="https://linkedin.com/in/bershadsky" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-6 py-4 border border-secondary/50 hover:bg-secondary/10 transition-colors group">
                 <Linkedin className="w-5 h-5 text-secondary group-hover:text-white" />
                 <span className="font-mono text-lg">LinkedIn</span>
+              </a>
+              <a href="https://instagram.com/bershadsky.dev" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-6 py-4 border border-accent/50 hover:bg-accent/10 transition-colors group">
+                <Instagram className="w-5 h-5 text-accent group-hover:text-white" />
+                <span className="font-mono text-lg">Instagram</span>
               </a>
             </div>
 
