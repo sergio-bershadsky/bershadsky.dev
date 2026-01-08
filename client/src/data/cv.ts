@@ -22,7 +22,7 @@ export const cvData = {
       companies: ["UMIAS/EMIAS"],
       featured: true,
       tech: ["Python", "PostgreSQL", "EHR", "HL7", "Cloud"],
-      story: "Built Moscow's unified medical information system. Electronic health records, e-prescriptions, appointment booking for 1,400+ clinics and hospitals. PWC recognized as global leader in healthcare informatization.",
+      story: "Built a city-scale unified medical information system. Electronic health records, e-prescriptions, appointment booking for 1,400+ clinics and hospitals. PWC recognized as global leader in healthcare informatization.",
       highlight: "1.2M+ monthly users",
       color: "primary"
     },
@@ -61,7 +61,7 @@ export const cvData = {
       icon: "package",
       companies: ["AloBro eSIM"],
       tech: ["ODOO", "Python", "eSIM", "Payments", "Telecom"],
-      story: "Russian eSIM platform built on ODOO ERP. Multi-country coverage, Russian payment integration, automated provisioning.",
+      story: "Global eSIM platform built on ODOO ERP. Multi-country coverage, local payment integration, automated provisioning.",
       highlight: "50+ countries",
       color: "accent"
     },
@@ -157,9 +157,9 @@ export const cvData = {
   ],
   nonProfit: [
     {
-      name: "IT-Sochi",
+      name: "Local IT Community",
       role: "Founder & Organizer",
-      description: "Founded and developed an IT community in Sochi, Russia. Organized meetups and attracted partners and external speakers. Grew from 0 to 1,300+ members in three years. Organized 30+ meetups and 2 large-scale conferences with 150+ average attendance, featuring companies like Tinkoff, Yandex, Sberbank, and Alfa-Bank."
+      description: "Founded and developed a local IT community. Organized meetups and attracted partners and external speakers. Grew from 0 to 1,300+ members in three years. Organized 30+ meetups and 2 large-scale conferences with 150+ average attendance."
     },
     {
       name: "Fondation Beyeler",
