@@ -101,19 +101,11 @@ export const cvData = {
       color: "secondary"
     },
     {
-      chapter: "Consulting Practice",
+      chapter: "Agency & Consulting",
       companies: ["DjangoHeads"],
       clients: ["HipNode", "TopTravel", "GeoNode", "Apollo Suite", "Moxy"],
-      tech: ["Django", "FastAPI", "Celery", "Redis", "GCP"],
-      story: "Founded a Python consultancy. Training teams, refining architectures, building roadmaps.",
-      highlight: "10+ clients",
-      color: "secondary"
-    },
-    {
-      chapter: "Agency Founder",
-      companies: ["Urbamatica"],
-      tech: ["Django", "React", "PostgreSQL", "GCP", "Kubernetes"],
-      story: "Built a software agency from 2 to 50 people. Full product cycle: mobile, frontend, backend, DevOps.",
+      tech: ["Django", "FastAPI", "React", "GCP", "Kubernetes"],
+      story: "Founded and grew a software agency from 2 to 50 people. Full product cycle: mobile, frontend, backend, DevOps. Training teams, refining architectures, building roadmaps.",
       highlight: "2 → 50 employees",
       color: "secondary"
     }
