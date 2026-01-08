@@ -138,9 +138,19 @@ export const cvData = {
       date: "2024"
     },
     {
-      name: "AWS Certifications",
+      name: "AWS Solutions Architect",
       issuer: "Amazon Web Services",
-      date: "Various"
+      date: "2023"
+    },
+    {
+      name: "AWS Developer Associate",
+      issuer: "Amazon Web Services",
+      date: "2022"
+    },
+    {
+      name: "AWS Cloud Practitioner",
+      issuer: "Amazon Web Services",
+      date: "2021"
     },
     {
       name: "WebApp Security",
