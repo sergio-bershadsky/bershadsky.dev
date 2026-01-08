@@ -20,6 +20,7 @@ export const cvData = {
       chapter: "Enterprise Scale",
       companies: ["Ricoh", "Zoetis"],
       via: "Toptal",
+      tech: ["Python", "MySQL", "AWS", "Pydantic", "EventBridge"],
       story: "Optimizing database architectures and building event-driven systems for Fortune 500 companies. From MySQL performance tuning to AWS serverless patterns.",
       highlight: "1,200+ recommendations delivered",
       color: "primary"
@@ -27,6 +28,7 @@ export const cvData = {
     {
       chapter: "Startup Leadership",
       companies: ["Truely eSIM"],
+      tech: ["Django", "GraphQL", "React", "Flutter", "PostgreSQL"],
       story: "Built a global telecom platform from zero. Led 14 engineers, integrated 12+ eSIM providers, shipped Django + React + Flutter stack.",
       highlight: "CTO • 14 engineers",
       color: "secondary"
@@ -34,6 +36,7 @@ export const cvData = {
     {
       chapter: "Consulting Practice",
       companies: ["DjangoHeads"],
+      tech: ["Django", "FastAPI", "Docker", "Kubernetes", "Terraform"],
       story: "Founded a boutique Python consultancy. Helping startups ship faster with Django expertise, DevOps automation, and team mentoring.",
       highlight: "10+ clients served",
       color: "accent"
@@ -41,6 +44,7 @@ export const cvData = {
     {
       chapter: "Healthcare Revolution",
       companies: ["UMIAS"],
+      tech: ["Python", "PostgreSQL", "OpenEHR", "HL7", "Redis"],
       story: "Transformed a healthcare platform from 10% to 80% market share. Scaled to 1.2M monthly users with zero marketing budget.",
       highlight: "1.2M users • 80% market",
       color: "primary"
@@ -48,6 +52,7 @@ export const cvData = {
     {
       chapter: "The Foundation",
       companies: ["Early Career"],
+      tech: ["PHP", "MySQL", "JavaScript", "Linux", "Apache"],
       story: "From junior developer to tech lead across government, education, and eCommerce. 30+ platforms, 30M+ users.",
       highlight: "30M+ users reached",
       color: "secondary"
