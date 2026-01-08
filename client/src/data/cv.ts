@@ -17,7 +17,8 @@ export const cvData = {
   },
   journey: [
     {
-      chapter: "🏥 MedTech: City Healthcare",
+      chapter: "MedTech: City Healthcare",
+      icon: "heart-pulse",
       companies: ["UMIAS/EMIAS"],
       featured: true,
       tech: ["Python", "PostgreSQL", "EHR", "HL7", "Cloud"],
@@ -26,7 +27,8 @@ export const cvData = {
       color: "primary"
     },
     {
-      chapter: "🏥 MedTech: AI Healthcare",
+      chapter: "MedTech: AI Healthcare",
+      icon: "heart-pulse",
       companies: ["Arya Health"],
       featured: true,
       tech: ["Python", "AI Agents", "Healthcare", "HIPAA", "SOC2"],
@@ -35,7 +37,8 @@ export const cvData = {
       color: "primary"
     },
     {
-      chapter: "🏥 MedTech: Pharma",
+      chapter: "MedTech: Pharma",
+      icon: "heart-pulse",
       companies: ["Zoetis"],
       via: "Toptal",
       featured: true,
@@ -45,7 +48,8 @@ export const cvData = {
       color: "primary"
     },
     {
-      chapter: "📦 ERP: Food Tech",
+      chapter: "ERP: Food Tech",
+      icon: "package",
       companies: ["Farm to People"],
       tech: ["ERPNext", "Python", "PostgreSQL", "eCommerce", "API"],
       story: "NYC's farm-to-table delivery platform. ERPNext implementation for inventory, subscriptions, and logistics. Featured in NYT, WSJ, Bon Appetit.",
@@ -53,7 +57,8 @@ export const cvData = {
       color: "accent"
     },
     {
-      chapter: "📦 ERP: Telecom",
+      chapter: "ERP: Telecom",
+      icon: "package",
       companies: ["AloBro eSIM"],
       tech: ["ODOO", "Python", "eSIM", "Payments", "Telecom"],
       story: "Russian eSIM platform built on ODOO ERP. Multi-country coverage, Russian payment integration, automated provisioning.",

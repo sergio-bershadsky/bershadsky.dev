@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users } from 'lucide-react';
+import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe } from 'lucide-react';
 import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { TestimonialsCarousel } from '@/components/TestimonialsCarousel';
@@ -186,11 +186,13 @@ export default function About() {
                   'border-accent/30 hover:border-accent/60 hover:shadow-[0_0_30px_rgba(147,51,234,0.15)]'
                 }`}>
                   {/* Chapter Title */}
-                  <h3 className={`text-lg font-display font-bold mb-3 ${
+                  <h3 className={`text-lg font-display font-bold mb-3 flex items-center gap-2 ${
                     chapter.color === 'primary' ? 'text-primary' :
                     chapter.color === 'secondary' ? 'text-secondary' :
                     'text-accent'
                   }`}>
+                    {chapter.icon === 'heart-pulse' && <HeartPulse className="w-5 h-5" />}
+                    {chapter.icon === 'package' && <Package className="w-5 h-5" />}
                     {chapter.chapter}
                   </h3>
 
