@@ -313,7 +313,7 @@ export default function About() {
       <section className="py-20 bg-background/50 border-y border-white/5">
         <div className="container mx-auto px-4">
           <SectionHeader title="VERIFIED_CREDENTIALS" subtitle="Certifications" />
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {cvData.certifications.map((cert, index) => (
               <NeonCard key={index} variant="accent">
                 <div className="flex flex-col items-center text-center">
