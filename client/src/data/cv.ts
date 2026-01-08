@@ -2,7 +2,7 @@ export const cvData = {
   personal: {
     name: "Sergey Bershadsky",
     title: "Tech Lead & Solution Architect",
-    subtitle: "12 years of experience • 11 years at Toptal",
+    subtitle: "20+ years of experience • 11 years at Toptal",
     email: "[REDACTED-contact-via-linkedin]",
     location: "Lisbon, Portugal",
     phone: "[REDACTED-contact-via-linkedin]",
