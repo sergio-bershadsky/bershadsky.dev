@@ -165,12 +165,12 @@ export default function About() {
         </div>
       </section>
 
-      {/* Journey Section - Storytelling */}
+      {/* Journey Section - Pinterest Waterfall */}
       <section id="experience" className="py-20 relative">
         <div className="container mx-auto px-4">
           <SectionHeader title="THE_JOURNEY" subtitle="My Story" />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             {cvData.journey.map((chapter, index) => (
               <motion.div 
                 key={index}
@@ -178,23 +178,15 @@ export default function About() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                className="break-inside-avoid"
               >
-                <div className={`group relative h-full p-6 border rounded-lg bg-black/40 backdrop-blur-sm transition-all duration-300 hover:bg-black/60 ${
+                <div className={`group relative p-5 border rounded-lg bg-black/40 backdrop-blur-sm transition-all duration-300 hover:bg-black/60 ${
                   chapter.color === 'primary' ? 'border-primary/30 hover:border-primary/60 hover:shadow-[0_0_30px_rgba(236,72,153,0.15)]' :
                   chapter.color === 'secondary' ? 'border-secondary/30 hover:border-secondary/60 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]' :
                   'border-accent/30 hover:border-accent/60 hover:shadow-[0_0_30px_rgba(147,51,234,0.15)]'
                 }`}>
-                  {/* Chapter Number */}
-                  <div className={`absolute -top-3 -right-3 w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-sm ${
-                    chapter.color === 'primary' ? 'bg-primary text-white' :
-                    chapter.color === 'secondary' ? 'bg-secondary text-black' :
-                    'bg-accent text-white'
-                  }`}>
-                    {String(index + 1).padStart(2, '0')}
-                  </div>
-
                   {/* Chapter Title */}
-                  <h3 className={`text-xl font-display font-bold mb-2 ${
+                  <h3 className={`text-lg font-display font-bold mb-3 ${
                     chapter.color === 'primary' ? 'text-primary' :
                     chapter.color === 'secondary' ? 'text-secondary' :
                     'text-accent'
@@ -202,30 +194,39 @@ export default function About() {
                     {chapter.chapter}
                   </h3>
 
-                  {/* Companies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  {/* Companies & Tech - Same size tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-3">
                     {chapter.companies.map((company, i) => (
-                      <span key={i} className="text-xs font-mono px-2 py-1 bg-white/5 border border-white/10 text-white/80">
+                      <span key={`c-${i}`} className="text-xs font-mono px-2 py-1 bg-white/10 border border-white/20 text-white">
                         {company}
                       </span>
                     ))}
                     {chapter.via && (
                       <span className="text-xs font-mono px-2 py-1 bg-primary/10 border border-primary/30 text-primary">
-                        via {chapter.via}
+                        {chapter.via}
                       </span>
                     )}
+                    {chapter.tech?.map((t, i) => (
+                      <span key={`t-${i}`} className={`text-xs font-mono px-2 py-1 ${
+                        chapter.color === 'primary' ? 'bg-primary/5 border border-primary/20 text-primary/80' :
+                        chapter.color === 'secondary' ? 'bg-secondary/5 border border-secondary/20 text-secondary/80' :
+                        'bg-accent/5 border border-accent/20 text-accent/80'
+                      }`}>
+                        {t}
+                      </span>
+                    ))}
                   </div>
 
                   {/* Story */}
-                  <p className="text-[#d1d5db] text-solid text-sm leading-relaxed mb-4">
+                  <p className="text-[#d1d5db] text-solid text-sm leading-relaxed mb-3">
                     {chapter.story}
                   </p>
 
                   {/* Highlight */}
-                  <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded text-xs font-mono font-bold ${
-                    chapter.color === 'primary' ? 'bg-primary/20 text-primary border border-primary/30' :
-                    chapter.color === 'secondary' ? 'bg-secondary/20 text-secondary border border-secondary/30' :
-                    'bg-accent/20 text-accent border border-accent/30'
+                  <div className={`inline-flex items-center gap-2 px-2.5 py-1 rounded text-xs font-mono font-bold ${
+                    chapter.color === 'primary' ? 'bg-primary/20 text-primary' :
+                    chapter.color === 'secondary' ? 'bg-secondary/20 text-secondary' :
+                    'bg-accent/20 text-accent'
                   }`}>
                     {chapter.highlight}
                   </div>
