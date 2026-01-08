@@ -60,9 +60,14 @@ export function TestimonialsCarousel({ testimonials }: TestimonialsCarouselProps
               className="flex-[0_0_100%] min-w-0 px-4 md:flex-[0_0_80%] lg:flex-[0_0_60%]"
             >
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: selectedIndex === index ? 1 : 0.5, y: 0 }}
-                transition={{ duration: 0.5 }}
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                animate={{ 
+                  opacity: selectedIndex === index ? 1 : 0.25, 
+                  y: 0,
+                  scale: selectedIndex === index ? 1 : 0.92,
+                  filter: selectedIndex === index ? 'blur(0px)' : 'blur(2px)'
+                }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
                 className={`relative p-8 md:p-10 rounded-lg border transition-all duration-500 ${
                   selectedIndex === index
                     ? 'bg-gradient-to-br from-primary/10 to-accent/10 border-primary/40 shadow-[0_0_40px_rgba(236,72,153,0.2)]'
