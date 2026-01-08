@@ -496,7 +496,7 @@ export default function About() {
                       AVAILABILITY_STATUS
                     </h3>
                     <p className="text-lg text-muted-foreground mb-6">
-                      Sorry, my current availability is <span className="text-primary font-bold">8 days a week</span>. 
+                      Sorry, my current availability is <span className="text-primary font-bold">8 hours a week</span>. 
                       Request waitlist on LinkedIn!
                     </p>
                     <a 
