@@ -87,13 +87,13 @@ const CyberTh = ({ children }: { children: React.ReactNode }) => (
 );
 
 const CyberTd = ({ children }: { children: React.ReactNode }) => (
-  <td className="px-4 py-3 text-gray-300 border-t border-white/10 text-base">
+  <td className="px-4 py-3 text-[#d1d5db] text-solid border-t border-white/10 text-base">
     {replaceEmojisWithIcons(children)}
   </td>
 );
 
 const CyberBlockquote = ({ children }: { children: React.ReactNode }) => (
-  <blockquote className="border-l-4 border-primary pl-6 my-8 italic text-xl text-gray-200 bg-gradient-to-r from-primary/10 to-transparent py-4 pr-4 rounded-r-lg">
+  <blockquote className="border-l-4 border-primary pl-6 my-8 italic text-xl text-[#e5e7eb] text-solid bg-gradient-to-r from-primary/10 to-transparent py-4 pr-4 rounded-r-lg">
     {children}
   </blockquote>
 );
@@ -162,20 +162,20 @@ const CyberParagraph = ({ children }: { children: React.ReactNode }) => {
     return null;
   }
   return (
-    <p className="text-lg leading-8 text-gray-300 mb-6">
+    <p className="text-lg leading-8 text-[#d1d5db] text-solid mb-6">
       {children}
     </p>
   );
 };
 
 const CyberUl = ({ children }: { children: React.ReactNode }) => (
-  <ul className="list-disc pl-6 space-y-3 text-gray-300 my-6 marker:text-primary">
+  <ul className="list-disc pl-6 space-y-3 text-[#d1d5db] text-solid my-6 marker:text-primary">
     {children}
   </ul>
 );
 
 const CyberOl = ({ children }: { children: React.ReactNode }) => (
-  <ol className="list-decimal pl-6 space-y-3 text-gray-300 my-6 marker:text-primary">
+  <ol className="list-decimal pl-6 space-y-3 text-[#d1d5db] text-solid my-6 marker:text-primary">
     {children}
   </ol>
 );
@@ -193,7 +193,7 @@ const CyberStrong = ({ children }: { children: React.ReactNode }) => (
 );
 
 const CyberEm = ({ children }: { children: React.ReactNode }) => (
-  <em className="italic text-gray-200">
+  <em className="italic text-[#e5e7eb] text-solid">
     {children}
   </em>
 );

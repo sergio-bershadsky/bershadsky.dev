@@ -88,6 +88,11 @@ html {
 }
 
 @layer utilities {
+  /* Fix for WebKit browsers (Safari, iOS, Telegram) rendering text as transparent */
+  .text-solid {
+    -webkit-text-fill-color: currentColor;
+  }
+  
   .text-glow {
     text-shadow: 0 0 10px currentColor;
   }

@@ -274,7 +274,7 @@ export default function BlogPostPage() {
         </div>
 
         <div className="max-w-4xl mx-auto mb-8 px-4 sm:px-0">
-          <p className="text-xl text-gray-300 font-light leading-relaxed mt-[4px] mb-[4px]" data-testid="text-post-excerpt">
+          <p className="text-xl text-[#d1d5db] text-solid font-light leading-relaxed mt-[4px] mb-[4px]" data-testid="text-post-excerpt">
             {post.excerpt}
           </p>
         </div>
