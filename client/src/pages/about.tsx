@@ -165,53 +165,71 @@ export default function About() {
         </div>
       </section>
 
-      {/* Experience Section */}
+      {/* Journey Section - Storytelling */}
       <section id="experience" className="py-20 relative">
         <div className="container mx-auto px-4">
-          <SectionHeader title="SYSTEM_LOGS" subtitle="Career History" />
+          <SectionHeader title="THE_JOURNEY" subtitle="My Story" />
 
-          <div className="space-y-8 relative pl-8 border-l-2 border-white/10 ml-4 md:ml-0">
-            {cvData.experience.map((job, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {cvData.journey.map((chapter, index) => (
               <motion.div 
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="relative pl-8"
               >
-                {/* Timeline Dot */}
-                <div className="absolute -left-[41px] md:-left-[41px] top-0 w-5 h-5 bg-background border-2 border-accent rounded-full shadow-[0_0_10px_rgba(147,51,234,0.5)]" />
-                
-                <NeonCard variant={index === 0 ? 'primary' : 'secondary'} className="group">
-                  <div className="flex flex-col md:flex-row justify-between md:items-start mb-4 gap-2">
-                    <div>
-                      <h3 className="text-2xl font-display font-bold text-white group-hover:text-primary transition-colors">
-                        {job.role}
-                      </h3>
-                      <div className="flex items-center gap-2 text-muted-foreground font-mono mt-1">
-                        <Briefcase className="w-4 h-4" />
-                        <span className="text-lg">{job.company}</span>
-                      </div>
-                    </div>
-                    <div className="text-right font-mono text-sm opacity-70 bg-black/30 px-3 py-1 border border-white/10">
-                      {job.period}
-                    </div>
+                <div className={`group relative h-full p-6 border rounded-lg bg-black/40 backdrop-blur-sm transition-all duration-300 hover:bg-black/60 ${
+                  chapter.color === 'primary' ? 'border-primary/30 hover:border-primary/60 hover:shadow-[0_0_30px_rgba(236,72,153,0.15)]' :
+                  chapter.color === 'secondary' ? 'border-secondary/30 hover:border-secondary/60 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]' :
+                  'border-accent/30 hover:border-accent/60 hover:shadow-[0_0_30px_rgba(147,51,234,0.15)]'
+                }`}>
+                  {/* Chapter Number */}
+                  <div className={`absolute -top-3 -right-3 w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-sm ${
+                    chapter.color === 'primary' ? 'bg-primary text-white' :
+                    chapter.color === 'secondary' ? 'bg-secondary text-black' :
+                    'bg-accent text-white'
+                  }`}>
+                    {String(index + 1).padStart(2, '0')}
                   </div>
-                  
-                  <p className="text-foreground/80 mb-4 font-light">
-                    {job.description}
-                  </p>
-                  
-                  <ul className="space-y-2">
-                    {job.achievements.map((achievement, i) => (
-                      <li key={i} className="flex items-start gap-3 text-sm font-mono text-muted-foreground">
-                        <span className="text-primary mt-1">▹</span>
-                        {achievement}
-                      </li>
+
+                  {/* Chapter Title */}
+                  <h3 className={`text-xl font-display font-bold mb-2 ${
+                    chapter.color === 'primary' ? 'text-primary' :
+                    chapter.color === 'secondary' ? 'text-secondary' :
+                    'text-accent'
+                  }`}>
+                    {chapter.chapter}
+                  </h3>
+
+                  {/* Companies */}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {chapter.companies.map((company, i) => (
+                      <span key={i} className="text-xs font-mono px-2 py-1 bg-white/5 border border-white/10 text-white/80">
+                        {company}
+                      </span>
                     ))}
-                  </ul>
-                </NeonCard>
+                    {chapter.via && (
+                      <span className="text-xs font-mono px-2 py-1 bg-primary/10 border border-primary/30 text-primary">
+                        via {chapter.via}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Story */}
+                  <p className="text-[#d1d5db] text-solid text-sm leading-relaxed mb-4">
+                    {chapter.story}
+                  </p>
+
+                  {/* Highlight */}
+                  <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded text-xs font-mono font-bold ${
+                    chapter.color === 'primary' ? 'bg-primary/20 text-primary border border-primary/30' :
+                    chapter.color === 'secondary' ? 'bg-secondary/20 text-secondary border border-secondary/30' :
+                    'bg-accent/20 text-accent border border-accent/30'
+                  }`}>
+                    {chapter.highlight}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

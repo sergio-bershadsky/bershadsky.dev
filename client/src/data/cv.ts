@@ -15,92 +15,42 @@ export const cvData = {
     databases: ["PostgreSQL", "MySQL", "ElasticSearch", "Redis", "MongoDB"],
     devops: ["AWS", "GCP", "Kubernetes", "Terraform", "Ansible", "HELM", "Docker"]
   },
-  experience: [
+  journey: [
     {
-      role: "Back-end Python Developer",
-      company: "Ricoh Corporation (via Toptal)",
-      period: "2024 – 2025",
-      location: "Remote, USA",
-      description: "Enterprise experience with global Ricoh Group, providing digital services, information management, and print solutions. Led critical backend infrastructure improvements with focus on MySQL database performance and scalability.",
-      industries: ["Information & Document Management", "Commercial Printing", "Business Services"],
-      achievements: [
-        "Refactored and optimized MySQL database architecture, resolving key performance bottlenecks and enhancing overall system scalability",
-        "Developed over 30 new MySQL Stored Procedures to automate complex business logic and streamline data processing workflows",
-        "Engineered a code generation tool that automatically generates Python type annotations and Pydantic data models from MySQL schema metadata",
-        "Designed and implemented dozens of RESTful API endpoints using AWS Powertools, enabling robust and scalable integrations",
-        "Established an event-driven system architecture leveraging AWS Pub/Sub and EventBridge scheduled tasks",
-        "Authored more than 20 technical articles to enhance development culture and document best practices",
-        "Pioneered innovative methods for working with MySQL Stored Procedures, introducing reusable patterns and advanced debugging techniques",
-        "Produced a comprehensive report with 1,200 actionable recommendations for enhancements and refactoring of the primary MySQL storage"
-      ]
+      chapter: "Enterprise Scale",
+      companies: ["Ricoh", "Zoetis"],
+      via: "Toptal",
+      story: "Optimizing database architectures and building event-driven systems for Fortune 500 companies. From MySQL performance tuning to AWS serverless patterns.",
+      highlight: "1,200+ recommendations delivered",
+      color: "primary"
     },
     {
-      role: "Tech Lead and CTO",
-      company: "Truely",
-      period: "2023 – 2024",
-      location: "Remote",
-      description: "Leadership experience managing 11-20 reports. Digital-first telecom company specializing in global eSIM solutions for travelers, remote workers, and international users.",
-      industries: ["AI", "Media & Internet", "Telecommunications", "eCommerce"],
-      achievements: [
-        "Built a scalable eCommerce system from scratch, leveraging Django and GraphQL, supporting dynamic catalog management and high-volume transactions",
-        "Integrated more than 12 eSIM providers into a unified, intelligent system, enabling seamless global mobile connectivity",
-        "Led and managed a cross-functional development team of 14 engineers, fostering a collaborative and high-performance technical culture",
-        "Oversaw end-to-end production of core technology components: Django back end, React-powered CMS, and Flutter cross-platform mobile app",
-        "Delivered a fully functional MVP in record time, meeting aggressive deadlines and ensuring alignment with business objectives",
-        "Established and promoted best practices in code quality, DevOps, and agile methodologies",
-        "Drove key technology decisions and architecture choices, aligning them with both short-term deliverables and long-term company vision",
-        "Conducted internal audits to ensure compliance with privacy policies and private data storage strategies"
-      ]
+      chapter: "Startup Leadership",
+      companies: ["Truely eSIM"],
+      story: "Built a global telecom platform from zero. Led 14 engineers, integrated 12+ eSIM providers, shipped Django + React + Flutter stack.",
+      highlight: "CTO • 14 engineers",
+      color: "secondary"
     },
     {
-      role: "Full-stack and Django Developer",
-      company: "Zoetis (via Toptal)",
-      period: "2022 – 2023",
-      location: "Remote",
-      description: "Enterprise experience with global leader in animal health. Refactored legacy systems and implemented modern data pipeline architecture.",
-      industries: ["Veterinary Services", "Pharmaceuticals", "Healthcare"],
-      achievements: [
-        "Refactored legacy data pipelines into a more strict and clear approach, wrapping data handlers with Schemas as primary contracts",
-        "Provided 100% test coverage for all newly implemented data pipelines",
-        "Migrated similar application features into standalone Django applications with safe migrations",
-        "Refactoring touched more than 200 files without breaking any previously implemented features",
-        "Provided full knowledge transfer, architecture discovery, and roadmap proposals for refactoring and solution improvements"
-      ]
+      chapter: "Consulting Practice",
+      companies: ["DjangoHeads"],
+      story: "Founded a boutique Python consultancy. Helping startups ship faster with Django expertise, DevOps automation, and team mentoring.",
+      highlight: "10+ clients served",
+      color: "accent"
     },
     {
-      role: "Founder & Tech Lead",
-      company: "DjangoHeads",
-      period: "2019 – Present",
-      location: "Remote",
-      description: "Outsourcing & Custom Software Development company. A close-knit team of developers passionate about making Python and Django work for businesses.",
-      achievements: [
-        "Assisted numerous companies including HipNode, Truely, TopTravel, IDP, GeoNode, Apollo Suite, Moxy, Wellbe, Datazio, OkTy",
-        "Focused on boosting team morale, reducing anxiety, and improving overall productivity",
-        "Crafted and refined Python & Django solutions with solid development strategies",
-        "Built and welcomed new tech teams, overseeing how new team members merge into workflows"
-      ]
+      chapter: "Healthcare Revolution",
+      companies: ["UMIAS"],
+      story: "Transformed a healthcare platform from 10% to 80% market share. Scaled to 1.2M monthly users with zero marketing budget.",
+      highlight: "1.2M users • 80% market",
+      color: "primary"
     },
     {
-      role: "Lead Architect & Backend",
-      company: "UMIAS (Healthcare Platform)",
-      period: "2014 – 2019",
-      location: "Moscow, Russia",
-      description: "Brought platform transformation to capture market share from 10% to 80% in the healthcare sector.",
-      achievements: [
-        "Grew market share from 10% to 80% with zero marketing budget",
-        "Scaled platform to 1.2M monthly active users",
-        "Built robust backend infrastructure with OpenEHR/HL7 compliance"
-      ]
-    },
-    {
-      role: "Early Career",
-      company: "Various Companies",
-      period: "2003 – 2014",
-      description: "Progressed from junior developer to leading small engineering teams across government, education, social, and eCommerce sectors.",
-      achievements: [
-        "Oversaw full lifecycle delivery on 30+ high-traffic platforms",
-        "Built and optimized systems with overall 30M monthly active users"
-      ]
+      chapter: "The Foundation",
+      companies: ["Early Career"],
+      story: "From junior developer to tech lead across government, education, and eCommerce. 30+ platforms, 30M+ users.",
+      highlight: "30M+ users reached",
+      color: "secondary"
     }
   ],
   education: [
