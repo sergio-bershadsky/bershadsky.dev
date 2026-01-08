@@ -447,23 +447,23 @@ export default function About() {
             </p>
             
             <div className="flex flex-col md:flex-row justify-center gap-6 mb-12">
-              <a href={`mailto:${cvData.personal.email}`} className="flex items-center justify-center gap-3 px-6 py-4 border border-primary/50 hover:bg-primary/10 transition-colors group">
-                <Mail className="w-5 h-5 text-primary group-hover:text-white" />
-                <span className="font-mono text-lg">{cvData.personal.email}</span>
+              <a href="https://github.com/bershadsky" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-6 py-4 border border-primary/50 hover:bg-primary/10 transition-colors group">
+                <Github className="w-5 h-5 text-primary group-hover:text-white" />
+                <span className="font-mono text-lg">GitHub</span>
               </a>
-              <div className="flex items-center justify-center gap-3 px-6 py-4 border border-secondary/50 hover:bg-secondary/10 transition-colors group">
-                <MapPin className="w-5 h-5 text-secondary group-hover:text-white" />
-                <span className="font-mono text-lg">{cvData.personal.location}</span>
-              </div>
+              <a href="https://www.linkedin.com/in/bershadsky/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 px-6 py-4 border border-secondary/50 hover:bg-secondary/10 transition-colors group">
+                <Linkedin className="w-5 h-5 text-secondary group-hover:text-white" />
+                <span className="font-mono text-lg">LinkedIn</span>
+              </a>
             </div>
 
             <CyberButton size="lg" className="w-full md:w-auto px-16 text-xl">
               HIRE_ME_NOW
             </CyberButton>
             
-            <div className="mt-12 flex justify-center gap-8 opacity-50">
-               <Github className="w-6 h-6 hover:text-white cursor-pointer transition-colors" />
-               <Linkedin className="w-6 h-6 hover:text-white cursor-pointer transition-colors" />
+            <div className="mt-12 flex justify-center gap-4 text-muted-foreground">
+              <MapPin className="w-5 h-5" />
+              <span className="font-mono">{cvData.personal.location}</span>
             </div>
           </NeonCard>
         </div>
