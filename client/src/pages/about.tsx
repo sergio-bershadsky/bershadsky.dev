@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe, Database, Cloud, Container, Boxes, Workflow, Zap, FileCode, Layers, Search, Flame, Bird, Box, Settings, HardDrive } from 'lucide-react';
@@ -39,6 +39,80 @@ import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 const avatarImage = '/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
 
 export default function About() {
+  useEffect(() => {
+    document.title = 'Sergey Bershadsky | Tech Lead & Solution Architect | Python Django Expert';
+    
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const descriptionContent = 'Sergey Bershadsky - Tech Lead and Solution Architect with 20+ years of experience. Expert in Python, Django, AWS, MedTech, and ERP systems. Available for consulting and technical leadership roles.';
+    if (metaDescription) {
+      metaDescription.setAttribute('content', descriptionContent);
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = descriptionContent;
+      document.head.appendChild(meta);
+    }
+
+    const metaKeywords = document.querySelector('meta[name="keywords"]');
+    const keywordsContent = 'Sergey Bershadsky, Bershadsky, Tech Lead, Solution Architect, Python Developer, Django Expert, AWS, MedTech, ERP, Toptal, Software Engineer, CTO, Startup Architect';
+    if (metaKeywords) {
+      metaKeywords.setAttribute('content', keywordsContent);
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'keywords';
+      meta.content = keywordsContent;
+      document.head.appendChild(meta);
+    }
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', 'Sergey Bershadsky | Tech Lead & Solution Architect');
+    
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) ogDescription.setAttribute('content', descriptionContent);
+
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', 'Sergey Bershadsky | Tech Lead & Solution Architect');
+
+    const existingSchema = document.querySelector('script[type="application/ld+json"]');
+    if (existingSchema) existingSchema.remove();
+    
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sergey Bershadsky",
+      "alternateName": ["Sergey", "Bershadsky", "Sergio Bershadsky"],
+      "jobTitle": "Tech Lead & Solution Architect",
+      "description": descriptionContent,
+      "url": "https://bershadsky.dev/about",
+      "email": "sergio.bershadsky@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lisbon",
+        "addressCountry": "Portugal"
+      },
+      "sameAs": [
+        "https://github.com/bershadsky",
+        "https://www.linkedin.com/in/bershadsky/",
+        "https://talent.toptal.com/resume/developers/sergey-nikitin"
+      ],
+      "knowsAbout": ["Python", "Django", "FastAPI", "AWS", "PostgreSQL", "Kubernetes", "MedTech", "ERP", "Solution Architecture"],
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Toptal"
+      }
+    };
+    
+    const scriptTag = document.createElement('script');
+    scriptTag.type = 'application/ld+json';
+    scriptTag.textContent = JSON.stringify(schema);
+    document.head.appendChild(scriptTag);
+
+    return () => {
+      const schemaScript = document.querySelector('script[type="application/ld+json"]');
+      if (schemaScript) schemaScript.remove();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen text-foreground relative overflow-x-hidden">
       <CyberpunkBackground />
