@@ -133,7 +133,7 @@ export const cvData = {
       id: "0000655848"
     },
     {
-      name: "10,000+ Hours Core Developer",
+      name: "12,000+ Hours Core Developer",
       issuer: "TopTal",
       date: "2024"
     },
