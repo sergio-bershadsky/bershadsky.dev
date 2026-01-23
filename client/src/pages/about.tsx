@@ -3,6 +3,35 @@ import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe, Database, Cloud, Container, Boxes, Workflow, Zap, FileCode, Layers, Search, Flame, Bird, Box, Settings, HardDrive, Instagram, X, Clock } from 'lucide-react';
 
+const ToptalBadge = () => (
+  <div className="w-[140px]" style={{ fontFamily: 'proxima-nova, Arial, sans-serif' }}>
+    <style>{`@import"https://use.typekit.net/kmj5qkr.css";`}</style>
+    <div className="inline-block bg-[#25a9ef] p-[4px]" style={{ clipPath: 'polygon(50% 0, 100% 24%, 100% 76%, 50% 100%, 0 76%, 0 24%)' }}>
+      <div 
+        className="w-[132px] py-4 pb-6 flex flex-col items-center gap-1.5 text-white text-center"
+        style={{ 
+          background: 'linear-gradient(153deg, #0667ff 18%, #204ecf 40%, #0f256e 80%)',
+          clipPath: 'polygon(50% 0, 100% 24%, 100% 76%, 50% 100%, 0 76%, 0 24%)',
+          boxShadow: '0 28px 50px rgba(6,30,96,.35)'
+        }}
+      >
+        <svg width={44} viewBox="0 0 60 17" xmlns="http://www.w3.org/2000/svg">
+          <path d="m20.85 6.38 6.06-.89 2.72-5.49 2.71 5.49 6.06.89-4.39 4.28 1.04 6.03-5.42-2.85-5.43 2.85 1.04-6.03zm33.06 7.17 1.85-.27.82-1.67.83 1.67 1.84.27-1.33 1.31.31 1.83-1.65-.87-1.66.87.32-1.83zm-3.38-3.01-3.61-.52-1.61-3.26-1.62 3.26-3.6.52 2.6 2.55-.61 3.59 3.23-1.69 3.21 1.69-.61-3.59zm-45.19 3.01-1.85-.27-.82-1.67-.83 1.67-1.84.27 1.33 1.31-.31 1.83 1.65-.87 1.65.87-.31-1.83zm3.38-3.01 3.61-.52 1.61-3.26 1.61 3.26 3.61.52-2.6 2.55.61 3.59-3.23-1.69-3.22 1.69.62-3.59z" fill="#fff"/>
+        </svg>
+        <h3 className="m-0 text-[13px] font-bold leading-tight">TOP 3% TALENT</h3>
+        <div className="w-16 h-px bg-[#25a9ef]"></div>
+        <span className="text-[11px] opacity-80 -mb-1">Vetted by</span>
+        <svg viewBox="0 0 108 30" width={70} xmlns="http://www.w3.org/2000/svg">
+          <g clipRule="evenodd" fill="#fff" fillRule="evenodd">
+            <path d="m8.11 0 6.71 6.7c.05.05.09.1.15.15l5.85 5.85-9.51 9.46 4.35 4.36-2.91 2.89-6.66-6.66c-.08-.07-.16-.15-.24-.23l-5.85-5.84 9.48-9.43-4.32-4.31zm4.25 10.5c-.09-.02-.18-.02-.26 0-.09.03-.16.07-.32.22l-5.41 5.39c-.16.16-.2.23-.22.31-.03.09-.03.18 0 .26.02.09.07.17.22.32l1.72 1.72c.15.15.22.19.31.22.09.02.17.02.26 0 .08-.03.16-.07.31-.22l5.41-5.39c.15-.16.2-.23.22-.32.02-.08.02-.17 0-.26-.03-.08-.07-.16-.22-.31l-1.72-1.72c-.15-.15-.23-.2-.31-.22z"/>
+            <path d="m46.27 7.45h-6.41v3.9h5.65v3.41h-5.65v5.31h-4.11v-16.04h10.52zm2.03 12.62v-16.04h4.12v12.63h6.06v3.41zm16.65.27c-4.72 0-7.49-3.25-7.49-8.3 0-5.04 2.77-8.3 7.49-8.3s7.49 3.25 7.49 8.3c0 5.04-2.77 8.3-7.49 8.3zm0-3.42c2.08 0 3.35-1.69 3.35-4.88 0-3.2-1.27-4.88-3.35-4.88s-3.35 1.68-3.35 4.88c0 3.19 1.27 4.88 3.35 4.88zm22.64 3.15-2.39-9.37-2.39 9.37h-4.33l-4.11-16.04h4.15l2.36 10.41 2.67-10.41h3.28l2.66 10.41 2.36-10.41h4.15l-4.11 16.04zm-51.92-16.04v3.37h-4.2v12.67h-4.12v-12.67h-4.2v-3.37zm65.71 0h4.11v16.04h-4.11z"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+);
+
 const getTechIcon = (tech: string) => {
   const iconMap: Record<string, React.ReactNode> = {
     'Python': <Flame className="w-3.5 h-3.5" />,
@@ -394,9 +423,15 @@ export default function About() {
             {cvData.certifications.map((cert, index) => (
               <NeonCard key={index} variant="accent">
                 <div className="flex flex-col items-center text-center">
-                  <div className="p-4 bg-accent/10 rounded-full border border-accent/30 mb-4">
-                    <Award className="w-8 h-8 text-accent" />
-                  </div>
+                  {cert.issuer === 'TopTal' ? (
+                    <div className="mb-4">
+                      <ToptalBadge />
+                    </div>
+                  ) : (
+                    <div className="p-4 bg-accent/10 rounded-full border border-accent/30 mb-4">
+                      <Award className="w-8 h-8 text-accent" />
+                    </div>
+                  )}
                   <h3 className="text-lg font-bold font-display text-white mb-2">{cert.name}</h3>
                   <p className="text-accent font-mono text-sm">{cert.issuer}</p>
                   <p className="text-xs text-muted-foreground mt-1">{cert.date}</p>
