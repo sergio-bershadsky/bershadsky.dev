@@ -479,6 +479,10 @@ export default function About() {
                       <div className="p-2 rounded">
                         <img src="/images/sun-community.svg" alt="Local IT Community" className="w-10 h-10" />
                       </div>
+                    ) : org.name === 'Fondation Beyeler' ? (
+                      <div className="p-2 rounded">
+                        <img src="/images/beyeler-logo.png" alt="Fondation Beyeler" className="w-10 h-10 object-contain" />
+                      </div>
                     ) : (
                       <div className={`p-3 rounded border ${index === 0 ? 'bg-primary/10 border-primary/30' : 'bg-secondary/10 border-secondary/30'}`}>
                         <Heart className="w-6 h-6 text-secondary" />
