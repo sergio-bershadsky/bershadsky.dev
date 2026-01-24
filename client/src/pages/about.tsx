@@ -475,9 +475,15 @@ export default function About() {
               >
                 <NeonCard variant={index === 0 ? 'primary' : 'secondary'} className="h-full">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className={`p-3 rounded border ${index === 0 ? 'bg-primary/10 border-primary/30' : 'bg-secondary/10 border-secondary/30'}`}>
-                      {index === 0 ? <Users className="w-6 h-6 text-primary" /> : <Heart className="w-6 h-6 text-secondary" />}
-                    </div>
+                    {org.name === 'Local IT Community' ? (
+                      <div className="p-2 rounded">
+                        <img src="/images/sun-community.svg" alt="Local IT Community" className="w-10 h-10" />
+                      </div>
+                    ) : (
+                      <div className={`p-3 rounded border ${index === 0 ? 'bg-primary/10 border-primary/30' : 'bg-secondary/10 border-secondary/30'}`}>
+                        <Heart className="w-6 h-6 text-secondary" />
+                      </div>
+                    )}
                     <div>
                       <h3 className="text-xl font-bold font-display text-white">{org.name}</h3>
                       <p className={`font-mono text-sm ${index === 0 ? 'text-primary' : 'text-secondary'}`}>{org.role}</p>
