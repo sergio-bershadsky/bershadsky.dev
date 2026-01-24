@@ -3,6 +3,22 @@ import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowLeft, Award, Heart, Users, HeartPulse, Package, Server, Building2, Rocket, Globe, Database, Cloud, Container, Boxes, Workflow, Zap, FileCode, Layers, Search, Flame, Bird, Box, Settings, HardDrive, Instagram, X, Clock } from 'lucide-react';
 
+const AWSBadge = ({ title, subtitle }: { title: string; subtitle: string }) => (
+  <div 
+    dangerouslySetInnerHTML={{
+      __html: `<div id=aws><style>@import"https://use.typekit.net/kmj5qkr.css";:root{--h:polygon(50% 0,100% 24%,100% 76%,50% 100%,0 76%,0 24%)}.awsh{display:inline-block;background:#ff9900;padding:3px;clip-path:var(--h)}.awsa{width:100px;padding:12px 0 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#fff;text-align:center;background:linear-gradient(153deg,#232f3e 18%,#1a242f 40%,#0d1117 80%);clip-path:var(--h);box-shadow:0 14px 25px rgba(35,47,62,.35)}#aws{font-family:proxima-nova,Arial,sans-serif}.awsb{margin:0;font-size:8px;font-weight:700;line-height:1.1;white-space:nowrap}.awsc{width:60px;height:1px;background:#ff9900}.awsd{font-size:12px;opacity:.8}</style><div class=awsh><div class=awsa><svg width=32 viewBox="0 0 60 17" xmlns="http://www.w3.org/2000/svg"><path d="m20.85 6.38 6.06-.89 2.72-5.49 2.71 5.49 6.06.89-4.39 4.28 1.04 6.03-5.42-2.85-5.43 2.85 1.04-6.03zm33.06 7.17 1.85-.27.82-1.67.83 1.67 1.84.27-1.33 1.31.31 1.83-1.65-.87-1.66.87.32-1.83zm-3.38-3.01-3.61-.52-1.61-3.26-1.62 3.26-3.6.52 2.6 2.55-.61 3.59 3.23-1.69 3.21 1.69-.61-3.59zm-45.19 3.01-1.85-.27-.82-1.67-.83 1.67-1.84.27 1.33 1.31-.31 1.83 1.65-.87 1.65.87-.31-1.83zm3.38-3.01 3.61-.52 1.61-3.26 1.61 3.26 3.61.52-2.6 2.55.61 3.59-3.23-1.69-3.22 1.69.62-3.59z" fill="#ff9900"/></svg><h3 class=awsb>${title}</h3><div class=awsc></div><span class=awsd>${subtitle}</span><svg viewBox="0 0 100 28" width="60" xmlns="http://www.w3.org/2000/svg"><text x="50" y="20" text-anchor="middle" fill="#ff9900" font-family="Arial,sans-serif" font-size="26" font-weight="bold">AWS</text></svg></div></div></div>`
+    }}
+  />
+);
+
+const SecurityBadge = () => (
+  <div 
+    dangerouslySetInnerHTML={{
+      __html: `<div id=sec><style>@import"https://use.typekit.net/kmj5qkr.css";:root{--h:polygon(50% 0,100% 24%,100% 76%,50% 100%,0 76%,0 24%)}.sech{display:inline-block;background:#10b981;padding:3px;clip-path:var(--h)}.seca{width:100px;padding:12px 0 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:#fff;text-align:center;background:linear-gradient(153deg,#065f46 18%,#064e3b 40%,#022c22 80%);clip-path:var(--h);box-shadow:0 14px 25px rgba(6,95,70,.35)}#sec{font-family:proxima-nova,Arial,sans-serif}.secb{margin:0;font-size:9px;font-weight:700;line-height:1;white-space:nowrap}.secc{width:60px;height:1px;background:#10b981}.secd{font-size:12px;opacity:.8}</style><div class=sech><div class=seca><svg width=32 viewBox="0 0 60 17" xmlns="http://www.w3.org/2000/svg"><path d="m20.85 6.38 6.06-.89 2.72-5.49 2.71 5.49 6.06.89-4.39 4.28 1.04 6.03-5.42-2.85-5.43 2.85 1.04-6.03zm33.06 7.17 1.85-.27.82-1.67.83 1.67 1.84.27-1.33 1.31.31 1.83-1.65-.87-1.66.87.32-1.83zm-3.38-3.01-3.61-.52-1.61-3.26-1.62 3.26-3.6.52 2.6 2.55-.61 3.59 3.23-1.69 3.21 1.69-.61-3.59zm-45.19 3.01-1.85-.27-.82-1.67-.83 1.67-1.84.27 1.33 1.31-.31 1.83 1.65-.87 1.65.87-.31-1.83zm3.38-3.01 3.61-.52 1.61-3.26 1.61 3.26 3.61.52-2.6 2.55.61 3.59-3.23-1.69-3.22 1.69.62-3.59z" fill="#10b981"/></svg><h3 class=secb>WEBAPP SEC</h3><div class=secc></div><span class=secd>CERTIFIED</span><svg viewBox="0 0 100 28" width="50" xmlns="http://www.w3.org/2000/svg"><text x="50" y="22" text-anchor="middle" fill="#10b981" font-family="Arial,sans-serif" font-size="14" font-weight="bold">SECURITY</text></svg></div></div></div>`
+    }}
+  />
+);
+
 const OdooBadge = () => (
   <div 
     dangerouslySetInnerHTML={{
@@ -417,6 +433,17 @@ export default function About() {
                   ) : cert.issuer === 'Odoo S.A.' ? (
                     <div className="mb-4">
                       <OdooBadge />
+                    </div>
+                  ) : cert.issuer === 'Amazon Web Services' ? (
+                    <div className="mb-4">
+                      <AWSBadge 
+                        title={cert.name.includes('Solutions') ? 'SOLUTIONS' : cert.name.includes('Developer') ? 'DEVELOPER' : 'CLOUD'} 
+                        subtitle={cert.name.includes('Solutions') ? 'ARCHITECT' : cert.name.includes('Developer') ? 'ASSOCIATE' : 'PRACTITIONER'} 
+                      />
+                    </div>
+                  ) : cert.issuer === 'Security Training' ? (
+                    <div className="mb-4">
+                      <SecurityBadge />
                     </div>
                   ) : (
                     <div className="p-4 bg-accent/10 rounded-full border border-accent/30 mb-4">
