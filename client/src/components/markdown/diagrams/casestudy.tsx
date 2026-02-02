@@ -2818,8 +2818,8 @@ export const PatentSeekersTeamFeedbackSection = () => {
       role: "Senior IP and Project Manager",
       quote: "Sergey has been a pleasure to work with and helped advance the project in many ways. He has exceptional technical skills and was keen and quick to learn and adapt when needed. When we decided to migrate to AWS, Sergey proactively learned the platform and was quick to adapt and transfer our system. I would highly recommend Sergey for any engineering position.",
       linkedinUrl: "https://www.linkedin.com/in/geraint-evans-432b37172/",
-      color: "green",
-      icon: <Target className="w-5 h-5 text-green-400" />
+      color: "cyan",
+      icon: <Target className="w-5 h-5 text-cyan-400" />
     }
   ];
 
