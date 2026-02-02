@@ -252,7 +252,8 @@
     - Docker
     - Healthcare
     - Startup
-  image_url: /images/case_study_umias_healthcare_logo.png
+  image_url: /images/case_study_umias_healthcare_new.png
+  case_study_logo: /images/emias-logo.svg
   status: published
   published_at: "2025-06-01T10:00:00Z"
   content: blog-posts/25.content.md

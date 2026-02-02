@@ -212,11 +212,22 @@ export default function BlogPostPage() {
           )}
 
           {post.imageUrl ? (
-            <img 
-              src={post.imageUrl} 
-              alt={post.title}
-              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-            />
+            <div className="relative w-full h-full">
+              <img 
+                src={post.imageUrl} 
+                alt={post.title}
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
+              />
+              {post.caseStudyLogo && (
+                <div className="absolute left-1/2 -translate-x-1/2 z-10" style={{ bottom: '20%' }}>
+                  <img 
+                    src={post.caseStudyLogo} 
+                    alt="Project Logo"
+                    className="h-12 md:h-16 w-auto opacity-90 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                  />
+                </div>
+              )}
+            </div>
           ) : (
             <video 
               src={blogVideo} 
