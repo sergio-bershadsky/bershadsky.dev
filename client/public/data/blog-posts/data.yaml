@@ -451,3 +451,28 @@
   seo_title: "PatentSeekers Case Study: Enterprise Patent Search Infrastructure"
   seo_description: "Lead Engineer for enterprise patent search platform. 100M+ patents indexed with sub-second search, zero-downtime deployments, and hybrid cloud optimization."
   seo_keywords: "PatentSeekers case study, patent search platform, AWS infrastructure, Terraform, ElasticSearch, enterprise search, Toptal"
+
+- id: 33
+  slug: zoetis-sales-intelligence-platform
+  title: "Zoetis - Sales Intelligence Platform for Animal Health"
+  excerpt: "Senior Python Engineer building ML-driven sales analytics platform for the world's leading animal health company. Django data pipelines processing millions of records with Azure and DataBricks integration."
+  case_study_year: "2023-2024"
+  case_study_role: "Senior Python Engineer"
+  case_study_type: "Toptal"
+  date: "2026-02-02"
+  tags:
+    - Case-Study
+    - Python
+    - Django
+    - Azure
+    - DataBricks
+    - ML
+    - Data-Engineering
+  image_url: /images/case_study_zoetis.png
+  status: published
+  published_at: "2026-02-02T10:00:00Z"
+  content: blog-posts/33.content.md
+  audience: Tech Leaders
+  seo_title: "Zoetis Case Study: Sales Intelligence Platform Engineering"
+  seo_description: "Senior Python Engineer building ML-driven sales analytics for global animal health company. Django pipelines, Azure infrastructure, DataBricks ML integration."
+  seo_keywords: "Zoetis case study, sales intelligence platform, Python Django, Azure DataBricks, ML analytics, data engineering, Toptal"

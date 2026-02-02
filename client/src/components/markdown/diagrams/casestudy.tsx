@@ -2833,6 +2833,376 @@ export const PatentSeekersTeamFeedbackSection = () => {
   );
 };
 
+// Zoetis Case Study Diagrams
+export const ZoetisRoleCard = () => (
+  <div className="my-8 border border-orange-500/40 rounded-lg bg-gradient-to-br from-black/60 via-orange-950/20 to-black/60 p-6 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl" />
+    
+    <div className="relative z-10">
+      <div className="text-sm font-mono text-orange-400 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Crown className="w-4 h-4" />
+          <span>MY ROLE // SENIOR_PYTHON_ENGINEER</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <img src="/images/toptal-logo.svg" alt="Toptal" className="h-4 opacity-80" />
+          <span className="text-xs text-muted-foreground px-2 py-0.5 border border-blue-500/50 rounded bg-blue-500/10 text-blue-400">VIA TOPTAL</span>
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="p-3 border border-orange-500/30 rounded-lg bg-black/40 text-center group hover:border-orange-400/60 transition-colors">
+          <Users className="w-6 h-6 mx-auto mb-2 text-orange-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">104</div>
+          <div className="text-xs text-gray-400 mt-1">CONTRIBUTORS</div>
+        </div>
+        <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center group hover:border-cyan-500/60 transition-colors">
+          <Database className="w-6 h-6 mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">DATA</div>
+          <div className="text-xs text-gray-400 mt-1">ENGINEERING</div>
+        </div>
+        <div className="p-3 border border-green-500/30 rounded-lg bg-black/40 text-center group hover:border-green-500/60 transition-colors">
+          <Clock className="w-6 h-6 mx-auto mb-2 text-green-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">1 YR</div>
+          <div className="text-xs text-gray-400 mt-1">DURATION</div>
+        </div>
+        <div className="p-3 border border-purple-500/30 rounded-lg bg-black/40 text-center group hover:border-purple-500/60 transition-colors">
+          <Globe className="w-6 h-6 mx-auto mb-2 text-purple-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">AZURE</div>
+          <div className="text-xs text-gray-400 mt-1">CLOUD</div>
+        </div>
+      </div>
+      
+      <div className="border-t border-orange-500/20 pt-4">
+        <div className="text-xs font-mono text-orange-400 mb-3 flex items-center gap-2">
+          <Zap className="w-3 h-3" />
+          KEY INNOVATIONS
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-orange-500/10 to-transparent border-l-2 border-orange-400">
+            <Activity className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">ML Analytics</div>
+              <div className="text-xs text-gray-400">DataBricks scoring models</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-cyan-500/10 to-transparent border-l-2 border-cyan-400">
+            <Server className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Django Pipelines</div>
+              <div className="text-xs text-gray-400">Millions of records processed</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-green-500/10 to-transparent border-l-2 border-green-400">
+            <Database className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Lead Prioritization</div>
+              <div className="text-xs text-gray-400">ML-driven sales intelligence</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-purple-500/10 to-transparent border-l-2 border-purple-400">
+            <Container className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Azure Native</div>
+              <div className="text-xs text-gray-400">Multi-environment deployment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const ZoetisPlatformDiagram = () => (
+  <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-cyan-400 mb-4 flex justify-between">
+      <span>FIG 1.1 // SALES INTELLIGENCE ARCHITECTURE</span>
+      <span className="text-xs text-muted-foreground">OVERVIEW</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="text-xs font-mono text-gray-400 mb-2">DATA SOURCES:</div>
+      <div className="grid grid-cols-3 gap-3">
+        <div className="p-3 border border-orange-500/30 rounded-lg bg-black/40 text-center">
+          <Database className="w-5 h-5 mx-auto mb-2 text-orange-400" />
+          <div className="text-xs text-white font-medium">SAP Sales</div>
+          <div className="text-xs text-gray-500">History</div>
+        </div>
+        <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center">
+          <Users className="w-5 h-5 mx-auto mb-2 text-cyan-400" />
+          <div className="text-xs text-white font-medium">Customer</div>
+          <div className="text-xs text-gray-500">Master Data</div>
+        </div>
+        <div className="p-3 border border-purple-500/30 rounded-lg bg-black/40 text-center">
+          <Globe className="w-5 h-5 mx-auto mb-2 text-purple-400" />
+          <div className="text-xs text-white font-medium">Territory</div>
+          <div className="text-xs text-gray-500">Assignments</div>
+        </div>
+      </div>
+      
+      <div className="flex justify-center">
+        <ArrowDown className="w-5 h-5 text-gray-500" />
+      </div>
+      
+      <div className="p-4 border border-orange-500/50 rounded-lg bg-orange-500/10 text-center">
+        <div className="text-sm font-mono text-orange-400 font-bold">SALES INTELLIGENCE PLATFORM</div>
+      </div>
+      
+      <div className="flex justify-center">
+        <ArrowDown className="w-5 h-5 text-gray-500" />
+      </div>
+      
+      <div className="grid grid-cols-3 gap-3">
+        <div className="p-3 border border-green-500/30 rounded-lg bg-black/40 text-center">
+          <Target className="w-5 h-5 mx-auto mb-2 text-green-400" />
+          <div className="text-xs text-white font-medium">Lead</div>
+          <div className="text-xs text-gray-500">Prioritization</div>
+        </div>
+        <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center">
+          <Activity className="w-5 h-5 mx-auto mb-2 text-cyan-400" />
+          <div className="text-xs text-white font-medium">Account</div>
+          <div className="text-xs text-gray-500">Analytics</div>
+        </div>
+        <div className="p-3 border border-purple-500/30 rounded-lg bg-black/40 text-center">
+          <TrendingUp className="w-5 h-5 mx-auto mb-2 text-purple-400" />
+          <div className="text-xs text-white font-medium">Territory</div>
+          <div className="text-xs text-gray-500">Optimization</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const ZoetisInfrastructureDiagram = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
+      <span>FIG 1.2 // AZURE ARCHITECTURE</span>
+      <span className="text-xs text-muted-foreground">CLOUD-NATIVE</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center">
+        <Code className="w-5 h-5 mx-auto mb-2 text-cyan-400" />
+        <div className="text-sm text-white font-medium">React/TypeScript Frontend</div>
+      </div>
+      
+      <div className="flex justify-center">
+        <ArrowDown className="w-5 h-5 text-gray-500" />
+      </div>
+      
+      <div className="p-4 border border-orange-500/40 rounded-lg bg-orange-500/10">
+        <div className="text-center mb-3">
+          <div className="text-sm font-mono text-orange-400 font-bold">Django Application</div>
+        </div>
+        <div className="grid grid-cols-4 gap-2">
+          <div className="p-2 border border-orange-500/30 rounded bg-black/40 text-center">
+            <div className="text-xs text-white">DX Pipe</div>
+          </div>
+          <div className="p-2 border border-cyan-500/30 rounded bg-black/40 text-center">
+            <div className="text-xs text-white">RX Pipe</div>
+          </div>
+          <div className="p-2 border border-green-500/30 rounded bg-black/40 text-center">
+            <div className="text-xs text-white">Lead Priority</div>
+          </div>
+          <div className="p-2 border border-purple-500/30 rounded bg-black/40 text-center">
+            <div className="text-xs text-white">Metrics</div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="flex justify-center">
+        <ArrowDown className="w-5 h-5 text-gray-500" />
+      </div>
+      
+      <div className="grid grid-cols-3 gap-3">
+        <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center">
+          <Database className="w-5 h-5 mx-auto mb-2 text-cyan-400" />
+          <div className="text-xs text-white font-medium">PostgreSQL</div>
+          <div className="text-xs text-gray-500">Flexible</div>
+        </div>
+        <div className="p-3 border border-orange-500/30 rounded-lg bg-black/40 text-center">
+          <Container className="w-5 h-5 mx-auto mb-2 text-orange-400" />
+          <div className="text-xs text-white font-medium">Blob Storage</div>
+          <div className="text-xs text-gray-500">Raw Data</div>
+        </div>
+        <div className="p-3 border border-purple-500/30 rounded-lg bg-black/40 text-center">
+          <Activity className="w-5 h-5 mx-auto mb-2 text-purple-400" />
+          <div className="text-xs text-white font-medium">DataBricks</div>
+          <div className="text-xs text-gray-500">ML Scoring</div>
+        </div>
+      </div>
+      
+      <div className="text-xs text-gray-500 text-center mt-3">
+        ENVIRONMENTS: Development → QA → Production | REGION: Azure East US
+      </div>
+    </div>
+  </div>
+);
+
+export const ZoetisPipelineDiagram = () => (
+  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
+      <span>FIG 1.3 // ETL FRAMEWORK</span>
+      <span className="text-xs text-muted-foreground">PROCESSING FLOW</span>
+    </div>
+    
+    <div className="space-y-3">
+      <div className="p-3 border border-orange-500/30 rounded-lg bg-gradient-to-r from-orange-500/10 to-transparent">
+        <div className="text-xs font-mono text-orange-400 mb-1">STAGE 1: INGESTION</div>
+        <div className="text-xs text-gray-400">Azure Blob Storage → Raw Data Validation</div>
+        <div className="text-xs text-gray-500 mt-1">• SAP exports • Customer files • Territory assignments</div>
+      </div>
+      
+      <div className="flex justify-center">
+        <ArrowDown className="w-4 h-4 text-gray-500" />
+      </div>
+      
+      <div className="p-3 border border-cyan-500/30 rounded-lg bg-gradient-to-r from-cyan-500/10 to-transparent">
+        <div className="text-xs font-mono text-cyan-400 mb-1">STAGE 2: TRANSFORMATION</div>
+        <div className="text-xs text-gray-400">Business Rules Engine → Data Normalization</div>
+        <div className="text-xs text-gray-500 mt-1">• Deduplication • Territory mapping • Product categorization</div>
+      </div>
+      
+      <div className="flex justify-center">
+        <ArrowDown className="w-4 h-4 text-gray-500" />
+      </div>
+      
+      <div className="p-3 border border-purple-500/30 rounded-lg bg-gradient-to-r from-purple-500/10 to-transparent">
+        <div className="text-xs font-mono text-purple-400 mb-1">STAGE 3: SCORING</div>
+        <div className="text-xs text-gray-400">ML Models (DataBricks) → Priority Calculation</div>
+        <div className="text-xs text-gray-500 mt-1">• Potential scoring • Churn risk • Opportunity ID</div>
+      </div>
+      
+      <div className="flex justify-center">
+        <ArrowDown className="w-4 h-4 text-gray-500" />
+      </div>
+      
+      <div className="p-3 border border-green-500/30 rounded-lg bg-gradient-to-r from-green-500/10 to-transparent">
+        <div className="text-xs font-mono text-green-400 mb-1">STAGE 4: DELIVERY</div>
+        <div className="text-xs text-gray-400">Lead Priority Lists → Rep Dashboard</div>
+        <div className="text-xs text-gray-500 mt-1">• Prioritized accounts • Action recommendations • Metrics</div>
+      </div>
+    </div>
+  </div>
+);
+
+export const ZoetisMetricsDiagram = () => (
+  <div className="my-8 border border-orange-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-orange-400 mb-4 flex justify-between">
+      <span>FIG 1.4 // PLATFORM KPIs</span>
+      <span className="text-xs text-muted-foreground">RESULTS</span>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="p-4 border border-cyan-500/30 rounded-lg bg-gradient-to-b from-cyan-500/10 to-transparent">
+        <div className="text-xs font-mono text-cyan-400 mb-3">CODEBASE</div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Lines of Code</span>
+            <span className="text-sm text-white font-bold">99,875</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Python Backend</span>
+            <span className="text-sm text-white font-bold">75%</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">TypeScript Frontend</span>
+            <span className="text-sm text-white font-bold">24%</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Total Commits</span>
+            <span className="text-sm text-white font-bold">15,593</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Contributors</span>
+            <span className="text-sm text-white font-bold">104</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-orange-500/30 rounded-lg bg-gradient-to-b from-orange-500/10 to-transparent">
+        <div className="text-xs font-mono text-orange-400 mb-3">PROCESSING</div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Daily Records</span>
+            <span className="text-sm text-white font-bold">2M+</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Pipeline Runtime</span>
+            <span className="text-sm text-white font-bold">&lt; 4 hrs</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">API P95</span>
+            <span className="text-sm text-white font-bold">&lt; 500ms</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded-lg bg-gradient-to-b from-green-500/10 to-transparent">
+        <div className="text-xs font-mono text-green-400 mb-3">UPTIME</div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">System Uptime</span>
+            <span className="text-sm text-white font-bold">99.5%+</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Lead Refresh</span>
+            <span className="text-sm text-white font-bold">Nightly</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const ZoetisTeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "PHILIP ZERULL",
+      role: "Technical Lead",
+      quote: "Sergey demonstrated exceptional technical expertise and delivered high-quality solutions that exceeded expectations. His ability to navigate complex data engineering challenges while maintaining clear communication made him an invaluable team member.",
+      linkedinUrl: "https://www.linkedin.com/in/philip-zerull/",
+      color: "green",
+      icon: <Crown className="w-5 h-5 text-green-400" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader title="TEAM FEEDBACK // ZOETIS COLLEAGUES" />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
+      </div>
+    </div>
+  );
+};
+
+// Detection functions for Zoetis
+function isZoetisRole(code: string): boolean {
+  return code.includes('ZOETIS ROLE') && code.includes('SENIOR_PYTHON_ENGINEER') && code.includes('VIA TOPTAL');
+}
+
+function isZoetisPlatform(code: string): boolean {
+  return code.includes('ZOETIS PLATFORM') && code.includes('SALES INTELLIGENCE ARCHITECTURE') && code.includes('OVERVIEW');
+}
+
+function isZoetisInfrastructure(code: string): boolean {
+  return code.includes('ZOETIS INFRASTRUCTURE') && code.includes('AZURE ARCHITECTURE') && code.includes('CLOUD-NATIVE');
+}
+
+function isZoetisPipeline(code: string): boolean {
+  return code.includes('ZOETIS PIPELINE') && code.includes('ETL FRAMEWORK') && code.includes('PROCESSING FLOW');
+}
+
+function isZoetisMetrics(code: string): boolean {
+  return code.includes('ZOETIS METRICS') && code.includes('PLATFORM KPIs') && code.includes('RESULTS');
+}
+
+function isZoetisTeamFeedback(code: string): boolean {
+  return code.includes('ZOETIS TEAM FEEDBACK') && code.includes('ZOETIS COLLEAGUES');
+}
+
 // Detection functions for PatentSeekers
 function isPatentSeekersRole(code: string): boolean {
   return code.includes('PATENTSEEKERS ROLE') && code.includes('LEAD_ENGINEER') && code.includes('TOPTAL');
@@ -2851,6 +3221,12 @@ function isPatentSeekersTeamFeedback(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'zoetis-role', detect: isZoetisRole, component: ZoetisRoleCard },
+  { id: 'zoetis-platform', detect: isZoetisPlatform, component: ZoetisPlatformDiagram },
+  { id: 'zoetis-infrastructure', detect: isZoetisInfrastructure, component: ZoetisInfrastructureDiagram },
+  { id: 'zoetis-pipeline', detect: isZoetisPipeline, component: ZoetisPipelineDiagram },
+  { id: 'zoetis-metrics', detect: isZoetisMetrics, component: ZoetisMetricsDiagram },
+  { id: 'zoetis-team-feedback', detect: isZoetisTeamFeedback, component: ZoetisTeamFeedbackSection },
   { id: 'patentseekers-role', detect: isPatentSeekersRole, component: PatentSeekersRoleCard },
   { id: 'patentseekers-platform', detect: isPatentSeekersPlatform, component: PatentSeekersPlatformDiagram },
   { id: 'patentseekers-metrics', detect: isPatentSeekersMetrics, component: PatentSeekersMetricsDiagram },
