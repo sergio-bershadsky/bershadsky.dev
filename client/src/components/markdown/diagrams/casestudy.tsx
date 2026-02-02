@@ -265,6 +265,57 @@ export const UMIASTransformationDiagram = () => (
   </div>
 );
 
+export const TeamFeedbackSection = () => (
+  <div className="my-8 border border-primary/30 rounded-lg bg-gradient-to-br from-black/60 via-primary/5 to-black/60 p-6">
+    <div className="text-sm font-mono text-primary mb-6 flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <Users className="w-4 h-4" />
+        <span>TEAM FEEDBACK // COLLEAGUES</span>
+      </div>
+      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-primary/30 rounded">VERIFIED</span>
+    </div>
+    
+    <div className="space-y-6">
+      <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">ALEKSANDR MOSPAN</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "Sergio is an exceptional professional developer and mentor. He is always focused on delivering products that best fulfil customer needs. He can independently manage IT product infrastructure, as well as scale and lead a team. I would highly recommend him as either an individual contributor or a development team leader."
+        </p>
+        <a href="https://www.linkedin.com/in/aleksandr-mospan-87432069/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+      
+      <div className="p-4 border border-primary/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-primary text-xs font-mono">DMITRY GRECHKIN</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "I had the pleasure of working with Sergio on multiple projects, including EMIAS.info — one of the largest digital healthcare platforms, where he was the Lead Architect and technical owner. Sergio is one of the smartest and most technically skilled people I know. He thinks strategically, builds strong and scalable systems, and always keeps long-term architecture in mind. He combines deep engineering expertise with the ability to move fast and deliver real results. From backend development and DevOps to databases, CI/CD, and cloud infrastructure — Sergio does it all at a very high level. He is extremely reliable — if Sergio is leading the project, you can be sure that it will be delivered, and done well."
+        </p>
+        <a href="https://www.linkedin.com/in/dgrechkin/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-primary hover:text-primary/80 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+      
+      <div className="p-4 border border-accent/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-accent text-xs font-mono">ALEXANDER VAKULOV</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "I had the pleasure of working alongside Sergey at EMIAS, where he served as our team lead. Sergey's expertise in DevOps and backend development is second to none, and from day one, he played a critical role in modernizing our processes. He quickly introduced the most up-to-date technologies, setting our team up for success within the very first year. Sergey stands out not only for his technical skills but also for his leadership and mentorship. He has an incredible ability to guide and support his team, always offering clear, long-term solutions. I highly recommend Sergey to any organization looking for a strong technical leader who can drive innovation and inspire those around him."
+        </p>
+        <a href="https://www.linkedin.com/in/vakuloff/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-accent hover:text-accent/80 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+function isTeamFeedback(code: string): boolean {
+  return code.includes('TEAM FEEDBACK') && code.includes('COLLEAGUES') && code.includes('ALEKSANDR') && code.includes('DMITRY');
+}
+
 function isTechLeadRole(code: string): boolean {
   return code.includes('TECH_LEAD') && code.includes('ENGINEERS') && code.includes('STAKEHOLDERS') && code.includes('INNOVATIONS');
 }
@@ -282,6 +333,7 @@ function isUMIASTransformation(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'team-feedback', detect: isTeamFeedback, component: TeamFeedbackSection },
   { id: 'tech-lead-role', detect: isTechLeadRole, component: TechLeadRoleCard },
   { id: 'umias-architecture', detect: isUMIASArchitecture, component: UMIASArchitectureDiagram },
   { id: 'umias-results', detect: isUMIASResults, component: UMIASResultsDiagram },
