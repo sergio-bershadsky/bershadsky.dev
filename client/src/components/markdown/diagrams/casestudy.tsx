@@ -2588,7 +2588,7 @@ export const P2LTeamFeedbackSection = () => (
             <Target className="w-4 h-4 text-green-400" />
           </div>
           <div>
-            <div className="font-mono text-sm text-green-400">NICK KUR</div>
+            <div className="font-mono text-sm text-green-400">NICKOLAI KURBATOV</div>
             <div className="text-xs text-gray-500">Product Manager</div>
           </div>
         </div>
@@ -2607,7 +2607,7 @@ export const P2LTeamFeedbackSection = () => (
             <FileCode className="w-4 h-4 text-purple-400" />
           </div>
           <div>
-            <div className="font-mono text-sm text-purple-400">VLAD DMITRIEV</div>
+            <div className="font-mono text-sm text-purple-400">SERGEI ABRAMOV</div>
             <div className="text-xs text-gray-500">Lead Backend Developer</div>
           </div>
         </div>
