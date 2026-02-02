@@ -276,6 +276,7 @@
     - AWS
     - Docker
     - Terraform
+    - Kubernetes
     - DevOps
   image_url: /images/case_study_ida_devops.png
   status: published
