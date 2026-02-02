@@ -2354,7 +2354,297 @@ function isUMIASTransformation(code: string): boolean {
   return code.includes('NEWS PORTAL') && code.includes('SERVICE PIVOT') && code.includes('MARKET LEADER') && code.includes('2015') && code.includes('2018');
 }
 
+// Play2Live Case Study Diagrams
+export const P2LRoleCard = () => (
+  <div className="my-8 border border-purple-500/40 rounded-lg bg-gradient-to-br from-black/60 via-purple-950/20 to-black/60 p-6 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl" />
+    
+    <div className="relative z-10">
+      <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Crown className="w-4 h-4" />
+          <span>MY ROLE // PRINCIPAL_ENGINEER</span>
+        </div>
+        <span className="text-xs text-green-300 px-2 py-0.5 border border-green-500/50 rounded bg-green-500/20 font-bold">INDEPENDENT</span>
+      </div>
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="p-3 border border-purple-500/30 rounded-lg bg-black/40 text-center group hover:border-purple-400/60 transition-colors">
+          <Users className="w-6 h-6 mx-auto mb-2 text-purple-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">6</div>
+          <div className="text-xs text-gray-400 mt-1">BACKEND TEAM</div>
+        </div>
+        <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center group hover:border-cyan-400/60 transition-colors">
+          <Layers className="w-6 h-6 mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">CROSS</div>
+          <div className="text-xs text-gray-400 mt-1">FUNCTIONAL</div>
+        </div>
+        <div className="p-3 border border-accent/30 rounded-lg bg-black/40 text-center group hover:border-accent/60 transition-colors">
+          <Server className="w-6 h-6 mx-auto mb-2 text-accent group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">DEVOPS</div>
+          <div className="text-xs text-gray-400 mt-1">INTEGRATION</div>
+        </div>
+        <div className="p-3 border border-orange-500/30 rounded-lg bg-black/40 text-center group hover:border-orange-500/60 transition-colors">
+          <Clock className="w-6 h-6 mx-auto mb-2 text-orange-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">2018-19</div>
+          <div className="text-xs text-gray-400 mt-1">DURATION</div>
+        </div>
+      </div>
+      
+      <div className="border-t border-purple-500/20 pt-4">
+        <div className="text-xs font-mono text-purple-400 mb-3 flex items-center gap-2">
+          <Target className="w-3 h-3" />
+          INDUSTRY FOCUS
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <span className="px-3 py-1 text-xs font-mono border border-purple-500/30 rounded-full bg-purple-500/10 text-purple-300">Blockchain Technology</span>
+          <span className="px-3 py-1 text-xs font-mono border border-cyan-500/30 rounded-full bg-cyan-500/10 text-cyan-300">Esports Streaming</span>
+          <span className="px-3 py-1 text-xs font-mono border border-accent/30 rounded-full bg-accent/10 text-accent">Crypto Gaming</span>
+          <span className="px-3 py-1 text-xs font-mono border border-orange-500/30 rounded-full bg-orange-500/10 text-orange-300">Real-time Systems</span>
+        </div>
+      </div>
+      
+      <div className="border-t border-purple-500/20 pt-4 mt-4">
+        <div className="text-xs font-mono text-green-400 mb-3 flex items-center gap-2">
+          <CheckCircle className="w-3 h-3" />
+          KEY ACHIEVEMENTS
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="flex items-center gap-2 p-2 rounded bg-green-500/5 border border-green-500/20">
+            <Activity className="w-4 h-4 text-green-400 flex-shrink-0" />
+            <span className="text-xs text-gray-300">$30M ICO Platform</span>
+          </div>
+          <div className="flex items-center gap-2 p-2 rounded bg-green-500/5 border border-green-500/20">
+            <Shield className="w-4 h-4 text-green-400 flex-shrink-0" />
+            <span className="text-xs text-gray-300">Multi-provider Auth</span>
+          </div>
+          <div className="flex items-center gap-2 p-2 rounded bg-green-500/5 border border-green-500/20">
+            <Zap className="w-4 h-4 text-green-400 flex-shrink-0" />
+            <span className="text-xs text-gray-300">Real-time Streaming</span>
+          </div>
+          <div className="flex items-center gap-2 p-2 rounded bg-green-500/5 border border-green-500/20">
+            <Lock className="w-4 h-4 text-green-400 flex-shrink-0" />
+            <span className="text-xs text-gray-300">Wallet Integration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const P2LPlatformDiagram = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
+      <span>FIG 1.0 // STREAMING_ARCHITECTURE</span>
+      <span className="text-xs text-muted-foreground">OVERVIEW</span>
+    </div>
+    
+    <div className="flex flex-col items-center gap-3">
+      <div className="p-3 border border-cyan-500/40 rounded bg-cyan-500/10 text-center w-48">
+        <Users className="w-5 h-5 mx-auto mb-1 text-cyan-400" />
+        <div className="font-mono text-xs text-cyan-400 font-bold">Viewers & Gamers</div>
+        <div className="text-xs text-gray-400">Concurrent users</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
+        <div className="p-2 border border-purple-500/40 rounded bg-purple-500/10 text-center">
+          <Globe className="w-4 h-4 mx-auto mb-1 text-purple-400" />
+          <div className="font-mono text-xs text-purple-400">API Gateway</div>
+        </div>
+        <div className="p-2 border border-green-500/40 rounded bg-green-500/10 text-center">
+          <Shield className="w-4 h-4 mx-auto mb-1 text-green-400" />
+          <div className="font-mono text-xs text-green-400">Auth Service</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-3 gap-2 w-full max-w-md">
+        <div className="p-2 border border-cyan-500/40 rounded bg-cyan-500/10 text-center">
+          <Activity className="w-4 h-4 mx-auto mb-1 text-cyan-400" />
+          <div className="font-mono text-xs text-cyan-400">Chat Svc</div>
+        </div>
+        <div className="p-2 border border-accent/40 rounded bg-accent/10 text-center">
+          <Zap className="w-4 h-4 mx-auto mb-1 text-accent" />
+          <div className="font-mono text-xs text-accent">Game Svc</div>
+        </div>
+        <div className="p-2 border border-orange-500/40 rounded bg-orange-500/10 text-center">
+          <Lock className="w-4 h-4 mx-auto mb-1 text-orange-400" />
+          <div className="font-mono text-xs text-orange-400">Wallet Svc</div>
+        </div>
+      </div>
+      
+      <div className="mt-4 p-3 border border-purple-500/30 rounded bg-purple-500/5 w-full">
+        <div className="text-xs font-mono text-purple-400 mb-2">CORE CAPABILITIES</div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Real-time messaging</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Social authentication</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Streaming integration</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Blockchain wallet ops</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const P2LMetricsDiagram = () => (
+  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
+      <span>FIG 2.0 // PLATFORM_ACHIEVEMENTS</span>
+      <span className="text-xs text-muted-foreground">RESULTS</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="text-xs font-mono text-purple-400 mb-3">FUNDING & RECOGNITION</div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">ICO Fundraise</span>
+            <span className="font-mono text-green-400 font-bold whitespace-nowrap">$30M</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">EU-Startups Recognition</span>
+            <span className="font-mono text-cyan-400 text-xs whitespace-nowrap">"Most Promising Esports"</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Malta Startup Watch</span>
+            <span className="font-mono text-accent whitespace-nowrap">Top 10</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="text-xs font-mono text-cyan-400 mb-3">PLATFORM CAPABILITIES</div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Social Auth Providers</span>
+            <span className="font-mono text-green-400 font-bold whitespace-nowrap">5 integrated</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Real-time Messaging</span>
+            <span className="font-mono text-green-400 whitespace-nowrap">Sub-second</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Wallet Integration</span>
+            <span className="font-mono text-green-400 whitespace-nowrap">Blockchain-secured</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="text-xs font-mono text-green-400 mb-3">TEAM & DELIVERY</div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Backend Team Size</span>
+            <span className="font-mono text-white font-bold whitespace-nowrap">6 engineers</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Services Delivered</span>
+            <span className="font-mono text-white whitespace-nowrap">Core platform</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Timeline</span>
+            <span className="font-mono text-green-400 whitespace-nowrap">On schedule</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const P2LTeamFeedbackSection = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
+      <span>TEAM FEEDBACK // COLLEAGUES</span>
+      <span className="text-xs text-green-400">VERIFIED</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-cyan-500/30 rounded-lg bg-gradient-to-r from-cyan-500/5 to-transparent">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center">
+            <Server className="w-4 h-4 text-cyan-400" />
+          </div>
+          <div>
+            <div className="font-mono text-sm text-cyan-400">SERGEY SEVRUK</div>
+            <div className="text-xs text-gray-500">DevOps Engineer</div>
+          </div>
+        </div>
+        <p className="text-sm text-gray-300 leading-relaxed mb-3">
+          "Working alongside Sergey on the infrastructure side was a great experience. He understood the operational needs deeply and designed systems that were easy to deploy and monitor. His API gateway design made our CI/CD pipelines much smoother, and he was always available to troubleshoot production issues together. A true team player who bridges the gap between development and operations seamlessly."
+        </p>
+        <a href="https://www.linkedin.com/in/sergey-sevruk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded-lg bg-gradient-to-r from-green-500/5 to-transparent">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+            <Target className="w-4 h-4 text-green-400" />
+          </div>
+          <div>
+            <div className="font-mono text-sm text-green-400">NICK KUR</div>
+            <div className="text-xs text-gray-500">Product Manager</div>
+          </div>
+        </div>
+        <p className="text-sm text-gray-300 leading-relaxed mb-3">
+          "Sergey was instrumental in translating our product vision into technical reality. He has a rare ability to understand business requirements and deliver solutions that exceeded expectations. His leadership of the backend team kept us on schedule through tight deadlines, and he always found creative ways to solve problems. Highly recommend working with him on any challenging project."
+        </p>
+        <a href="https://www.linkedin.com/in/nickkur/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded-lg bg-gradient-to-r from-purple-500/5 to-transparent">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
+            <FileCode className="w-4 h-4 text-purple-400" />
+          </div>
+          <div>
+            <div className="font-mono text-sm text-purple-400">VLAD DMITRIEV</div>
+            <div className="text-xs text-gray-500">Lead Backend Developer</div>
+          </div>
+        </div>
+        <p className="text-sm text-gray-300 leading-relaxed mb-3">
+          "As a fellow backend developer, I learned a lot from Sergey's approach to system design. He championed clean architecture principles and code quality standards that made our codebase maintainable as the team grew. His mentorship helped me grow as an engineer, and his technical decisions consistently proved right as the platform scaled."
+        </p>
+        <a href="https://www.linkedin.com/in/pod2metra/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-purple-400 hover:text-purple-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+// Detection functions for Play2Live
+function isP2LRole(code: string): boolean {
+  return code.includes('P2L ROLE') && code.includes('PRINCIPAL_ENGINEER') && code.includes('INDEPENDENT');
+}
+
+function isP2LPlatform(code: string): boolean {
+  return code.includes('P2L PLATFORM') && code.includes('STREAMING ARCHITECTURE') && code.includes('OVERVIEW');
+}
+
+function isP2LMetrics(code: string): boolean {
+  return code.includes('P2L METRICS') && code.includes('PLATFORM ACHIEVEMENTS') && code.includes('RESULTS');
+}
+
+function isP2LTeamFeedback(code: string): boolean {
+  return code.includes('P2L TEAM FEEDBACK') && code.includes('COLLEAGUES');
+}
+
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'p2l-role', detect: isP2LRole, component: P2LRoleCard },
+  { id: 'p2l-platform', detect: isP2LPlatform, component: P2LPlatformDiagram },
+  { id: 'p2l-metrics', detect: isP2LMetrics, component: P2LMetricsDiagram },
+  { id: 'p2l-team-feedback', detect: isP2LTeamFeedback, component: P2LTeamFeedbackSection },
   { id: 'enterprise-docs-role', detect: isSimpleSendRole, component: SimpleSendRoleCard },
   { id: 'enterprise-docs-architecture', detect: isSimpleSendArchitecture, component: SimpleSendArchitectureDiagram },
   { id: 'enterprise-docs-connection', detect: isSimpleSendConnection, component: SimpleSendConnectionDiagram },

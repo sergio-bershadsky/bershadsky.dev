@@ -401,3 +401,28 @@
   seo_title: "Enterprise Serverless Optimization Case Study at Ricoh"
   seo_description: "How we optimized 51 Lambda functions for Ricoh's document delivery platform. 47% faster API responses, 40% reduced cold starts, type-safe stored procedures."
   seo_keywords: "AWS Lambda optimization, serverless performance, Ricoh, enterprise document delivery, connection pooling, cold start optimization, Toptal"
+
+- id: 31
+  slug: play2live-blockchain-esports-platform
+  title: "Play2Live - Blockchain Esports Streaming Platform"
+  excerpt: "Principal Engineer leading a 6-person backend team for a $30M ICO blockchain gaming startup. Real-time streaming infrastructure, social authentication, and cryptocurrency wallet integration."
+  case_study_year: "2018-2019"
+  case_study_role: "Principal Engineer"
+  case_study_type: "Independent"
+  date: "2026-01-20"
+  tags:
+    - Case-Study
+    - Blockchain
+    - Gaming
+    - Esports
+    - Python
+    - Streaming
+    - Cryptocurrency
+  image_url: /images/case_study_play2live.png
+  status: published
+  published_at: "2026-01-20T10:00:00Z"
+  content: blog-posts/31.content.md
+  audience: Tech Leaders
+  seo_title: "Play2Live Case Study: Blockchain Esports Platform Engineering"
+  seo_description: "Principal Engineer for $30M ICO blockchain gaming startup. Built real-time streaming infrastructure for thousands of concurrent esports viewers."
+  seo_keywords: "Play2Live case study, blockchain gaming, esports streaming, cryptocurrency platform, real-time infrastructure, Malta startup"
