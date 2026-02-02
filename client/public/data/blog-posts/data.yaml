@@ -295,7 +295,7 @@
   excerpt: "How we built scalable cloud infrastructure from scratch for a digital sports startup. 99.99% uptime, 10,000+ concurrent users, sub-200ms latency globally."
   case_study_year: "2020-2021"
   case_study_role: "Fractional Solution Architect"
-  date: "2025-08-01"
+  date: "2025-09-01"
   tags:
     - Case-Study
     - AWS
@@ -309,7 +309,7 @@
     - Startup
   image_url: /images/case_study_moxy_sports.png
   status: published
-  published_at: "2025-08-01T10:00:00Z"
+  published_at: "2025-09-01T10:00:00Z"
   content: blog-posts/27.content.md
   audience: Tech Leaders
   seo_title: "Moxy Case Study: Building Sports Entertainment Infrastructure from Zero"
