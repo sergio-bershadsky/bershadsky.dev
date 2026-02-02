@@ -367,17 +367,9 @@ export default function Home() {
                 <NeonCard 
                   variant="accent" 
                   className="h-full flex flex-col transition-all duration-300 hover:scale-[1.02]"
-                  style={accentColor ? { 
-                    borderColor: `${accentColor}40`,
-                    '--hover-border-color': accentColor,
-                    '--hover-bg-color': `${accentColor}10`,
-                    '--hover-shadow': `0 0 20px ${accentColor}30`,
-                  } as React.CSSProperties : undefined}
+                  style={accentColor ? { borderColor: `${accentColor}50` } : undefined}
                 >
-                  <div 
-                    className="mb-6 relative overflow-hidden rounded border border-white/10 aspect-video bg-black/40 transition-colors"
-                    style={accentColor ? { '--hover-border': `${accentColor}80` } as React.CSSProperties : undefined}
-                  >
+                  <div className="mb-6 relative overflow-hidden rounded border border-white/10 aspect-video bg-black/40 transition-colors">
                      {post.imageUrl && (
                        <img 
                          src={post.imageUrl} 
