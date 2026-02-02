@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle, Crown, Target, Lock, Gauge, Box, Layers, GitBranch, AlertTriangle, XCircle, FileCode } from 'lucide-react';
+import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle, Crown, Target, Lock, Gauge, Box, Layers, GitBranch, AlertTriangle, XCircle, FileCode, Code, Send } from 'lucide-react';
 import { DiagramEntry } from '../diagramRegistry';
 
 export const TechLeadRoleCard = () => (
@@ -1796,6 +1796,496 @@ function isWellBeTeamFeedback(code: string): boolean {
   return code.includes('WELLBE TEAM FEEDBACK') && code.includes('WELLBE COLLEAGUES');
 }
 
+// SimpleSend Case Study Diagrams
+export const SimpleSendRoleCard = () => (
+  <div className="my-8 border border-blue-500/40 rounded-lg bg-gradient-to-br from-black/60 via-blue-950/20 to-black/60 p-6 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl" />
+    
+    <div className="relative z-10">
+      <div className="text-sm font-mono text-blue-400 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Crown className="w-4 h-4" />
+          <span>MY ROLE // LEAD_ENGINEER</span>
+        </div>
+        <span className="text-xs text-blue-300 px-2 py-0.5 border border-blue-500/50 rounded bg-blue-500/20 font-bold">VIA TOPTAL</span>
+      </div>
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="p-3 border border-blue-500/30 rounded-lg bg-black/40 text-center group hover:border-blue-400/60 transition-colors">
+          <Users className="w-6 h-6 mx-auto mb-2 text-blue-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">PRODUCT</div>
+          <div className="text-xs text-gray-400 mt-1">OWNER</div>
+        </div>
+        <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center group hover:border-cyan-400/60 transition-colors">
+          <Users className="w-6 h-6 mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">SCRUM</div>
+          <div className="text-xs text-gray-400 mt-1">TEAM</div>
+        </div>
+        <div className="p-3 border border-accent/30 rounded-lg bg-black/40 text-center group hover:border-accent/60 transition-colors">
+          <Code className="w-6 h-6 mx-auto mb-2 text-accent group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">27</div>
+          <div className="text-xs text-gray-400 mt-1">CONTRIBUTORS</div>
+        </div>
+        <div className="p-3 border border-orange-500/30 rounded-lg bg-black/40 text-center group hover:border-orange-500/60 transition-colors">
+          <Clock className="w-6 h-6 mx-auto mb-2 text-orange-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">1+ YR</div>
+          <div className="text-xs text-gray-400 mt-1">DURATION</div>
+        </div>
+      </div>
+      
+      <div className="border-t border-blue-500/20 pt-4">
+        <div className="text-xs font-mono text-blue-400 mb-3 flex items-center gap-2">
+          <Zap className="w-3 h-3" />
+          TECHNICAL INNOVATIONS
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-blue-500/10 to-transparent border-l-2 border-blue-400">
+            <Server className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">V2 API Rearchitecture</div>
+              <div className="text-xs text-gray-400">Python 3.12 with consolidated endpoints</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-cyan-500/10 to-transparent border-l-2 border-cyan-400">
+            <Database className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Connection Pooling</div>
+              <div className="text-xs text-gray-400">40-50% faster DB connections</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-accent/10 to-transparent border-l-2 border-accent">
+            <FileCode className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Type-Safe Stored Procs</div>
+              <div className="text-xs text-gray-400">Auto-generated Python wrappers</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-orange-500/10 to-transparent border-l-2 border-orange-400">
+            <Layers className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Lambda Layers</div>
+              <div className="text-xs text-gray-400">Shared logic across 51 functions</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="border-t border-blue-500/20 pt-4 mt-4">
+        <div className="text-xs font-mono text-red-400 mb-3 flex items-center gap-2">
+          <AlertTriangle className="w-3 h-3" />
+          KEY CHALLENGES TACKLED
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">Cold Start Performance</span>
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">DB Connection Overhead</span>
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">Legacy JSON Procedures</span>
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">Multi-Service Coordination</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const SimpleSendArchitectureDiagram = () => (
+  <div className="my-8 border border-blue-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-blue-400 mb-4 flex justify-between">
+      <span>FIG 1.0 // AWS_SERVERLESS</span>
+      <span className="text-xs text-muted-foreground">ARCHITECTURE</span>
+    </div>
+    
+    <div className="flex flex-col items-center gap-3">
+      <div className="p-3 border border-orange-500/40 rounded bg-orange-500/10 text-center w-40">
+        <Globe className="w-5 h-5 mx-auto mb-1 text-orange-400" />
+        <div className="font-mono text-xs text-orange-400 font-bold">API Gateway</div>
+        <div className="text-xs text-gray-400">Custom Domain</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
+        <div className="p-2 border border-purple-500/40 rounded bg-purple-500/10 text-center">
+          <Shield className="w-4 h-4 mx-auto mb-1 text-purple-400" />
+          <div className="font-mono text-xs text-purple-400">Authorizer</div>
+          <div className="text-xs text-gray-400">JWT</div>
+        </div>
+        <div className="p-2 border border-blue-500/40 rounded bg-blue-500/10 text-center">
+          <Zap className="w-4 h-4 mx-auto mb-1 text-blue-400" />
+          <div className="font-mono text-xs text-blue-400">51 Lambdas</div>
+          <div className="text-xs text-gray-400">Functions</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-5 gap-2 w-full max-w-lg">
+        <div className="p-2 border border-cyan-500/40 rounded bg-cyan-500/10 text-center">
+          <FileCode className="w-4 h-4 mx-auto mb-1 text-cyan-400" />
+          <div className="font-mono text-xs text-cyan-400">Projects</div>
+        </div>
+        <div className="p-2 border border-green-500/40 rounded bg-green-500/10 text-center">
+          <Activity className="w-4 h-4 mx-auto mb-1 text-green-400" />
+          <div className="font-mono text-xs text-green-400">Billing</div>
+        </div>
+        <div className="p-2 border border-primary/40 rounded bg-primary/10 text-center">
+          <Send className="w-4 h-4 mx-auto mb-1 text-primary" />
+          <div className="font-mono text-xs text-primary">Requests</div>
+        </div>
+        <div className="p-2 border border-orange-500/40 rounded bg-orange-500/10 text-center">
+          <Box className="w-4 h-4 mx-auto mb-1 text-orange-400" />
+          <div className="font-mono text-xs text-orange-400">Cart</div>
+        </div>
+        <div className="p-2 border border-accent/40 rounded bg-accent/10 text-center">
+          <CheckCircle className="w-4 h-4 mx-auto mb-1 text-accent" />
+          <div className="font-mono text-xs text-accent">Approval</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="p-3 border border-cyan-500/40 rounded bg-cyan-500/10 text-center w-44">
+        <Database className="w-5 h-5 mx-auto mb-1 text-cyan-400" />
+        <div className="font-mono text-xs text-cyan-400 font-bold">RDS MySQL</div>
+        <div className="text-xs text-gray-400">Stored Procedures</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+        <div className="p-2 border border-red-500/40 rounded bg-red-500/10 text-center">
+          <Server className="w-4 h-4 mx-auto mb-1 text-red-400" />
+          <div className="font-mono text-xs text-red-400">ElastiCache</div>
+          <div className="text-xs text-gray-400">Redis</div>
+        </div>
+        <div className="p-2 border border-yellow-500/40 rounded bg-yellow-500/10 text-center">
+          <Box className="w-4 h-4 mx-auto mb-1 text-yellow-400" />
+          <div className="font-mono text-xs text-yellow-400">S3 Buckets</div>
+          <div className="text-xs text-gray-400">Files</div>
+        </div>
+        <div className="p-2 border border-green-500/40 rounded bg-green-500/10 text-center">
+          <Send className="w-4 h-4 mx-auto mb-1 text-green-400" />
+          <div className="font-mono text-xs text-green-400">SQS Queues</div>
+          <div className="text-xs text-gray-400">Async</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const SimpleSendConnectionDiagram = () => (
+  <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-cyan-400 mb-4 flex justify-between">
+      <span>FIG 2.0 // LAMBDA_EXECUTION</span>
+      <span className="text-xs text-muted-foreground">POOLING</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-orange-500/30 rounded bg-orange-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <AlertTriangle className="w-5 h-5 text-orange-400" />
+          <span className="font-mono text-xs text-orange-400">COLD START PATH</span>
+        </div>
+        <div className="flex flex-wrap items-center gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-1 px-2 py-1 border border-orange-500/30 rounded bg-black/40">
+            <Server className="w-3 h-3 text-orange-400" /> Initialize Runtime
+          </div>
+          <ArrowRight className="w-3 h-3 text-gray-500" />
+          <div className="flex items-center gap-1 px-2 py-1 border border-orange-500/30 rounded bg-black/40">
+            <Shield className="w-3 h-3 text-orange-400" /> Load Secrets
+          </div>
+          <ArrowRight className="w-3 h-3 text-gray-500" />
+          <div className="flex items-center gap-1 px-2 py-1 border border-orange-500/30 rounded bg-black/40">
+            <Database className="w-3 h-3 text-orange-400" /> Establish DB
+          </div>
+        </div>
+        <div className="mt-3 flex items-center gap-2 text-xs">
+          <span className="text-gray-400">Result:</span>
+          <span className="px-2 py-0.5 border border-cyan-500/30 rounded bg-cyan-500/10 text-cyan-300">Cache in Memory (5 min TTL)</span>
+          <span className="px-2 py-0.5 border border-green-500/30 rounded bg-green-500/10 text-green-300">Connection Pool Ready</span>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Zap className="w-5 h-5 text-green-400" />
+          <span className="font-mono text-xs text-green-400">WARM INVOCATION PATH</span>
+        </div>
+        <div className="flex flex-wrap items-center gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-1 px-2 py-1 border border-green-500/30 rounded bg-black/40">
+            <Server className="w-3 h-3 text-green-400" /> Reuse Container
+          </div>
+          <ArrowRight className="w-3 h-3 text-gray-500" />
+          <div className="flex items-center gap-1 px-2 py-1 border border-green-500/30 rounded bg-black/40">
+            <Shield className="w-3 h-3 text-green-400" /> Cached Secrets
+          </div>
+          <ArrowRight className="w-3 h-3 text-gray-500" />
+          <div className="flex items-center gap-1 px-2 py-1 border border-green-500/30 rounded bg-black/40">
+            <Database className="w-3 h-3 text-green-400" /> Pooled Connection
+          </div>
+        </div>
+        <div className="mt-3 flex items-center gap-2 text-xs">
+          <span className="text-gray-400">Result:</span>
+          <span className="px-2 py-0.5 border border-green-500/30 rounded bg-green-500/10 text-green-300 font-bold">40-50% Faster DB Connections</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const SimpleSendProceduresDiagram = () => (
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+      <span>FIG 3.0 // EVOLUTION</span>
+      <span className="text-xs text-muted-foreground">MODERNIZE</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-red-500/30 rounded bg-red-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <XCircle className="w-5 h-5 text-red-400" />
+          <span className="font-mono text-xs text-red-400">LEGACY (JSON Interface)</span>
+        </div>
+        <div className="p-3 border border-red-500/20 rounded bg-black/40 font-mono text-xs text-gray-400">
+          <div className="text-red-300">sp_GetUserDetails(IN jsonInput JSON, OUT jsonOutput JSON)</div>
+          <div className="mt-2 pl-4 space-y-1">
+            <div>├── Parse JSON to extract parameters</div>
+            <div>├── Execute query</div>
+            <div>└── Serialize result to JSON</div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="flex justify-center">
+        <ArrowDown className="w-6 h-6 text-accent" />
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <CheckCircle className="w-5 h-5 text-green-400" />
+          <span className="font-mono text-xs text-green-400">MODERN (Typed Interface)</span>
+        </div>
+        <div className="p-3 border border-green-500/20 rounded bg-black/40 font-mono text-xs text-gray-400">
+          <div className="text-green-300">sp_Lookup_User(IN userId INT, OUT userName VARCHAR)</div>
+          <div className="mt-2 pl-4 space-y-1">
+            <div>├── Direct parameter access</div>
+            <div>├── Type-safe execution</div>
+            <div>└── Native result handling</div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-2 gap-3 mt-4">
+        <div className="p-3 border border-cyan-500/30 rounded bg-cyan-500/5 text-center">
+          <div className="font-mono text-xs text-cyan-400 mb-1">NAMING CONVENTION</div>
+          <div className="text-xs text-gray-400">sp_[Operation]_[TableName]</div>
+        </div>
+        <div className="p-3 border border-accent/30 rounded bg-accent/5 text-center">
+          <div className="font-mono text-xs text-accent mb-1">VERSIONING</div>
+          <div className="text-xs text-gray-400">sp_Lookup_User_v2_0</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const SimpleSendLayersDiagram = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
+      <span>FIG 4.0 // ARCHITECTURE</span>
+      <span className="text-xs text-muted-foreground">SHARED</span>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Layers className="w-5 h-5 text-cyan-400" />
+          <span className="font-mono text-xs text-cyan-400">cs-layer</span>
+        </div>
+        <div className="space-y-1 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> pymysql 1.1.0</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> requests 2.31.0</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> redis 5.0.1</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> PyPDF2 3.0.1</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Shared utils</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Shield className="w-5 h-5 text-purple-400" />
+          <span className="font-mono text-xs text-purple-400">auth-layer</span>
+        </div>
+        <div className="space-y-1 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> pyjwt 2.8.0</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> cryptography</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> cffi 1.16.0</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> pycparser 2.21</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Code className="w-5 h-5 text-green-400" />
+          <span className="font-mono text-xs text-green-400">simple-send-v2</span>
+        </div>
+        <div className="space-y-1 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> V2 business logic</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Auto-generated SP wrappers</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Type annotations</div>
+        </div>
+      </div>
+    </div>
+    
+    <div className="mt-4 p-3 border border-blue-500/30 rounded bg-blue-500/5 text-center">
+      <div className="text-xs text-gray-400">
+        <Zap className="w-4 h-4 inline mr-2 text-blue-400" />
+        Single update propagates to all <span className="text-blue-400 font-bold">51 functions</span>
+      </div>
+    </div>
+  </div>
+);
+
+export const SimpleSendMetricsDiagram = () => (
+  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
+      <span>FIG 5.0 // PLATFORM_KPIs</span>
+      <span className="text-xs text-muted-foreground">RESULTS</span>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Zap className="w-5 h-5 text-cyan-400" />
+          <span className="font-mono text-xs text-cyan-400">PERFORMANCE</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">DB Conn (warm)</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold whitespace-nowrap">↓ 40-50%</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Auth Latency</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold whitespace-nowrap">↓ 60-70%</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Cold Start</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold whitespace-nowrap">↓ 40%</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">P95 Response</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold whitespace-nowrap">↓ 47%</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Code className="w-5 h-5 text-purple-400" />
+          <span className="font-mono text-xs text-purple-400">CODEBASE</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Python Files</span>
+            <span className="font-mono text-sm text-purple-300 font-bold whitespace-nowrap">3,500+</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Lines of Code</span>
+            <span className="font-mono text-sm text-purple-300 font-bold whitespace-nowrap">630K+</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Lambdas</span>
+            <span className="font-mono text-sm text-purple-300 font-bold whitespace-nowrap">51</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Contributors</span>
+            <span className="font-mono text-sm text-purple-300 font-bold whitespace-nowrap">27</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-orange-500/30 rounded bg-orange-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Server className="w-5 h-5 text-orange-400" />
+          <span className="font-mono text-xs text-orange-400">INFRASTRUCTURE</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">ElastiCache</span>
+            <span className="font-mono text-sm text-orange-300 font-bold whitespace-nowrap">Redis 5.0.6</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">SQS Queues</span>
+            <span className="font-mono text-sm text-orange-300 font-bold whitespace-nowrap">3 + DLQs</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">S3 Storage</span>
+            <span className="font-mono text-sm text-orange-300 font-bold whitespace-nowrap">Lifecycle</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Availability</span>
+            <span className="font-mono text-sm text-orange-300 font-bold whitespace-nowrap">Multi-AZ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const SimpleSendTeamFeedbackSection = () => (
+  <div className="my-8 border border-blue-500/30 rounded-lg bg-gradient-to-br from-black/60 via-blue-500/5 to-black/60 p-6">
+    <div className="text-sm font-mono text-blue-400 mb-6 flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <Users className="w-4 h-4" />
+        <span>TEAM FEEDBACK // RICOH COLLEAGUES</span>
+      </div>
+      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-blue-500/30 rounded">VERIFIED</span>
+    </div>
+    
+    <div className="space-y-6">
+      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">JENNIFER HINT</div>
+        <div className="text-xs text-green-400/70 mb-2">Product Owner at Ricoh USA</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "It has been a pleasure working with Sergey as a backend engineer on our Scrum team at Ricoh USA. His deep expertise in database architecture, performance tuning, and data integrity has been instrumental in the success of our projects. Sergey consistently delivered scalable and optimized solutions, whether designing complex schemas, writing efficient code, or implementing robust data strategies. Sergey also brought a strong agile mindset, actively contributing to sprint planning, backlog grooming, and retrospectives with valuable technical insights. His departure is a loss to our team, but I have no doubt he will continue to excel and have a positive impact wherever he goes."
+        </p>
+        <a href="https://www.linkedin.com/in/jennhint/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+// Detection functions for SimpleSend
+function isSimpleSendRole(code: string): boolean {
+  return code.includes('SIMPLESEND ROLE') && code.includes('LEAD_ENGINEER') && code.includes('VIA TOPTAL');
+}
+
+function isSimpleSendArchitecture(code: string): boolean {
+  return code.includes('SIMPLESEND ARCHITECTURE') && code.includes('AWS SERVERLESS') && code.includes('51 Lambda');
+}
+
+function isSimpleSendConnection(code: string): boolean {
+  return code.includes('SIMPLESEND CONNECTION') && code.includes('LAMBDA EXECUTION') && code.includes('POOLING');
+}
+
+function isSimpleSendProcedures(code: string): boolean {
+  return code.includes('SIMPLESEND PROCEDURES') && code.includes('EVOLUTION') && code.includes('MODERNIZE');
+}
+
+function isSimpleSendLayers(code: string): boolean {
+  return code.includes('SIMPLESEND LAYERS') && code.includes('ARCHITECTURE') && code.includes('SHARED');
+}
+
+function isSimpleSendMetrics(code: string): boolean {
+  return code.includes('SIMPLESEND METRICS') && code.includes('PLATFORM KPIs') && code.includes('RESULTS');
+}
+
+function isSimpleSendTeamFeedback(code: string): boolean {
+  return code.includes('SIMPLESEND TEAM FEEDBACK') && code.includes('RICOH COLLEAGUES');
+}
+
 // Detection functions for Moxy
 function isMoxyRole(code: string): boolean {
   return code.includes('MOXY ROLE') && code.includes('FRACTIONAL_SOLUTION_ARCHITECT') && code.includes('COLLABORATION');
@@ -1862,6 +2352,13 @@ function isUMIASTransformation(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'simplesend-role', detect: isSimpleSendRole, component: SimpleSendRoleCard },
+  { id: 'simplesend-architecture', detect: isSimpleSendArchitecture, component: SimpleSendArchitectureDiagram },
+  { id: 'simplesend-connection', detect: isSimpleSendConnection, component: SimpleSendConnectionDiagram },
+  { id: 'simplesend-procedures', detect: isSimpleSendProcedures, component: SimpleSendProceduresDiagram },
+  { id: 'simplesend-layers', detect: isSimpleSendLayers, component: SimpleSendLayersDiagram },
+  { id: 'simplesend-metrics', detect: isSimpleSendMetrics, component: SimpleSendMetricsDiagram },
+  { id: 'simplesend-team-feedback', detect: isSimpleSendTeamFeedback, component: SimpleSendTeamFeedbackSection },
   { id: 'wellbe-role', detect: isWellBeRole, component: WellBeRoleCard },
   { id: 'wellbe-challenges', detect: isWellBeChallenges, component: WellBeChallengesDiagram },
   { id: 'wellbe-infrastructure', detect: isWellBeInfrastructure, component: WellBeInfrastructureDiagram },
