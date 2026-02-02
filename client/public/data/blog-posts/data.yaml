@@ -291,8 +291,8 @@
 
 - id: 27
   slug: case-study-moxy
-  title: "Moxy - Building a Sports Entertainment Platform from Zero"
-  excerpt: "How we built scalable cloud infrastructure from scratch for a digital sports startup. 99.99% uptime, 10,000+ concurrent users, sub-200ms latency globally."
+  title: "Moxy - Building a Play-to-Earn Gaming Platform from Zero"
+  excerpt: "How we built scalable cloud infrastructure from scratch for Moxy's gaming platform. 99.99% uptime, 10,000+ concurrent users, sub-200ms latency globally."
   case_study_year: "2020-2021"
   case_study_role: "Fractional Solution Architect"
   date: "2025-09-01"
@@ -312,6 +312,6 @@
   published_at: "2025-09-01T10:00:00Z"
   content: blog-posts/27.content.md
   audience: Tech Leaders
-  seo_title: "Moxy Case Study: Building Sports Entertainment Infrastructure from Zero"
-  seo_description: "How we built scalable cloud-native infrastructure for Moxy digital sports platform. 99.99% uptime, 10,000+ concurrent users, Kubernetes, AWS, Terraform."
-  seo_keywords: "Moxy case study, sports platform infrastructure, cloud-native architecture, Kubernetes AWS, startup DevOps, scalable infrastructure"
+  seo_title: "Moxy Case Study: Building Play-to-Earn Gaming Infrastructure from Zero"
+  seo_description: "How we built scalable cloud-native infrastructure for Moxy's play-to-earn gaming platform. 99.99% uptime, 10,000+ concurrent users, Kubernetes, AWS, Terraform."
+  seo_keywords: "Moxy case study, gaming platform infrastructure, play-to-earn, cloud-native architecture, Kubernetes AWS, startup DevOps, scalable infrastructure"
