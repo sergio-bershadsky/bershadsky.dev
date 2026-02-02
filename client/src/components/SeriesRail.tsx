@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
-import { Brain, Layers, Rocket, BookOpen, Zap, Code, Server, Database, Globe, Cpu } from 'lucide-react';
+import { Brain, Layers, Rocket, BookOpen, Zap, Code, Server, Database, Globe, Cpu, Briefcase } from 'lucide-react';
 import { getAllSeries, type Series } from '@/lib/dataLoader';
 
 const getSeriesIcon = (slug: string, accentColor: string) => {
@@ -14,6 +14,8 @@ const getSeriesIcon = (slug: string, accentColor: string) => {
       return <Layers {...iconProps} />;
     case 'startup-playbook':
       return <Rocket {...iconProps} />;
+    case 'case-study':
+      return <Briefcase {...iconProps} />;
     default:
       return <BookOpen {...iconProps} />;
   }
