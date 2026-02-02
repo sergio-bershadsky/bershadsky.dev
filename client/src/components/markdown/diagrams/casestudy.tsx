@@ -556,6 +556,7 @@ export const IDATeamFeedbackSection = () => (
     <div className="space-y-6">
       <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
         <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">DMITRY STEBUKOV</div>
+        <div className="text-xs text-cyan-400/70 mb-2">DevOps Engineer</div>
         <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
           "Working with Sergio means being confident in the outcome. He has a deep understanding of system architecture and can scale solutions to handle any load. He combines strategic thinking with strong technical expertise. He knows how to build effective teams and inspire those around him. A reliable leader who always supports execution and brings confidence to the team."
         </p>
@@ -567,6 +568,7 @@ export const IDATeamFeedbackSection = () => (
       
       <div className="p-4 border border-primary/30 rounded-lg bg-black/40 relative">
         <div className="absolute -top-3 left-4 px-2 bg-black text-primary text-xs font-mono">YURI KUSHENKO</div>
+        <div className="text-xs text-primary/70 mb-2">UX/UI Engineer</div>
         <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
           "I had the pleasure of working with Sergio for several years, and I can confidently say that he is one of the most outstanding professionals I've encountered. His ability to solve problems with clarity and precision set a high standard for everyone around him. Beyond his technical skills, Sergey stood out as a natural leader — thoughtful, decisive, and deeply supportive of his team. He leads not by authority, but by example, inspiring trust and motivation in those who work with him."
         </p>
