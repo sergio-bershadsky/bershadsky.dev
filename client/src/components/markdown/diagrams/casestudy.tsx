@@ -594,8 +594,8 @@ export const IDATeamFeedbackSection = () => {
       role: "Founder & CEO",
       quote: "As we expanded from a few employees to more than 100, we needed a partner who could help us scale our technology. He had the experience to understand where we were going, while also meeting us where we were—working with our current tech stack, supporting it, and helping us significantly improve our infrastructure. Sergey and his entire team have been outstanding.",
       linkedinUrl: "https://www.linkedin.com/in/jean-patrick-bisson/",
-      color: "green",
-      icon: <Crown className="w-5 h-5 text-green-400" />
+      color: "purple",
+      icon: <Crown className="w-5 h-5 text-purple-400" />
     },
     {
       name: "DMITRY STEBUKOV",
@@ -976,8 +976,8 @@ export const MoxyTeamFeedbackSection = () => {
       role: "Founder & CEO at Moxy",
       quote: "Sergio's architectural expertise was instrumental in building Moxy's foundation. He understood our vision and translated it into a scalable, reliable infrastructure that has supported our growth from day one. His ability to balance startup agility with enterprise-grade reliability is rare and invaluable.",
       linkedinUrl: "https://www.linkedin.com/in/mdefouw/",
-      color: "green",
-      icon: <Crown className="w-5 h-5 text-green-400" />
+      color: "purple",
+      icon: <Crown className="w-5 h-5 text-purple-400" />
     },
     {
       name: "DMITRY STEBUKOV",
@@ -1348,7 +1348,7 @@ export const OkTYTeamFeedbackSection = () => {
       role: "CTO at OkTY",
       quote: "Sergio brought exactly the architectural expertise we needed to build OkTY's data platform. His ability to design systems that are both privacy-first and highly scalable was crucial. He understood the delicate balance between data monetization and trust—and built infrastructure that our retail partners could confidently rely on.",
       linkedinUrl: "https://www.linkedin.com/in/mattbunch/",
-      color: "green",
+      color: "purple",
       icon: <Crown className="w-5 h-5 text-green-400" />
     },
     {
@@ -1741,8 +1741,8 @@ export const WellBeTeamFeedbackSection = () => {
       role: "CEO & Product Visionary",
       quote: "Sergio transformed our technical capabilities completely. He took our struggling Firebase-based architecture and built something we could actually scale with. His leadership brought clarity to our engineering team and his decisions consistently balanced technical excellence with business pragmatism.",
       linkedinUrl: "https://www.linkedin.com/in/nina-litvinova-53074192/",
-      color: "green",
-      icon: <Crown className="w-5 h-5 text-green-400" />
+      color: "purple",
+      icon: <Crown className="w-5 h-5 text-purple-400" />
     },
     {
       name: "DMITRY STEBUKOV",
@@ -2242,8 +2242,8 @@ export const SimpleSendTeamFeedbackSection = () => {
       role: "Product Owner at Ricoh USA",
       quote: "It has been a pleasure working with Sergey as a backend engineer on our Scrum team at Ricoh USA. His deep expertise in database architecture, performance tuning, and data integrity has been instrumental in the success of our projects. Sergey consistently delivered scalable and optimized solutions. His departure is a loss to our team, but I have no doubt he will continue to excel.",
       linkedinUrl: "https://www.linkedin.com/in/jennhint/",
-      color: "green",
-      icon: <Target className="w-5 h-5 text-green-400" />
+      color: "cyan",
+      icon: <Target className="w-5 h-5 text-cyan-400" />
     }
   ];
 
@@ -2567,8 +2567,8 @@ export const P2LTeamFeedbackSection = () => {
       role: "Product Manager",
       quote: "Sergey was instrumental in translating our product vision into technical reality. He has a rare ability to understand business requirements and deliver solutions that exceeded expectations. His leadership of the backend team kept us on schedule through tight deadlines. Highly recommend working with him on any challenging project.",
       linkedinUrl: "https://www.linkedin.com/in/nickkur/",
-      color: "green",
-      icon: <Target className="w-5 h-5 text-green-400" />
+      color: "cyan",
+      icon: <Target className="w-5 h-5 text-cyan-400" />
     },
     {
       name: "SERGEI ABRAMOV",
@@ -3163,8 +3163,8 @@ export const ZoetisTeamFeedbackSection = () => {
       role: "Technical Lead",
       quote: "Sergey demonstrated exceptional technical expertise and delivered high-quality solutions that exceeded expectations. His ability to navigate complex data engineering challenges while maintaining clear communication made him an invaluable team member.",
       linkedinUrl: "https://www.linkedin.com/in/philip-zerull/",
-      color: "green",
-      icon: <Crown className="w-5 h-5 text-green-400" />
+      color: "orange",
+      icon: <Crown className="w-5 h-5 text-orange-400" />
     }
   ];
 
