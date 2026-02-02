@@ -1333,7 +1333,7 @@ export const OkTYTeamFeedbackSection = () => (
     <div className="space-y-6">
       <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
         <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">MATT BUNCH</div>
-        <div className="text-xs text-green-400/70 mb-2">CEO & Founder at OkTY</div>
+        <div className="text-xs text-green-400/70 mb-2">CTO at OkTY</div>
         <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
           "Sergio brought exactly the architectural expertise we needed to build OkTY's data platform. His ability to design systems that are both privacy-first and highly scalable was crucial. He understood the delicate balance between data monetization and trust—and built infrastructure that our retail partners could confidently rely on."
         </p>
@@ -1345,7 +1345,7 @@ export const OkTYTeamFeedbackSection = () => (
       
       <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
         <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">PAVEL SHUM</div>
-        <div className="text-xs text-cyan-400/70 mb-2">Product Owner at OkTY</div>
+        <div className="text-xs text-cyan-400/70 mb-2">Mobile React Native Engineer at OkTY</div>
         <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
           "Working with Sergio was a masterclass in building data products. He translated our ambitious product vision into technical reality without ever losing sight of user needs. The ETL framework he designed let us onboard new retailers in days instead of weeks—that speed became a competitive advantage."
         </p>
