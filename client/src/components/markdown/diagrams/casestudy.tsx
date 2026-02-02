@@ -1,5 +1,58 @@
 import React from 'react';
-import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle, Crown, Target, Lock, Gauge, Box, Layers, GitBranch, AlertTriangle, XCircle, FileCode, Code, Send, FileSearch } from 'lucide-react';
+import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle, Crown, Target, Lock, Gauge, Box, Layers, GitBranch, AlertTriangle, XCircle, FileCode, Code, Send, FileSearch, BadgeCheck } from 'lucide-react';
+
+const LinkedInIcon = () => (
+  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+);
+
+interface TeamMember {
+  name: string;
+  role: string;
+  quote: string;
+  linkedinUrl: string;
+  color: 'cyan' | 'green' | 'purple' | 'orange' | 'primary';
+  icon: React.ReactNode;
+}
+
+const colorClasses = {
+  cyan: { border: 'border-cyan-500/30', bg: 'bg-cyan-500/20', text: 'text-cyan-400', gradient: 'from-cyan-500/5' },
+  green: { border: 'border-green-500/30', bg: 'bg-green-500/20', text: 'text-green-400', gradient: 'from-green-500/5' },
+  purple: { border: 'border-purple-500/30', bg: 'bg-purple-500/20', text: 'text-purple-400', gradient: 'from-purple-500/5' },
+  orange: { border: 'border-orange-500/30', bg: 'bg-orange-500/20', text: 'text-orange-400', gradient: 'from-orange-500/5' },
+  primary: { border: 'border-primary/30', bg: 'bg-primary/20', text: 'text-primary', gradient: 'from-primary/5' },
+};
+
+const TeamFeedbackCard = ({ member }: { member: TeamMember }) => {
+  const colors = colorClasses[member.color];
+  return (
+    <div className={`p-4 ${colors.border} rounded-lg bg-gradient-to-r ${colors.gradient} to-transparent`}>
+      <div className="flex items-center gap-3 mb-3">
+        <div className={`w-10 h-10 rounded-full ${colors.bg} flex items-center justify-center flex-shrink-0`}>
+          {member.icon}
+        </div>
+        <div>
+          <div className={`font-mono text-sm ${colors.text} font-bold`}>{member.name}</div>
+          <div className="text-xs text-gray-500">{member.role}</div>
+        </div>
+      </div>
+      <p className="text-sm text-gray-300 leading-relaxed mb-3 italic">"{member.quote}"</p>
+      <a href={member.linkedinUrl} target="_blank" rel="noopener noreferrer" className={`inline-flex items-center gap-2 text-xs font-mono ${colors.text} hover:opacity-80 transition-opacity`}>
+        <LinkedInIcon />
+        View on LinkedIn
+      </a>
+    </div>
+  );
+};
+
+const TeamFeedbackHeader = ({ title = "TEAM FEEDBACK // COLLEAGUES" }: { title?: string }) => (
+  <div className="text-sm font-mono text-cyan-400 mb-5 flex items-center gap-3">
+    <div className="flex items-center gap-2 px-3 py-1.5 border border-green-500/50 rounded-lg bg-green-500/10">
+      <BadgeCheck className="w-4 h-4 text-green-400" />
+      <span className="text-green-400 font-bold text-xs">VERIFIED</span>
+    </div>
+    <span className="text-gray-400">{title}</span>
+  </div>
+);
 import { DiagramEntry } from '../diagramRegistry';
 
 export const TechLeadRoleCard = () => (
@@ -265,55 +318,43 @@ export const UMIASTransformationDiagram = () => (
   </div>
 );
 
-export const TeamFeedbackSection = () => (
-  <div className="my-8 border border-primary/30 rounded-lg bg-gradient-to-br from-black/60 via-primary/5 to-black/60 p-6">
-    <div className="text-sm font-mono text-primary mb-6 flex justify-between items-center">
-      <div className="flex items-center gap-2">
-        <Users className="w-4 h-4" />
-        <span>TEAM FEEDBACK // COLLEAGUES</span>
-      </div>
-      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-primary/30 rounded">VERIFIED</span>
-    </div>
-    
-    <div className="space-y-6">
-      <div className="p-4 border border-primary/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-primary text-xs font-mono">DMITRY GRECHKIN</div>
-        <div className="text-xs text-primary/70 mb-2">Product Manager</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "I had the pleasure of working with Sergio on multiple projects, including EMIAS.info — one of the largest digital healthcare platforms, where he was the Lead Architect and technical owner. Sergio is one of the smartest and most technically skilled people I know. He thinks strategically, builds strong and scalable systems, and always keeps long-term architecture in mind. He combines deep engineering expertise with the ability to move fast and deliver real results. From backend development and DevOps to databases, CI/CD, and cloud infrastructure — Sergio does it all at a very high level. He is extremely reliable — if Sergio is leading the project, you can be sure that it will be delivered, and done well."
-        </p>
-        <a href="https://www.linkedin.com/in/dgrechkin/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-primary hover:text-primary/80 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">ALEKSANDR MOSPAN</div>
-        <div className="text-xs text-cyan-400/70 mb-2">Frontend Engineer</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "Sergio is an exceptional professional developer and mentor. He is always focused on delivering products that best fulfil customer needs. He can independently manage IT product infrastructure, as well as scale and lead a team. I would highly recommend him as either an individual contributor or a development team leader."
-        </p>
-        <a href="https://www.linkedin.com/in/aleksandr-mospan-87432069/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-accent/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-accent text-xs font-mono">VITALY AKULOV</div>
-        <div className="text-xs text-accent/70 mb-2">Backend & Mobile React Native Developer</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "I had the pleasure of working alongside Sergey at EMIAS, where he served as our team lead. Sergey's expertise in DevOps and backend development is second to none, and from day one, he played a critical role in modernizing our processes. He quickly introduced the most up-to-date technologies, setting our team up for success within the very first year. Sergey stands out not only for his technical skills but also for his leadership and mentorship. He has an incredible ability to guide and support his team, always offering clear, long-term solutions. I highly recommend Sergey to any organization looking for a strong technical leader who can drive innovation and inspire those around him."
-        </p>
-        <a href="https://www.linkedin.com/in/vakuloff/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-accent hover:text-accent/80 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
+export const TeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "DMITRY GRECHKIN",
+      role: "Product Manager",
+      quote: "I had the pleasure of working with Sergio on multiple projects, including EMIAS.info — one of the largest digital healthcare platforms, where he was the Lead Architect and technical owner. Sergio is one of the smartest and most technically skilled people I know. He thinks strategically, builds strong and scalable systems, and always keeps long-term architecture in mind. He combines deep engineering expertise with the ability to move fast and deliver real results.",
+      linkedinUrl: "https://www.linkedin.com/in/dgrechkin/",
+      color: "primary",
+      icon: <Target className="w-5 h-5 text-primary" />
+    },
+    {
+      name: "ALEKSANDR MOSPAN",
+      role: "Frontend Engineer",
+      quote: "Sergio is an exceptional professional developer and mentor. He is always focused on delivering products that best fulfil customer needs. He can independently manage IT product infrastructure, as well as scale and lead a team. I would highly recommend him as either an individual contributor or a development team leader.",
+      linkedinUrl: "https://www.linkedin.com/in/aleksandr-mospan-87432069/",
+      color: "cyan",
+      icon: <Code className="w-5 h-5 text-cyan-400" />
+    },
+    {
+      name: "VITALY AKULOV",
+      role: "Backend & Mobile Developer",
+      quote: "I had the pleasure of working alongside Sergey at EMIAS, where he served as our team lead. Sergey's expertise in DevOps and backend development is second to none. He quickly introduced the most up-to-date technologies, setting our team up for success. I highly recommend Sergey to any organization looking for a strong technical leader.",
+      linkedinUrl: "https://www.linkedin.com/in/vakuloff/",
+      color: "purple",
+      icon: <FileCode className="w-5 h-5 text-purple-400" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export const IDAFractionalRoleCard = () => (
   <div className="my-8 border border-orange-500/40 rounded-lg bg-gradient-to-br from-black/60 via-orange-950/20 to-black/60 p-6 relative overflow-hidden">
@@ -546,55 +587,43 @@ export const IDAMetricsDiagram = () => (
   </div>
 );
 
-export const IDATeamFeedbackSection = () => (
-  <div className="my-8 border border-orange-500/30 rounded-lg bg-gradient-to-br from-black/60 via-orange-500/5 to-black/60 p-6">
-    <div className="text-sm font-mono text-orange-400 mb-6 flex justify-between items-center">
-      <div className="flex items-center gap-2">
-        <Users className="w-4 h-4" />
-        <span>TEAM FEEDBACK // IDA COLLEAGUES</span>
-      </div>
-      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-orange-500/30 rounded">VERIFIED</span>
-    </div>
-    
-    <div className="space-y-6">
-      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">JEAN PATRICK BISSON</div>
-        <div className="text-xs text-green-400/70 mb-2">Founder & CEO</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "As we expanded from a few employees to more than 100, we needed a partner who could help us scale our technology. He had the experience to understand where we were going, while also meeting us where we were—working with our current tech stack, supporting it, and helping us significantly improve our infrastructure. Sergey and his entire team have been outstanding and consistently willing to help."
-        </p>
-        <a href="https://www.linkedin.com/in/jean-patrick-bisson/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">DMITRY STEBUKOV</div>
-        <div className="text-xs text-cyan-400/70 mb-2">DevOps Engineer</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "Working with Sergio means being confident in the outcome. He has a deep understanding of system architecture and can scale solutions to handle any load. He combines strategic thinking with strong technical expertise. He knows how to build effective teams and inspire those around him. A reliable leader who always supports execution and brings confidence to the team."
-        </p>
-        <a href="https://www.linkedin.com/in/dmitry-stebukov-55a7721b2/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-primary/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-primary text-xs font-mono">YURI KUSHENKO</div>
-        <div className="text-xs text-primary/70 mb-2">UX/UI Engineer</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "I had the pleasure of working with Sergio for several years, and I can confidently say that he is one of the most outstanding professionals I've encountered. His ability to solve problems with clarity and precision set a high standard for everyone around him. Beyond his technical skills, Sergey stood out as a natural leader — thoughtful, decisive, and deeply supportive of his team. He leads not by authority, but by example, inspiring trust and motivation in those who work with him."
-        </p>
-        <a href="https://www.linkedin.com/in/kushenkoyuri/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-primary hover:text-primary/80 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
+export const IDATeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "JEAN PATRICK BISSON",
+      role: "Founder & CEO",
+      quote: "As we expanded from a few employees to more than 100, we needed a partner who could help us scale our technology. He had the experience to understand where we were going, while also meeting us where we were—working with our current tech stack, supporting it, and helping us significantly improve our infrastructure. Sergey and his entire team have been outstanding.",
+      linkedinUrl: "https://www.linkedin.com/in/jean-patrick-bisson/",
+      color: "green",
+      icon: <Crown className="w-5 h-5 text-green-400" />
+    },
+    {
+      name: "DMITRY STEBUKOV",
+      role: "DevOps Engineer",
+      quote: "Working with Sergio means being confident in the outcome. He has a deep understanding of system architecture and can scale solutions to handle any load. He combines strategic thinking with strong technical expertise. A reliable leader who always supports execution and brings confidence to the team.",
+      linkedinUrl: "https://www.linkedin.com/in/dmitry-stebukov-55a7721b2/",
+      color: "cyan",
+      icon: <Server className="w-5 h-5 text-cyan-400" />
+    },
+    {
+      name: "YURI KUSHENKO",
+      role: "UX/UI Engineer",
+      quote: "I had the pleasure of working with Sergio for several years. His ability to solve problems with clarity and precision set a high standard for everyone. Sergey stood out as a natural leader — thoughtful, decisive, and deeply supportive of his team. He leads by example, inspiring trust and motivation.",
+      linkedinUrl: "https://www.linkedin.com/in/kushenkoyuri/",
+      color: "primary",
+      icon: <Layers className="w-5 h-5 text-primary" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader title="TEAM FEEDBACK // IDA COLLEAGUES" />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Moxy Diagrams
 export const MoxyRoleCard = () => (
@@ -940,43 +969,35 @@ export const MoxyMetricsDiagram = () => (
   </div>
 );
 
-export const MoxyTeamFeedbackSection = () => (
-  <div className="my-8 border border-purple-500/30 rounded-lg bg-gradient-to-br from-black/60 via-purple-500/5 to-black/60 p-6">
-    <div className="text-sm font-mono text-purple-400 mb-6 flex justify-between items-center">
-      <div className="flex items-center gap-2">
-        <Users className="w-4 h-4" />
-        <span>TEAM FEEDBACK // MOXY COLLEAGUES</span>
-      </div>
-      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-purple-500/30 rounded">VERIFIED</span>
-    </div>
-    
-    <div className="space-y-6">
-      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">MARC DEFOUW</div>
-        <div className="text-xs text-green-400/70 mb-2">Founder & CEO at Moxy</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "Sergio's architectural expertise was instrumental in building Moxy's foundation. He understood our vision and translated it into a scalable, reliable infrastructure that has supported our growth from day one. His ability to balance startup agility with enterprise-grade reliability is rare and invaluable."
-        </p>
-        <a href="https://www.linkedin.com/in/mdefouw/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">DMITRY STEBUKOV</div>
-        <div className="text-xs text-cyan-400/70 mb-2">DevOps Engineer</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "Working with Sergio means being confident in the outcome. He has a deep understanding of system architecture and can scale solutions to handle any load. He combines strategic thinking with strong technical expertise. He knows how to build effective teams and inspire those around him. A reliable leader who always supports execution and brings confidence to the team - someone you want by your side on complex and ambitious projects."
-        </p>
-        <a href="https://www.linkedin.com/in/dmitry-stebukov-55a7721b2/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
+export const MoxyTeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "MARC DEFOUW",
+      role: "Founder & CEO at Moxy",
+      quote: "Sergio's architectural expertise was instrumental in building Moxy's foundation. He understood our vision and translated it into a scalable, reliable infrastructure that has supported our growth from day one. His ability to balance startup agility with enterprise-grade reliability is rare and invaluable.",
+      linkedinUrl: "https://www.linkedin.com/in/mdefouw/",
+      color: "green",
+      icon: <Crown className="w-5 h-5 text-green-400" />
+    },
+    {
+      name: "DMITRY STEBUKOV",
+      role: "DevOps Engineer",
+      quote: "Working with Sergio means being confident in the outcome. He has a deep understanding of system architecture and can scale solutions to handle any load. He combines strategic thinking with strong technical expertise. A reliable leader who always supports execution and brings confidence to the team.",
+      linkedinUrl: "https://www.linkedin.com/in/dmitry-stebukov-55a7721b2/",
+      color: "cyan",
+      icon: <Server className="w-5 h-5 text-cyan-400" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader title="TEAM FEEDBACK // MOXY COLLEAGUES" />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // OkTY Case Study Diagrams
 export const OkTYRoleCard = () => (
@@ -1320,43 +1341,35 @@ export const OkTYMetricsDiagram = () => (
   </div>
 );
 
-export const OkTYTeamFeedbackSection = () => (
-  <div className="my-8 border border-emerald-500/30 rounded-lg bg-gradient-to-br from-black/60 via-emerald-500/5 to-black/60 p-6">
-    <div className="text-sm font-mono text-emerald-400 mb-6 flex justify-between items-center">
-      <div className="flex items-center gap-2">
-        <Users className="w-4 h-4" />
-        <span>TEAM FEEDBACK // OKTY COLLEAGUES</span>
-      </div>
-      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-emerald-500/30 rounded">VERIFIED</span>
-    </div>
-    
-    <div className="space-y-6">
-      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">MATT BUNCH</div>
-        <div className="text-xs text-green-400/70 mb-2">CTO at OkTY</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "Sergio brought exactly the architectural expertise we needed to build OkTY's data platform. His ability to design systems that are both privacy-first and highly scalable was crucial. He understood the delicate balance between data monetization and trust—and built infrastructure that our retail partners could confidently rely on."
-        </p>
-        <a href="https://www.linkedin.com/in/mattbunch/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">PAVEL SHUM</div>
-        <div className="text-xs text-cyan-400/70 mb-2">Mobile React Native Engineer at OkTY</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "Working with Sergio was a masterclass in building data products. He translated our ambitious product vision into technical reality without ever losing sight of user needs. The ETL framework he designed let us onboard new retailers in days instead of weeks—that speed became a competitive advantage."
-        </p>
-        <a href="https://www.linkedin.com/in/pavelshum/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
+export const OkTYTeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "MATT BUNCH",
+      role: "CTO at OkTY",
+      quote: "Sergio brought exactly the architectural expertise we needed to build OkTY's data platform. His ability to design systems that are both privacy-first and highly scalable was crucial. He understood the delicate balance between data monetization and trust—and built infrastructure that our retail partners could confidently rely on.",
+      linkedinUrl: "https://www.linkedin.com/in/mattbunch/",
+      color: "green",
+      icon: <Crown className="w-5 h-5 text-green-400" />
+    },
+    {
+      name: "PAVEL SHUM",
+      role: "Mobile React Native Engineer",
+      quote: "Working with Sergio was a masterclass in building data products. He translated our ambitious product vision into technical reality without ever losing sight of user needs. The ETL framework he designed let us onboard new retailers in days instead of weeks—that speed became a competitive advantage.",
+      linkedinUrl: "https://www.linkedin.com/in/pavelshum/",
+      color: "cyan",
+      icon: <Smartphone className="w-5 h-5 text-cyan-400" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader title="TEAM FEEDBACK // OKTY COLLEAGUES" />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Detection functions for OkTY
 function isOkTYRole(code: string): boolean {
@@ -1721,55 +1734,43 @@ export const WellBeMetricsDiagram = () => (
   </div>
 );
 
-export const WellBeTeamFeedbackSection = () => (
-  <div className="my-8 border border-violet-500/30 rounded-lg bg-gradient-to-br from-black/60 via-violet-500/5 to-black/60 p-6">
-    <div className="text-sm font-mono text-violet-400 mb-6 flex justify-between items-center">
-      <div className="flex items-center gap-2">
-        <Users className="w-4 h-4" />
-        <span>TEAM FEEDBACK // WELLBE COLLEAGUES</span>
-      </div>
-      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-violet-500/30 rounded">VERIFIED</span>
-    </div>
-    
-    <div className="space-y-6">
-      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">NINA LITVINOVA</div>
-        <div className="text-xs text-green-400/70 mb-2">CEO & Product Visionary at WellBe</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "Sergio transformed our technical capabilities completely. He took our struggling Firebase-based architecture and built something we could actually scale with. His leadership brought clarity to our engineering team and his decisions consistently balanced technical excellence with business pragmatism. Under his guidance, we went from fighting our infrastructure to iterating faster than ever before."
-        </p>
-        <a href="https://www.linkedin.com/in/nina-litvinova-53074192/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">DMITRY STEBUKOV</div>
-        <div className="text-xs text-cyan-400/70 mb-2">DevOps Engineer at WellBe</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "Working with Sergio means being confident in the outcome. He has a deep understanding of system architecture and can scale solutions to handle any load. He combines strategic thinking with strong technical expertise. He knows how to build effective teams and inspire those around him. A reliable leader who always supports execution and brings confidence to the team - someone you want by your side on complex and ambitious projects."
-        </p>
-        <a href="https://www.linkedin.com/in/dmitry-stebukov-55a7721b2/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-purple-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-purple-400 text-xs font-mono">IVAN VINITSKYI</div>
-        <div className="text-xs text-purple-400/70 mb-2">Backend Engineer & API Expert at WellBe</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "Sergio is a very smart boss, with deep architectural thinking. He shares knowledge and directs the team in the right direction, notices details, chooses the best tools for business purposes and avoids unnecessary costs. Always follows the latest technical trends. It was a very productive period to work under his leadership both for me and for the team as a whole. I would always be glad to new cooperation and recommend him as an excellent organizer and reliable leader."
-        </p>
-        <a href="https://www.linkedin.com/in/ivan-vinitskyi-010410193/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-purple-400 hover:text-purple-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
+export const WellBeTeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "NINA LITVINOVA",
+      role: "CEO & Product Visionary",
+      quote: "Sergio transformed our technical capabilities completely. He took our struggling Firebase-based architecture and built something we could actually scale with. His leadership brought clarity to our engineering team and his decisions consistently balanced technical excellence with business pragmatism.",
+      linkedinUrl: "https://www.linkedin.com/in/nina-litvinova-53074192/",
+      color: "green",
+      icon: <Crown className="w-5 h-5 text-green-400" />
+    },
+    {
+      name: "DMITRY STEBUKOV",
+      role: "DevOps Engineer",
+      quote: "Working with Sergio means being confident in the outcome. He has a deep understanding of system architecture and can scale solutions to handle any load. He combines strategic thinking with strong technical expertise. A reliable leader who always supports execution and brings confidence to the team.",
+      linkedinUrl: "https://www.linkedin.com/in/dmitry-stebukov-55a7721b2/",
+      color: "cyan",
+      icon: <Server className="w-5 h-5 text-cyan-400" />
+    },
+    {
+      name: "IVAN VINITSKYI",
+      role: "Backend Engineer & API Expert",
+      quote: "Sergio is a very smart boss, with deep architectural thinking. He shares knowledge and directs the team in the right direction, notices details, chooses the best tools for business purposes and avoids unnecessary costs. I would always be glad to new cooperation and recommend him as an excellent organizer and reliable leader.",
+      linkedinUrl: "https://www.linkedin.com/in/ivan-vinitskyi-010410193/",
+      color: "purple",
+      icon: <FileCode className="w-5 h-5 text-purple-400" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader title="TEAM FEEDBACK // WELLBE COLLEAGUES" />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Detection functions for WellBe
 function isWellBeRole(code: string): boolean {
@@ -2234,31 +2235,27 @@ export const SimpleSendMetricsDiagram = () => (
   </div>
 );
 
-export const SimpleSendTeamFeedbackSection = () => (
-  <div className="my-8 border border-blue-500/30 rounded-lg bg-gradient-to-br from-black/60 via-blue-500/5 to-black/60 p-6">
-    <div className="text-sm font-mono text-blue-400 mb-6 flex justify-between items-center">
-      <div className="flex items-center gap-2">
-        <Users className="w-4 h-4" />
-        <span>TEAM FEEDBACK // RICOH COLLEAGUES</span>
-      </div>
-      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-blue-500/30 rounded">VERIFIED</span>
-    </div>
-    
-    <div className="space-y-6">
-      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">JENNIFER HINT</div>
-        <div className="text-xs text-green-400/70 mb-2">Product Owner at Ricoh USA</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "It has been a pleasure working with Sergey as a backend engineer on our Scrum team at Ricoh USA. His deep expertise in database architecture, performance tuning, and data integrity has been instrumental in the success of our projects. Sergey consistently delivered scalable and optimized solutions, whether designing complex schemas, writing efficient code, or implementing robust data strategies. Sergey also brought a strong agile mindset, actively contributing to sprint planning, backlog grooming, and retrospectives with valuable technical insights. His departure is a loss to our team, but I have no doubt he will continue to excel and have a positive impact wherever he goes."
-        </p>
-        <a href="https://www.linkedin.com/in/jennhint/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
+export const SimpleSendTeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "JENNIFER HINT",
+      role: "Product Owner at Ricoh USA",
+      quote: "It has been a pleasure working with Sergey as a backend engineer on our Scrum team at Ricoh USA. His deep expertise in database architecture, performance tuning, and data integrity has been instrumental in the success of our projects. Sergey consistently delivered scalable and optimized solutions. His departure is a loss to our team, but I have no doubt he will continue to excel.",
+      linkedinUrl: "https://www.linkedin.com/in/jennhint/",
+      color: "green",
+      icon: <Target className="w-5 h-5 text-green-400" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader title="TEAM FEEDBACK // RICOH COLLEAGUES" />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Detection functions for Enterprise Docs (Ricoh)
 function isSimpleSendRole(code: string): boolean {
@@ -2555,73 +2552,43 @@ export const P2LMetricsDiagram = () => (
   </div>
 );
 
-export const P2LTeamFeedbackSection = () => (
-  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
-    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
-      <span>TEAM FEEDBACK // COLLEAGUES</span>
-      <span className="text-xs text-green-400">VERIFIED</span>
-    </div>
-    
-    <div className="space-y-4">
-      <div className="p-4 border border-cyan-500/30 rounded-lg bg-gradient-to-r from-cyan-500/5 to-transparent">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center">
-            <Server className="w-4 h-4 text-cyan-400" />
-          </div>
-          <div>
-            <div className="font-mono text-sm text-cyan-400">SERGEY SEVRUK</div>
-            <div className="text-xs text-gray-500">DevOps Engineer</div>
-          </div>
-        </div>
-        <p className="text-sm text-gray-300 leading-relaxed mb-3">
-          "Working alongside Sergey on the infrastructure side was a great experience. He understood the operational needs deeply and designed systems that were easy to deploy and monitor. His API gateway design made our CI/CD pipelines much smoother, and he was always available to troubleshoot production issues together. A true team player who bridges the gap between development and operations seamlessly."
-        </p>
-        <a href="https://www.linkedin.com/in/sergey-sevruk/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-green-500/30 rounded-lg bg-gradient-to-r from-green-500/5 to-transparent">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-            <Target className="w-4 h-4 text-green-400" />
-          </div>
-          <div>
-            <div className="font-mono text-sm text-green-400">NICKOLAI KURBATOV</div>
-            <div className="text-xs text-gray-500">Product Manager</div>
-          </div>
-        </div>
-        <p className="text-sm text-gray-300 leading-relaxed mb-3">
-          "Sergey was instrumental in translating our product vision into technical reality. He has a rare ability to understand business requirements and deliver solutions that exceeded expectations. His leadership of the backend team kept us on schedule through tight deadlines, and he always found creative ways to solve problems. Highly recommend working with him on any challenging project."
-        </p>
-        <a href="https://www.linkedin.com/in/nickkur/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-purple-500/30 rounded-lg bg-gradient-to-r from-purple-500/5 to-transparent">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-full bg-purple-500/20 flex items-center justify-center">
-            <FileCode className="w-4 h-4 text-purple-400" />
-          </div>
-          <div>
-            <div className="font-mono text-sm text-purple-400">SERGEI ABRAMOV</div>
-            <div className="text-xs text-gray-500">Lead Backend Developer</div>
-          </div>
-        </div>
-        <p className="text-sm text-gray-300 leading-relaxed mb-3">
-          "As a fellow backend developer, I learned a lot from Sergey's approach to system design. He championed clean architecture principles and code quality standards that made our codebase maintainable as the team grew. His mentorship helped me grow as an engineer, and his technical decisions consistently proved right as the platform scaled."
-        </p>
-        <a href="https://www.linkedin.com/in/pod2metra/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-purple-400 hover:text-purple-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
+export const P2LTeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "SERGEY SEVRUK",
+      role: "DevOps Engineer",
+      quote: "Working alongside Sergey on the infrastructure side was a great experience. He understood the operational needs deeply and designed systems that were easy to deploy and monitor. His API gateway design made our CI/CD pipelines much smoother. A true team player who bridges the gap between development and operations seamlessly.",
+      linkedinUrl: "https://www.linkedin.com/in/sergey-sevruk/",
+      color: "cyan",
+      icon: <Server className="w-5 h-5 text-cyan-400" />
+    },
+    {
+      name: "NICKOLAI KURBATOV",
+      role: "Product Manager",
+      quote: "Sergey was instrumental in translating our product vision into technical reality. He has a rare ability to understand business requirements and deliver solutions that exceeded expectations. His leadership of the backend team kept us on schedule through tight deadlines. Highly recommend working with him on any challenging project.",
+      linkedinUrl: "https://www.linkedin.com/in/nickkur/",
+      color: "green",
+      icon: <Target className="w-5 h-5 text-green-400" />
+    },
+    {
+      name: "SERGEI ABRAMOV",
+      role: "Lead Backend Developer",
+      quote: "As a fellow backend developer, I learned a lot from Sergey's approach to system design. He championed clean architecture principles and code quality standards that made our codebase maintainable as the team grew. His mentorship helped me grow as an engineer.",
+      linkedinUrl: "https://www.linkedin.com/in/pod2metra/",
+      color: "purple",
+      icon: <FileCode className="w-5 h-5 text-purple-400" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader title="TEAM FEEDBACK // P2L COLLEAGUES" />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Detection functions for Play2Live
 function isP2LRole(code: string): boolean {
@@ -2844,35 +2811,27 @@ export const PatentSeekersMetricsDiagram = () => (
   </div>
 );
 
-export const PatentSeekersTeamFeedbackSection = () => (
-  <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
-    <div className="text-sm font-mono text-cyan-400 mb-4 flex justify-between">
-      <span>TEAM FEEDBACK // COLLEAGUES</span>
-      <span className="text-xs text-green-400">VERIFIED</span>
-    </div>
-    
-    <div className="space-y-4">
-      <div className="p-4 border border-green-500/30 rounded-lg bg-gradient-to-r from-green-500/5 to-transparent">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-            <Target className="w-4 h-4 text-green-400" />
-          </div>
-          <div>
-            <div className="font-mono text-sm text-green-400">GERAINT EVANS</div>
-            <div className="text-xs text-gray-500">Senior IP and Project Manager</div>
-          </div>
-        </div>
-        <p className="text-sm text-gray-300 leading-relaxed mb-3">
-          "Sergey has been a pleasure to work with and helped advance the project in many ways. He has exceptional technical skills and was keen and quick to learn and adapt when needed. When we decided to migrate to AWS, Sergey proactively learned the platform and was quick to adapt and transfer our system. He has been forthcoming with ideas and improvements, and communicated well with the rest of the team. I would highly recommend Sergey for any engineering position."
-        </p>
-        <a href="https://www.linkedin.com/in/geraint-evans-432b37172/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
+export const PatentSeekersTeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "GERAINT EVANS",
+      role: "Senior IP and Project Manager",
+      quote: "Sergey has been a pleasure to work with and helped advance the project in many ways. He has exceptional technical skills and was keen and quick to learn and adapt when needed. When we decided to migrate to AWS, Sergey proactively learned the platform and was quick to adapt and transfer our system. I would highly recommend Sergey for any engineering position.",
+      linkedinUrl: "https://www.linkedin.com/in/geraint-evans-432b37172/",
+      color: "green",
+      icon: <Target className="w-5 h-5 text-green-400" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader title="TEAM FEEDBACK // PATENTSEEKERS COLLEAGUES" />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Detection functions for PatentSeekers
 function isPatentSeekersRole(code: string): boolean {
