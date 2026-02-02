@@ -9,7 +9,7 @@
 - id: 6
   slug: case-study
   title: "Case Study"
-  description: "Deep dives into real-world projects - the challenges, solutions, and lessons learned from building products that scale."
+  description: "These are the projects where I invested significant effort and passion. Each one taught me something valuable about building scalable systems, leading teams, and solving problems that matter."
   cover_image_url: null
   accent_color: "#f97316"
   is_visible: true
