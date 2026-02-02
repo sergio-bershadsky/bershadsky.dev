@@ -1281,17 +1281,17 @@ export const OkTYMetricsDiagram = () => (
           <span className="font-mono text-xs text-green-400">EFFICIENCY</span>
         </div>
         <div className="space-y-2">
-          <div className="flex justify-between items-center">
-            <span className="text-xs text-gray-400">Onboarding time</span>
-            <span className="font-mono text-sm text-green-300 font-bold">2wk → 3d</span>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Onboarding</span>
+            <span className="font-mono text-sm text-green-300 font-bold whitespace-nowrap">2wk → 3d</span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-xs text-gray-400">Data freshness</span>
-            <span className="font-mono text-sm text-green-300 font-bold">24h → 15m</span>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Freshness</span>
+            <span className="font-mono text-sm text-green-300 font-bold whitespace-nowrap">24h → 15m</span>
           </div>
-          <div className="flex justify-between items-center">
-            <span className="text-xs text-gray-400">Cost vs budget</span>
-            <span className="font-mono text-sm text-green-300 font-bold">-60%</span>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Cost</span>
+            <span className="font-mono text-sm text-green-300 font-bold whitespace-nowrap">-60%</span>
           </div>
         </div>
       </div>
