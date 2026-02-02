@@ -14,6 +14,7 @@ import { communicationDiagramEntries } from './diagrams/communication';
 import { meetingsDiagramEntries } from './diagrams/meetings';
 import { decisionsDiagramEntries } from './diagrams/decisions';
 import { capstoneDiagramEntries } from './diagrams/capstone';
+import { caseStudyDiagrams } from './diagrams/casestudy';
 import { registerDiagrams } from './diagramRegistry';
 
 const cyberpunkTheme: { [key: string]: React.CSSProperties } = {
@@ -82,6 +83,7 @@ registerDiagrams(communicationDiagramEntries);
 registerDiagrams(meetingsDiagramEntries);
 registerDiagrams(decisionsDiagramEntries);
 registerDiagrams(capstoneDiagramEntries);
+registerDiagrams(caseStudyDiagrams);
 
 const processInlineFormatting = (text: string, keyBase: string = ''): React.ReactNode => {
   const parts: React.ReactNode[] = [];
