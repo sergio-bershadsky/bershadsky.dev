@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from "wouter";
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen, Users } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen, Users, Briefcase } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
 
 const getSeriesIcon = (slug: string, accentColor: string, size: string = "w-5 h-5") => {
@@ -14,6 +14,8 @@ const getSeriesIcon = (slug: string, accentColor: string, size: string = "w-5 h-
       return <Layers {...iconProps} />;
     case 'startup-playbook':
       return <Rocket {...iconProps} />;
+    case 'case-study':
+      return <Briefcase {...iconProps} />;
     default:
       return <BookOpen {...iconProps} />;
   }
@@ -236,9 +238,20 @@ export default function BlogPostPage() {
                   >
                     {post.series.title}
                   </Link>
-                  <span className="px-2 py-1 bg-primary/20 border border-primary/40 rounded text-primary font-mono text-sm font-bold whitespace-nowrap">
-                    PART: {post.series.position}
-                  </span>
+                  {post.caseStudyYear ? (
+                    <span className="px-2 py-1 bg-orange-500/20 border border-orange-500/40 rounded text-orange-400 font-mono text-sm font-bold whitespace-nowrap">
+                      {post.caseStudyYear}
+                    </span>
+                  ) : (
+                    <span className="px-2 py-1 bg-primary/20 border border-primary/40 rounded text-primary font-mono text-sm font-bold whitespace-nowrap">
+                      PART: {post.series.position}
+                    </span>
+                  )}
+                  {post.caseStudyRole && (
+                    <span className="px-2 py-1 bg-cyan-500/20 border border-cyan-500/40 rounded text-cyan-400 font-mono text-sm font-bold whitespace-nowrap">
+                      {post.caseStudyRole}
+                    </span>
+                  )}
                 </div>
               )}
               <h1 className="text-[24px] md:text-[46px] font-display font-bold text-white transition-all duration-300" data-testid="text-post-title">
