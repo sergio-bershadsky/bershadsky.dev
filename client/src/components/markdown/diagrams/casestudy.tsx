@@ -978,6 +978,411 @@ export const MoxyTeamFeedbackSection = () => (
   </div>
 );
 
+// OkTY Case Study Diagrams
+export const OkTYRoleCard = () => (
+  <div className="my-8 border border-emerald-500/40 rounded-lg bg-gradient-to-br from-black/60 via-emerald-950/20 to-black/60 p-6 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
+    
+    <div className="relative z-10">
+      <div className="text-sm font-mono text-emerald-400 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Crown className="w-4 h-4" />
+          <span>MY ROLE // FRACTIONAL_SOLUTION_ARCHITECT</span>
+        </div>
+        <span className="text-xs text-muted-foreground px-2 py-0.5 border border-emerald-500/30 rounded">PART-TIME</span>
+      </div>
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="p-3 border border-emerald-500/30 rounded-lg bg-black/40 text-center group hover:border-emerald-400/60 transition-colors">
+          <Users className="w-6 h-6 mx-auto mb-2 text-emerald-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">CEO</div>
+          <div className="text-xs text-gray-400 mt-1">& FOUNDER</div>
+        </div>
+        <div className="p-3 border border-primary/30 rounded-lg bg-black/40 text-center group hover:border-primary/60 transition-colors">
+          <Target className="w-6 h-6 mx-auto mb-2 text-primary group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">PRODUCT</div>
+          <div className="text-xs text-gray-400 mt-1">OWNER</div>
+        </div>
+        <div className="p-3 border border-accent/30 rounded-lg bg-black/40 text-center group hover:border-accent/60 transition-colors">
+          <Database className="w-6 h-6 mx-auto mb-2 text-accent group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">DATA</div>
+          <div className="text-xs text-gray-400 mt-1">ENGINEERING</div>
+        </div>
+        <div className="p-3 border border-orange-500/30 rounded-lg bg-black/40 text-center group hover:border-orange-500/60 transition-colors">
+          <Clock className="w-6 h-6 mx-auto mb-2 text-orange-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">8 MO</div>
+          <div className="text-xs text-gray-400 mt-1">DURATION</div>
+        </div>
+      </div>
+      
+      <div className="border-t border-emerald-500/20 pt-4">
+        <div className="text-xs font-mono text-emerald-400 mb-3 flex items-center gap-2">
+          <Zap className="w-3 h-3" />
+          TECHNICAL INNOVATIONS
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-emerald-500/10 to-transparent border-l-2 border-emerald-400">
+            <Database className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Real-Time Data Pipeline</div>
+              <div className="text-xs text-gray-400">Sub-minute latency for 50M+ daily transactions</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-primary/10 to-transparent border-l-2 border-primary">
+            <Layers className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Multi-Tenant Architecture</div>
+              <div className="text-xs text-gray-400">Isolated retailer data with shared analytics</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-accent/10 to-transparent border-l-2 border-accent">
+            <Lock className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Privacy-First Analytics</div>
+              <div className="text-xs text-gray-400">GDPR/CCPA compliant data handling</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-orange-500/10 to-transparent border-l-2 border-orange-400">
+            <Zap className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Scalable ETL Framework</div>
+              <div className="text-xs text-gray-400">Config-driven pipeline for any data format</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="border-t border-emerald-500/20 pt-4 mt-4">
+        <div className="text-xs font-mono text-red-400 mb-3 flex items-center gap-2">
+          <AlertTriangle className="w-3 h-3" />
+          KEY CHALLENGES TACKLED
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">Retail Data Integration</span>
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">GDPR Compliance</span>
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">High-Volume Processing</span>
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">Enterprise Security</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const OkTYDataDiagram = () => (
+  <div className="my-8 border border-emerald-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-emerald-400 mb-4 flex justify-between">
+      <span>FIG 1.0 // PIPELINE_CHALLENGES</span>
+      <span className="text-xs text-muted-foreground">ANALYTICS</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Database className="w-5 h-5 text-cyan-400" />
+          <span className="font-mono text-xs text-cyan-400">INPUT SOURCES</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> 15+ retail chains with different POS systems</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Daily batch files (CSV, JSON, XML)</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Real-time streams for select partners</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Historical backfills spanning 3+ years</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-primary/30 rounded bg-primary/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Activity className="w-5 h-5 text-primary" />
+          <span className="font-mono text-xs text-primary">DATA VOLUMES</span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div className="text-center p-2 border border-primary/20 rounded bg-black/40">
+            <div className="font-mono text-xl text-primary font-bold">50M+</div>
+            <div className="text-xs text-gray-400">transactions/day</div>
+          </div>
+          <div className="text-center p-2 border border-primary/20 rounded bg-black/40">
+            <div className="font-mono text-xl text-primary font-bold">500GB+</div>
+            <div className="text-xs text-gray-400">daily ingestion</div>
+          </div>
+          <div className="text-center p-2 border border-primary/20 rounded bg-black/40">
+            <div className="font-mono text-xl text-primary font-bold">10TB+</div>
+            <div className="text-xs text-gray-400">data warehouse</div>
+          </div>
+          <div className="text-center p-2 border border-primary/20 rounded bg-black/40">
+            <div className="font-mono text-xl text-primary font-bold">&lt;1min</div>
+            <div className="text-xs text-gray-400">latency</div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-accent/30 rounded bg-accent/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Lock className="w-5 h-5 text-accent" />
+          <span className="font-mono text-xs text-accent">PRIVACY REQUIREMENTS</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><Shield className="w-3 h-3 text-accent" /> GDPR/CCPA compliant data handling</div>
+          <div className="flex items-center gap-2"><Shield className="w-3 h-3 text-accent" /> PII removal and anonymization</div>
+          <div className="flex items-center gap-2"><Shield className="w-3 h-3 text-accent" /> Retailer data isolation</div>
+          <div className="flex items-center gap-2"><Shield className="w-3 h-3 text-accent" /> Audit trails for all data access</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const OkTYInfrastructureDiagram = () => (
+  <div className="my-8 border border-orange-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-orange-400 mb-4 flex justify-between">
+      <span>FIG 2.0 // DATA_PLATFORM</span>
+      <span className="text-xs text-muted-foreground">AWS CLOUD</span>
+    </div>
+    
+    <div className="flex flex-col items-center gap-3">
+      <div className="p-3 border border-purple-500/40 rounded bg-purple-500/10 text-center w-48">
+        <Globe className="w-5 h-5 mx-auto mb-1 text-purple-400" />
+        <div className="font-mono text-xs text-purple-400 font-bold">API Gateway + Lambda</div>
+        <div className="text-xs text-gray-400">Serverless Entry</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+        <div className="p-2 border border-orange-500/40 rounded bg-orange-500/10 text-center">
+          <Zap className="w-4 h-4 mx-auto mb-1 text-orange-400" />
+          <div className="font-mono text-xs text-orange-400">Kinesis</div>
+          <div className="text-xs text-gray-400">Firehose</div>
+        </div>
+        <div className="p-2 border border-cyan-500/40 rounded bg-cyan-500/10 text-center">
+          <Database className="w-4 h-4 mx-auto mb-1 text-cyan-400" />
+          <div className="font-mono text-xs text-cyan-400">S3</div>
+          <div className="text-xs text-gray-400">Data Lake</div>
+        </div>
+        <div className="p-2 border border-primary/40 rounded bg-primary/10 text-center">
+          <Server className="w-4 h-4 mx-auto mb-1 text-primary" />
+          <div className="font-mono text-xs text-primary">Redshift</div>
+          <div className="text-xs text-gray-400">DW</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="p-3 border border-emerald-500/40 rounded bg-emerald-500/10 text-center w-48">
+        <Container className="w-5 h-5 mx-auto mb-1 text-emerald-400" />
+        <div className="font-mono text-xs text-emerald-400 font-bold">AWS Glue</div>
+        <div className="text-xs text-gray-400">ETL Jobs</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+        <div className="p-2 border border-accent/40 rounded bg-accent/10 text-center">
+          <FileCode className="w-4 h-4 mx-auto mb-1 text-accent" />
+          <div className="font-mono text-xs text-accent">Athena</div>
+          <div className="text-xs text-gray-400">Queries</div>
+        </div>
+        <div className="p-2 border border-green-500/40 rounded bg-green-500/10 text-center">
+          <Activity className="w-4 h-4 mx-auto mb-1 text-green-400" />
+          <div className="font-mono text-xs text-green-400">QuickSight</div>
+          <div className="text-xs text-gray-400">Dashboards</div>
+        </div>
+        <div className="p-2 border border-cyan-500/40 rounded bg-cyan-500/10 text-center">
+          <Globe className="w-4 h-4 mx-auto mb-1 text-cyan-400" />
+          <div className="font-mono text-xs text-cyan-400">Custom</div>
+          <div className="text-xs text-gray-400">APIs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const OkTYPipelineDiagram = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
+      <span>FIG 3.0 // ETL_FRAMEWORK</span>
+      <span className="text-xs text-muted-foreground">DATA OPS</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <ArrowDown className="w-5 h-5 text-cyan-400" />
+          <span className="font-mono text-xs text-cyan-400">INGESTION LAYER</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> SFTP connectors for batch files</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Kinesis streams for real-time</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Format detection & validation</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Auto schema evolution</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Layers className="w-5 h-5 text-purple-400" />
+          <span className="font-mono text-xs text-purple-400">TRANSFORMATION LAYER</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> Config-driven field mapping</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> Product hierarchy normalization</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> PII detection and masking</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> Quality scoring & anomaly detection</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <ArrowRight className="w-5 h-5 text-green-400" />
+          <span className="font-mono text-xs text-green-400">DELIVERY LAYER</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Real-time dashboard updates</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Scheduled report generation</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> API endpoints for programmatic access</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Data export for enterprise clients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const OkTYMetricsDiagram = () => (
+  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
+      <span>FIG 4.0 // PLATFORM_KPIs</span>
+      <span className="text-xs text-muted-foreground">RESULTS</span>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <TrendingUp className="w-5 h-5 text-cyan-400" />
+          <span className="font-mono text-xs text-cyan-400">SCALE</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Retailers onboarded</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold">15+</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Daily transactions</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold">50M+</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Data warehouse</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold">10TB+</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Zap className="w-5 h-5 text-green-400" />
+          <span className="font-mono text-xs text-green-400">EFFICIENCY</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Onboarding time</span>
+            <span className="font-mono text-sm text-green-300 font-bold">2wk → 3d</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Data freshness</span>
+            <span className="font-mono text-sm text-green-300 font-bold">24h → 15m</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Cost vs budget</span>
+            <span className="font-mono text-sm text-green-300 font-bold">-60%</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Shield className="w-5 h-5 text-purple-400" />
+          <span className="font-mono text-xs text-purple-400">RELIABILITY</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Pipeline uptime</span>
+            <span className="font-mono text-sm text-purple-300 font-bold">99.9%</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">GDPR audits</span>
+            <span className="font-mono text-sm text-purple-300 font-bold">100%</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Data breaches</span>
+            <span className="font-mono text-sm text-purple-300 font-bold">ZERO</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const OkTYTeamFeedbackSection = () => (
+  <div className="my-8 border border-emerald-500/30 rounded-lg bg-gradient-to-br from-black/60 via-emerald-500/5 to-black/60 p-6">
+    <div className="text-sm font-mono text-emerald-400 mb-6 flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <Users className="w-4 h-4" />
+        <span>TEAM FEEDBACK // OKTY COLLEAGUES</span>
+      </div>
+      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-emerald-500/30 rounded">VERIFIED</span>
+    </div>
+    
+    <div className="space-y-6">
+      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">MATT BUNCH</div>
+        <div className="text-xs text-green-400/70 mb-2">CEO & Founder at OkTY</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "Sergio brought exactly the architectural expertise we needed to build OkTY's data platform. His ability to design systems that are both privacy-first and highly scalable was crucial. He understood the delicate balance between data monetization and trust—and built infrastructure that our retail partners could confidently rely on."
+        </p>
+        <a href="https://www.linkedin.com/in/mattbunch/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+      
+      <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">PAVEL SHUM</div>
+        <div className="text-xs text-cyan-400/70 mb-2">Product Owner at OkTY</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "Working with Sergio was a masterclass in building data products. He translated our ambitious product vision into technical reality without ever losing sight of user needs. The ETL framework he designed let us onboard new retailers in days instead of weeks—that speed became a competitive advantage."
+        </p>
+        <a href="https://www.linkedin.com/in/pavelshum/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+// Detection functions for OkTY
+function isOkTYRole(code: string): boolean {
+  return code.includes('OKTY ROLE') && code.includes('FRACTIONAL_SOLUTION_ARCHITECT') && code.includes('COLLABORATION');
+}
+
+function isOkTYData(code: string): boolean {
+  return code.includes('OKTY DATA') && code.includes('PIPELINE CHALLENGES') && code.includes('INPUT SOURCES');
+}
+
+function isOkTYInfrastructure(code: string): boolean {
+  return code.includes('OKTY INFRASTRUCTURE') && code.includes('DATA PLATFORM') && code.includes('AWS CLOUD');
+}
+
+function isOkTYPipeline(code: string): boolean {
+  return code.includes('OKTY PIPELINE') && code.includes('ETL FRAMEWORK') && code.includes('INGESTION LAYER');
+}
+
+function isOkTYMetrics(code: string): boolean {
+  return code.includes('OKTY METRICS') && code.includes('PLATFORM KPIs') && code.includes('SCALE');
+}
+
+function isOkTYTeamFeedback(code: string): boolean {
+  return code.includes('OKTY TEAM FEEDBACK') && code.includes('OKTY COLLEAGUES');
+}
+
 // Detection functions for Moxy
 function isMoxyRole(code: string): boolean {
   return code.includes('MOXY ROLE') && code.includes('FRACTIONAL_SOLUTION_ARCHITECT') && code.includes('COLLABORATION');
@@ -1044,6 +1449,12 @@ function isUMIASTransformation(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'okty-role', detect: isOkTYRole, component: OkTYRoleCard },
+  { id: 'okty-data', detect: isOkTYData, component: OkTYDataDiagram },
+  { id: 'okty-infrastructure', detect: isOkTYInfrastructure, component: OkTYInfrastructureDiagram },
+  { id: 'okty-pipeline', detect: isOkTYPipeline, component: OkTYPipelineDiagram },
+  { id: 'okty-metrics', detect: isOkTYMetrics, component: OkTYMetricsDiagram },
+  { id: 'okty-team-feedback', detect: isOkTYTeamFeedback, component: OkTYTeamFeedbackSection },
   { id: 'moxy-role', detect: isMoxyRole, component: MoxyRoleCard },
   { id: 'moxy-traffic', detect: isMoxyTraffic, component: MoxyTrafficDiagram },
   { id: 'moxy-infrastructure', detect: isMoxyInfrastructure, component: MoxyInfrastructureDiagram },

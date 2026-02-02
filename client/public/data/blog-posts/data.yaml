@@ -315,3 +315,29 @@
   seo_title: "Moxy Case Study: Building Play-to-Earn Gaming Infrastructure from Zero"
   seo_description: "How we built scalable cloud-native infrastructure for Moxy's play-to-earn gaming platform. 99.99% uptime, 10,000+ concurrent users, Kubernetes, AWS, Terraform."
   seo_keywords: "Moxy case study, gaming platform infrastructure, play-to-earn, cloud-native architecture, Kubernetes AWS, startup DevOps, scalable infrastructure"
+
+- id: 28
+  slug: case-study-okty
+  title: "OkTY - Building a Data Monetization Platform for Retail Analytics"
+  excerpt: "How we built a privacy-first data platform processing 50M+ daily transactions from 15+ retail chains with GDPR compliance and real-time analytics."
+  case_study_year: "2020"
+  case_study_role: "Fractional Solution Architect"
+  date: "2025-11-01"
+  tags:
+    - Case-Study
+    - AWS
+    - Python
+    - Data-Engineering
+    - Analytics
+    - Privacy
+    - Serverless
+    - ETL
+    - Startup
+  image_url: /images/case_study_okty_data.png
+  status: published
+  published_at: "2025-11-01T10:00:00Z"
+  content: blog-posts/28.content.md
+  audience: Tech Leaders
+  seo_title: "OkTY Case Study: Building a Privacy-First Data Monetization Platform"
+  seo_description: "How we built a GDPR-compliant data monetization platform for retail analytics. 50M+ daily transactions, 15+ retail chains, serverless AWS architecture."
+  seo_keywords: "OkTY case study, data monetization platform, retail analytics, GDPR compliance, AWS serverless, data engineering, privacy-first architecture"
