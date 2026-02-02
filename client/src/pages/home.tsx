@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
-import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight, Instagram, Youtube, Send, Brain, Layers, Rocket, BookOpen, Search, Hash, X } from 'lucide-react';
+import { Terminal, Cpu, Network, Code, Briefcase, GraduationCap, Mail, MapPin, Phone, Github, Linkedin, ExternalLink, ArrowRight, Instagram, Send, Brain, Layers, Rocket, BookOpen, Search, Hash, X } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import MiniSearch from 'minisearch';
 import { cvData } from '@/data/cv';
@@ -173,9 +173,9 @@ export default function Home() {
                 <Instagram className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
               </div>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="group">
-               <div className="p-3 border border-red-500/30 rounded-full bg-red-500/5 hover:bg-red-500/20 hover:border-red-500 transition-all duration-300 hover:scale-110 shadow-[0_0_10px_rgba(239,68,68,0.2)] hover:shadow-[0_0_20px_rgba(239,68,68,0.5)]">
-                <Youtube className="w-6 h-6 text-red-500 group-hover:text-white transition-colors" />
+            <a href="https://github.com/sergio-bershadsky/ai" target="_blank" rel="noopener noreferrer" className="group">
+               <div className="p-3 border border-white/30 rounded-full bg-white/5 hover:bg-white/20 hover:border-white transition-all duration-300 hover:scale-110 shadow-[0_0_10px_rgba(255,255,255,0.2)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]">
+                <Github className="w-6 h-6 text-white/70 group-hover:text-white transition-colors" />
               </div>
             </a>
             <a href="https://t.me/bershadskydev" target="_blank" rel="noopener noreferrer" className="group">
