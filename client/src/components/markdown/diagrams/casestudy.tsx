@@ -363,7 +363,19 @@ export const IDAFractionalRoleCard = () => (
           <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Jenkins CI/CD Pipeline</div>
           <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Docker Containerization</div>
           <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Terraform IaC</div>
-          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> AWS CodePipeline</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> ECS → Kubernetes Migration</div>
+        </div>
+      </div>
+      
+      <div className="mt-4 p-3 border border-orange-500/30 rounded bg-orange-500/5">
+        <div className="text-xs font-mono text-orange-400 mb-2 flex items-center gap-2">
+          <AlertTriangle className="w-3 h-3" />
+          KEY CHALLENGES TACKLED
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-xs text-gray-300">
+          <div className="flex items-center gap-2"><Database className="w-3 h-3 text-cyan-400" /> Database Optimization</div>
+          <div className="flex items-center gap-2"><Layers className="w-3 h-3 text-primary" /> Django 3.x → 5.x Upgrade</div>
+          <div className="flex items-center gap-2"><Users className="w-3 h-3 text-accent" /> Team Mentoring</div>
         </div>
       </div>
     </div>
@@ -417,7 +429,7 @@ export const IDAInfrastructureDiagram = () => (
     <div className="text-sm font-mono text-accent mb-4 flex justify-between">
       <div className="flex items-center gap-2">
         <Server className="w-4 h-4" />
-        <span>FIG 1.3 // AWS ARCHITECTURE</span>
+        <span>FIG 1.3 // AWS + KUBERNETES ARCHITECTURE</span>
       </div>
       <span className="text-xs text-muted-foreground">CLOUD</span>
     </div>
@@ -437,31 +449,35 @@ export const IDAInfrastructureDiagram = () => (
       
       <ArrowDown className="w-4 h-4 text-gray-500" />
       
-      <div className="flex gap-3">
-        <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 text-accent text-xs font-mono flex items-center gap-2">
-          <Box className="w-3 h-3" />
-          ECS Task
+      <div className="p-3 border border-blue-500/40 rounded bg-blue-500/10">
+        <div className="text-xs font-mono text-blue-400 mb-2 text-center">Kubernetes Cluster (EKS)</div>
+        <div className="flex gap-3">
+          <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 text-accent text-xs font-mono flex items-center gap-2">
+            <Box className="w-3 h-3" />
+            Pod
+          </div>
+          <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 text-accent text-xs font-mono flex items-center gap-2">
+            <Box className="w-3 h-3" />
+            Pod
+          </div>
+          <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 text-accent text-xs font-mono flex items-center gap-2">
+            <Box className="w-3 h-3" />
+            Pod
+          </div>
         </div>
-        <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 text-accent text-xs font-mono flex items-center gap-2">
-          <Box className="w-3 h-3" />
-          ECS Task
-        </div>
-        <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 text-accent text-xs font-mono flex items-center gap-2">
-          <Box className="w-3 h-3" />
-          ECS Task
-        </div>
+        <div className="text-xs text-gray-500 mt-2 text-center">Migrated from ECS</div>
       </div>
       
       <ArrowDown className="w-4 h-4 text-gray-500" />
       
       <div className="px-4 py-2 border border-green-500/40 rounded bg-green-500/10 text-green-400 text-xs font-mono flex items-center gap-2">
         <Database className="w-4 h-4" />
-        RDS PostgreSQL
+        RDS PostgreSQL (Optimized)
       </div>
     </div>
     
     <div className="mt-4 pt-4 border-t border-accent/20 flex justify-center gap-4 text-xs text-gray-500">
-      <span className="flex items-center gap-1"><Box className="w-3 h-3 text-accent" /> Django + Wagtail</span>
+      <span className="flex items-center gap-1"><Box className="w-3 h-3 text-accent" /> Django 5.x + Wagtail</span>
       <span className="flex items-center gap-1"><Container className="w-3 h-3 text-cyan-400" /> Docker</span>
       <span className="flex items-center gap-1"><FileCode className="w-3 h-3 text-primary" /> Terraform</span>
     </div>
