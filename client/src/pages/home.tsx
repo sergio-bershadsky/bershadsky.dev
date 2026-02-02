@@ -24,6 +24,15 @@ const getSeriesFromTitle = (title: string): { name: string; slug: string; icon: 
   return null;
 };
 
+const getPostAccentColor = (post: BlogPost): string | null => {
+  const series = getSeriesFromTitle(post.title);
+  if (series) return series.color;
+  if (post.caseStudyType) {
+    return '#f97316';
+  }
+  return null;
+};
+
 const createSearchIndex = () => new MiniSearch<BlogPost>({
   fields: ['title', 'excerpt', 'content', 'tags'],
   storeFields: ['id', 'slug'],
@@ -45,6 +54,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [showTagFilter, setShowTagFilter] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(6);
   const miniSearchRef = useRef<MiniSearch<BlogPost> | null>(null);
   const indexedPostsRef = useRef<string>('');
   
@@ -300,9 +310,15 @@ export default function Home() {
             </div>
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.slice(0, 12).map((post, index) => (
+              {filteredPosts.slice(0, visibleCount).map((post, index) => {
+                const accentColor = getPostAccentColor(post);
+                return (
               <Link key={post.id} href={`/blog/${post.slug || post.id}`} className="block group" data-testid={`card-blog-${post.slug || post.id}`}>
-                <NeonCard variant="accent" className="h-full flex flex-col hover:bg-accent/5 transition-all duration-300 hover:scale-[1.02]">
+                <NeonCard 
+                  variant="accent" 
+                  className="h-full flex flex-col hover:bg-accent/5 transition-all duration-300 hover:scale-[1.02]"
+                  style={accentColor ? { borderColor: `${accentColor}40` } : undefined}
+                >
                   <div className="mb-6 relative overflow-hidden rounded border border-white/10 aspect-video bg-black/40 group-hover:border-accent/50 transition-colors">
                      {post.imageUrl && (
                        <img 
@@ -358,7 +374,20 @@ export default function Home() {
                   </div>
                 </NeonCard>
               </Link>
-              ))}
+              );
+              })}
+            </div>
+          )}
+          
+          {filteredPosts.length > visibleCount && (
+            <div className="flex justify-center mt-12">
+              <button
+                onClick={() => setVisibleCount(prev => prev + 6)}
+                className="px-8 py-3 border border-accent/50 bg-black/40 backdrop-blur text-accent font-mono text-sm hover:bg-accent/10 hover:border-accent transition-all duration-300"
+                data-testid="button-load-more"
+              >
+                LOAD_MORE // {filteredPosts.length - visibleCount} remaining
+              </button>
             </div>
           )}
         </div>
