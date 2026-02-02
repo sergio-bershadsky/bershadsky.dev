@@ -211,7 +211,14 @@ export default function BlogPostPage() {
             </button>
           )}
 
-          {post.imageUrl ? (
+          {isExpanded && post.videoUrl ? (
+            <iframe
+              src={`https://www.youtube.com/embed/${post.videoUrl.split('v=')[1]?.split('&')[0]}?autoplay=1&rel=0`}
+              className="absolute inset-0 w-full h-full z-30"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          ) : post.imageUrl ? (
             <div className="relative w-full h-full">
               <img 
                 src={post.imageUrl} 
@@ -225,6 +232,19 @@ export default function BlogPostPage() {
                     alt="Project Logo"
                     className="h-8 md:h-12 w-auto opacity-60 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
                   />
+                </div>
+              )}
+              {post.videoUrl && !isExpanded && (
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                  <button 
+                    onClick={() => setIsExpanded(true)}
+                    className="p-4 bg-black/60 backdrop-blur rounded-full border border-white/30 text-white hover:bg-primary/80 hover:border-primary transition-all group/play"
+                    data-testid="button-play-video"
+                  >
+                    <svg className="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </button>
                 </div>
               )}
             </div>
