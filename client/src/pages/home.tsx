@@ -9,7 +9,8 @@ import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { SeriesRail } from '@/components/SeriesRail';
 const avatarImage = '/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
-import { getAllBlogPosts, type BlogPost } from '@/lib/dataLoader';
+import { getAllBlogPosts, getAllSeries, loadSeriesPosts, type BlogPost } from '@/lib/dataLoader';
+import type { Series, SeriesPost } from '@shared/schema';
 
 const getSeriesFromTitle = (title: string): { name: string; slug: string; icon: React.ReactNode; color: string } | null => {
   if (title.startsWith('Second Brain:')) {
@@ -24,11 +25,50 @@ const getSeriesFromTitle = (title: string): { name: string; slug: string; icon: 
   return null;
 };
 
-const getPostAccentColor = (post: BlogPost): string | null => {
-  const series = getSeriesFromTitle(post.title);
-  if (series) return series.color;
+const getPostAccentColor = (post: BlogPost, seriesPosts: SeriesPost[], seriesList: Series[]): string | null => {
+  if (seriesPosts?.length && seriesList?.length) {
+    const seriesPost = seriesPosts.find(sp => sp.postId === post.id);
+    if (seriesPost) {
+      const series = seriesList.find(s => s.id === seriesPost.seriesId);
+      if (series?.accentColor) return series.accentColor;
+    }
+  }
+  const fallback = getSeriesFromTitle(post.title);
+  if (fallback) return fallback.color;
+  if (post.caseStudyType) return '#f97316';
+  return null;
+};
+
+const getPostSeriesInfo = (post: BlogPost, seriesPosts: SeriesPost[], seriesList: Series[]): { name: string; slug: string; icon: React.ReactNode; color: string } | null => {
+  if (seriesPosts?.length && seriesList?.length) {
+    const seriesPost = seriesPosts.find(sp => sp.postId === post.id);
+    if (seriesPost) {
+      const series = seriesList.find(s => s.id === seriesPost.seriesId);
+      if (series) {
+        const iconMap: Record<string, React.ReactNode> = {
+          'second-brain-claude': <Brain className="w-3 h-3" />,
+          'architecture-fundamentals': <Layers className="w-3 h-3" />,
+          'startup-playbook': <Rocket className="w-3 h-3" />,
+          'case-study': <Briefcase className="w-3 h-3" />,
+        };
+        return {
+          name: series.title.replace('Building Your Second Brain with Claude', 'Second Brain'),
+          slug: series.slug,
+          icon: iconMap[series.slug] || <BookOpen className="w-3 h-3" />,
+          color: series.accentColor || '#9333ea',
+        };
+      }
+    }
+  }
+  const fallback = getSeriesFromTitle(post.title);
+  if (fallback) return fallback;
   if (post.caseStudyType) {
-    return '#f97316';
+    return {
+      name: 'Case Study',
+      slug: 'case-study',
+      icon: <Briefcase className="w-3 h-3" />,
+      color: '#f97316',
+    };
   }
   return null;
 };
@@ -61,6 +101,16 @@ export default function Home() {
   const { data: blogPosts = [], isLoading } = useQuery<BlogPost[]>({
     queryKey: ['blog-posts'],
     queryFn: getAllBlogPosts
+  });
+
+  const { data: seriesList = [] } = useQuery<Series[]>({
+    queryKey: ['series'],
+    queryFn: getAllSeries
+  });
+
+  const { data: seriesPosts = [] } = useQuery<SeriesPost[]>({
+    queryKey: ['series-posts'],
+    queryFn: loadSeriesPosts
   });
 
   const postsFingerprint = useMemo(() => 
@@ -311,7 +361,7 @@ export default function Home() {
           ) : (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.slice(0, visibleCount).map((post, index) => {
-                const accentColor = getPostAccentColor(post);
+                const accentColor = getPostAccentColor(post, seriesPosts, seriesList);
                 return (
               <Link key={post.id} href={`/blog/${post.slug || post.id}`} className="block group" data-testid={`card-blog-${post.slug || post.id}`}>
                 <NeonCard 
@@ -330,7 +380,7 @@ export default function Home() {
                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                      <div className="absolute bottom-3 left-3 flex gap-2 z-10 flex-wrap">
                         {(() => {
-                          const series = getSeriesFromTitle(post.title);
+                          const series = getPostSeriesInfo(post, seriesPosts, seriesList);
                           const seriesKeywords = series ? [series.name.toLowerCase(), series.slug.toLowerCase()] : [];
                           const filteredTags = post.tags.filter(tag => 
                             !seriesKeywords.some(kw => tag.toLowerCase().includes(kw) || kw.includes(tag.toLowerCase()))
