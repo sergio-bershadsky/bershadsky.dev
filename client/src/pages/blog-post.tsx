@@ -283,6 +283,15 @@ export default function BlogPostPage() {
                       {post.caseStudyRole}
                     </span>
                   )}
+                  {post.caseStudyType && (
+                    <span className={`px-2 py-1 rounded font-mono text-sm font-bold whitespace-nowrap ${
+                      post.caseStudyType === 'Toptal' 
+                        ? 'bg-blue-500/20 border border-blue-500/40 text-blue-400' 
+                        : 'bg-green-500/20 border border-green-500/40 text-green-400'
+                    }`}>
+                      {post.caseStudyType}
+                    </span>
+                  )}
                 </div>
               )}
               <h1 className="text-[24px] md:text-[46px] font-display font-bold text-white transition-all duration-300" data-testid="text-post-title">
