@@ -312,6 +312,64 @@ export const TeamFeedbackSection = () => (
   </div>
 );
 
+export const IDAFractionalRoleCard = () => (
+  <div className="my-8 border border-orange-500/40 rounded-lg bg-gradient-to-br from-black/60 via-orange-950/20 to-black/60 p-6 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl" />
+    
+    <div className="relative z-10">
+      <div className="text-sm font-mono text-orange-400 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Crown className="w-4 h-4" />
+          <span>MY ROLE // FRACTIONAL TECH LEAD</span>
+        </div>
+        <span className="text-xs px-2 py-0.5 border border-orange-500/30 rounded bg-orange-500/10">PART-TIME</span>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-4 mb-4">
+        <div className="p-3 border border-cyan-500/30 rounded bg-black/40">
+          <div className="text-xs font-mono text-cyan-400 mb-2 flex items-center gap-2">
+            <Users className="w-3 h-3" />
+            DIRECT MANAGEMENT
+          </div>
+          <div className="space-y-1 text-xs text-gray-300">
+            <div className="flex items-center gap-2"><span className="text-cyan-400">2</span> Frontend Developers</div>
+            <div className="flex items-center gap-2"><span className="text-cyan-400">2</span> Backend Developers</div>
+            <div className="flex items-center gap-2"><span className="text-cyan-400">1</span> UX/UI Designer</div>
+          </div>
+        </div>
+        
+        <div className="p-3 border border-primary/30 rounded bg-black/40">
+          <div className="text-xs font-mono text-primary mb-2 flex items-center gap-2">
+            <Target className="w-3 h-3" />
+            REPORTED TO
+          </div>
+          <div className="space-y-1 text-xs text-gray-300">
+            <div>Stakeholder</div>
+            <div>Product Owner</div>
+          </div>
+          <div className="mt-2 pt-2 border-t border-primary/20 text-xs text-gray-400">
+            <Clock className="w-3 h-3 inline mr-1" /> 2 year engagement
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-3 border border-accent/30 rounded bg-black/40">
+        <div className="text-xs font-mono text-accent mb-2 flex items-center gap-2">
+          <Zap className="w-3 h-3" />
+          KEY INNOVATIONS
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-300">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Jenkins CI/CD Pipeline</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Docker Containerization</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Terraform IaC</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> AWS CodePipeline</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
 export const IDAPipelineDiagram = () => (
   <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
     <div className="text-sm font-mono text-cyan-400 mb-4 flex justify-between">
@@ -469,6 +527,10 @@ export const IDAMetricsDiagram = () => (
   </div>
 );
 
+function isIDAFractionalRole(code: string): boolean {
+  return code.includes('IDA ROLE') && code.includes('FRACTIONAL_TECH_LEAD') && code.includes('DIRECT MANAGEMENT');
+}
+
 function isIDAPipeline(code: string): boolean {
   return code.includes('IDA PIPELINE') && code.includes('BEFORE vs AFTER') && code.includes('Manual deployments via SSH');
 }
@@ -502,6 +564,7 @@ function isUMIASTransformation(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'ida-fractional-role', detect: isIDAFractionalRole, component: IDAFractionalRoleCard },
   { id: 'ida-pipeline', detect: isIDAPipeline, component: IDAPipelineDiagram },
   { id: 'ida-infrastructure', detect: isIDAInfrastructure, component: IDAInfrastructureDiagram },
   { id: 'ida-metrics', detect: isIDAMetrics, component: IDAMetricsDiagram },
