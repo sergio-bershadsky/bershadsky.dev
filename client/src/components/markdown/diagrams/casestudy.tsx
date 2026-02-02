@@ -554,6 +554,18 @@ export const IDATeamFeedbackSection = () => (
     </div>
     
     <div className="space-y-6">
+      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">JEAN PATRICK BISSON</div>
+        <div className="text-xs text-green-400/70 mb-2">Founder & CEO</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "As we expanded from a few employees to more than 100, we needed a partner who could help us scale our technology. He had the experience to understand where we were going, while also meeting us where we were—working with our current tech stack, supporting it, and helping us significantly improve our infrastructure. Sergey and his entire team have been outstanding and consistently willing to help."
+        </p>
+        <a href="https://www.linkedin.com/in/jean-patrick-bisson/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+      
       <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
         <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">DMITRY STEBUKOV</div>
         <div className="text-xs text-cyan-400/70 mb-2">DevOps Engineer</div>
@@ -573,18 +585,6 @@ export const IDATeamFeedbackSection = () => (
           "I had the pleasure of working with Sergio for several years, and I can confidently say that he is one of the most outstanding professionals I've encountered. His ability to solve problems with clarity and precision set a high standard for everyone around him. Beyond his technical skills, Sergey stood out as a natural leader — thoughtful, decisive, and deeply supportive of his team. He leads not by authority, but by example, inspiring trust and motivation in those who work with him."
         </p>
         <a href="https://www.linkedin.com/in/kushenkoyuri/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-primary hover:text-primary/80 transition-colors">
-          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          View on LinkedIn
-        </a>
-      </div>
-      
-      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
-        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">JEAN PATRICK BISSON</div>
-        <div className="text-xs text-green-400/70 mb-2">Founder & CEO</div>
-        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
-          "As we expanded from a few employees to more than 100, we needed a partner who could help us scale our technology. He had the experience to understand where we were going, while also meeting us where we were—working with our current tech stack, supporting it, and helping us significantly improve our infrastructure. Sergey and his entire team have been outstanding and consistently willing to help."
-        </p>
-        <a href="https://www.linkedin.com/in/jean-patrick-bisson/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
           <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
           View on LinkedIn
         </a>
