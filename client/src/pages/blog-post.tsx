@@ -223,7 +223,7 @@ export default function BlogPostPage() {
                   <img 
                     src={post.caseStudyLogo} 
                     alt="Project Logo"
-                    className="h-8 md:h-12 w-auto opacity-20 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                    className="h-8 md:h-12 w-auto opacity-60 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
                   />
                 </div>
               )}
