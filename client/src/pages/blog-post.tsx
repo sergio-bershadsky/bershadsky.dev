@@ -219,11 +219,11 @@ export default function BlogPostPage() {
                 className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
               />
               {post.caseStudyLogo && (
-                <div className="absolute left-1/2 -translate-x-1/2 z-10" style={{ bottom: '20%' }}>
+                <div className="absolute right-6 md:right-10 z-10" style={{ bottom: '20%' }}>
                   <img 
                     src={post.caseStudyLogo} 
                     alt="Project Logo"
-                    className="h-12 md:h-16 w-auto opacity-90 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                    className="h-8 md:h-12 w-auto opacity-20 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]"
                   />
                 </div>
               )}
