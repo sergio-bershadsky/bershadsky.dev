@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle, Crown, Target, Lock, Gauge, Box, Layers, GitBranch, AlertTriangle, XCircle, FileCode, Code, Send } from 'lucide-react';
+import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle, Crown, Target, Lock, Gauge, Box, Layers, GitBranch, AlertTriangle, XCircle, FileCode, Code, Send, FileSearch } from 'lucide-react';
 import { DiagramEntry } from '../diagramRegistry';
 
 export const TechLeadRoleCard = () => (
@@ -2640,7 +2640,262 @@ function isP2LTeamFeedback(code: string): boolean {
   return code.includes('P2L TEAM FEEDBACK') && code.includes('COLLEAGUES');
 }
 
+// PatentSeekers Case Study Diagrams
+export const PatentSeekersRoleCard = () => (
+  <div className="my-8 border border-cyan-500/40 rounded-lg bg-gradient-to-br from-black/60 via-cyan-950/20 to-black/60 p-6 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full blur-2xl" />
+    
+    <div className="relative z-10">
+      <div className="text-sm font-mono text-cyan-400 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Crown className="w-4 h-4" />
+          <span>MY ROLE // LEAD_ENGINEER</span>
+        </div>
+        <div className="flex items-center gap-2 text-xs text-blue-300 px-2 py-0.5 border border-blue-500/50 rounded bg-blue-500/20 font-bold">
+          <img src="/images/toptal-logo.svg" alt="Toptal" className="h-3 w-auto" />
+          TOPTAL
+        </div>
+      </div>
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center group hover:border-cyan-400/60 transition-colors">
+          <Users className="w-6 h-6 mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">30+</div>
+          <div className="text-xs text-gray-400 mt-1">CONTRIBUTORS</div>
+        </div>
+        <div className="p-3 border border-purple-500/30 rounded-lg bg-black/40 text-center group hover:border-purple-400/60 transition-colors">
+          <Layers className="w-6 h-6 mx-auto mb-2 text-purple-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">CROSS</div>
+          <div className="text-xs text-gray-400 mt-1">TEAM</div>
+        </div>
+        <div className="p-3 border border-accent/30 rounded-lg bg-black/40 text-center group hover:border-accent/60 transition-colors">
+          <Server className="w-6 h-6 mx-auto mb-2 text-accent group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">DEVOPS</div>
+          <div className="text-xs text-gray-400 mt-1">INTEGRATION</div>
+        </div>
+        <div className="p-3 border border-orange-500/30 rounded-lg bg-black/40 text-center group hover:border-orange-500/60 transition-colors">
+          <Clock className="w-6 h-6 mx-auto mb-2 text-orange-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">2019-20</div>
+          <div className="text-xs text-gray-400 mt-1">DURATION</div>
+        </div>
+      </div>
+      
+      <div className="border-t border-cyan-500/20 pt-4">
+        <div className="text-xs font-mono text-cyan-400 mb-3 flex items-center gap-2">
+          <Target className="w-3 h-3" />
+          INDUSTRY FOCUS
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <span className="px-3 py-1 text-xs font-mono border border-cyan-500/30 rounded-full bg-cyan-500/10 text-cyan-300">Intellectual Property</span>
+          <span className="px-3 py-1 text-xs font-mono border border-purple-500/30 rounded-full bg-purple-500/10 text-purple-300">Enterprise Search</span>
+          <span className="px-3 py-1 text-xs font-mono border border-accent/30 rounded-full bg-accent/10 text-accent">Legal Technology</span>
+          <span className="px-3 py-1 text-xs font-mono border border-orange-500/30 rounded-full bg-orange-500/10 text-orange-300">Data Infrastructure</span>
+        </div>
+      </div>
+      
+      <div className="border-t border-cyan-500/20 pt-4 mt-4">
+        <div className="text-xs font-mono text-green-400 mb-3 flex items-center gap-2">
+          <CheckCircle className="w-3 h-3" />
+          KEY ACHIEVEMENTS
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <div className="flex items-center gap-2 p-2 rounded bg-green-500/5 border border-green-500/20">
+            <Database className="w-4 h-4 text-green-400 flex-shrink-0" />
+            <span className="text-xs text-gray-300">100M+ Patents Indexed</span>
+          </div>
+          <div className="flex items-center gap-2 p-2 rounded bg-green-500/5 border border-green-500/20">
+            <Zap className="w-4 h-4 text-green-400 flex-shrink-0" />
+            <span className="text-xs text-gray-300">Sub-second Search</span>
+          </div>
+          <div className="flex items-center gap-2 p-2 rounded bg-green-500/5 border border-green-500/20">
+            <Activity className="w-4 h-4 text-green-400 flex-shrink-0" />
+            <span className="text-xs text-gray-300">Zero-downtime Deploy</span>
+          </div>
+          <div className="flex items-center gap-2 p-2 rounded bg-green-500/5 border border-green-500/20">
+            <TrendingUp className="w-4 h-4 text-green-400 flex-shrink-0" />
+            <span className="text-xs text-gray-300">60% Cost Savings</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const PatentSeekersPlatformDiagram = () => (
+  <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-cyan-400 mb-4 flex justify-between">
+      <span>FIG 1.0 // SEARCH_ARCHITECTURE</span>
+      <span className="text-xs text-muted-foreground">OVERVIEW</span>
+    </div>
+    
+    <div className="flex flex-col items-center gap-3">
+      <div className="p-3 border border-purple-500/40 rounded bg-purple-500/10 text-center w-48">
+        <Globe className="w-5 h-5 mx-auto mb-1 text-purple-400" />
+        <div className="font-mono text-xs text-purple-400 font-bold">Patent Sources</div>
+        <div className="text-xs text-gray-400">Global office feeds</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-2 gap-3 w-full max-w-xs">
+        <div className="p-2 border border-cyan-500/40 rounded bg-cyan-500/10 text-center">
+          <Database className="w-4 h-4 mx-auto mb-1 text-cyan-400" />
+          <div className="font-mono text-xs text-cyan-400">Data Pipeline</div>
+        </div>
+        <div className="p-2 border border-green-500/40 rounded bg-green-500/10 text-center">
+          <FileSearch className="w-4 h-4 mx-auto mb-1 text-green-400" />
+          <div className="font-mono text-xs text-green-400">Search Index</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-3 gap-2 w-full max-w-md">
+        <div className="p-2 border border-purple-500/40 rounded bg-purple-500/10 text-center">
+          <Database className="w-4 h-4 mx-auto mb-1 text-purple-400" />
+          <div className="font-mono text-xs text-purple-400">Doc Store</div>
+        </div>
+        <div className="p-2 border border-cyan-500/40 rounded bg-cyan-500/10 text-center">
+          <Activity className="w-4 h-4 mx-auto mb-1 text-cyan-400" />
+          <div className="font-mono text-xs text-cyan-400">Search API</div>
+        </div>
+        <div className="p-2 border border-accent/40 rounded bg-accent/10 text-center">
+          <Zap className="w-4 h-4 mx-auto mb-1 text-accent" />
+          <div className="font-mono text-xs text-accent">Query Engine</div>
+        </div>
+      </div>
+      
+      <div className="mt-4 p-3 border border-cyan-500/30 rounded bg-cyan-500/5 w-full">
+        <div className="text-xs font-mono text-cyan-400 mb-2">CAPABILITIES</div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Full-text patent search</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Custom query language</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Proximity operators</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Enterprise API access</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const PatentSeekersMetricsDiagram = () => (
+  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
+      <span>FIG 2.0 // PLATFORM_ACHIEVEMENTS</span>
+      <span className="text-xs text-muted-foreground">RESULTS</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="text-xs font-mono text-cyan-400 mb-3">SCALE & PERFORMANCE</div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Patents Indexed</span>
+            <span className="font-mono text-green-400 font-bold whitespace-nowrap">100M+</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Query Response Time</span>
+            <span className="font-mono text-green-400 whitespace-nowrap">Sub-second</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Production Uptime</span>
+            <span className="font-mono text-green-400 whitespace-nowrap">99.9%</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="text-xs font-mono text-purple-400 mb-3">INFRASTRUCTURE</div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Infrastructure as Code</span>
+            <span className="font-mono text-green-400 font-bold whitespace-nowrap">100%</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Zero-downtime Deployments</span>
+            <span className="font-mono text-green-400 whitespace-nowrap">Implemented</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Non-production Cost Savings</span>
+            <span className="font-mono text-green-400 whitespace-nowrap">60%</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="text-xs font-mono text-green-400 mb-3">CODEBASE</div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Lines of Code</span>
+            <span className="font-mono text-white font-bold whitespace-nowrap">210K+</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Contributors</span>
+            <span className="font-mono text-white whitespace-nowrap">30+</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-sm text-gray-300 whitespace-nowrap">Total Commits</span>
+            <span className="font-mono text-white whitespace-nowrap">8,500+</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const PatentSeekersTeamFeedbackSection = () => (
+  <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-cyan-400 mb-4 flex justify-between">
+      <span>TEAM FEEDBACK // COLLEAGUES</span>
+      <span className="text-xs text-green-400">VERIFIED</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-green-500/30 rounded-lg bg-gradient-to-r from-green-500/5 to-transparent">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
+            <Target className="w-4 h-4 text-green-400" />
+          </div>
+          <div>
+            <div className="font-mono text-sm text-green-400">GERAINT EVANS</div>
+            <div className="text-xs text-gray-500">Senior IP and Project Manager</div>
+          </div>
+        </div>
+        <p className="text-sm text-gray-300 leading-relaxed mb-3">
+          "Sergey has been a pleasure to work with and helped advance the project in many ways. He has exceptional technical skills and was keen and quick to learn and adapt when needed. When we decided to migrate to AWS, Sergey proactively learned the platform and was quick to adapt and transfer our system. He has been forthcoming with ideas and improvements, and communicated well with the rest of the team. I would highly recommend Sergey for any engineering position."
+        </p>
+        <a href="https://www.linkedin.com/in/geraint-evans-432b37172/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+// Detection functions for PatentSeekers
+function isPatentSeekersRole(code: string): boolean {
+  return code.includes('PATENTSEEKERS ROLE') && code.includes('LEAD_ENGINEER') && code.includes('TOPTAL');
+}
+
+function isPatentSeekersPlatform(code: string): boolean {
+  return code.includes('PATENTSEEKERS PLATFORM') && code.includes('SEARCH ARCHITECTURE') && code.includes('OVERVIEW');
+}
+
+function isPatentSeekersMetrics(code: string): boolean {
+  return code.includes('PATENTSEEKERS METRICS') && code.includes('PLATFORM ACHIEVEMENTS') && code.includes('RESULTS');
+}
+
+function isPatentSeekersTeamFeedback(code: string): boolean {
+  return code.includes('PATENTSEEKERS TEAM FEEDBACK') && code.includes('COLLEAGUES');
+}
+
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'patentseekers-role', detect: isPatentSeekersRole, component: PatentSeekersRoleCard },
+  { id: 'patentseekers-platform', detect: isPatentSeekersPlatform, component: PatentSeekersPlatformDiagram },
+  { id: 'patentseekers-metrics', detect: isPatentSeekersMetrics, component: PatentSeekersMetricsDiagram },
+  { id: 'patentseekers-team-feedback', detect: isPatentSeekersTeamFeedback, component: PatentSeekersTeamFeedbackSection },
   { id: 'p2l-role', detect: isP2LRole, component: P2LRoleCard },
   { id: 'p2l-platform', detect: isP2LPlatform, component: P2LPlatformDiagram },
   { id: 'p2l-metrics', detect: isP2LMetrics, component: P2LMetricsDiagram },
