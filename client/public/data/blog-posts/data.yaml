@@ -341,3 +341,30 @@
   seo_title: "OkTY Case Study: Building a Privacy-First Data Monetization Platform"
   seo_description: "How we built a GDPR-compliant data monetization platform for retail analytics. 50M+ daily transactions, 15+ retail chains, serverless AWS architecture."
   seo_keywords: "OkTY case study, data monetization platform, retail analytics, GDPR compliance, AWS serverless, data engineering, privacy-first architecture"
+
+- id: 29
+  slug: case-study-wellbe
+  title: "WellBe - From Firebase Limitations to Scalable GraphQL Architecture"
+  excerpt: "How we migrated a mental wellness app from Firebase to a modern GraphQL + Heroku architecture. 60% faster feature development, 100% subscription event coverage."
+  case_study_year: "2023-2024"
+  case_study_role: "Fractional Tech Lead"
+  date: "2025-12-01"
+  tags:
+    - Case-Study
+    - Python
+    - Django
+    - FastAPI
+    - Flutter
+    - GraphQL
+    - Heroku
+    - Terraform
+    - Startup
+    - Mobile
+  image_url: /images/case_study_wellbe_wellness.png
+  status: published
+  published_at: "2025-12-01T10:00:00Z"
+  content: blog-posts/29.content.md
+  audience: Tech Leaders
+  seo_title: "WellBe Case Study: Firebase to GraphQL Migration for Mental Wellness App"
+  seo_description: "How we migrated WellBe from Firebase to GraphQL + Heroku. 60% faster development, unified subscription management across App Store, Google Play, Yukassa."
+  seo_keywords: "WellBe case study, Firebase migration, GraphQL API, mental wellness app, subscription management, Heroku deployment, Flutter backend"

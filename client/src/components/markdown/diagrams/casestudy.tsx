@@ -1383,6 +1383,419 @@ function isOkTYTeamFeedback(code: string): boolean {
   return code.includes('OKTY TEAM FEEDBACK') && code.includes('OKTY COLLEAGUES');
 }
 
+// WellBe Case Study Diagrams
+export const WellBeRoleCard = () => (
+  <div className="my-8 border border-violet-500/40 rounded-lg bg-gradient-to-br from-black/60 via-violet-950/20 to-black/60 p-6 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-violet-500/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
+    
+    <div className="relative z-10">
+      <div className="text-sm font-mono text-violet-400 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Crown className="w-4 h-4" />
+          <span>MY ROLE // FRACTIONAL_TECH_LEAD</span>
+        </div>
+        <span className="text-xs text-muted-foreground px-2 py-0.5 border border-violet-500/30 rounded">PART-TIME</span>
+      </div>
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="p-3 border border-violet-500/30 rounded-lg bg-black/40 text-center group hover:border-violet-400/60 transition-colors">
+          <Users className="w-6 h-6 mx-auto mb-2 text-violet-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">CEO</div>
+          <div className="text-xs text-gray-400 mt-1">& VISIONARY</div>
+        </div>
+        <div className="p-3 border border-primary/30 rounded-lg bg-black/40 text-center group hover:border-primary/60 transition-colors">
+          <Server className="w-6 h-6 mx-auto mb-2 text-primary group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">DEVOPS</div>
+          <div className="text-xs text-gray-400 mt-1">ENGINEER</div>
+        </div>
+        <div className="p-3 border border-accent/30 rounded-lg bg-black/40 text-center group hover:border-accent/60 transition-colors">
+          <FileCode className="w-6 h-6 mx-auto mb-2 text-accent group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">BACKEND</div>
+          <div className="text-xs text-gray-400 mt-1">TEAM</div>
+        </div>
+        <div className="p-3 border border-orange-500/30 rounded-lg bg-black/40 text-center group hover:border-orange-500/60 transition-colors">
+          <Clock className="w-6 h-6 mx-auto mb-2 text-orange-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">1.5 YR</div>
+          <div className="text-xs text-gray-400 mt-1">DURATION</div>
+        </div>
+      </div>
+      
+      <div className="border-t border-violet-500/20 pt-4">
+        <div className="text-xs font-mono text-violet-400 mb-3 flex items-center gap-2">
+          <Zap className="w-3 h-3" />
+          TECHNICAL INNOVATIONS
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-violet-500/10 to-transparent border-l-2 border-violet-400">
+            <Globe className="w-4 h-4 text-violet-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">GraphQL API Migration</div>
+              <div className="text-xs text-gray-400">From Firebase to modern API architecture</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-primary/10 to-transparent border-l-2 border-primary">
+            <Layers className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Microservices Architecture</div>
+              <div className="text-xs text-gray-400">Subscriptions, notifications, analytics</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-accent/10 to-transparent border-l-2 border-accent">
+            <Activity className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Subscription Lifecycle</div>
+              <div className="text-xs text-gray-400">App Store, Google Play, Yukassa unified</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-orange-500/10 to-transparent border-l-2 border-orange-400">
+            <GitBranch className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">CI/CD with Terraform</div>
+              <div className="text-xs text-gray-400">Heroku pipelines, automated deployments</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div className="border-t border-violet-500/20 pt-4 mt-4">
+        <div className="text-xs font-mono text-red-400 mb-3 flex items-center gap-2">
+          <AlertTriangle className="w-3 h-3" />
+          KEY CHALLENGES TACKLED
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">Firebase Migration</span>
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">Payment Integration</span>
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">App Store Independence</span>
+          <span className="px-3 py-1 text-xs font-mono border border-red-500/30 rounded-full bg-red-500/10 text-red-300">Notification System</span>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const WellBeChallengesDiagram = () => (
+  <div className="my-8 border border-red-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-red-400 mb-4 flex justify-between">
+      <span>FIG 1.0 // FIREBASE_LIMITATIONS</span>
+      <span className="text-xs text-muted-foreground">PROBLEMS</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-orange-500/30 rounded bg-orange-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Server className="w-5 h-5 text-orange-400" />
+          <span className="font-mono text-xs text-orange-400">INFRASTRUCTURE ISSUES</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> Unstable performance under load</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> No flexible schema management</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> Limited query control</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> Vendor lock-in</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-red-500/30 rounded bg-red-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <AlertTriangle className="w-5 h-5 text-red-400" />
+          <span className="font-mono text-xs text-red-400">DEPLOYMENT BOTTLENECKS</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> Every change needed app release</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> 1-2 week review cycles</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> No feature flags</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> User adoption delays</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Activity className="w-5 h-5 text-purple-400" />
+          <span className="font-mono text-xs text-purple-400">SUBSCRIPTION PAIN POINTS</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> Incomplete lifecycle tracking</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> No unified payment view</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> Missing webhook handling</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> Manual edge case handling</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const WellBeInfrastructureDiagram = () => (
+  <div className="my-8 border border-violet-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-violet-400 mb-4 flex justify-between">
+      <span>FIG 2.0 // GRAPHQL_HEROKU</span>
+      <span className="text-xs text-muted-foreground">MIGRATION</span>
+    </div>
+    
+    <div className="flex flex-col items-center gap-3">
+      <div className="p-3 border border-cyan-500/40 rounded bg-cyan-500/10 text-center w-40">
+        <Smartphone className="w-5 h-5 mx-auto mb-1 text-cyan-400" />
+        <div className="font-mono text-xs text-cyan-400 font-bold">Flutter Mobile</div>
+        <div className="text-xs text-gray-400">iOS & Android</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="p-3 border border-violet-500/40 rounded bg-violet-500/10 text-center w-40">
+        <Globe className="w-5 h-5 mx-auto mb-1 text-violet-400" />
+        <div className="font-mono text-xs text-violet-400 font-bold">GraphQL API</div>
+        <div className="text-xs text-gray-400">Versioned + Feature Flags</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+        <div className="p-2 border border-primary/40 rounded bg-primary/10 text-center">
+          <Users className="w-4 h-4 mx-auto mb-1 text-primary" />
+          <div className="font-mono text-xs text-primary">User</div>
+          <div className="text-xs text-gray-400">Service</div>
+        </div>
+        <div className="p-2 border border-green-500/40 rounded bg-green-500/10 text-center">
+          <Activity className="w-4 h-4 mx-auto mb-1 text-green-400" />
+          <div className="font-mono text-xs text-green-400">Subscription</div>
+          <div className="text-xs text-gray-400">Service</div>
+        </div>
+        <div className="p-2 border border-orange-500/40 rounded bg-orange-500/10 text-center">
+          <Zap className="w-4 h-4 mx-auto mb-1 text-orange-400" />
+          <div className="font-mono text-xs text-orange-400">Notification</div>
+          <div className="text-xs text-gray-400">Service</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="p-3 border border-accent/40 rounded bg-accent/10 text-center w-48">
+        <Database className="w-5 h-5 mx-auto mb-1 text-accent" />
+        <div className="font-mono text-xs text-accent font-bold">PostgreSQL + Redis</div>
+        <div className="text-xs text-gray-400">Heroku Managed</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+        <div className="p-2 border border-gray-500/40 rounded bg-gray-500/10 text-center">
+          <Box className="w-4 h-4 mx-auto mb-1 text-gray-400" />
+          <div className="font-mono text-xs text-gray-400">App Store</div>
+          <div className="text-xs text-gray-500">Webhooks</div>
+        </div>
+        <div className="p-2 border border-gray-500/40 rounded bg-gray-500/10 text-center">
+          <Box className="w-4 h-4 mx-auto mb-1 text-gray-400" />
+          <div className="font-mono text-xs text-gray-400">Google Play</div>
+          <div className="text-xs text-gray-500">Webhooks</div>
+        </div>
+        <div className="p-2 border border-gray-500/40 rounded bg-gray-500/10 text-center">
+          <Box className="w-4 h-4 mx-auto mb-1 text-gray-400" />
+          <div className="font-mono text-xs text-gray-400">Yukassa</div>
+          <div className="text-xs text-gray-500">Webhooks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const WellBePipelineDiagram = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
+      <span>FIG 3.0 // CI/CD_WORKFLOW</span>
+      <span className="text-xs text-muted-foreground">DEVOPS</span>
+    </div>
+    
+    <div className="space-y-4">
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <FileCode className="w-5 h-5 text-cyan-400" />
+          <span className="font-mono text-xs text-cyan-400">INFRASTRUCTURE AS CODE</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Terraform for Heroku resources</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Environment parity</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Secrets via Config Vars</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-cyan-400" /> Automated migrations</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Shield className="w-5 h-5 text-purple-400" />
+          <span className="font-mono text-xs text-purple-400">AUTOMATED TESTING</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> Unit tests on every commit</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> Integration tests</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> Load testing webhooks</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-purple-400" /> GraphQL validation</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Zap className="w-5 h-5 text-green-400" />
+          <span className="font-mono text-xs text-green-400">DEPLOYMENT FLOW</span>
+        </div>
+        <div className="grid grid-cols-2 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Auto deploy to staging</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Manual prod promotion</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Rollback in minutes</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Sentry error tracking</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const WellBeMetricsDiagram = () => (
+  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
+      <span>FIG 4.0 // PLATFORM_KPIs</span>
+      <span className="text-xs text-muted-foreground">RESULTS</span>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Zap className="w-5 h-5 text-cyan-400" />
+          <span className="font-mono text-xs text-cyan-400">VELOCITY</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Dev time</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold whitespace-nowrap">-60%</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Server changes</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold whitespace-nowrap">No release</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Deploy freq</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold whitespace-nowrap">Daily</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Activity className="w-5 h-5 text-green-400" />
+          <span className="font-mono text-xs text-green-400">SUBSCRIPTIONS</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Event coverage</span>
+            <span className="font-mono text-sm text-green-300 font-bold whitespace-nowrap">100%</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Webhook proc</span>
+            <span className="font-mono text-sm text-green-300 font-bold whitespace-nowrap">Real-time</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Tickets</span>
+            <span className="font-mono text-sm text-green-300 font-bold whitespace-nowrap">↓↓↓</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Shield className="w-5 h-5 text-purple-400" />
+          <span className="font-mono text-xs text-purple-400">RELIABILITY</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Notif errors</span>
+            <span className="font-mono text-sm text-purple-300 font-bold whitespace-nowrap">&lt;1%</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Uptime</span>
+            <span className="font-mono text-sm text-purple-300 font-bold whitespace-nowrap">99.9%</span>
+          </div>
+          <div className="flex justify-between items-center gap-2">
+            <span className="text-xs text-gray-400 whitespace-nowrap">Ops overhead</span>
+            <span className="font-mono text-sm text-purple-300 font-bold whitespace-nowrap">Minimal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const WellBeTeamFeedbackSection = () => (
+  <div className="my-8 border border-violet-500/30 rounded-lg bg-gradient-to-br from-black/60 via-violet-500/5 to-black/60 p-6">
+    <div className="text-sm font-mono text-violet-400 mb-6 flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <Users className="w-4 h-4" />
+        <span>TEAM FEEDBACK // WELLBE COLLEAGUES</span>
+      </div>
+      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-violet-500/30 rounded">VERIFIED</span>
+    </div>
+    
+    <div className="space-y-6">
+      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">NINA LITVINOVA</div>
+        <div className="text-xs text-green-400/70 mb-2">CEO & Product Visionary at WellBe</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "Sergio transformed our technical capabilities completely. He took our struggling Firebase-based architecture and built something we could actually scale with. His leadership brought clarity to our engineering team and his decisions consistently balanced technical excellence with business pragmatism. Under his guidance, we went from fighting our infrastructure to iterating faster than ever before."
+        </p>
+        <a href="https://www.linkedin.com/in/nina-litvinova-53074192/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+      
+      <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">DMITRY STEBUKOV</div>
+        <div className="text-xs text-cyan-400/70 mb-2">DevOps Engineer at WellBe</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "Working with Sergio means being confident in the outcome. He has a deep understanding of system architecture and can scale solutions to handle any load. He combines strategic thinking with strong technical expertise. He knows how to build effective teams and inspire those around him. A reliable leader who always supports execution and brings confidence to the team - someone you want by your side on complex and ambitious projects."
+        </p>
+        <a href="https://www.linkedin.com/in/dmitry-stebukov-55a7721b2/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-purple-400 text-xs font-mono">IVAN VINITSKYI</div>
+        <div className="text-xs text-purple-400/70 mb-2">Backend Engineer & API Expert at WellBe</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "Sergio is a very smart boss, with deep architectural thinking. He shares knowledge and directs the team in the right direction, notices details, chooses the best tools for business purposes and avoids unnecessary costs. Always follows the latest technical trends. It was a very productive period to work under his leadership both for me and for the team as a whole. I would always be glad to new cooperation and recommend him as an excellent organizer and reliable leader."
+        </p>
+        <a href="https://www.linkedin.com/in/ivan-vinitskyi-010410193/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-purple-400 hover:text-purple-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+// Detection functions for WellBe
+function isWellBeRole(code: string): boolean {
+  return code.includes('WELLBE ROLE') && code.includes('FRACTIONAL_TECH_LEAD') && code.includes('COLLABORATION');
+}
+
+function isWellBeChallenges(code: string): boolean {
+  return code.includes('WELLBE CHALLENGES') && code.includes('FIREBASE LIMITATIONS') && code.includes('INFRASTRUCTURE ISSUES');
+}
+
+function isWellBeInfrastructure(code: string): boolean {
+  return code.includes('WELLBE INFRASTRUCTURE') && code.includes('GRAPHQL') && code.includes('HEROKU');
+}
+
+function isWellBePipeline(code: string): boolean {
+  return code.includes('WELLBE PIPELINE') && code.includes('CI/CD WORKFLOW') && code.includes('INFRASTRUCTURE AS CODE');
+}
+
+function isWellBeMetrics(code: string): boolean {
+  return code.includes('WELLBE METRICS') && code.includes('PLATFORM KPIs') && code.includes('DEVELOPMENT VELOCITY');
+}
+
+function isWellBeTeamFeedback(code: string): boolean {
+  return code.includes('WELLBE TEAM FEEDBACK') && code.includes('WELLBE COLLEAGUES');
+}
+
 // Detection functions for Moxy
 function isMoxyRole(code: string): boolean {
   return code.includes('MOXY ROLE') && code.includes('FRACTIONAL_SOLUTION_ARCHITECT') && code.includes('COLLABORATION');
@@ -1449,6 +1862,12 @@ function isUMIASTransformation(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'wellbe-role', detect: isWellBeRole, component: WellBeRoleCard },
+  { id: 'wellbe-challenges', detect: isWellBeChallenges, component: WellBeChallengesDiagram },
+  { id: 'wellbe-infrastructure', detect: isWellBeInfrastructure, component: WellBeInfrastructureDiagram },
+  { id: 'wellbe-pipeline', detect: isWellBePipeline, component: WellBePipelineDiagram },
+  { id: 'wellbe-metrics', detect: isWellBeMetrics, component: WellBeMetricsDiagram },
+  { id: 'wellbe-team-feedback', detect: isWellBeTeamFeedback, component: WellBeTeamFeedbackSection },
   { id: 'okty-role', detect: isOkTYRole, component: OkTYRoleCard },
   { id: 'okty-data', detect: isOkTYData, component: OkTYDataDiagram },
   { id: 'okty-infrastructure', detect: isOkTYInfrastructure, component: OkTYInfrastructureDiagram },
