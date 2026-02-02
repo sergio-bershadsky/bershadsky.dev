@@ -93,16 +93,6 @@ html {
     -webkit-text-fill-color: currentColor;
   }
   
-  /* Series-colored hover effects using CSS variables */
-  [style*="--hover-border-color"]:hover {
-    border-color: var(--hover-border-color) !important;
-    background-color: var(--hover-bg-color);
-    box-shadow: var(--hover-shadow);
-  }
-  
-  [style*="--hover-border"]:hover {
-    border-color: var(--hover-border) !important;
-  }
   
   .text-glow {
     text-shadow: 0 0 10px currentColor;
