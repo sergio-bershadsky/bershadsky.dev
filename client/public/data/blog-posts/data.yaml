@@ -277,7 +277,7 @@
     - Docker
     - Terraform
     - DevOps
-  image_url: /images/case_study_ida_devops.webp
+  image_url: /images/case_study_ida_devops.png
   status: published
   published_at: "2025-07-01T10:00:00Z"
   content: blog-posts/26.content.md
