@@ -288,3 +288,30 @@
   seo_title: "IDA Case Study: From Deployment Chaos to 99.9% Uptime"
   seo_description: "How we stabilized a failing deployment pipeline for International Drivers Association. 90% fewer failures, 50% faster deploys, 99.9% uptime with Django, AWS, Docker, Terraform."
   seo_keywords: "IDA case study, DevOps transformation, CI/CD pipeline, Django Wagtail AWS, deployment automation, infrastructure as code"
+
+- id: 27
+  slug: case-study-moxy
+  title: "Case Study: Moxy - Building a Sports Entertainment Platform from Zero"
+  excerpt: "How we built scalable cloud infrastructure from scratch for a digital sports startup. 99.99% uptime, 10,000+ concurrent users, sub-200ms latency globally."
+  case_study_year: "2020-2021"
+  case_study_role: "Fractional Solution Architect"
+  date: "2025-08-01"
+  tags:
+    - Case-Study
+    - AWS
+    - Kubernetes
+    - Terraform
+    - Docker
+    - Node.js
+    - React
+    - Python
+    - DevOps
+    - Startup
+  image_url: /images/case_study_moxy_sports.png
+  status: published
+  published_at: "2025-08-01T10:00:00Z"
+  content: blog-posts/27.content.md
+  audience: Tech Leaders
+  seo_title: "Moxy Case Study: Building Sports Entertainment Infrastructure from Zero"
+  seo_description: "How we built scalable cloud-native infrastructure for Moxy digital sports platform. 99.99% uptime, 10,000+ concurrent users, Kubernetes, AWS, Terraform."
+  seo_keywords: "Moxy case study, sports platform infrastructure, cloud-native architecture, Kubernetes AWS, startup DevOps, scalable infrastructure"
