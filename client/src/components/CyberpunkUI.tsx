@@ -25,9 +25,10 @@ interface NeonCardProps {
   children: React.ReactNode;
   className?: string;
   variant?: 'primary' | 'secondary' | 'accent';
+  style?: React.CSSProperties;
 }
 
-export const NeonCard: React.FC<NeonCardProps> = ({ children, className, variant = 'primary' }) => {
+export const NeonCard: React.FC<NeonCardProps> = ({ children, className, variant = 'primary', style }) => {
   const borderColors = {
     primary: 'border-primary/50 hover:border-primary',
     secondary: 'border-secondary/50 hover:border-secondary',
@@ -49,6 +50,7 @@ export const NeonCard: React.FC<NeonCardProps> = ({ children, className, variant
         glowColors[variant],
         className
       )}
+      style={style}
     >
       <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-current opacity-50" />
       <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-current opacity-50" />
