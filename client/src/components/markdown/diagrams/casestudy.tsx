@@ -1,6 +1,83 @@
 import React from 'react';
-import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle } from 'lucide-react';
+import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle, Crown, Target, Lock, Gauge, Box, Layers } from 'lucide-react';
 import { DiagramEntry } from '../diagramRegistry';
+
+export const TechLeadRoleCard = () => (
+  <div className="my-8 border border-cyan-500/40 rounded-lg bg-gradient-to-br from-black/60 via-cyan-950/20 to-black/60 p-6 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/10 rounded-full blur-2xl" />
+    
+    <div className="relative z-10">
+      <div className="text-sm font-mono text-cyan-400 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Crown className="w-4 h-4" />
+          <span>MY ROLE // TECH_LEAD</span>
+        </div>
+        <span className="text-xs text-muted-foreground px-2 py-0.5 border border-cyan-500/30 rounded">LEADERSHIP</span>
+      </div>
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center group hover:border-cyan-400/60 transition-colors">
+          <Users className="w-6 h-6 mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-2xl text-white font-bold">8-10</div>
+          <div className="text-xs text-gray-400 mt-1">ENGINEERS</div>
+        </div>
+        <div className="p-3 border border-primary/30 rounded-lg bg-black/40 text-center group hover:border-primary/60 transition-colors">
+          <Target className="w-6 h-6 mx-auto mb-2 text-primary group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">DIRECT</div>
+          <div className="text-xs text-gray-400 mt-1">TO STAKEHOLDERS</div>
+        </div>
+        <div className="p-3 border border-accent/30 rounded-lg bg-black/40 text-center group hover:border-accent/60 transition-colors">
+          <Layers className="w-6 h-6 mx-auto mb-2 text-accent group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">FULL</div>
+          <div className="text-xs text-gray-400 mt-1">TECH OWNERSHIP</div>
+        </div>
+        <div className="p-3 border border-orange-500/30 rounded-lg bg-black/40 text-center group hover:border-orange-500/60 transition-colors">
+          <Gauge className="w-6 h-6 mx-auto mb-2 text-orange-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">3 YRS</div>
+          <div className="text-xs text-gray-400 mt-1">DURATION</div>
+        </div>
+      </div>
+      
+      <div className="border-t border-cyan-500/20 pt-4">
+        <div className="text-xs font-mono text-cyan-400 mb-3 flex items-center gap-2">
+          <Zap className="w-3 h-3" />
+          TECHNICAL INNOVATIONS
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-cyan-500/10 to-transparent border-l-2 border-cyan-400">
+            <Box className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Early Docker Adoption</div>
+              <div className="text-xs text-gray-400">Containerization before mainstream</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-primary/10 to-transparent border-l-2 border-primary">
+            <Container className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Custom Docker Cluster</div>
+              <div className="text-xs text-gray-400">Built on HashiCorp Consul</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-accent/10 to-transparent border-l-2 border-accent">
+            <Gauge className="w-4 h-4 text-accent mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Smart Server Caching</div>
+              <div className="text-xs text-gray-400">Reduced backend pressure 10x</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-green-500/10 to-transparent border-l-2 border-green-400">
+            <Lock className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Encrypted Data Vaults</div>
+              <div className="text-xs text-gray-400">Secure personal data storage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
 export const UMIASArchitectureDiagram = () => (
   <div className="my-8 border border-orange-500/30 rounded-lg bg-black/40 p-5">
@@ -188,6 +265,10 @@ export const UMIASTransformationDiagram = () => (
   </div>
 );
 
+function isTechLeadRole(code: string): boolean {
+  return code.includes('TECH_LEAD') && code.includes('ENGINEERS') && code.includes('STAKEHOLDERS') && code.includes('INNOVATIONS');
+}
+
 function isUMIASArchitecture(code: string): boolean {
   return code.includes('WEB PORTAL') && code.includes('MOBILE APPS') && code.includes('API GATEWAY') && code.includes('PYTHON BACKEND');
 }
@@ -201,6 +282,7 @@ function isUMIASTransformation(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'tech-lead-role', detect: isTechLeadRole, component: TechLeadRoleCard },
   { id: 'umias-architecture', detect: isUMIASArchitecture, component: UMIASArchitectureDiagram },
   { id: 'umias-results', detect: isUMIASResults, component: UMIASResultsDiagram },
   { id: 'umias-transformation', detect: isUMIASTransformation, component: UMIASTransformationDiagram },
