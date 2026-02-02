@@ -235,3 +235,25 @@
   seo_title: "Autonomous AI Workflow: Full Second Brain Automation"
   seo_description: "Wire your entire second brain into an autonomous workflow. Morning summaries, prepared standups, and AI context that loads itself."
   seo_keywords: "autonomous workflow, AI automation, morning summary, standup automation, second brain capstone"
+
+- id: 25
+  slug: case-study-umias
+  title: "Case Study: UMIAS (2015-2018) - From Dying Portal to National Healthcare Platform"
+  excerpt: "How we transformed a 2,000 visitor news site into the world's largest medical booking app with 1.6M installs and 2M monthly appointments in just 3 years."
+  date: "2024-12-30"
+  tags:
+    - Case-Study
+    - Python
+    - ReactJS
+    - ReactNative
+    - Docker
+    - Healthcare
+    - Startup
+  image_url: /images/case_study_umias_healthcare.webp
+  status: published
+  published_at: "2025-12-30T10:00:00Z"
+  content: blog-posts/25.content.md
+  audience: Tech Leaders
+  seo_title: "UMIAS Case Study: Building the World's Largest Medical Booking App"
+  seo_description: "How we transformed a dying news portal into Moscow's largest healthcare platform. 1M MAU, 1.6M app installs, 2M monthly appointments. Python, React, Docker."
+  seo_keywords: "UMIAS case study, healthcare app development, medical booking platform, Python Docker ReactJS, Moscow healthcare, startup transformation"

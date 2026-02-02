@@ -5,3 +5,11 @@
   cover_image_url: null
   accent_color: "#06b6d4"
   is_visible: true
+
+- id: 6
+  slug: case-study
+  title: "Case Study"
+  description: "Deep dives into real-world projects - the challenges, solutions, and lessons learned from building products that scale."
+  cover_image_url: null
+  accent_color: "#f97316"
+  is_visible: true
