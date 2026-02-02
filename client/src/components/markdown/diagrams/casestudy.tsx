@@ -596,6 +596,413 @@ export const IDATeamFeedbackSection = () => (
   </div>
 );
 
+// Moxy Diagrams
+export const MoxyRoleCard = () => (
+  <div className="my-8 border border-purple-500/40 rounded-lg bg-gradient-to-br from-black/60 via-purple-950/20 to-black/60 p-6 relative overflow-hidden">
+    <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl" />
+    
+    <div className="relative z-10">
+      <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <Crown className="w-4 h-4" />
+          <span>MOXY ROLE // FRACTIONAL_SOLUTION_ARCHITECT</span>
+        </div>
+        <span className="text-xs text-muted-foreground px-2 py-0.5 border border-purple-500/30 rounded">PART-TIME</span>
+      </div>
+      
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+        <div className="p-3 border border-purple-500/30 rounded-lg bg-black/40 text-center group hover:border-purple-400/60 transition-colors">
+          <Users className="w-6 h-6 mx-auto mb-2 text-purple-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">LEADERSHIP</div>
+          <div className="text-xs text-gray-400 mt-1">STARTUP TEAM</div>
+        </div>
+        <div className="p-3 border border-cyan-500/30 rounded-lg bg-black/40 text-center group hover:border-cyan-500/60 transition-colors">
+          <Target className="w-6 h-6 mx-auto mb-2 text-cyan-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-sm text-white font-bold">CEO & CTO</div>
+          <div className="text-xs text-gray-400 mt-1">REPORTED TO</div>
+        </div>
+        <div className="p-3 border border-green-500/30 rounded-lg bg-black/40 text-center group hover:border-green-500/60 transition-colors">
+          <Clock className="w-6 h-6 mx-auto mb-2 text-green-400 group-hover:scale-110 transition-transform" />
+          <div className="font-mono text-lg text-white font-bold">1 YR</div>
+          <div className="text-xs text-gray-400 mt-1">DURATION</div>
+        </div>
+      </div>
+      
+      <div className="border-t border-purple-500/20 pt-4">
+        <div className="text-xs font-mono text-purple-400 mb-3 flex items-center gap-2">
+          <Zap className="w-3 h-3" />
+          INNOVATIONS DELIVERED
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-purple-500/10 to-transparent border-l-2 border-purple-400">
+            <Server className="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Cloud-Native AWS</div>
+              <div className="text-xs text-gray-400">Full architecture from zero</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-cyan-500/10 to-transparent border-l-2 border-cyan-400">
+            <FileCode className="w-4 h-4 text-cyan-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Terraform IaC</div>
+              <div className="text-xs text-gray-400">Infrastructure as Code</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-green-500/10 to-transparent border-l-2 border-green-400">
+            <Container className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">Kubernetes (EKS)</div>
+              <div className="text-xs text-gray-400">Container orchestration</div>
+            </div>
+          </div>
+          <div className="flex items-start gap-3 p-3 rounded bg-gradient-to-r from-orange-500/10 to-transparent border-l-2 border-orange-400">
+            <GitBranch className="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0" />
+            <div>
+              <div className="text-sm text-white font-medium">CI/CD Automation</div>
+              <div className="text-xs text-gray-400">GitHub Actions pipelines</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const MoxyTrafficDiagram = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
+      <span>FIG 1.0 // TRAFFIC_PATTERN_ANALYSIS</span>
+      <span className="text-xs text-muted-foreground">ARCHITECTURE</span>
+    </div>
+    
+    <div className="mb-6">
+      <div className="text-xs font-mono text-red-400 mb-3 flex items-center gap-2">
+        <AlertTriangle className="w-4 h-4" />
+        CHALLENGE: UNPREDICTABLE SPIKES
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="p-3 border border-gray-600/40 rounded bg-gray-800/40 text-center">
+          <div className="text-xs text-gray-400 mb-1">Pre-event</div>
+          <div className="font-mono text-lg text-gray-300">~500</div>
+          <div className="text-xs text-gray-500">users baseline</div>
+        </div>
+        <div className="p-3 border border-orange-500/40 rounded bg-orange-500/10 text-center">
+          <div className="text-xs text-orange-400 mb-1">Event Start</div>
+          <div className="font-mono text-lg text-orange-300">10,000+</div>
+          <div className="text-xs text-orange-400/70">20x spike</div>
+        </div>
+        <div className="p-3 border border-red-500/40 rounded bg-red-500/10 text-center">
+          <div className="text-xs text-red-400 mb-1">Peak Moments</div>
+          <div className="font-mono text-lg text-red-300">+50%</div>
+          <div className="text-xs text-red-400/70">additional surge</div>
+        </div>
+        <div className="p-3 border border-gray-600/40 rounded bg-gray-800/40 text-center">
+          <div className="text-xs text-gray-400 mb-1">Post-event</div>
+          <div className="font-mono text-lg text-gray-300">↓</div>
+          <div className="text-xs text-gray-500">rapid decline</div>
+        </div>
+      </div>
+    </div>
+    
+    <div className="border-t border-purple-500/20 pt-4">
+      <div className="text-xs font-mono text-green-400 mb-3 flex items-center gap-2">
+        <CheckCircle className="w-4 h-4" />
+        REQUIREMENTS DERIVED
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <div className="flex items-center gap-3 p-2 rounded bg-green-500/5 border border-green-500/20">
+          <Zap className="w-4 h-4 text-green-400 flex-shrink-0" />
+          <div className="text-sm text-gray-300">Auto-scaling: 20x in &lt; 2 min</div>
+        </div>
+        <div className="flex items-center gap-3 p-2 rounded bg-green-500/5 border border-green-500/20">
+          <Gauge className="w-4 h-4 text-green-400 flex-shrink-0" />
+          <div className="text-sm text-gray-300">Latency: &lt; 200ms globally</div>
+        </div>
+        <div className="flex items-center gap-3 p-2 rounded bg-green-500/5 border border-green-500/20">
+          <Shield className="w-4 h-4 text-green-400 flex-shrink-0" />
+          <div className="text-sm text-gray-300">Availability: 99.99% uptime</div>
+        </div>
+        <div className="flex items-center gap-3 p-2 rounded bg-green-500/5 border border-green-500/20">
+          <TrendingUp className="w-4 h-4 text-green-400 flex-shrink-0" />
+          <div className="text-sm text-gray-300">Cost: Scale down aggressively</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const MoxyInfrastructureDiagram = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
+      <span>FIG 2.0 // AWS_CLOUD_NATIVE</span>
+      <span className="text-xs text-muted-foreground">GREENFIELD</span>
+    </div>
+    
+    <div className="flex flex-col items-center gap-3">
+      <div className="p-3 border border-cyan-500/40 rounded bg-cyan-500/10 text-center w-40">
+        <Globe className="w-5 h-5 mx-auto mb-1 text-cyan-400" />
+        <div className="font-mono text-xs text-cyan-400 font-bold">CloudFront</div>
+        <div className="text-xs text-gray-400">CDN + WAF</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+        <div className="p-2 border border-orange-500/40 rounded bg-orange-500/10 text-center">
+          <Database className="w-4 h-4 mx-auto mb-1 text-orange-400" />
+          <div className="font-mono text-xs text-orange-400">S3</div>
+          <div className="text-xs text-gray-400">Static</div>
+        </div>
+        <div className="p-2 border border-purple-500/40 rounded bg-purple-500/10 text-center">
+          <Server className="w-4 h-4 mx-auto mb-1 text-purple-400" />
+          <div className="font-mono text-xs text-purple-400">ALB</div>
+          <div className="text-xs text-gray-400">Load Balancer</div>
+        </div>
+        <div className="p-2 border border-green-500/40 rounded bg-green-500/10 text-center">
+          <Zap className="w-4 h-4 mx-auto mb-1 text-green-400" />
+          <div className="font-mono text-xs text-green-400">ElastiCache</div>
+          <div className="text-xs text-gray-400">Cache</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="p-3 border border-cyan-500/40 rounded bg-cyan-500/10 text-center w-48">
+        <Container className="w-5 h-5 mx-auto mb-1 text-cyan-400" />
+        <div className="font-mono text-xs text-cyan-400 font-bold">EKS Kubernetes</div>
+        <div className="text-xs text-gray-400">Container Orchestration</div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="grid grid-cols-3 gap-3 w-full max-w-md">
+        <div className="p-2 border border-primary/40 rounded bg-primary/10 text-center">
+          <Box className="w-4 h-4 mx-auto mb-1 text-primary" />
+          <div className="font-mono text-xs text-primary">Node.js</div>
+          <div className="text-xs text-gray-400">API</div>
+        </div>
+        <div className="p-2 border border-accent/40 rounded bg-accent/10 text-center">
+          <Box className="w-4 h-4 mx-auto mb-1 text-accent" />
+          <div className="font-mono text-xs text-accent">Python</div>
+          <div className="text-xs text-gray-400">Services</div>
+        </div>
+        <div className="p-2 border border-cyan-500/40 rounded bg-cyan-500/10 text-center">
+          <Box className="w-4 h-4 mx-auto mb-1 text-cyan-400" />
+          <div className="font-mono text-xs text-cyan-400">React</div>
+          <div className="text-xs text-gray-400">SSR</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="p-3 border border-green-500/40 rounded bg-green-500/10 text-center w-40">
+        <Database className="w-5 h-5 mx-auto mb-1 text-green-400" />
+        <div className="font-mono text-xs text-green-400 font-bold">RDS Multi-AZ</div>
+        <div className="text-xs text-gray-400">PostgreSQL</div>
+      </div>
+    </div>
+  </div>
+);
+
+export const MoxyPipelineDiagram = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-purple-400 mb-4 flex justify-between">
+      <span>FIG 3.0 // CI/CD_WORKFLOW</span>
+      <span className="text-xs text-muted-foreground">DEVOPS</span>
+    </div>
+    
+    <div className="flex flex-col gap-4">
+      <div className="text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-2 border border-gray-500/40 rounded bg-gray-800/40">
+          <GitBranch className="w-4 h-4 text-gray-400" />
+          <span className="font-mono text-sm text-gray-300">Developer Pushes Code</span>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500 mx-auto" />
+      
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 font-mono text-xs">1</div>
+          <span className="font-mono text-sm text-cyan-400">STAGE 1: BUILD & TEST</span>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-cyan-400" /> Lint code</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-cyan-400" /> Unit tests</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-cyan-400" /> Docker build</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-cyan-400" /> Security scan</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500 mx-auto" />
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 font-mono text-xs">2</div>
+          <span className="font-mono text-sm text-purple-400">STAGE 2: INTEGRATION</span>
+        </div>
+        <div className="grid grid-cols-3 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-purple-400" /> Deploy staging</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-purple-400" /> Integration tests</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-purple-400" /> Benchmarks</div>
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500 mx-auto" />
+      
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-mono text-xs">3</div>
+          <span className="font-mono text-sm text-green-400">STAGE 3: PRODUCTION</span>
+        </div>
+        <div className="grid grid-cols-3 gap-2 text-xs text-gray-400">
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Blue-green deploy</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Traffic shift</div>
+          <div className="flex items-center gap-1"><CheckCircle className="w-3 h-3 text-green-400" /> Auto rollback</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const MoxyMetricsDiagram = () => (
+  <div className="my-8 border border-green-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
+      <span>FIG 4.0 // INFRASTRUCTURE_KPIs</span>
+      <span className="text-xs text-muted-foreground">RESULTS</span>
+    </div>
+    
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Shield className="w-5 h-5 text-green-400" />
+          <span className="font-mono text-xs text-green-400">RELIABILITY</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Uptime</span>
+            <span className="font-mono text-sm text-green-300 font-bold">99.99%</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Live event downtime</span>
+            <span className="font-mono text-sm text-green-300 font-bold">ZERO</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Rollback success</span>
+            <span className="font-mono text-sm text-green-300 font-bold">100%</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-cyan-500/30 rounded bg-cyan-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <Gauge className="w-5 h-5 text-cyan-400" />
+          <span className="font-mono text-xs text-cyan-400">PERFORMANCE</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Latency</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold">&lt;200ms</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Peak users</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold">10,000+</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Scale time</span>
+            <span className="font-mono text-sm text-cyan-300 font-bold">&lt;2 min</span>
+          </div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-purple-500/30 rounded bg-purple-500/5">
+        <div className="flex items-center gap-2 mb-3">
+          <TrendingUp className="w-5 h-5 text-purple-400" />
+          <span className="font-mono text-xs text-purple-400">EFFICIENCY</span>
+        </div>
+        <div className="space-y-2">
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Deploy time</span>
+            <span className="font-mono text-sm text-purple-300 font-bold">-75%</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Cost savings</span>
+            <span className="font-mono text-sm text-purple-300 font-bold">40%</span>
+          </div>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-gray-400">Release speed</span>
+            <span className="font-mono text-sm text-purple-300 font-bold">3x</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const MoxyTeamFeedbackSection = () => (
+  <div className="my-8 border border-purple-500/30 rounded-lg bg-gradient-to-br from-black/60 via-purple-500/5 to-black/60 p-6">
+    <div className="text-sm font-mono text-purple-400 mb-6 flex justify-between items-center">
+      <div className="flex items-center gap-2">
+        <Users className="w-4 h-4" />
+        <span>TEAM FEEDBACK // MOXY COLLEAGUES</span>
+      </div>
+      <span className="text-xs text-muted-foreground px-2 py-0.5 border border-purple-500/30 rounded">VERIFIED</span>
+    </div>
+    
+    <div className="space-y-6">
+      <div className="p-4 border border-green-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-green-400 text-xs font-mono">MARC DEFOUW</div>
+        <div className="text-xs text-green-400/70 mb-2">Founder & CEO at Moxy</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "Sergio's architectural expertise was instrumental in building Moxy's foundation. He understood our vision and translated it into a scalable, reliable infrastructure that has supported our growth from day one. His ability to balance startup agility with enterprise-grade reliability is rare and invaluable."
+        </p>
+        <a href="https://www.linkedin.com/in/mdefouw/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-green-400 hover:text-green-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+      
+      <div className="p-4 border border-cyan-500/30 rounded-lg bg-black/40 relative">
+        <div className="absolute -top-3 left-4 px-2 bg-black text-cyan-400 text-xs font-mono">DMITRY STEBUKOV</div>
+        <div className="text-xs text-cyan-400/70 mb-2">DevOps Engineer</div>
+        <p className="text-gray-300 text-sm leading-relaxed italic mb-4">
+          "Working with Sergio means being confident in the outcome. He has a deep understanding of system architecture and can scale solutions to handle any load. He combines strategic thinking with strong technical expertise. He knows how to build effective teams and inspire those around him. A reliable leader who always supports execution and brings confidence to the team - someone you want by your side on complex and ambitious projects."
+        </p>
+        <a href="https://www.linkedin.com/in/dmitry-stebukov-55a7721b2/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300 transition-colors">
+          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          View on LinkedIn
+        </a>
+      </div>
+    </div>
+  </div>
+);
+
+// Detection functions for Moxy
+function isMoxyRole(code: string): boolean {
+  return code.includes('MOXY ROLE') && code.includes('FRACTIONAL_SOLUTION_ARCHITECT') && code.includes('COLLABORATION');
+}
+
+function isMoxyTraffic(code: string): boolean {
+  return code.includes('MOXY TRAFFIC') && code.includes('PATTERN ANALYSIS') && code.includes('UNPREDICTABLE SPIKES');
+}
+
+function isMoxyInfrastructure(code: string): boolean {
+  return code.includes('MOXY INFRASTRUCTURE') && code.includes('AWS CLOUD-NATIVE') && code.includes('EKS');
+}
+
+function isMoxyPipeline(code: string): boolean {
+  return code.includes('MOXY PIPELINE') && code.includes('CI/CD WORKFLOW') && code.includes('STAGE 1');
+}
+
+function isMoxyMetrics(code: string): boolean {
+  return code.includes('MOXY METRICS') && code.includes('INFRASTRUCTURE KPIs') && code.includes('RELIABILITY');
+}
+
+function isMoxyTeamFeedback(code: string): boolean {
+  return code.includes('MOXY TEAM FEEDBACK') && code.includes('MOXY COLLEAGUES');
+}
+
 function isIDATeamFeedback(code: string): boolean {
   return code.includes('IDA TEAM FEEDBACK') && code.includes('IDA COLLEAGUES') && code.includes('DMITRY') && code.includes('YURI');
 }
@@ -637,6 +1044,12 @@ function isUMIASTransformation(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'moxy-role', detect: isMoxyRole, component: MoxyRoleCard },
+  { id: 'moxy-traffic', detect: isMoxyTraffic, component: MoxyTrafficDiagram },
+  { id: 'moxy-infrastructure', detect: isMoxyInfrastructure, component: MoxyInfrastructureDiagram },
+  { id: 'moxy-pipeline', detect: isMoxyPipeline, component: MoxyPipelineDiagram },
+  { id: 'moxy-metrics', detect: isMoxyMetrics, component: MoxyMetricsDiagram },
+  { id: 'moxy-team-feedback', detect: isMoxyTeamFeedback, component: MoxyTeamFeedbackSection },
   { id: 'ida-team-feedback', detect: isIDATeamFeedback, component: IDATeamFeedbackSection },
   { id: 'ida-fractional-role', detect: isIDAFractionalRole, component: IDAFractionalRoleCard },
   { id: 'ida-pipeline', detect: isIDAPipeline, component: IDAPipelineDiagram },
