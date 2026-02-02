@@ -16,6 +16,7 @@ export interface BlogPost {
   seoKeywords?: string | null;
   caseStudyYear?: string | null;
   caseStudyRole?: string | null;
+  caseStudyType?: string | null;
   caseStudyLogo?: string | null;
 }
 
