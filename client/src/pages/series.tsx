@@ -153,7 +153,7 @@ export default function SeriesPage() {
                         <span>{post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('en-CA') : post.date}</span>
                         <span>•</span>
                         <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" /> 8 MIN
+                          <Clock className="w-3 h-3" /> {Math.ceil((post.content?.split(' ').length || 0) / 200)} MIN
                         </span>
                       </div>
                       <h3 className="text-xl font-bold font-display group-hover:text-accent transition-colors truncate">
