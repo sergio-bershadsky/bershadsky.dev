@@ -1796,7 +1796,7 @@ function isWellBeTeamFeedback(code: string): boolean {
   return code.includes('WELLBE TEAM FEEDBACK') && code.includes('WELLBE COLLEAGUES');
 }
 
-// SimpleSend Case Study Diagrams
+// Enterprise Docs (Ricoh) Case Study Diagrams
 export const SimpleSendRoleCard = () => (
   <div className="my-8 border border-blue-500/40 rounded-lg bg-gradient-to-br from-black/60 via-blue-950/20 to-black/60 p-6 relative overflow-hidden">
     <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
@@ -1808,7 +1808,10 @@ export const SimpleSendRoleCard = () => (
           <Crown className="w-4 h-4" />
           <span>MY ROLE // LEAD_ENGINEER</span>
         </div>
-        <span className="text-xs text-blue-300 px-2 py-0.5 border border-blue-500/50 rounded bg-blue-500/20 font-bold">VIA TOPTAL</span>
+        <div className="flex items-center gap-2 px-2 py-0.5 border border-blue-500/50 rounded bg-blue-500/20">
+          <img src="/images/toptal-logo.svg" alt="Toptal" className="h-4 w-4" />
+          <span className="text-xs text-blue-300 font-bold">VIA TOPTAL</span>
+        </div>
       </div>
       
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -2126,7 +2129,7 @@ export const SimpleSendLayersDiagram = () => (
       <div className="p-4 border border-green-500/30 rounded bg-green-500/5">
         <div className="flex items-center gap-2 mb-3">
           <Code className="w-5 h-5 text-green-400" />
-          <span className="font-mono text-xs text-green-400">simple-send-v2</span>
+          <span className="font-mono text-xs text-green-400">service-v2-layer</span>
         </div>
         <div className="space-y-1 text-xs text-gray-400">
           <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> V2 business logic</div>
@@ -2257,33 +2260,33 @@ export const SimpleSendTeamFeedbackSection = () => (
   </div>
 );
 
-// Detection functions for SimpleSend
+// Detection functions for Enterprise Docs (Ricoh)
 function isSimpleSendRole(code: string): boolean {
-  return code.includes('SIMPLESEND ROLE') && code.includes('LEAD_ENGINEER') && code.includes('VIA TOPTAL');
+  return code.includes('ENTERPRISE DOCS ROLE') && code.includes('LEAD_ENGINEER') && code.includes('VIA TOPTAL');
 }
 
 function isSimpleSendArchitecture(code: string): boolean {
-  return code.includes('SIMPLESEND ARCHITECTURE') && code.includes('AWS SERVERLESS') && code.includes('51 Lambda');
+  return code.includes('ENTERPRISE DOCS ARCHITECTURE') && code.includes('AWS SERVERLESS');
 }
 
 function isSimpleSendConnection(code: string): boolean {
-  return code.includes('SIMPLESEND CONNECTION') && code.includes('LAMBDA EXECUTION') && code.includes('POOLING');
+  return code.includes('ENTERPRISE DOCS CONNECTION') && code.includes('LAMBDA EXECUTION') && code.includes('POOLING');
 }
 
 function isSimpleSendProcedures(code: string): boolean {
-  return code.includes('SIMPLESEND PROCEDURES') && code.includes('EVOLUTION') && code.includes('MODERNIZE');
+  return code.includes('ENTERPRISE DOCS PROCEDURES') && code.includes('EVOLUTION') && code.includes('MODERNIZE');
 }
 
 function isSimpleSendLayers(code: string): boolean {
-  return code.includes('SIMPLESEND LAYERS') && code.includes('ARCHITECTURE') && code.includes('SHARED');
+  return code.includes('ENTERPRISE DOCS LAYERS') && code.includes('ARCHITECTURE') && code.includes('SHARED');
 }
 
 function isSimpleSendMetrics(code: string): boolean {
-  return code.includes('SIMPLESEND METRICS') && code.includes('PLATFORM KPIs') && code.includes('RESULTS');
+  return code.includes('ENTERPRISE DOCS METRICS') && code.includes('PLATFORM KPIs') && code.includes('RESULTS');
 }
 
 function isSimpleSendTeamFeedback(code: string): boolean {
-  return code.includes('SIMPLESEND TEAM FEEDBACK') && code.includes('RICOH COLLEAGUES');
+  return code.includes('ENTERPRISE DOCS TEAM FEEDBACK') && code.includes('RICOH COLLEAGUES');
 }
 
 // Detection functions for Moxy

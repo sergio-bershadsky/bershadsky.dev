@@ -376,8 +376,8 @@
   seo_keywords: "WellBe case study, Firebase migration, GraphQL API, mental wellness app, subscription management, Heroku deployment, Flutter backend"
 
 - id: 30
-  slug: case-study-simplesend
-  title: "SimpleSend - Enterprise Document Delivery Platform at Ricoh"
+  slug: enterprise-document-delivery-optimization
+  title: "Enterprise Document Delivery Platform Optimization at Ricoh"
   excerpt: "How we optimized a 51-Lambda serverless architecture for enterprise document delivery. 47% faster API response times, 40% reduced cold starts through V2 rearchitecture."
   case_study_year: "2024-2025"
   case_study_role: "Lead Engineer"
@@ -393,11 +393,11 @@
     - Redis
     - Enterprise
     - Performance
-  image_url: /images/case_study_simplesend.png
+  image_url: /images/case_study_enterprise_docs.png
   status: published
   published_at: "2026-01-15T10:00:00Z"
   content: blog-posts/30.content.md
   audience: Tech Leaders
-  seo_title: "SimpleSend Case Study: Enterprise Serverless Optimization at Ricoh"
+  seo_title: "Enterprise Serverless Optimization Case Study at Ricoh"
   seo_description: "How we optimized 51 Lambda functions for Ricoh's document delivery platform. 47% faster API responses, 40% reduced cold starts, type-safe stored procedures."
-  seo_keywords: "SimpleSend case study, AWS Lambda optimization, serverless performance, Ricoh, enterprise document delivery, connection pooling, cold start optimization"
+  seo_keywords: "AWS Lambda optimization, serverless performance, Ricoh, enterprise document delivery, connection pooling, cold start optimization, Toptal"
