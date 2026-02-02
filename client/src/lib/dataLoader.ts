@@ -19,6 +19,8 @@ interface RawBlogPost {
   seo_title?: string | null;
   seo_description?: string | null;
   seo_keywords?: string | null;
+  case_study_year?: string | null;
+  case_study_role?: string | null;
 }
 
 interface RawSeries {
@@ -83,6 +85,8 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
       seoTitle: post.seo_title,
       seoDescription: post.seo_description,
       seoKeywords: post.seo_keywords,
+      caseStudyYear: post.case_study_year,
+      caseStudyRole: post.case_study_role,
     };
   }));
   

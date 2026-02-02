@@ -14,6 +14,8 @@ export interface BlogPost {
   seoTitle?: string | null;
   seoDescription?: string | null;
   seoKeywords?: string | null;
+  caseStudyYear?: string | null;
+  caseStudyRole?: string | null;
 }
 
 export interface Series {
