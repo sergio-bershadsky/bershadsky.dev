@@ -2049,7 +2049,7 @@ export const SimpleSendProceduresDiagram = () => (
           <span className="font-mono text-xs text-red-400">LEGACY (JSON Interface)</span>
         </div>
         <div className="p-3 border border-red-500/20 rounded bg-black/40 font-mono text-xs text-gray-400">
-          <div className="text-red-300">sp_GetUserDetails(IN jsonInput JSON, OUT jsonOutput JSON)</div>
+          <div className="text-red-300">proc_FetchData(IN jsonInput JSON, OUT jsonOutput JSON)</div>
           <div className="mt-2 pl-4 space-y-1">
             <div>├── Parse JSON to extract parameters</div>
             <div>├── Execute query</div>
@@ -2068,7 +2068,7 @@ export const SimpleSendProceduresDiagram = () => (
           <span className="font-mono text-xs text-green-400">MODERN (Typed Interface)</span>
         </div>
         <div className="p-3 border border-green-500/20 rounded bg-black/40 font-mono text-xs text-gray-400">
-          <div className="text-green-300">sp_Lookup_User(IN userId INT, OUT userName VARCHAR)</div>
+          <div className="text-green-300">proc_GetEntity(IN entityId INT, OUT entityName VARCHAR)</div>
           <div className="mt-2 pl-4 space-y-1">
             <div>├── Direct parameter access</div>
             <div>├── Type-safe execution</div>
@@ -2080,11 +2080,11 @@ export const SimpleSendProceduresDiagram = () => (
       <div className="grid grid-cols-2 gap-3 mt-4">
         <div className="p-3 border border-cyan-500/30 rounded bg-cyan-500/5 text-center">
           <div className="font-mono text-xs text-cyan-400 mb-1">NAMING CONVENTION</div>
-          <div className="text-xs text-gray-400">sp_[Operation]_[TableName]</div>
+          <div className="text-xs text-gray-400">proc_[Operation]_[Entity]</div>
         </div>
         <div className="p-3 border border-accent/30 rounded bg-accent/5 text-center">
           <div className="font-mono text-xs text-accent mb-1">VERSIONING</div>
-          <div className="text-xs text-gray-400">sp_Lookup_User_v2_0</div>
+          <div className="text-xs text-gray-400">proc_GetEntity_v2_0</div>
         </div>
       </div>
     </div>
@@ -2274,7 +2274,7 @@ function isSimpleSendConnection(code: string): boolean {
 }
 
 function isSimpleSendProcedures(code: string): boolean {
-  return code.includes('ENTERPRISE DOCS PROCEDURES') && code.includes('EVOLUTION') && code.includes('MODERNIZE');
+  return code.includes('ENTERPRISE DOCS PROCEDURES') && code.includes('EVOLUTION') && code.includes('proc_FetchData');
 }
 
 function isSimpleSendLayers(code: string): boolean {
@@ -2355,13 +2355,12 @@ function isUMIASTransformation(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
-  { id: 'simplesend-role', detect: isSimpleSendRole, component: SimpleSendRoleCard },
-  { id: 'simplesend-architecture', detect: isSimpleSendArchitecture, component: SimpleSendArchitectureDiagram },
-  { id: 'simplesend-connection', detect: isSimpleSendConnection, component: SimpleSendConnectionDiagram },
-  { id: 'simplesend-procedures', detect: isSimpleSendProcedures, component: SimpleSendProceduresDiagram },
-  { id: 'simplesend-layers', detect: isSimpleSendLayers, component: SimpleSendLayersDiagram },
-  { id: 'simplesend-metrics', detect: isSimpleSendMetrics, component: SimpleSendMetricsDiagram },
-  { id: 'simplesend-team-feedback', detect: isSimpleSendTeamFeedback, component: SimpleSendTeamFeedbackSection },
+  { id: 'enterprise-docs-role', detect: isSimpleSendRole, component: SimpleSendRoleCard },
+  { id: 'enterprise-docs-architecture', detect: isSimpleSendArchitecture, component: SimpleSendArchitectureDiagram },
+  { id: 'enterprise-docs-connection', detect: isSimpleSendConnection, component: SimpleSendConnectionDiagram },
+  { id: 'enterprise-docs-procedures', detect: isSimpleSendProcedures, component: SimpleSendProceduresDiagram },
+  { id: 'enterprise-docs-metrics', detect: isSimpleSendMetrics, component: SimpleSendMetricsDiagram },
+  { id: 'enterprise-docs-team-feedback', detect: isSimpleSendTeamFeedback, component: SimpleSendTeamFeedbackSection },
   { id: 'wellbe-role', detect: isWellBeRole, component: WellBeRoleCard },
   { id: 'wellbe-challenges', detect: isWellBeChallenges, component: WellBeChallengesDiagram },
   { id: 'wellbe-infrastructure', detect: isWellBeInfrastructure, component: WellBeInfrastructureDiagram },
