@@ -244,7 +244,7 @@
   case_study_year: "2015-2018"
   case_study_role: "Tech Lead"
   case_study_type: "Independent"
-  date: "2025-06-01"
+  date: "2025-04-01"
   tags:
     - Case-Study
     - Python
@@ -256,7 +256,7 @@
   image_url: /images/case_study_umias_healthcare_new.png
   case_study_logo: /images/emias-logo.svg
   status: published
-  published_at: "2025-06-01T10:00:00Z"
+  published_at: "2025-04-01T10:00:00Z"
   content: blog-posts/25.content.md
   audience: Tech Leaders
   seo_title: "UMIAS Case Study: Building the World's Largest Medical Booking App"
@@ -271,7 +271,7 @@
   case_study_year: "2021-2023"
   case_study_role: "Fractional Tech Lead"
   case_study_type: "Independent"
-  date: "2025-07-01"
+  date: "2025-05-01"
   tags:
     - Case-Study
     - Django
@@ -284,7 +284,7 @@
   image_url: /images/case_study_ida_devops.png
   video_url: "https://www.youtube.com/watch?v=wGHZfvHd70U"
   status: published
-  published_at: "2025-07-01T10:00:00Z"
+  published_at: "2025-05-01T10:00:00Z"
   content: blog-posts/26.content.md
   audience: Tech Leaders
   seo_title: "IDA Case Study: From Deployment Chaos to 99.9% Uptime"
@@ -298,7 +298,7 @@
   case_study_year: "2020-2021"
   case_study_role: "Fractional Solution Architect"
   case_study_type: "Independent"
-  date: "2025-09-01"
+  date: "2025-06-01"
   tags:
     - Case-Study
     - AWS
@@ -312,7 +312,7 @@
     - Startup
   image_url: /images/case_study_moxy_sports.png
   status: published
-  published_at: "2025-09-01T10:00:00Z"
+  published_at: "2025-06-01T10:00:00Z"
   content: blog-posts/27.content.md
   audience: Tech Leaders
   seo_title: "Moxy Case Study: Building Play-to-Earn Gaming Infrastructure from Zero"
@@ -326,7 +326,7 @@
   case_study_year: "2020"
   case_study_role: "Fractional Solution Architect"
   case_study_type: "Independent"
-  date: "2025-11-01"
+  date: "2025-07-01"
   tags:
     - Case-Study
     - AWS
@@ -339,7 +339,7 @@
     - Startup
   image_url: /images/case_study_okty_data.png
   status: published
-  published_at: "2025-11-01T10:00:00Z"
+  published_at: "2025-07-01T10:00:00Z"
   content: blog-posts/28.content.md
   audience: Tech Leaders
   seo_title: "OkTY Case Study: Building a Privacy-First Data Monetization Platform"
@@ -353,7 +353,7 @@
   case_study_year: "2023-2024"
   case_study_role: "Fractional Tech Lead"
   case_study_type: "Independent"
-  date: "2025-12-01"
+  date: "2025-08-01"
   tags:
     - Case-Study
     - Python
@@ -368,7 +368,7 @@
     - Mobile
   image_url: /images/case_study_wellbe_wellness.png
   status: published
-  published_at: "2025-12-01T10:00:00Z"
+  published_at: "2025-08-01T10:00:00Z"
   content: blog-posts/29.content.md
   audience: Tech Leaders
   seo_title: "WellBe Case Study: Firebase to GraphQL Migration for Mental Wellness App"
@@ -382,7 +382,7 @@
   case_study_year: "2024-2025"
   case_study_role: "Lead Engineer"
   case_study_type: "Toptal"
-  date: "2026-01-15"
+  date: "2025-09-01"
   tags:
     - Case-Study
     - AWS
@@ -395,7 +395,7 @@
     - Performance
   image_url: /images/case_study_enterprise_docs.png
   status: published
-  published_at: "2026-01-15T10:00:00Z"
+  published_at: "2025-09-01T10:00:00Z"
   content: blog-posts/30.content.md
   audience: Tech Leaders
   seo_title: "Enterprise Serverless Optimization Case Study at Ricoh"
@@ -409,7 +409,7 @@
   case_study_year: "2018-2019"
   case_study_role: "Principal Engineer"
   case_study_type: "Independent"
-  date: "2026-01-20"
+  date: "2025-10-01"
   tags:
     - Case-Study
     - Blockchain
@@ -420,7 +420,7 @@
     - Cryptocurrency
   image_url: /images/case_study_play2live.png
   status: published
-  published_at: "2026-01-20T10:00:00Z"
+  published_at: "2025-10-01T10:00:00Z"
   content: blog-posts/31.content.md
   audience: Tech Leaders
   seo_title: "Play2Live Case Study: Blockchain Esports Platform Engineering"
@@ -434,7 +434,7 @@
   case_study_year: "2019-2020"
   case_study_role: "Lead Engineer"
   case_study_type: "Toptal"
-  date: "2026-01-22"
+  date: "2025-11-01"
   tags:
     - Case-Study
     - AWS
@@ -445,7 +445,7 @@
     - Enterprise
   image_url: /images/case_study_patentseekers.png
   status: published
-  published_at: "2026-01-22T10:00:00Z"
+  published_at: "2025-11-01T10:00:00Z"
   content: blog-posts/32.content.md
   audience: Tech Leaders
   seo_title: "PatentSeekers Case Study: Enterprise Patent Search Infrastructure"
@@ -459,7 +459,7 @@
   case_study_year: "2023-2024"
   case_study_role: "Senior Python Engineer"
   case_study_type: "Toptal"
-  date: "2026-02-02"
+  date: "2025-12-01"
   tags:
     - Case-Study
     - Python
@@ -470,7 +470,7 @@
     - Data-Engineering
   image_url: /images/case_study_zoetis.png
   status: published
-  published_at: "2026-02-02T10:00:00Z"
+  published_at: "2025-12-01T10:00:00Z"
   content: blog-posts/33.content.md
   audience: Tech Leaders
   seo_title: "Zoetis Case Study: Sales Intelligence Platform Engineering"
