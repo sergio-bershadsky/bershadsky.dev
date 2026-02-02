@@ -1,5 +1,5 @@
 import React from 'react';
-import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle, Crown, Target, Lock, Gauge, Box, Layers } from 'lucide-react';
+import { Smartphone, Globe, Server, Database, Container, Activity, Shield, Zap, ArrowDown, ArrowRight, Users, Clock, TrendingUp, CheckCircle, Crown, Target, Lock, Gauge, Box, Layers, GitBranch, AlertTriangle, XCircle, FileCode } from 'lucide-react';
 import { DiagramEntry } from '../diagramRegistry';
 
 export const TechLeadRoleCard = () => (
@@ -312,6 +312,175 @@ export const TeamFeedbackSection = () => (
   </div>
 );
 
+export const IDAPipelineDiagram = () => (
+  <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-cyan-400 mb-4 flex justify-between">
+      <div className="flex items-center gap-2">
+        <GitBranch className="w-4 h-4" />
+        <span>FIG 1.2 // PIPELINE TRANSFORMATION</span>
+      </div>
+      <span className="text-xs text-muted-foreground">DEVOPS</span>
+    </div>
+    
+    <div className="grid md:grid-cols-2 gap-4">
+      <div className="p-4 border border-red-500/30 rounded-lg bg-red-500/5">
+        <div className="text-xs font-mono text-red-400 mb-3 flex items-center gap-2">
+          <AlertTriangle className="w-3 h-3" />
+          BEFORE (2021)
+        </div>
+        <div className="space-y-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> Manual deployments via SSH</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> No automated testing</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> Configs mixed in code</div>
+          <div className="flex items-center gap-2"><XCircle className="w-3 h-3 text-red-400" /> "Restore and pray" rollbacks</div>
+          <div className="mt-3 pt-3 border-t border-red-500/20 text-red-300 font-mono">Deploy time: 45+ min</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-green-500/30 rounded-lg bg-green-500/5">
+        <div className="text-xs font-mono text-green-400 mb-3 flex items-center gap-2">
+          <CheckCircle className="w-3 h-3" />
+          AFTER (2023)
+        </div>
+        <div className="space-y-2 text-xs text-gray-400">
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Automated CI/CD with Jenkins</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Full test suite on every commit</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> Terraform-managed configs</div>
+          <div className="flex items-center gap-2"><CheckCircle className="w-3 h-3 text-green-400" /> One-click versioned rollbacks</div>
+          <div className="mt-3 pt-3 border-t border-green-500/20 text-green-300 font-mono">Deploy time: 8 min</div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+export const IDAInfrastructureDiagram = () => (
+  <div className="my-8 border border-accent/30 rounded-lg bg-black/40 p-5">
+    <div className="text-sm font-mono text-accent mb-4 flex justify-between">
+      <div className="flex items-center gap-2">
+        <Server className="w-4 h-4" />
+        <span>FIG 1.3 // AWS ARCHITECTURE</span>
+      </div>
+      <span className="text-xs text-muted-foreground">CLOUD</span>
+    </div>
+    
+    <div className="flex flex-col items-center gap-3">
+      <div className="px-4 py-2 border border-cyan-500/40 rounded bg-cyan-500/10 text-cyan-400 text-xs font-mono flex items-center gap-2">
+        <Globe className="w-4 h-4" />
+        CloudFront CDN
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="px-4 py-2 border border-primary/40 rounded bg-primary/10 text-primary text-xs font-mono flex items-center gap-2">
+        <Layers className="w-4 h-4" />
+        Application Load Balancer
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="flex gap-3">
+        <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 text-accent text-xs font-mono flex items-center gap-2">
+          <Box className="w-3 h-3" />
+          ECS Task
+        </div>
+        <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 text-accent text-xs font-mono flex items-center gap-2">
+          <Box className="w-3 h-3" />
+          ECS Task
+        </div>
+        <div className="px-3 py-2 border border-accent/40 rounded bg-accent/10 text-accent text-xs font-mono flex items-center gap-2">
+          <Box className="w-3 h-3" />
+          ECS Task
+        </div>
+      </div>
+      
+      <ArrowDown className="w-4 h-4 text-gray-500" />
+      
+      <div className="px-4 py-2 border border-green-500/40 rounded bg-green-500/10 text-green-400 text-xs font-mono flex items-center gap-2">
+        <Database className="w-4 h-4" />
+        RDS PostgreSQL
+      </div>
+    </div>
+    
+    <div className="mt-4 pt-4 border-t border-accent/20 flex justify-center gap-4 text-xs text-gray-500">
+      <span className="flex items-center gap-1"><Box className="w-3 h-3 text-accent" /> Django + Wagtail</span>
+      <span className="flex items-center gap-1"><Container className="w-3 h-3 text-cyan-400" /> Docker</span>
+      <span className="flex items-center gap-1"><FileCode className="w-3 h-3 text-primary" /> Terraform</span>
+    </div>
+  </div>
+);
+
+export const IDAMetricsDiagram = () => (
+  <div className="my-8 border border-green-500/30 rounded-lg bg-gradient-to-br from-black/60 via-green-500/5 to-black/60 p-5">
+    <div className="text-sm font-mono text-green-400 mb-4 flex justify-between">
+      <div className="flex items-center gap-2">
+        <TrendingUp className="w-4 h-4" />
+        <span>FIG 1.4 // TRANSFORMATION RESULTS</span>
+      </div>
+      <span className="text-xs text-muted-foreground">DASHBOARD</span>
+    </div>
+    
+    <div className="grid md:grid-cols-2 gap-4">
+      <div className="p-4 border border-green-500/20 rounded-lg bg-black/40">
+        <div className="text-xs font-mono text-gray-400 mb-2">DEPLOYMENT FAILURES</div>
+        <div className="flex items-center gap-3">
+          <div className="flex-1">
+            <div className="h-3 bg-red-500/30 rounded-full mb-1">
+              <div className="h-3 bg-red-500 rounded-full" style={{width: '100%'}}></div>
+            </div>
+            <div className="h-3 bg-green-500/30 rounded-full">
+              <div className="h-3 bg-green-500 rounded-full" style={{width: '10%'}}></div>
+            </div>
+          </div>
+          <div className="text-2xl font-bold text-green-400">-90%</div>
+        </div>
+      </div>
+      
+      <div className="p-4 border border-cyan-500/20 rounded-lg bg-black/40">
+        <div className="text-xs font-mono text-gray-400 mb-2">DEPLOYMENT SPEED</div>
+        <div className="flex items-center justify-between">
+          <div className="text-gray-500 line-through">45 min</div>
+          <ArrowRight className="w-4 h-4 text-cyan-400" />
+          <div className="text-xl font-bold text-cyan-400">8 min</div>
+        </div>
+        <div className="text-xs text-cyan-400/70 mt-1">82% faster</div>
+      </div>
+      
+      <div className="p-4 border border-primary/20 rounded-lg bg-black/40">
+        <div className="text-xs font-mono text-gray-400 mb-2">APPLICATION UPTIME</div>
+        <div className="flex items-center justify-between">
+          <div className="text-gray-500">~95%</div>
+          <ArrowRight className="w-4 h-4 text-primary" />
+          <div className="text-xl font-bold text-primary">99.9%</div>
+        </div>
+        <div className="text-xs text-primary/70 mt-1">Near-perfect availability</div>
+      </div>
+      
+      <div className="p-4 border border-accent/20 rounded-lg bg-black/40">
+        <div className="text-xs font-mono text-gray-400 mb-2">INCIDENT RESOLUTION</div>
+        <div className="flex items-center justify-between">
+          <div className="text-gray-500">Hours</div>
+          <ArrowRight className="w-4 h-4 text-accent" />
+          <div className="text-xl font-bold text-accent">Minutes</div>
+        </div>
+        <div className="text-xs text-accent/70 mt-1">80% faster MTTR</div>
+      </div>
+    </div>
+  </div>
+);
+
+function isIDAPipeline(code: string): boolean {
+  return code.includes('IDA PIPELINE') && code.includes('BEFORE vs AFTER') && code.includes('Manual deployments via SSH');
+}
+
+function isIDAInfrastructure(code: string): boolean {
+  return code.includes('IDA INFRASTRUCTURE') && code.includes('AWS ARCHITECTURE') && code.includes('CloudFront') && code.includes('ECS Task');
+}
+
+function isIDAMetrics(code: string): boolean {
+  return code.includes('IDA METRICS') && code.includes('TRANSFORMATION RESULTS') && code.includes('DEPLOYMENT FAILURES') && code.includes('DASHBOARD');
+}
+
 function isTeamFeedback(code: string): boolean {
   return code.includes('TEAM FEEDBACK') && code.includes('COLLEAGUES') && code.includes('ALEKSANDR') && code.includes('DMITRY');
 }
@@ -333,6 +502,9 @@ function isUMIASTransformation(code: string): boolean {
 }
 
 export const caseStudyDiagrams: DiagramEntry[] = [
+  { id: 'ida-pipeline', detect: isIDAPipeline, component: IDAPipelineDiagram },
+  { id: 'ida-infrastructure', detect: isIDAInfrastructure, component: IDAInfrastructureDiagram },
+  { id: 'ida-metrics', detect: isIDAMetrics, component: IDAMetricsDiagram },
   { id: 'team-feedback', detect: isTeamFeedback, component: TeamFeedbackSection },
   { id: 'tech-lead-role', detect: isTechLeadRole, component: TechLeadRoleCard },
   { id: 'umias-architecture', detect: isUMIASArchitecture, component: UMIASArchitectureDiagram },
