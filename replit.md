@@ -142,6 +142,58 @@ markdown/
 - Icons at 4-5px (`w-4 h-4` or `w-5 h-5`)
 - Text sizes: headers `text-sm`, content `text-xs`
 
+### Team Feedback Components (Reusable)
+
+Located in `client/src/components/markdown/diagrams/casestudy.tsx`:
+
+**Components:**
+- `TeamFeedbackHeader` - Standardized header with VERIFIED badge (BadgeCheck icon) on left
+- `TeamFeedbackCard` - Individual feedback card with circle avatar, role icon, name, quote, LinkedIn link
+
+**TeamMember Interface:**
+```typescript
+interface TeamMember {
+  name: string;          // e.g., "DMITRY GRECHKIN"
+  role: string;          // e.g., "Product Manager"
+  quote: string;         // Testimonial text
+  linkedinUrl: string;   // Full LinkedIn URL
+  color: 'cyan' | 'green' | 'purple' | 'orange' | 'primary';
+  icon: React.ReactNode; // Lucide icon with color matching
+}
+```
+
+**Color Coding by Role:**
+- `cyan` - DevOps/Infrastructure roles (Server icon)
+- `green` - CEO/PM/Product roles (Crown or Target icon)
+- `purple` - Backend/Engineering roles (FileCode icon)
+- `orange` - Other technical roles
+- `primary` - Mixed/Other roles
+
+**Usage Example:**
+```tsx
+export const MyTeamFeedbackSection = () => {
+  const members: TeamMember[] = [
+    {
+      name: "JOHN DOE",
+      role: "CTO",
+      quote: "Great work with the team...",
+      linkedinUrl: "https://www.linkedin.com/in/johndoe/",
+      color: "green",
+      icon: <Crown className="w-5 h-5 text-green-400" />
+    }
+  ];
+
+  return (
+    <div className="my-8 border border-cyan-500/30 rounded-lg bg-black/40 p-5">
+      <TeamFeedbackHeader title="TEAM FEEDBACK // PROJECT COLLEAGUES" />
+      <div className="space-y-4">
+        {members.map((member, i) => <TeamFeedbackCard key={i} member={member} />)}
+      </div>
+    </div>
+  );
+};
+```
+
 ## Data Architecture (Static YAML/MD)
 
 The blog uses a fully static data architecture with no database dependencies. Content is stored in YAML metadata files and Markdown content files.
