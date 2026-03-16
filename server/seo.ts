@@ -134,7 +134,7 @@ function escapeHtml(str: string): string {
     .replace(/'/g, "&#39;");
 }
 
-function buildHomePage(): string {
+function buildHomePage(robotsDirective?: string): string {
   const posts = getPosts().filter(p => p.status === "published");
   const series = getSeries().filter(s => s.is_visible);
 
@@ -166,6 +166,7 @@ function buildHomePage(): string {
     url: BASE_URL,
     imageUrl: `${BASE_URL}/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp`,
     jsonLd,
+    robotsDirective,
     body: `
       <h1>Engineering Thoughts & Systems</h1>
       <p>Insights on scaling architectures, distributed systems, and the future of tech by Sergey Bershadsky.</p>
@@ -175,7 +176,7 @@ function buildHomePage(): string {
   });
 }
 
-function buildBlogPostPage(slug: string): string | null {
+function buildBlogPostPage(slug: string, robotsDirective?: string): string | null {
   const posts = getPosts();
   const post = posts.find(p => p.slug === slug && p.status === "published");
   if (!post) return null;
@@ -193,7 +194,7 @@ function buildBlogPostPage(slug: string): string | null {
   const canonicalUrl = `${BASE_URL}/blog/${post.slug}`;
   const publishedDate = post.published_at || post.date;
 
-  const jsonLd: any = {
+  const jsonLd: JsonLdObject = {
     "@context": "https://schema.org",
     "@type": post.case_study_type ? "Article" : "BlogPosting",
     headline: title,
@@ -217,15 +218,14 @@ function buildBlogPostPage(slug: string): string | null {
       "@type": "WebPage",
       "@id": canonicalUrl,
     },
+    ...(postSeries ? {
+      isPartOf: {
+        "@type": "CreativeWorkSeries",
+        name: postSeries.title,
+        url: `${BASE_URL}/series/${postSeries.slug}`,
+      },
+    } : {}),
   };
-
-  if (postSeries) {
-    jsonLd.isPartOf = {
-      "@type": "CreativeWorkSeries",
-      name: postSeries.title,
-      url: `${BASE_URL}/series/${postSeries.slug}`,
-    };
-  }
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -248,6 +248,7 @@ function buildBlogPostPage(slug: string): string | null {
     type: "article",
     publishedTime: publishedDate,
     jsonLd: [jsonLd, breadcrumbJsonLd],
+    robotsDirective,
     body: `
       <article>
         <h1>${escapeHtml(post.title)}</h1>
@@ -265,7 +266,7 @@ function buildBlogPostPage(slug: string): string | null {
   });
 }
 
-function buildSeriesPage(slug: string): string | null {
+function buildSeriesPage(slug: string, robotsDirective?: string): string | null {
   const series = getSeries().find(s => s.slug === slug && s.is_visible);
   if (!series) return null;
 
@@ -307,6 +308,7 @@ function buildSeriesPage(slug: string): string | null {
     url: canonicalUrl,
     imageUrl: `${BASE_URL}/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp`,
     jsonLd,
+    robotsDirective,
     body: `
       <h1>${escapeHtml(series.title)}</h1>
       <p>${escapeHtml(series.description)}</p>
@@ -316,7 +318,7 @@ function buildSeriesPage(slug: string): string | null {
   });
 }
 
-function buildAboutPage(): string {
+function buildAboutPage(robotsDirective?: string): string {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -348,6 +350,7 @@ function buildAboutPage(): string {
     imageUrl: `${BASE_URL}/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp`,
     keywords: "Sergey Bershadsky, Tech Lead, Solution Architect, Python Developer, Django Expert, AWS, MedTech, ERP, Toptal",
     jsonLd,
+    robotsDirective,
     body: `
       <h1>Sergey Bershadsky</h1>
       <h2>Tech Lead & Solution Architect</h2>
@@ -358,6 +361,8 @@ function buildAboutPage(): string {
   });
 }
 
+type JsonLdObject = Record<string, unknown>;
+
 interface PageOptions {
   title: string;
   description: string;
@@ -366,8 +371,9 @@ interface PageOptions {
   keywords?: string;
   type?: string;
   publishedTime?: string;
-  jsonLd: any;
+  jsonLd: JsonLdObject | JsonLdObject[];
   body: string;
+  robotsDirective?: string;
 }
 
 function buildHtmlPage(opts: PageOptions): string {
@@ -395,7 +401,7 @@ function buildHtmlPage(opts: PageOptions): string {
   <meta name="twitter:title" content="${escapeHtml(opts.title)}" />
   <meta name="twitter:description" content="${escapeHtml(opts.description)}" />
   <meta name="twitter:image" content="${opts.imageUrl}" />
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content="${opts.robotsDirective || "index, follow"}" />
   ${jsonLdScripts}
 </head>
 <body>
@@ -466,6 +472,13 @@ export function setupSEO(app: Express) {
   });
 }
 
+function getRobotsDirective(hostname: string): string {
+  if (hostname.includes("replit.app") || hostname.includes("replit.dev")) {
+    return "noindex, nofollow";
+  }
+  return "index, follow";
+}
+
 export function crawlerPrerender(req: Request, res: Response, next: NextFunction) {
   if (req.method !== "GET" && req.method !== "HEAD") {
     return next();
@@ -477,26 +490,29 @@ export function crawlerPrerender(req: Request, res: Response, next: NextFunction
   }
 
   const urlPath = req.path;
+  const hostname = req.hostname || req.headers.host || "";
+  const robotsDirective = getRobotsDirective(hostname);
 
   try {
     let html: string | null = null;
 
     if (urlPath === "/" || urlPath === "") {
-      html = buildHomePage();
+      html = buildHomePage(robotsDirective);
     } else if (urlPath === "/about") {
-      html = buildAboutPage();
+      html = buildAboutPage(robotsDirective);
     } else if (urlPath.startsWith("/blog/")) {
       const slug = urlPath.replace("/blog/", "").replace(/\/$/, "");
-      if (slug) html = buildBlogPostPage(slug);
+      if (slug) html = buildBlogPostPage(slug, robotsDirective);
     } else if (urlPath.startsWith("/series/")) {
       const slug = urlPath.replace("/series/", "").replace(/\/$/, "");
-      if (slug) html = buildSeriesPage(slug);
+      if (slug) html = buildSeriesPage(slug, robotsDirective);
     }
 
     if (html) {
       res.set("Content-Type", "text/html");
       res.set("Cache-Control", "public, max-age=3600");
       res.set("Vary", "User-Agent");
+      res.set("X-Robots-Tag", robotsDirective);
       return res.send(html);
     }
   } catch (err) {
