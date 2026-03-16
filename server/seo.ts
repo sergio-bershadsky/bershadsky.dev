@@ -2,6 +2,7 @@ import { type Request, type Response, type NextFunction, type Express } from "ex
 import fs from "fs";
 import path from "path";
 import YAML from "yaml";
+import { marked } from "marked";
 
 const BASE_URL = "https://bershadsky.dev";
 
@@ -114,13 +115,8 @@ function loadMarkdownContent(postSlug: string, posts: BlogPostData[]): string {
   try {
     const contentFile = `blog-posts/${post.id}.content.md`;
     const filePath = getDataPath(contentFile);
-    const content = fs.readFileSync(filePath, "utf-8");
-    return content
-      .replace(/```[\s\S]*?```/g, "")
-      .replace(/[#*_`~\[\]()>|]/g, "")
-      .replace(/\n{2,}/g, "\n")
-      .trim()
-      .slice(0, 5000);
+    const md = fs.readFileSync(filePath, "utf-8");
+    return marked.parse(md, { async: false }) as string;
   } catch {
     return "";
   }
@@ -254,7 +250,7 @@ function buildBlogPostPage(slug: string, robotsDirective?: string): string | nul
       <article>
         <h1>${escapeHtml(post.title)}</h1>
         <p><em>${escapeHtml(post.excerpt)}</em></p>
-        <div>${escapeHtml(content)}</div>
+        <div>${content}</div>
         <footer>
           <p>Tags: ${post.tags.map(t => escapeHtml(t)).join(", ")}</p>
           <p>Published: ${publishedDate}</p>
