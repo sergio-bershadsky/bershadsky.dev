@@ -7,6 +7,7 @@ import MiniSearch from 'minisearch';
 import { cvData } from '@/data/cv';
 import { GlitchText, NeonCard, CyberButton, SectionHeader, NameGlitch } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
+import { CyberpunkRoadSprites } from '@/components/CyberpunkRoadSprites';
 import { SeriesRail } from '@/components/SeriesRail';
 const avatarImage = '/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
 import { getAllBlogPosts, getAllSeries, loadSeriesPosts, type BlogPost } from '@/lib/dataLoader';
@@ -240,6 +241,8 @@ export default function Home() {
           SCROLL_TO_ACCESS_DATA
         </div>
       </section>
+
+      <CyberpunkRoadSprites />
 
       {/* Series Rail - Instagram Stories style */}
       <section className="py-8 relative z-10 border-b border-white/5">
