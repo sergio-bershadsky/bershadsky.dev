@@ -16,6 +16,7 @@ const CRAWLER_UA_PATTERNS = [
   /rogerbot/i, /screaming frog/i, /petalbot/i,
   /embedly/i, /quora link preview/i, /outbrain/i,
   /pinterest/i, /developers\.google/i,
+  /facebookexternalhit/i, /vkshare/i, /w3c_validator/i,
   /scrapy/i,
 ];
 
@@ -67,9 +68,9 @@ const CACHE_TTL = 60000;
 
 function getDataPath(filename: string): string {
   const devPath = path.resolve(process.cwd(), "client", "public", "data", filename);
-  const prodPath = path.resolve(import.meta.dirname, "public", "data", filename);
+  const distPath = path.resolve(process.cwd(), "dist", "public", "data", filename);
   if (fs.existsSync(devPath)) return devPath;
-  if (fs.existsSync(prodPath)) return prodPath;
+  if (fs.existsSync(distPath)) return distPath;
   return devPath;
 }
 
@@ -283,7 +284,7 @@ function buildSeriesPage(slug: string, robotsDirective?: string): string | null 
     .map((p, i) => `<li>Part ${i + 1}: <a href="${BASE_URL}/blog/${p.slug}">${escapeHtml(p.title)}</a><p>${escapeHtml(p.excerpt)}</p></li>`)
     .join("\n");
 
-  const jsonLd = {
+  const jsonLd: JsonLdObject = {
     "@context": "https://schema.org",
     "@type": "CreativeWorkSeries",
     name: series.title,
@@ -302,12 +303,21 @@ function buildSeriesPage(slug: string, robotsDirective?: string): string | null 
     })),
   };
 
+  const breadcrumbJsonLd: JsonLdObject = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL },
+      { "@type": "ListItem", position: 2, name: series.title, item: canonicalUrl },
+    ],
+  };
+
   return buildHtmlPage({
     title: `${series.title} | Sergey Bershadsky`,
     description: series.description,
     url: canonicalUrl,
     imageUrl: `${BASE_URL}/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp`,
-    jsonLd,
+    jsonLd: [jsonLd, breadcrumbJsonLd],
     robotsDirective,
     body: `
       <h1>${escapeHtml(series.title)}</h1>
