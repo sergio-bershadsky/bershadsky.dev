@@ -2,11 +2,15 @@ import express, { type Request, Response, NextFunction } from "express";
 import { serveStatic } from "./static";
 import { createServer } from "http";
 import path from "path";
+import { setupSEO, crawlerPrerender } from "./seo";
 
 const app = express();
 
-// Serve attached_assets directory for generated images/videos
 app.use('/attached_assets', express.static(path.join(process.cwd(), 'attached_assets')));
+
+setupSEO(app);
+app.use(crawlerPrerender);
+
 const httpServer = createServer(app);
 
 export function log(message: string, source = "express") {
