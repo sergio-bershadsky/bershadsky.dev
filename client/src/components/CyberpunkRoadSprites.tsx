@@ -164,12 +164,26 @@ export const CyberpunkRoadSprites: React.FC = () => {
     const w = baseSize * sprite.scale;
     const h = (sprite.type === 'building' ? 55 : sprite.type === 'lamp' ? 50 : 60) * sprite.scale;
 
+    const drift = sprite.type === 'tree' ? 3 : sprite.type === 'lamp' ? 1.5 : 1;
+    const driftDuration = 6 + sprite.animDelay * 3;
+
     return (
       <motion.div
         key={sprite.id}
         initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: sprite.opacity, y: 0 }}
-        transition={{ duration: 1.5, delay: sprite.animDelay * 0.3 }}
+        animate={{
+          opacity: sprite.opacity,
+          y: [0, -drift, 0, drift * 0.5, 0],
+        }}
+        transition={{
+          opacity: { duration: 1.5, delay: sprite.animDelay * 0.3 },
+          y: {
+            duration: driftDuration,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: sprite.animDelay * 0.3,
+          },
+        }}
         className="absolute bottom-0"
         style={{
           left: `${sprite.x}%`,
