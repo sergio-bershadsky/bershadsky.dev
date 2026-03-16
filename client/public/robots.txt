@@ -1,7 +1,0 @@
-# Allow search engines and AI crawlers to index bershadsky.dev
-# The replit.app domain is blocked via meta tags in index.html
-User-agent: *
-Allow: /
-
-# Sitemap location
-Sitemap: https://bershadsky.dev/sitemap.xml

@@ -460,6 +460,14 @@ ${urlEntries}
 }
 
 export function setupSEO(app: Express) {
+  app.use((req: Request, res: Response, next: NextFunction) => {
+    const hostname = req.hostname || "";
+    if (hostname.includes("replit.app") || hostname.includes("replit.dev")) {
+      res.set("X-Robots-Tag", "noindex, nofollow");
+    }
+    next();
+  });
+
   app.get("/sitemap.xml", (_req: Request, res: Response) => {
     res.set("Content-Type", "application/xml");
     res.set("Cache-Control", "public, max-age=3600");
