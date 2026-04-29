@@ -1,118 +1,69 @@
-# Deploying to Cloudflare Pages
+# Deploying to Cloudflare Pages (static)
 
-This guide explains how to deploy your static blog to Cloudflare Pages.
+This site deploys to **Cloudflare Pages** as a fully static SPA. The Express server is **not** used in production — its crawler-prerender role is replaced by a build-time prerender step that emits per-route `index.html` files with full SEO metadata.
 
-## Prerequisites
+## What the static build produces
 
-- A Cloudflare account (free tier works)
-- Your code pushed to a Git repository (GitHub, GitLab, or Bitbucket)
+`npm run build:static` runs:
+1. `vite build` → SPA shell + hashed assets in `dist/public/`
+2. `script/prerender.ts` → reads YAML, writes one `index.html` per route into `dist/public/<route>/index.html` with the SPA shell + route-specific `<title>`, meta, OpenGraph, Twitter, canonical, and JSON-LD (`BlogPosting` + `BreadcrumbList` for posts, `CreativeWorkSeries` for series, `Person` for `/about`, `WebSite` for the home).
+3. Writes `dist/public/sitemap.xml` and `dist/public/robots.txt`.
+4. `client/public/_redirects` and `client/public/_headers` are copied through by Vite.
 
-## Option 1: Connect Git Repository (Recommended)
+Routes prerendered: `/`, `/about`, `/blog/<slug>` for every published post, `/series/<slug>` for every visible series.
 
-### Step 1: Push to GitHub
+The standard `npm run build` additionally bundles the dev/Replit Express server (`dist/index.cjs`) — Cloudflare Pages will simply ignore that file. Use `build:static` to skip it.
 
-If your code isn't already on GitHub:
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
-git push -u origin main
-```
-
-### Step 2: Create Cloudflare Pages Project
-
-1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. Go to **Workers & Pages** in the sidebar
-3. Click **Create application** → **Pages** → **Connect to Git**
-4. Select your GitHub repository
-5. Click **Begin setup**
-
-### Step 3: Configure Build Settings
+## Cloudflare Pages settings
 
 | Setting | Value |
-|---------|-------|
-| **Project name** | your-site-name |
-| **Production branch** | main |
-| **Framework preset** | None |
-| **Build command** | `npm run build` |
-| **Build output directory** | `dist/public` |
+|---|---|
+| Framework preset | None |
+| Build command | `npm run build:static` |
+| Build output directory | `dist/public` |
+| Node version | 20+ (set `NODE_VERSION=20` env var if needed) |
 
-### Step 4: Environment Variables
+No environment variables are required. To override the canonical hostname used in meta tags / sitemap, set `SITE_BASE_URL=https://your-domain` (defaults to `https://bershadsky.dev`).
 
-No environment variables are required for this static site.
+## Connecting via Git (recommended)
 
-### Step 5: Deploy
+1. Push this repo to GitHub/GitLab.
+2. Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
+3. Select the repo, set the build command and output dir as above.
+4. **Save and Deploy**. Production: pushes to `main`; preview: pull requests.
 
-Click **Save and Deploy**. Cloudflare will build and deploy your site.
-
-Your site will be available at: `https://your-project-name.pages.dev`
-
-## Option 2: Direct Upload
-
-If you prefer not to connect a Git repository:
-
-### Step 1: Build Locally
+## Direct upload
 
 ```bash
 npm install
-npm run build
+npm run build:static
+# upload dist/public/ via Workers & Pages → Create → Pages → Direct Upload
 ```
 
-### Step 2: Upload to Cloudflare
+## SPA fallback and headers
 
-1. Go to **Workers & Pages** → **Create application** → **Pages**
-2. Select **Direct Upload**
-3. Name your project
-4. Drag and drop the `dist/public` folder
-5. Click **Deploy site**
+- `client/public/_redirects` — `/* /index.html 200` so client-side `wouter` routes resolve when a deep link doesn't have a prerendered file (defensive only; every route in the sitemap *does* have its own file).
+- `client/public/_headers` — long cache for `/assets/*` (Vite hashes them), short cache for `/data/*` and HTML, baseline security headers (`X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options`, `Permissions-Policy`).
 
-## Custom Domain
+## Custom domain
 
-To add a custom domain:
+Pages project → **Custom domains** → add `bershadsky.dev` (or your domain) → follow the DNS instructions. The prerender uses `https://bershadsky.dev` for canonicals; if the production hostname differs, set `SITE_BASE_URL` in Pages env vars and rebuild.
 
-1. Go to your Pages project
-2. Click **Custom domains** tab
-3. Click **Set up a custom domain**
-4. Enter your domain (e.g., `blog.example.com`)
-5. Follow the DNS configuration instructions
+## After adding a new post or series
 
-## Automatic Deployments
+A new post is just a YAML entry + `<id>.content.md` file. Trigger a rebuild (push to `main` or click "Retry deployment") — the prerender will emit `dist/public/blog/<new-slug>/index.html` and add the URL to the sitemap automatically. Nothing in the prerender script is hardcoded per-post.
 
-When connected to Git, Cloudflare automatically deploys:
-- **Production**: When you push to `main` branch
-- **Preview**: When you create a pull request
+## Local verification
 
-## Build Output Structure
+```bash
+npm run build:static
+npx serve dist/public        # or any static server on dist/public
+```
 
-After running `npm run build`, the `dist/public` folder contains:
-- `index.html` - Main entry point
-- `assets/` - JavaScript, CSS, and other assets
-- `data/` - Static YAML and Markdown content files
-- `attached_assets/` - Generated images
+Spot-check that `/blog/<slug>/index.html` contains the route-specific `<title>` and a `BlogPosting` JSON-LD block before deploying.
 
 ## Troubleshooting
 
-### Build Fails
-
-Make sure your `package.json` has the correct build script:
-```json
-{
-  "scripts": {
-    "build": "tsx script/build.ts"
-  }
-}
-```
-
-### 404 on Page Refresh
-
-Cloudflare Pages handles SPA routing automatically. If you still get 404s, create a `_redirects` file in `client/public/`:
-
-```
-/*    /index.html   200
-```
-
-### Assets Not Loading
-
-Verify the build output directory is set to `dist/public` (not just `dist`).
+- **404 on a deep link in production** — confirm `_redirects` was published (it should be at `https://yoursite/_redirects` returning text). Pages picks it up automatically when present in the output dir root.
+- **Wrong canonical / og:url on prerendered pages** — set `SITE_BASE_URL` and rebuild.
+- **Stale page after deploy** — `/*.html` is `max-age=0, must-revalidate`; if you changed `_headers`, hard-refresh once. Hashed `/assets/*` files are immutable, so old shells won't pick up new chunks until the HTML revalidates (which it does on every visit).

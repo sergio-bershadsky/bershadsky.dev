@@ -1,0 +1,4 @@
+# Cloudflare Pages SPA fallback.
+# Prerendered routes (/, /about, /blog/<slug>/, /series/<slug>/) win as real files;
+# anything else falls back to the SPA shell with a 200 so wouter can route client-side.
+/*    /index.html   200
