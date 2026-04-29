@@ -21,7 +21,7 @@ This is a **fully static React SPA**, prerendered at build time, deployed to Clo
 
 ### Client (`client/`)
 - Vite root is `client/`, output is `dist/public` (see `vite.config.ts`).
-- Path aliases: `@` → `client/src`, `@shared` → `shared`. (Static media goes in `client/public/` and is referenced as a string path like `/images/foo.webp` or `/videos/foo.mp4` — no Vite import.)
+- Path alias: `@` → `client/src` (only one). Shared TS types live in `client/src/lib/schema.ts`. Static media goes in `client/public/` and is referenced as a string path like `/images/foo.webp` or `/videos/foo.mp4` — no Vite import.
 - Routing uses `wouter`. SEO-friendly slugs: `/blog/:slug`, `/series/:slug`.
 - UI: React 19, Tailwind v4 (via `@tailwindcss/vite`), Radix primitives, `framer-motion`, `lucide-react`. Cyberpunk/neon theme — see `replit.md` for the full design system.
 - Custom Vite plugin: `vite-plugin-meta-images.ts` (referenced from `vite.config.ts`).
@@ -32,7 +32,7 @@ This is a **fully static React SPA**, prerendered at build time, deployed to Clo
   - `series/data.yaml`
   - `series-posts/data.yaml`
 - `client/src/lib/dataLoader.ts` fetches and parses these, transforms snake_case → camelCase, and caches results.
-- Types are pure TS interfaces in `shared/schema.ts` (`BlogPost`, `Series`, `SeriesPost`, `BlogPostWithSeries`, `SeriesWithPosts`). There is no Drizzle schema in use — do not reintroduce DB-backed types here.
+- Types are pure TS interfaces in `client/src/lib/schema.ts` (`BlogPost`, `Series`, `SeriesPost`, `BlogPostWithSeries`, `SeriesWithPosts`). There is no Drizzle schema in use — do not reintroduce DB-backed types here.
 
 ### Markdown rendering and ASCII-diagram detection
 The blog has a non-obvious rendering pipeline under `client/src/components/markdown/`:
