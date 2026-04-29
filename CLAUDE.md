@@ -4,27 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-- `npm run dev` — Run Express server with Vite middleware in dev mode (port 5000, host 0.0.0.0). Single process serves API + client HMR.
-- `npm run dev:client` — Vite-only dev server (rarely needed; the Express dev path is preferred).
-- `npm run build` — Runs `script/build.ts`: `vite build` → `script/prerender.ts` (per-route `<head>` injection + sitemap/robots) → esbuild bundles `server/index.ts` to `dist/index.cjs`. Externalizes everything in `package.json` except an explicit allowlist (`express`, `ws`, `zod`, `zod-validation-error`).
-- `npm run build:static` — Same as `build` but skips the server bundle. Use this for Cloudflare Pages / any static host. Set `BUILD_TARGET=static` or pass `--static` to get the same effect from `build`.
+- `npm run dev` — Vite dev server on port 5000 with HMR. There is no backend — everything is static (YAML + Markdown loaded client-side).
+- `npm run build` — Runs `script/build.ts`: `vite build` → `script/prerender.ts`. Output: `dist/public/` (per-route `index.html`, sitemap, robots, hashed assets). This is the artifact Cloudflare Pages deploys.
 - `npm run prerender` — Runs `script/prerender.ts` standalone (assumes `dist/public/index.html` already exists from a prior `vite build`). Set `SITE_BASE_URL` to override the canonical hostname (default `https://bershadsky.dev`).
-- `npm start` — Runs the production bundle from `dist/index.cjs` (Express; not used by the Cloudflare Pages deploy).
 - `npm run check` — TypeScript type-check (no emit).
-- There is no test runner and no lint script configured.
+- There is no test runner, no lint script, no backend, no database.
 
 ## Architecture
 
-This is a single-server Express + React SPA. Content is fully static (YAML + Markdown); there is no database despite the lingering `db:push` script and `drizzle-kit` reference.
+This is a **fully static React SPA**, prerendered at build time, deployed to Cloudflare Pages. Content lives in YAML + Markdown under `client/public/data/`; there is no server, no database, no API.
 
-### Server (`server/`)
-- `server/index.ts` is the entry. In dev it lazy-imports `server/vite.ts` to attach Vite middleware to the same HTTP server; in production it calls `serveStatic` (`server/static.ts`) to serve `dist/public`.
-- `server/seo.ts` exports `setupSEO` (sitemap/robots/etc.) and `crawlerPrerender` middleware. The middleware UA-sniffs known crawlers (Googlebot, social previews, AI bots) and serves prerendered HTML with full meta tags and content for them, while regular users get the SPA. Edits to SEO behavior live here, not in the client.
-- The build always outputs CJS (`dist/index.cjs`) even though `package.json` declares `"type": "module"` — this is intentional; do not switch the server output to ESM without revisiting the externals/allowlist logic in `script/build.ts`.
+### Build pipeline
+- `script/build.ts` orchestrates `vite build` → `script/prerender.ts`.
+- `script/prerender.ts` reads YAML, constructs per-route `<head>` (title, meta, OG/Twitter, canonical, JSON-LD) and writes `dist/public/<route>/index.html` for `/`, `/about`, every published `/blog/:slug`, every visible `/series/:slug`. Also emits `sitemap.xml` and `robots.txt`.
+- `client/public/_redirects` and `client/public/_headers` are copied through by Vite and applied at the Cloudflare edge.
 
 ### Client (`client/`)
 - Vite root is `client/`, output is `dist/public` (see `vite.config.ts`).
-- Path aliases: `@` → `client/src`, `@shared` → `shared`, `@assets` → `attached_assets`.
+- Path aliases: `@` → `client/src`, `@shared` → `shared`. (Static media goes in `client/public/` and is referenced as a string path like `/images/foo.webp` or `/videos/foo.mp4` — no Vite import.)
 - Routing uses `wouter`. SEO-friendly slugs: `/blog/:slug`, `/series/:slug`.
 - UI: React 19, Tailwind v4 (via `@tailwindcss/vite`), Radix primitives, `framer-motion`, `lucide-react`. Cyberpunk/neon theme — see `replit.md` for the full design system.
 - Custom Vite plugin: `vite-plugin-meta-images.ts` (referenced from `vite.config.ts`).
@@ -47,7 +44,7 @@ The blog has a non-obvious rendering pipeline under `client/src/components/markd
 ## Content & asset conventions (from `replit.md`)
 
 These are project rules, not generic style preferences — follow them when adding posts or visual content:
-- Images: WebP, in `client/public/images/`, referenced as `/images/...` strings (not Vite imports). `attached_assets/` is for raw inputs, never production refs.
+- Images: WebP, in `client/public/images/`, referenced as `/images/...` strings (not Vite imports). Videos in `client/public/videos/`, referenced as `/videos/...`.
 - Use `lucide-react` icons everywhere — no emojis in article content, diagrams, or tables.
 - No `<hr>` / `---` rules in markdown content (they render as nothing); use headings for breaks.
 - Series icons are mapped in `getSeriesIcon()` in `client/src/components/SeriesRail.tsx` and `client/src/pages/blog-post.tsx` — both must be updated together when adding a series.
@@ -85,7 +82,6 @@ The site has a strong cyberpunk/neon point-of-view. New UI must extend it, not d
 
 ## Deployment notes
 
-- **Cloudflare Pages (primary, static):** build command `npm run build:static`, output directory `dist/public`. `script/prerender.ts` emits per-route `index.html` files (home, `/about`, every published `/blog/:slug`, every visible `/series/:slug`) with route-specific `<title>`, OpenGraph, Twitter, canonical, and JSON-LD (`BlogPosting`+`BreadcrumbList`/`CreativeWorkSeries`/`Person`/`WebSite`). Also writes `sitemap.xml` and `robots.txt`. SPA fallback (`_redirects`) and edge headers (`_headers`) live in `client/public/`. Full guide: `CLOUDFLARE_DEPLOY.md`.
-- **Replit (legacy server-rendered):** `.replit` runs `node ./dist/index.cjs`, port 5000 → 80. The Express server's `crawlerPrerender` middleware (`server/seo.ts`) does the same UA-based prerender at request time; the static deploy makes that path obsolete but the server is kept for dev (`npm run dev` uses Express + Vite middleware) and as a backup deployment target.
-- **Adding new content does not require code changes.** Drop a YAML entry + `<id>.content.md` and rebuild — the prerender enumerates from YAML, so new routes appear automatically in the output and sitemap.
-- **If you change the prerender's metadata shape** (`script/prerender.ts`), keep `server/seo.ts` in sync if you still use the Express deploy — they emit overlapping JSON-LD/og tags and divergence will produce inconsistent SEO across the two deploy targets.
+- **Cloudflare Pages (only deploy target):** build command `npm run build`, output directory `dist/public`, `NODE_VERSION=20`. Set `SITE_BASE_URL` only if the production hostname differs from `https://bershadsky.dev`. Full guide: `CLOUDFLARE_DEPLOY.md`.
+- **Adding new content does not require code changes.** Drop a YAML entry into `client/public/data/blog-posts/data.yaml` plus a `<id>.content.md` file and rebuild — the prerender enumerates from YAML, so new routes appear automatically in the output and sitemap.
+- **`.replit` is leftover from a prior server-rendered deploy.** The Express server has been removed; `.replit` references a `node ./dist/index.cjs` that is no longer produced. Safe to delete if you don't return to Replit hosting.
