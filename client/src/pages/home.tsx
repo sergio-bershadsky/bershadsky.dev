@@ -11,7 +11,7 @@ import { CyberpunkRoadSprites } from '@/components/CyberpunkRoadSprites';
 import { SeriesRail } from '@/components/SeriesRail';
 const avatarImage = '/images/cyberpunk_portrait_of_bearded_man_with_glasses.webp';
 import { getAllBlogPosts, getAllSeries, loadSeriesPosts, type BlogPost } from '@/lib/dataLoader';
-import type { Series, SeriesPost } from '@shared/schema';
+import type { Series, SeriesPost } from '@/lib/schema';
 
 const getSeriesFromTitle = (title: string): { name: string; slug: string; icon: React.ReactNode; color: string } | null => {
   if (title.startsWith('Second Brain:')) {

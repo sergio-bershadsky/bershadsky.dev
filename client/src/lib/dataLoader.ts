@@ -1,5 +1,5 @@
 import { parse } from 'yaml';
-import type { BlogPost, Series, SeriesPost, BlogPostWithSeries, SeriesWithPosts } from '@shared/schema';
+import type { BlogPost, Series, SeriesPost, BlogPostWithSeries, SeriesWithPosts } from './schema';
 
 export type { BlogPost, Series, SeriesPost, BlogPostWithSeries, SeriesWithPosts };
 
