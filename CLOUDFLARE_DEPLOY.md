@@ -4,7 +4,7 @@ This site deploys to **Cloudflare Pages** as a fully static SPA. The Express ser
 
 ## What the static build produces
 
-`npm run build:static` runs:
+`npm run build` runs:
 1. `vite build` → SPA shell + hashed assets in `dist/public/`
 2. `script/prerender.ts` → reads YAML, writes one `index.html` per route into `dist/public/<route>/index.html` with the SPA shell + route-specific `<title>`, meta, OpenGraph, Twitter, canonical, and JSON-LD (`BlogPosting` + `BreadcrumbList` for posts, `CreativeWorkSeries` for series, `Person` for `/about`, `WebSite` for the home).
 3. Writes `dist/public/sitemap.xml` and `dist/public/robots.txt`.
@@ -12,14 +12,13 @@ This site deploys to **Cloudflare Pages** as a fully static SPA. The Express ser
 
 Routes prerendered: `/`, `/about`, `/blog/<slug>` for every published post, `/series/<slug>` for every visible series.
 
-The standard `npm run build` additionally bundles the dev/Replit Express server (`dist/index.cjs`) — Cloudflare Pages will simply ignore that file. Use `build:static` to skip it.
 
 ## Cloudflare Pages settings
 
 | Setting | Value |
 |---|---|
 | Framework preset | None |
-| Build command | `npm run build:static` |
+| Build command | `npm run build` |
 | Build output directory | `dist/public` |
 | Node version | 20+ (set `NODE_VERSION=20` env var if needed) |
 
@@ -36,7 +35,7 @@ No environment variables are required. To override the canonical hostname used i
 
 ```bash
 npm install
-npm run build:static
+npm run build
 # upload dist/public/ via Workers & Pages → Create → Pages → Direct Upload
 ```
 
@@ -56,7 +55,7 @@ A new post is just a YAML entry + `<id>.content.md` file. Trigger a rebuild (pus
 ## Local verification
 
 ```bash
-npm run build:static
+npm run build
 npx serve dist/public        # or any static server on dist/public
 ```
 
