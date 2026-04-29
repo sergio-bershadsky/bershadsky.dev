@@ -1,0 +1,19 @@
+// Cloudflare Workers Static Assets config.
+// `npm run build` writes prerendered HTML + hashed assets into ./dist/public,
+// which this Worker serves directly at the edge. No server code — `main` is
+// intentionally omitted, so this deploys as an assets-only Worker.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bershadsky-dev",
+  "compatibility_date": "2026-04-01",
+  "assets": {
+    "directory": "./dist/public",
+    // Every real route is prerendered to its own <route>/index.html.
+    // For unmatched paths (typos, removed slugs), serve the SPA shell so
+    // wouter's NotFound route renders. Mirrors the _redirects file.
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
