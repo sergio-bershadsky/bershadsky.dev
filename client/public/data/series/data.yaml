@@ -3,7 +3,7 @@
   title: "Building Your Second Brain with Claude"
   description: "A 12-part series on transforming Claude from a coding assistant into a persistent knowledge companion that remembers your projects, decisions, and team context."
   cover_image_url: null
-  accent_color: "#06b6d4"
+  accent_color: "#ec4899"
   is_visible: true
 
 - id: 6
@@ -12,4 +12,28 @@
   description: "These are the projects where I invested significant effort and passion. Each one taught me something valuable about building scalable systems, leading teams, and solving problems that matter."
   cover_image_url: null
   accent_color: "#f97316"
+  is_visible: true
+
+- id: 7
+  slug: zero-trust
+  title: "Zero Trust"
+  description: "A working engineer's series on Zero Trust — the philosophy of where verification terminates, the secrets-at-rest problem, identity, policy, the data plane, posture, and the recovery story nobody plans for. No vendor pitch, no checklist theatre."
+  cover_image_url: null
+  accent_color: "#06b6d4"
+  is_visible: true
+
+- id: 8
+  slug: cloud-agnostic
+  title: "Agnostic Way"
+  description: "An honest, opinionated series on cloud-agnostic architecture — when the abstraction is worth it, when it isn't, and what 'agnostic' actually looks like in code when you mean it. Names AWS / GCP / Azure / on-prem and tells the exit-cost truth."
+  cover_image_url: null
+  accent_color: "#f59e0b"
+  is_visible: true
+
+- id: 9
+  slug: secondbrain-db
+  title: "SBDB"
+  description: "An honest tour of SBDB (secondbrain-db) — the single-binary Go tool that turns a directory of markdown files into an enforceable ORM-style data layer. Typed schemas, integrity signing, virtual fields, knowledge graph, and git as the immutable audit log."
+  cover_image_url: null
+  accent_color: "#10b981"
   is_visible: true

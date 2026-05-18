@@ -6,3 +6,9 @@ vite.config.ts.*
 *.tar.gz
 .local/
 attached_assets/
+
+# Pre-publication article specs and story plans — never committed
+.draft/
+
+# Local secrets (TELEGRAM_BOT_TOKEN, OPENAI_API_KEY)
+.env

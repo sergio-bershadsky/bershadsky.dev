@@ -3,6 +3,7 @@ import { Copy, Check, MessageSquare, Bot } from 'lucide-react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { NeonCard } from '../CyberpunkUI';
 import { findDiagram } from './diagramRegistry';
+import { ArchDiagram, isArchDiagramSvg } from './ArchDiagram';
 
 import { coreDiagramEntries } from './diagrams/core';
 import { connectionsDiagramEntries } from './diagrams/connections';
@@ -366,6 +367,15 @@ export const CyberCodeBlock = ({ children, className }: { children: React.ReactN
   const isChatConversation = codeContent.includes('You:') && codeContent.includes('Claude:');
   if (isChatConversation) {
     return <ChatConversationDiagram content={codeContent} />;
+  }
+
+  // v2 diagram path (Cocoon-AI design system, inline SVG). Triggered by
+  // an explicit `language-arch-diagram` fence, or by auto-detection of
+  // inline SVG content. This is additive — the v1 ASCII-pattern registry
+  // below remains untouched.
+  const isArchDiagramLang = className?.includes('arch-diagram');
+  if (isArchDiagramLang || isArchDiagramSvg(codeContent)) {
+    return <ArchDiagram content={codeContent} />;
   }
 
   // Check diagram registry first (before ASCII check) for registered diagram patterns

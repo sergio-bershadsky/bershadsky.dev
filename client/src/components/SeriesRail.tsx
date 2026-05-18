@@ -2,24 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
-import { Brain, Layers, Rocket, BookOpen, Zap, Code, Server, Database, Globe, Cpu, Briefcase } from 'lucide-react';
 import { getAllSeries, type Series } from '@/lib/dataLoader';
+import { getSeriesIcon as getSeriesIconBase } from '@/lib/seriesIcons';
 
-const getSeriesIcon = (slug: string, accentColor: string) => {
-  const iconProps = { className: "w-8 h-8 md:w-10 md:h-10", style: { color: accentColor } };
-  switch (slug) {
-    case 'second-brain-claude':
-      return <Brain {...iconProps} />;
-    case 'architecture-fundamentals':
-      return <Layers {...iconProps} />;
-    case 'startup-playbook':
-      return <Rocket {...iconProps} />;
-    case 'case-study':
-      return <Briefcase {...iconProps} />;
-    default:
-      return <BookOpen {...iconProps} />;
-  }
-};
+const getSeriesIcon = (slug: string, accentColor: string) =>
+  getSeriesIconBase(slug, accentColor, { className: 'w-8 h-8 md:w-10 md:h-10' });
 
 interface SeriesRailProps {
   onSeriesClick?: (series: Series) => void;

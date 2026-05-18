@@ -449,3 +449,203 @@
   seo_title: "Zoetis Case Study: Sales Intelligence Platform Engineering"
   seo_description: "Senior Python Engineer building ML-driven sales analytics for global animal health company. Django pipelines, Azure infrastructure, DataBricks ML integration."
   seo_keywords: "Zoetis case study, sales intelligence platform, Python Django, Azure DataBricks, ML analytics, data engineering, Toptal"
+
+- id: 34
+  slug: zero-trust-what-it-is
+  title: "Zero Trust: What It Actually Is"
+  excerpt: "Where does verification finally terminate — at a brain, or at a quorum? A philosophical look at the last perimeter of trust."
+  date: "2026-01-14"
+  tags:
+    - Zero-Trust
+    - Security
+    - Philosophy
+    - Identity
+    - Mindset
+  image_url: /images/zero_trust_what_it_is.webp
+  status: published
+  published_at: "2026-01-14T09:30:00Z"
+  content: blog-posts/34.content.md
+  audience: Engineers
+  seo_title: "Zero Trust: What It Actually Is — and Where It Terminates"
+  seo_description: "Zero Trust read philosophically. Is your brain the final trust root, or must the root be a consensus of humans? An academic-grade reading for engineers."
+  seo_keywords: "zero trust, zero trust philosophy, trust root, multisignature security, threshold cryptography, Wittgenstein security, Arendt plurality, four-eyes principle"
+
+- id: 35
+  slug: zero-trust-pgp-sops
+  title: "Zero Trust: Secrets When You Trust Nobody (PGP + SOPS)"
+  excerpt: "Commit real secrets to git — encrypted well enough that the repo can be public. PGP and SOPS for the working engineer, plus an honest map of where the trust boundary actually moves."
+  date: "2026-02-04"
+  tags:
+    - Zero-Trust
+    - Security
+    - Secrets
+    - PGP
+    - SOPS
+  image_url: /images/zero_trust_pgp_sops.webp
+  status: published
+  published_at: "2026-02-04T09:30:00Z"
+  content: blog-posts/35.content.md
+  audience: Engineers
+  seo_title: "Zero Trust Secrets: Committing Real Secrets to Git with PGP + SOPS"
+  seo_description: "A concrete workflow for keeping real secrets in git — encrypted with PGP, structured with SOPS, recipient-rotated without panic. Plus where the trust boundary actually moves."
+  seo_keywords: "zero trust secrets, PGP secrets in git, Mozilla SOPS, encrypted secrets git, secret rotation, recipient rotation, threshold encryption, age encryption"
+
+- id: 36
+  slug: zero-trust-immutability-as-proof
+  title: "Zero Trust: Immutability as Proof"
+  excerpt: "Append-only streams, hash chains, and the past you cannot unhack. The third trust shift: stop trusting the storage layer to be honest about its own history."
+  date: "2026-02-18"
+  tags:
+    - Zero-Trust
+    - Security
+    - Immutability
+    - Event-Sourcing
+    - Streams
+  image_url: /images/zero_trust_immutability_as_proof.webp
+  status: published
+  published_at: "2026-02-18T09:30:00Z"
+  content: blog-posts/36.content.md
+  audience: Engineers
+  seo_title: "Zero Trust: Immutability as Proof — Streams, Hash Chains, and Tamper-Evidence"
+  seo_description: "Why every modern system is a stream in disguise — and how hash chains, Merkle proofs, and signed checkpoints make the past tamper-evident. Zero Trust applied to time itself."
+  seo_keywords: "immutability, hash chain, event sourcing, append-only log, Merkle tree, tamper evidence, zero trust audit, signed checkpoint, Kafka, S3 Object Lock"
+
+- id: 37
+  slug: cloud-agnostic-thinking
+  title: "Agnostic Way: Thinking Cloud-Agnostic"
+  excerpt: "The mindset, what it actually buys you, and the three exit costs nobody priced in."
+  date: "2026-01-21"
+  tags:
+    - Cloud-Agnostic
+    - Architecture
+    - Cloud
+    - Mindset
+    - Vendor-Lock-In
+  image_url: /images/cloud_agnostic_thinking.webp
+  status: published
+  published_at: "2026-01-21T09:30:00Z"
+  content: blog-posts/37.content.md
+  audience: Engineers
+  seo_title: "Agnostic Way: Thinking Cloud-Agnostic — Optionality vs Abstraction"
+  seo_description: "The mindset for designing cloud-agnostic systems. Three real wins, three unbilled exit costs, and the smell test that decides whether your stack actually has optionality."
+  seo_keywords: "cloud agnostic, optionality vs abstraction, vendor lock-in, cloud migration cost, data egress, IAM rewiring, multi-cloud strategy"
+
+- id: 38
+  slug: secondbrain-db-overview
+  title: "SBDB: Your Markdown IS Your Database"
+  excerpt: "Markdown files are structured data wearing prose's clothes. `sbdb` is the smallest tool that lets you stop pretending otherwise."
+  date: "2026-01-07"
+  tags:
+    - secondbrain-db
+    - Knowledge-Management
+    - Tooling
+    - Go
+    - Markdown
+  image_url: /images/secondbrain_db_overview.webp
+  status: published
+  published_at: "2026-01-07T09:30:00Z"
+  content: blog-posts/38.content.md
+  audience: Engineers
+  seo_title: "SBDB: Your Markdown IS Your Database (Overview)"
+  seo_description: "secondbrain-db turns a directory of markdown files into an enforceable ORM-style data layer. Typed schemas, integrity signing, knowledge graph, git as audit log."
+  seo_keywords: "secondbrain-db, sbdb, markdown database, knowledge base ORM, file-backed database, Go static binary"
+
+- id: 39
+  slug: secondbrain-db-typed-schemas
+  title: "SBDB: Typed Schemas"
+  excerpt: "A copy-pasteable JSON-Schema 2020-12 contract for every markdown file in your repo, plus the small `x-*` vocabulary that turns the schema into an ORM."
+  date: "2026-01-28"
+  tags:
+    - secondbrain-db
+    - JSON-Schema
+    - Validation
+    - Tooling
+    - Markdown
+  image_url: /images/secondbrain_db_typed_schemas.webp
+  status: published
+  published_at: "2026-01-28T09:30:00Z"
+  content: blog-posts/39.content.md
+  audience: Engineers
+  seo_title: "SBDB Typed Schemas: JSON Schema 2020-12 for Markdown"
+  seo_description: "How JSON Schema 2020-12 and a tiny x-* extension vocabulary turn frontmatter into an enforceable ORM contract. Foreign keys, evolution, and authoring discipline."
+  seo_keywords: "JSON Schema 2020-12, frontmatter validation, sbdb schema, markdown ORM, schema migration, foreign keys"
+
+- id: 40
+  slug: secondbrain-db-integrity-signing
+  title: "SBDB: Integrity Signing"
+  excerpt: "Per-file hashes, three flavours of drift, and a `doctor` command that makes silent edits loud."
+  date: "2026-02-11"
+  tags:
+    - secondbrain-db
+    - Integrity
+    - Tamper-Detection
+    - Tooling
+    - Markdown
+  image_url: /images/secondbrain_db_integrity_signing.webp
+  status: published
+  published_at: "2026-02-11T09:30:00Z"
+  content: blog-posts/40.content.md
+  audience: Engineers
+  seo_title: "SBDB Integrity Signing: When the File Lies, the Hash Tells"
+  seo_description: "How sbdb signs every doc with a content hash sidecar — detecting hand-edits, AI rewrites, and merge-conflict drift before they corrupt the knowledge base."
+  seo_keywords: "file integrity hash, markdown tamper detection, sbdb doctor, content hash, drift detection, knowledge base integrity"
+
+- id: 41
+  slug: secondbrain-db-virtual-fields
+  title: "SBDB: Virtual Fields"
+  excerpt: "Stop typing the title twice. Starlark virtual fields compute frontmatter from the markdown body — sandboxed, deterministic, and loud when they lie."
+  date: "2026-02-25"
+  tags:
+    - secondbrain-db
+    - Starlark
+    - Virtual-Fields
+    - Tooling
+    - Markdown
+  image_url: /images/secondbrain_db_virtual_fields.webp
+  status: published
+  published_at: "2026-02-25T09:30:00Z"
+  content: blog-posts/41.content.md
+  audience: Engineers
+  seo_title: "SBDB Virtual Fields: Starlark in Your Markdown Frontmatter"
+  seo_description: "Compute the title, word count, and ticket references from the markdown body itself — no double-entry. Sandboxed Starlark with deterministic, loud failures."
+  seo_keywords: "Starlark, virtual fields, computed frontmatter, sandboxed scripting, markdown automation, sbdb virtual"
+
+- id: 42
+  slug: secondbrain-db-knowledge-graph
+  title: "SBDB: The Knowledge Graph"
+  excerpt: "Foreign keys for markdown — typed `$ref` edges, prose-link edges, a local SQLite index, and reverse-link queries in milliseconds."
+  date: "2026-03-04"
+  tags:
+    - secondbrain-db
+    - Knowledge-Graph
+    - SQLite
+    - Foreign-Keys
+    - Tooling
+  image_url: /images/secondbrain_db_knowledge_graph.webp
+  status: published
+  published_at: "2026-03-04T09:30:00Z"
+  content: blog-posts/42.content.md
+  audience: Engineers
+  seo_title: "SBDB Knowledge Graph: Foreign Keys and Reverse Links for Markdown"
+  seo_description: "Typed FK edges via JSON Schema $ref, prose-link edges via inline markdown — both backed by a local SQLite index. Two-hop traversals and reverse-link queries in milliseconds."
+  seo_keywords: "knowledge graph, markdown foreign keys, SQLite index, reverse links, sbdb query, two-hop traversal"
+
+- id: 43
+  slug: secondbrain-db-git-is-the-audit-log
+  title: "SBDB: Git Is the Audit Log"
+  excerpt: "Git is already an append-only ledger of every change you ever made — `sbdb events emit` projects it as a JSONL stream and stores zero new bytes."
+  date: "2026-03-11"
+  tags:
+    - secondbrain-db
+    - Audit-Log
+    - Event-Sourcing
+    - Git
+    - Tooling
+  image_url: /images/secondbrain_db_git_is_the_audit_log.webp
+  status: published
+  published_at: "2026-03-11T09:30:00Z"
+  content: blog-posts/43.content.md
+  audience: Engineers
+  seo_title: "SBDB: Git Is the Audit Log (sbdb events emit)"
+  seo_description: "Why sbdb deliberately stores no events of its own. Git is the append-only ledger; sbdb events emit is the JSONL projection, ready to fan out to SNS / Slack / webhooks."
+  seo_keywords: "git as event log, sbdb events emit, audit log projection, JSONL event stream, append-only ledger"

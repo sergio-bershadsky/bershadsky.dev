@@ -81,3 +81,43 @@
 - series_id: 6
   post_id: 33
   position: 9
+
+- series_id: 7
+  post_id: 34
+  position: 1
+
+- series_id: 7
+  post_id: 35
+  position: 2
+
+- series_id: 7
+  post_id: 36
+  position: 3
+
+- series_id: 8
+  post_id: 37
+  position: 1
+
+- series_id: 9
+  post_id: 38
+  position: 1
+
+- series_id: 9
+  post_id: 39
+  position: 2
+
+- series_id: 9
+  post_id: 40
+  position: 3
+
+- series_id: 9
+  post_id: 41
+  position: 4
+
+- series_id: 9
+  post_id: 42
+  position: 5
+
+- series_id: 9
+  post_id: 43
+  position: 6

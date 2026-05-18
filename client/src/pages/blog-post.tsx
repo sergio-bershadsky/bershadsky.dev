@@ -2,24 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from "wouter";
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Brain, Layers, Rocket, BookOpen, Users, Briefcase } from 'lucide-react';
+import { ArrowLeft, Clock, Calendar, Hash, Share2, Copy, Check, ExternalLink, Maximize2, Minimize2, ChevronLeft, ChevronRight, Users } from 'lucide-react';
 import { NeonCard, CyberButton, SectionHeader } from '@/components/CyberpunkUI';
+import { getSeriesIcon as getSeriesIconBase } from '@/lib/seriesIcons';
 
-const getSeriesIcon = (slug: string, accentColor: string, size: string = "w-5 h-5") => {
-  const iconProps = { className: size, style: { color: accentColor } };
-  switch (slug) {
-    case 'second-brain-claude':
-      return <Brain {...iconProps} />;
-    case 'architecture-fundamentals':
-      return <Layers {...iconProps} />;
-    case 'startup-playbook':
-      return <Rocket {...iconProps} />;
-    case 'case-study':
-      return <Briefcase {...iconProps} />;
-    default:
-      return <BookOpen {...iconProps} />;
-  }
-};
+const getSeriesIcon = (slug: string, accentColor: string, size: string = 'w-5 h-5') =>
+  getSeriesIconBase(slug, accentColor, { className: size });
 
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
@@ -141,7 +129,7 @@ export default function BlogPostPage() {
     enabled: !!post?.series?.slug
   });
   
-  if (isLoading) {
+  if (isLoading || !postSlug) {
     return (
       <div className="min-h-screen text-foreground relative overflow-x-hidden flex items-center justify-center">
         <CyberpunkBackground />

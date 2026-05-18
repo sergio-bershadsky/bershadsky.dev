@@ -2,24 +2,14 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRoute, Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
-import { ArrowLeft, ArrowRight, Clock, Hash, Brain, Layers, Rocket, BookOpen } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock, Hash } from 'lucide-react';
 import { NeonCard, CyberButton } from '@/components/CyberpunkUI';
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { getSeriesWithPosts, type SeriesWithPosts } from '@/lib/dataLoader';
+import { getSeriesIcon as getSeriesIconBase } from '@/lib/seriesIcons';
 
-const getSeriesIcon = (slug: string, accentColor: string) => {
-  const iconProps = { className: "w-16 h-16", style: { color: accentColor } };
-  switch (slug) {
-    case 'second-brain-claude':
-      return <Brain {...iconProps} />;
-    case 'architecture-fundamentals':
-      return <Layers {...iconProps} />;
-    case 'startup-playbook':
-      return <Rocket {...iconProps} />;
-    default:
-      return <BookOpen {...iconProps} />;
-  }
-};
+const getSeriesIcon = (slug: string, accentColor: string) =>
+  getSeriesIconBase(slug, accentColor, { className: 'w-16 h-16' });
 
 export default function SeriesPage() {
   const [match, params] = useRoute("/series/:slug");
@@ -30,7 +20,7 @@ export default function SeriesPage() {
     enabled: !!params?.slug
   });
 
-  if (isLoading) {
+  if (isLoading || !params?.slug) {
     return (
       <div className="min-h-screen text-foreground relative flex items-center justify-center">
         <CyberpunkBackground />
