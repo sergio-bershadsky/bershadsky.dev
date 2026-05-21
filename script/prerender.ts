@@ -164,6 +164,29 @@ function aboutMeta(): RouteMeta {
   };
 }
 
+function privacyMeta(): RouteMeta {
+  const jsonLd: JsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Privacy Policy",
+    url: `${BASE_URL}/privacy`,
+    description:
+      "Privacy policy for bershadsky.dev — what data the site processes, why, and how to exercise your rights.",
+    inLanguage: "en",
+    isPartOf: { "@type": "WebSite", name: "bershadsky.dev", url: BASE_URL },
+    publisher: { "@type": "Person", name: "Sergey Bershadsky", url: `${BASE_URL}/about` },
+  };
+  return {
+    title: "Privacy Policy | bershadsky.dev",
+    description:
+      "Privacy policy for bershadsky.dev — a personal technical blog. What the site collects, why, retention, your rights under GDPR/CCPA, and contact.",
+    url: `${BASE_URL}/privacy`,
+    imageUrl: "/opengraph.jpg",
+    keywords: "privacy policy, bershadsky.dev, GDPR, CCPA, data protection",
+    jsonLd,
+  };
+}
+
 function blogMeta(post: BlogPostData, series: SeriesData[], seriesPosts: SeriesPostData[]): RouteMeta {
   const sp = seriesPosts.find(s => s.post_id === post.id);
   const postSeries = sp ? series.find(s => s.id === sp.series_id) : null;
@@ -252,6 +275,7 @@ function buildSitemap(posts: BlogPostData[], series: SeriesData[]): string {
   const urls: { loc: string; lastmod?: string; changefreq: string; priority: string }[] = [
     { loc: BASE_URL, changefreq: "weekly", priority: "1.0" },
     { loc: `${BASE_URL}/about`, changefreq: "monthly", priority: "0.9" },
+    { loc: `${BASE_URL}/privacy`, changefreq: "yearly", priority: "0.3" },
   ];
   series.forEach(s => urls.push({ loc: `${BASE_URL}/series/${s.slug}`, changefreq: "weekly", priority: "0.8" }));
   posts
@@ -302,6 +326,10 @@ export async function prerender() {
 
   // /about
   writeRoute("/about", injectHead(shell, buildHead(aboutMeta())));
+  count++;
+
+  // /privacy (LinkedIn / Meta-compliant policy URL)
+  writeRoute("/privacy", injectHead(shell, buildHead(privacyMeta())));
   count++;
 
   // /blog/:slug

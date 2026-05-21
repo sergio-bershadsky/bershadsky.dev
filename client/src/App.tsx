@@ -10,6 +10,7 @@ import Home from "@/pages/home";
 import BlogPost from "@/pages/blog-post";
 import About from "@/pages/about";
 import SeriesPage from "@/pages/series";
+import PrivacyPage from "@/pages/privacy";
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -43,6 +44,7 @@ function Router() {
           <Route path="/blog/:slug" component={BlogPost} />
           <Route path="/about" component={About} />
           <Route path="/series/:slug" component={SeriesPage} />
+          <Route path="/privacy" component={PrivacyPage} />
           <Route component={NotFound} />
         </Switch>
       </motion.div>
