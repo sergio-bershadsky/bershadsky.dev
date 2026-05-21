@@ -145,7 +145,6 @@ function aboutMeta(): RouteMeta {
     jobTitle: "Tech Lead & Solution Architect",
     description: "Sergey Bershadsky - Tech Lead and Solution Architect with 20+ years of experience. Expert in Python, Django, AWS, MedTech, and ERP systems.",
     url: `${BASE_URL}/about`,
-    email: "[REDACTED-contact-via-linkedin]",
     address: { "@type": "PostalAddress", addressLocality: "Lisbon", addressCountry: "Portugal" },
     sameAs: [
       "https://github.com/sergio-bershadsky/ai",

@@ -5,7 +5,7 @@ import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { NeonCard } from '@/components/CyberpunkUI';
 
 const EFFECTIVE_DATE = '2026-05-21';
-const CONTACT_EMAIL = '[REDACTED-contact-via-linkedin]';
+const CONTACT_LINKEDIN = 'https://linkedin.com/in/bershadsky';
 
 const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <h2 className="text-xl md:text-2xl font-display uppercase tracking-wider text-secondary mt-10 mb-4">
@@ -64,14 +64,17 @@ export default function PrivacyPage() {
             commercial product behind it. References below to "we" mean the operator of the Site.
           </P>
           <P>
-            For any question about this policy or about the data the Site processes, write to{' '}
+            For any question about this policy or about the data the Site processes, contact us
+            via{' '}
             <a
               className="text-primary hover:text-accent transition-colors"
-              href={`mailto:${CONTACT_EMAIL}`}
+              href={CONTACT_LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {CONTACT_EMAIL}
+              LinkedIn
             </a>
-            .
+            . This is the canonical contact channel for the Site.
           </P>
 
           <H2>2. The short version</H2>
@@ -281,12 +284,14 @@ export default function PrivacyPage() {
             </LI>
           </ul>
           <P>
-            To exercise any of these rights, write to{' '}
+            To exercise any of these rights, send a message via{' '}
             <a
               className="text-primary hover:text-accent transition-colors"
-              href={`mailto:${CONTACT_EMAIL}`}
+              href={CONTACT_LINKEDIN}
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {CONTACT_EMAIL}
+              LinkedIn
             </a>
             . We will respond within the time required by the applicable law (no later than 30 days
             in most jurisdictions).
@@ -331,9 +336,11 @@ export default function PrivacyPage() {
               <Mail className="w-4 h-4 text-secondary" />
               <a
                 className="text-primary hover:text-accent transition-colors"
-                href={`mailto:${CONTACT_EMAIL}`}
+                href={CONTACT_LINKEDIN}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {CONTACT_EMAIL}
+                linkedin.com/in/bershadsky
               </a>
             </span>
             <br />

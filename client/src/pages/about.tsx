@@ -118,7 +118,6 @@ export default function About() {
       "jobTitle": "Tech Lead & Solution Architect",
       "description": descriptionContent,
       "url": "https://bershadsky.dev/about",
-      "email": "[REDACTED-contact-via-linkedin]",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Lisbon",
