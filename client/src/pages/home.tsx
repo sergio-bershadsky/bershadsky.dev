@@ -478,7 +478,15 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="py-8 text-center text-muted-foreground font-mono text-sm">
-        <p>© 2025 SERGEY_BERSHADSKY // KNOWLEDGE_BASE</p>
+        <p>
+          © 2026 SERGEY_BERSHADSKY // KNOWLEDGE_BASE //{' '}
+          <Link
+            href="/privacy"
+            className="hover:text-secondary transition-colors"
+          >
+            PRIVACY
+          </Link>
+        </p>
       </footer>
     </div>
   );

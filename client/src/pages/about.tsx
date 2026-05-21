@@ -595,7 +595,15 @@ export default function About() {
 
       {/* Footer */}
       <footer className="py-8 border-t border-white/10 text-center text-muted-foreground font-mono text-sm">
-        <p>© 2025 SERGEY_BERSHADSKY // SYSTEM_ONLINE</p>
+        <p>
+          © 2026 SERGEY_BERSHADSKY // SYSTEM_ONLINE //{' '}
+          <Link
+            href="/privacy"
+            className="hover:text-secondary transition-colors"
+          >
+            PRIVACY
+          </Link>
+        </p>
       </footer>
     </div>
   );
