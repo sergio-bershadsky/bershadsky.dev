@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronRight } from 'lucide-react';
 import { Link } from 'wouter';
 import { useQuery } from '@tanstack/react-query';
 import { getAllSeries, type Series } from '@/lib/dataLoader';
@@ -18,11 +19,31 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
     queryFn: getAllSeries
   });
 
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [showChevron, setShowChevron] = useState(false);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const update = () => {
+      const overflow = el.scrollWidth - el.clientWidth;
+      const remaining = overflow - el.scrollLeft;
+      setShowChevron(overflow > 4 && remaining > 8);
+    };
+    update();
+    el.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      el.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, [seriesList.length]);
+
   if (isLoading) {
     return (
       <div className="flex gap-6 overflow-x-auto pb-4 px-4 scrollbar-hide">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="flex flex-col items-center gap-2 animate-pulse">
+          <div key={i} className="flex flex-col items-center gap-2 animate-pulse flex-shrink-0">
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/10" />
             <div className="w-16 h-3 rounded bg-white/10" />
           </div>
@@ -37,13 +58,17 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
 
   return (
     <div className="relative">
-      <div className="flex gap-6 justify-center pb-4 px-4">
+      <div
+        ref={scrollerRef}
+        className="flex gap-6 pt-3 pb-4 pl-6 pr-12 md:px-4 overflow-x-auto overflow-y-hidden scrollbar-hide snap-x snap-proximity scroll-pl-6 justify-start md:justify-center"
+      >
         {seriesList.map((s, index) => (
           <motion.div
             key={s.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="flex-shrink-0 snap-start"
           >
             <Link
               href={`/series/${s.slug}`}
@@ -86,6 +111,27 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
           </motion.div>
         ))}
       </div>
+
+      <AnimatePresence>
+        {showChevron && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.75 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden pointer-events-none absolute top-3 h-20 right-0 flex items-center pr-1 pl-6 bg-gradient-to-l from-background/60 via-background/30 to-transparent"
+            aria-hidden="true"
+          >
+            <motion.div
+              animate={{ x: [0, 6, 0] }}
+              transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
+              className="text-primary"
+            >
+              <ChevronRight className="w-6 h-6" strokeWidth={2.5} />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -12,3 +12,6 @@ attached_assets/
 
 # Local secrets (TELEGRAM_BOT_TOKEN, OPENAI_API_KEY)
 .env
+
+# Playwright MCP screenshot/snapshot artifacts
+.playwright-mcp/
