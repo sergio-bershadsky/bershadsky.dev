@@ -121,3 +121,27 @@
 - series_id: 9
   post_id: 43
   position: 6
+
+- series_id: 10
+  post_id: 44
+  position: 1
+
+- series_id: 10
+  post_id: 45
+  position: 2
+
+- series_id: 10
+  post_id: 46
+  position: 3
+
+- series_id: 10
+  post_id: 47
+  position: 4
+
+- series_id: 10
+  post_id: 48
+  position: 5
+
+- series_id: 10
+  post_id: 49
+  position: 6

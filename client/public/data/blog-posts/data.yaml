@@ -649,3 +649,123 @@
   seo_title: "SBDB: Git Is the Audit Log (sbdb events emit)"
   seo_description: "Why sbdb deliberately stores no events of its own. Git is the append-only ledger; sbdb events emit is the JSONL projection, ready to fan out to SNS / Slack / webhooks."
   seo_keywords: "git as event log, sbdb events emit, audit log projection, JSONL event stream, append-only ledger"
+
+- id: 44
+  slug: comprehension-debt-the-debt-nobody-booked
+  title: "Comprehension Debt: The Debt Nobody Booked"
+  excerpt: "AI writes code faster than your team builds the theory of it. The gap is a debt, it compounds, and it isn't on any ledger your tools can see."
+  date: "2026-08-25"
+  tags:
+    - Comprehension-Debt
+    - AI-Coding
+    - Architecture
+    - Knowledge-Management
+    - Engineering-Culture
+  image_url: /images/comprehension_debt_the_debt_nobody_booked.webp
+  status: published
+  published_at: "2026-08-25T09:30:00Z"
+  content: blog-posts/44.content.md
+  audience: Engineers
+  seo_title: "Comprehension Debt: The Debt Nobody Booked"
+  seo_description: "AI-generated code outruns human understanding. The data (GitClear, METR, DORA), Naur's theory-building, and why comprehension debt never shows up in static analysis."
+  seo_keywords: "comprehension debt, AI generated code, vibe coding, Peter Naur theory building, cognitive debt, code comprehension, GitClear, METR study"
+
+- id: 45
+  slug: comprehension-debt-frozen-context
+  title: "Comprehension Debt: Frozen Context"
+  excerpt: "Your knowledge base is a snapshot of a theory nobody re-verifies. Markdown can't fail — and that's precisely why it drifts into fiction."
+  date: "2026-09-01"
+  tags:
+    - Comprehension-Debt
+    - Knowledge-Management
+    - AI-Coding
+    - Context-Engineering
+    - Documentation
+  image_url: /images/comprehension_debt_frozen_context.webp
+  status: published
+  published_at: "2026-09-01T09:30:00Z"
+  content: blog-posts/45.content.md
+  audience: Engineers
+  seo_title: "Comprehension Debt: Frozen Context"
+  seo_description: "Why markdown knowledge bases — CLAUDE.md, AGENTS.md, memory banks — drift into fiction by construction: context rot, rules bloat, and the missing failing state."
+  seo_keywords: "comprehension debt, CLAUDE.md, AGENTS.md, markdown knowledge base, context engineering, context rot, documentation drift, living documentation, spec-driven development"
+
+- id: 46
+  slug: comprehension-debt-boundaries-beat-willpower
+  title: "Comprehension Debt: Boundaries Beat Willpower"
+  excerpt: "You can't out-read a machine writing a thousand lines an hour. Plugin contracts are the only comprehension strategy that survives code you didn't write."
+  date: "2026-09-08"
+  tags:
+    - Comprehension-Debt
+    - Architecture
+    - Plugin-Systems
+    - Cognitive-Load
+    - AI-Coding
+  image_url: /images/comprehension_debt_boundaries_beat_willpower.webp
+  status: published
+  published_at: "2026-09-08T09:30:00Z"
+  content: blog-posts/46.content.md
+  audience: Engineers
+  seo_title: "Comprehension Debt: Boundaries Beat Willpower"
+  seo_description: "Why module and plugin contracts are working-memory adapters — Parnas, bounded contexts, cognitive load — and how to enforce boundaries that go red in CI."
+  seo_keywords: "plugin architecture, information hiding, bounded contexts, cognitive load, fitness functions, dependency-cruiser, eslint-plugin-boundaries, ArchUnit, AI generated code"
+
+- id: 47
+  slug: comprehension-debt-specs-with-a-failing-state
+  title: "Comprehension Debt: Specs With a Failing State"
+  excerpt: "A spec that can't fail is an opinion with a heading. The industry put $125M and 93k GitHub stars behind fixing that."
+  date: "2026-09-15"
+  tags:
+    - Comprehension-Debt
+    - Spec-Driven-Development
+    - Documentation
+    - AI-Coding
+    - Testing
+  image_url: /images/comprehension_debt_specs_with_a_failing_state.webp
+  status: published
+  published_at: "2026-09-15T09:30:00Z"
+  content: blog-posts/47.content.md
+  audience: Engineers
+  seo_title: "Comprehension Debt: Specs With a Failing State"
+  seo_description: "Mapping the spec-driven movement — Spec Kit, Kiro, OpenSpec, Tessl, Living Documentation — and the minimum viable failing-spec setup for a legacy codebase."
+  seo_keywords: "spec-driven development, GitHub Spec Kit, AWS Kiro, OpenSpec, Tessl, living documentation, executable specifications, contract testing"
+
+- id: 48
+  slug: comprehension-debt-metaframework
+  title: "Comprehension Debt: Metaframework"
+  excerpt: "Your product management tool is a database your repo has never heard of. Bring the product home — typed, validated, and able to fail CI."
+  date: "2026-09-22"
+  tags:
+    - Comprehension-Debt
+    - Metaframework
+    - Knowledge-Management
+    - Architecture-As-Code
+    - Tooling
+  image_url: /images/comprehension_debt_metaframework.webp
+  status: published
+  published_at: "2026-09-22T09:30:00Z"
+  content: blog-posts/48.content.md
+  audience: Engineers
+  seo_title: "Comprehension Debt: Metaframework (Product Management as Code)"
+  seo_description: "The process metaframework thesis: stable addressing, typed entities, schema validation, and a CI gate — product management living in git, with a failing state."
+  seo_keywords: "metaframework, product management as code, architecture as code, solution catalog, SRN addressing, JSON Schema validation, docs-as-code, bershadsky metaframework"
+
+- id: 49
+  slug: comprehension-debt-the-monday-playbook
+  title: "Comprehension Debt: The Monday Playbook"
+  excerpt: "Six moves, no rewrite required, that start paying down comprehension debt while the feature train keeps running — beginning Monday."
+  date: "2026-09-29"
+  tags:
+    - Comprehension-Debt
+    - Engineering-Culture
+    - Team-Practice
+    - AI-Coding
+    - Leadership
+  image_url: /images/comprehension_debt_the_monday_playbook.webp
+  status: published
+  published_at: "2026-09-29T09:30:00Z"
+  content: blog-posts/49.content.md
+  audience: Engineers
+  seo_title: "Comprehension Debt: The Monday Playbook"
+  seo_description: "A sequenced six-move team plan — measure the debt, map ownership, ratchet boundaries, gate new knowledge, diet the agent rules, book the budget."
+  seo_keywords: "comprehension debt playbook, engineering team practices, code ownership, fitness function ratchet, AI coding governance, comprehension budget"

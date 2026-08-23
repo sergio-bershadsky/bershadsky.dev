@@ -57,6 +57,7 @@ Three series are live with the publication calendar interleaved across Jan–Mar
 | 7 | Zero Trust | `zero-trust` | cyan `#06b6d4` | 3 (parts 1–3) |
 | 8 | Agnostic Way | `cloud-agnostic` | amber `#f59e0b` | 1 (Part 1) |
 | 9 | SBDB | `secondbrain-db` | emerald `#10b981` | 6 (parts 1–6) |
+| 10 | Comprehension Debt | `comprehension-debt` | indigo `#6366f1` | 1 (Part 1) |
 
 Important conventions:
 - **Display title and slug may differ** (e.g. *Agnostic Way* lives at `/series/cloud-agnostic`; *SBDB* lives at `/series/secondbrain-db`). The slug is the canonical URL identifier and is stable once a series ships — do not rename slugs after a Telegram announcement has gone out.

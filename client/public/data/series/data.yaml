@@ -1,6 +1,7 @@
 - id: 5
   slug: second-brain-claude
   title: "Building Your Second Brain with Claude"
+  short_title: "Second Brain"
   description: "A 12-part series on transforming Claude from a coding assistant into a persistent knowledge companion that remembers your projects, decisions, and team context."
   cover_image_url: null
   accent_color: "#ec4899"
@@ -36,4 +37,13 @@
   description: "An honest tour of SBDB (secondbrain-db) — the single-binary Go tool that turns a directory of markdown files into an enforceable ORM-style data layer. Typed schemas, integrity signing, virtual fields, knowledge graph, and git as the immutable audit log."
   cover_image_url: null
   accent_color: "#10b981"
+  is_visible: true
+
+- id: 10
+  slug: comprehension-debt
+  title: "Comprehension Debt"
+  short_title: "Comp. Debt"
+  description: "AI writes code faster than your team can understand it — the gap is a debt, and it compounds. A series on naming that debt with hard data, why markdown knowledge bases freeze instead of fix it, and how boundaries, enforceable specs, and in-repo product management pay it down."
+  cover_image_url: null
+  accent_color: "#6366f1"
   is_visible: true
