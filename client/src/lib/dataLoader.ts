@@ -29,6 +29,7 @@ interface RawSeries {
   id: number;
   slug: string;
   title: string;
+  short_title?: string | null;
   description: string | null;
   cover_image_url: string | null;
   accent_color: string | null;
@@ -107,6 +108,7 @@ export async function loadSeries(): Promise<Series[]> {
     id: s.id,
     slug: s.slug,
     title: s.title,
+    shortTitle: s.short_title ?? null,
     description: s.description,
     coverImageUrl: s.cover_image_url,
     accentColor: s.accent_color,
@@ -216,7 +218,27 @@ export async function getSeriesWithPosts(slug: string): Promise<SeriesWithPosts 
 
 export async function getAllSeries(): Promise<Series[]> {
   const series = await loadSeries();
-  return series.filter(s => s.isVisible);
+  const seriesPosts = await loadSeriesPosts();
+  const posts = await getAllBlogPosts();
+
+  const postTimestamp = new Map(
+    posts.map(p => [p.id, Date.parse(p.publishedAt ?? p.date)])
+  );
+
+  // Instagram-stories ordering: the series with the most recent published
+  // post surfaces first (leftmost in the rail).
+  const latestBySeries = new Map<number, number>();
+  for (const sp of seriesPosts) {
+    const t = postTimestamp.get(sp.postId);
+    if (t === undefined || Number.isNaN(t)) continue;
+    if (t > (latestBySeries.get(sp.seriesId) ?? 0)) {
+      latestBySeries.set(sp.seriesId, t);
+    }
+  }
+
+  return series
+    .filter(s => s.isVisible)
+    .sort((a, b) => (latestBySeries.get(b.id) ?? 0) - (latestBySeries.get(a.id) ?? 0));
 }
 
 export async function getPostsInSeries(seriesId: number): Promise<BlogPost[]> {

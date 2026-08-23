@@ -24,6 +24,7 @@ export interface Series {
   id: number;
   slug: string;
   title: string;
+  shortTitle: string | null;
   description: string | null;
   coverImageUrl: string | null;
   accentColor: string | null;

@@ -8,6 +8,7 @@ import {
   ShieldHalf,
   CloudCog,
   Database,
+  BrainCircuit,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -25,6 +26,7 @@ const SERIES_ICON_MAP: Record<string, LucideIcon> = {
   'zero-trust': ShieldHalf,
   'cloud-agnostic': CloudCog,
   'secondbrain-db': Database,
+  'comprehension-debt': BrainCircuit,
 };
 
 interface GetSeriesIconOpts {

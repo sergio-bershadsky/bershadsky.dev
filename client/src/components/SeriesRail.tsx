@@ -105,7 +105,7 @@ export const SeriesRail: React.FC<SeriesRailProps> = ({ onSeriesClick }) => {
             
             {/* Series title */}
             <span className="text-xs md:text-sm font-mono text-center text-muted-foreground group-hover:text-white transition-colors max-w-[80px] md:max-w-[100px] truncate">
-              {s.slug === 'second-brain-claude' ? 'Second Brain' : s.title}
+              {s.shortTitle ?? s.title}
             </span>
             </Link>
           </motion.div>
