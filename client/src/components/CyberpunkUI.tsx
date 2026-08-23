@@ -26,9 +26,11 @@ interface NeonCardProps {
   className?: string;
   variant?: 'primary' | 'secondary' | 'accent';
   style?: React.CSSProperties;
+  /** Cards meant to be read rather than clicked opt out of the hover lift. */
+  interactive?: boolean;
 }
 
-export const NeonCard: React.FC<NeonCardProps> = ({ children, className, variant = 'primary', style }) => {
+export const NeonCard: React.FC<NeonCardProps> = ({ children, className, variant = 'primary', style, interactive = true }) => {
   const borderColors = {
     primary: 'border-primary/50 hover:border-primary',
     secondary: 'border-secondary/50 hover:border-secondary',
@@ -43,11 +45,11 @@ export const NeonCard: React.FC<NeonCardProps> = ({ children, className, variant
 
   return (
     <motion.div
-      whileHover={{ scale: 1.02 }}
+      whileHover={interactive ? { scale: 1.02 } : undefined}
       className={cn(
         "relative bg-card/80 backdrop-blur-md border p-6 overflow-hidden transition-all duration-300",
         borderColors[variant],
-        glowColors[variant],
+        interactive && glowColors[variant],
         className
       )}
       style={style}

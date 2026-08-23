@@ -8,6 +8,7 @@ interface RawBlogPost {
   slug: string;
   title: string;
   excerpt: string;
+  recap?: string | null;
   date: string;
   tags: string[];
   image_url: string | null;
@@ -77,6 +78,7 @@ export async function loadBlogPosts(): Promise<BlogPost[]> {
       slug: post.slug,
       title: post.title,
       excerpt: post.excerpt,
+      recap: post.recap ?? null,
       content,
       date: post.date,
       tags: post.tags,

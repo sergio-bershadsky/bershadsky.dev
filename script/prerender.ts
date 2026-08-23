@@ -11,6 +11,7 @@ interface BlogPostData {
   slug: string;
   title: string;
   excerpt: string;
+  recap?: string;
   date: string;
   tags: string[];
   image_url?: string;
@@ -206,6 +207,9 @@ function blogMeta(post: BlogPostData, series: SeriesData[], seriesPosts: SeriesP
     datePublished: publishedDate,
     dateModified: publishedDate,
     keywords,
+    // The page body is client-rendered, so the recap is the only summary of the
+    // argument a non-JS crawler can see.
+    ...(post.recap ? { abstract: post.recap.replace(/\s+/g, " ").trim() } : {}),
     author: { "@type": "Person", name: "Sergey Bershadsky", url: `${BASE_URL}/about` },
     publisher: { "@type": "Person", name: "Sergey Bershadsky", url: BASE_URL },
     mainEntityOfPage: { "@type": "WebPage", "@id": canonicalUrl },

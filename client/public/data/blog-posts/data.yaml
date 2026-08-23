@@ -2,6 +2,18 @@
   slug: second-brain-concept
   title: "Second Brain: Concept"
   excerpt: "Learn what a \"second brain\" really means and why your AI assistant deserves a memory upgrade."
+  recap: |
+    Knowledge fragments across Notion, Slack threads, and Google Docs, and the bill arrives as the
+    "where did I put that" tax — some studies put it near 20% of a knowledge worker's day — while the AI
+    assistant makes it worse rather than better, since every session starts from zero like a brilliant
+    consultant with complete amnesia. A second brain closes that loop — not another app to dump notes
+    into, but a store the assistant reads, so "what did we decide about the API redesign" comes back
+    with the decision, the alternatives you rejected, and the discussion that led there. Two paths reach
+    it: VitePress plus Git, where knowledge is plain text under version control and you own all of it,
+    or Notion, gentler and already collaborative but thin on version history and offline access. The
+    technical path asks for Claude Code, enough command line to type cd and ls without panicking, and
+    about 30 minutes of setup, and returns speed, hackability, and integration room the hosted path
+    cannot match.
   date: "2024-12-29"
   tags:
     - AI
@@ -22,6 +34,18 @@
   slug: second-brain-core-building-blocks
   title: "Second Brain: Core Building Blocks"
   excerpt: "The three pillars that make a second brain actually work: current knowledge, historical record, and decision archive."
+  recap: |
+    Note systems rot into graveyards of final_v3_ACTUALLY_FINAL because they are organized by date
+    instead of by purpose, and the fix is three separate pillars answering three different questions —
+    current knowledge for how we do things now, historical record for what we discussed, decision
+    archive for why we chose. Each behaves differently: living docs change constantly and are written
+    for reuse, discussion records are frozen the moment they are written, and decision records carry
+    context, the options considered, the ones rejected and why, plus a lifecycle from proposed to
+    accepted to implemented. They chain in one direction — a discussion about a slow API becomes a
+    decision to use Redis over Memcached, which becomes a setup guide — so "why Redis?" has three layers
+    of answer instead of a shrug, and a new teammate reads their way in over two hours rather than two
+    weeks of interviews. The concrete form is npm create vitepress plus three folders under docs:
+    guides, discussions, decisions.
   date: "2024-12-29"
   tags:
     - AI
@@ -42,6 +66,18 @@
   slug: second-brain-your-first-entry
   title: "Second Brain: Your First Entry"
   excerpt: "Stop reading about second brains. Let's build something in the next 10 minutes and experience the magic moment when your AI actually remembers."
+  recap: |
+    The threshold for writing something down is mechanical rather than aspirational — if you have
+    explained it more than twice, it deserves a document — and the first entry should be deliberately
+    boring: dev environment setup, naming conventions, the commands you keep re-googling, not the
+    comprehensive architecture doc you will never finish. The writing loop takes about ten minutes and
+    inverts the usual burden: you dictate what you already say out loud, Claude structures it into
+    markdown, you correct the gaps, and it lands at a real path like docs/guides/dev-setup.md. The proof
+    is the second session — open a fresh conversation, ask how to set up the dev environment, and the
+    answer comes back from your own file rather than from generic training data, which is the point at
+    which the system stops being theory. What stays out matters equally: one-off tasks, trivial fixes,
+    and personal preferences are noise, and treating every keystroke as documentation is how the
+    graveyard folder gets built.
   date: "2024-12-29"
   tags:
     - ai
@@ -61,6 +97,18 @@
   slug: second-brain-connecting-tools-mcp
   title: "Second Brain: Connecting Your Tools"
   excerpt: "Your second brain is smart, but it's been living in isolation. Time to introduce it to your other tools and unlock true contextual awareness."
+  recap: |
+    A second brain that only reads its own files is a consultant who refuses to check email, and MCP is
+    the repair — small translator programs sitting between Claude and Slack, the task tracker, meeting
+    transcripts, or the calendar, absorbing authentication and data formatting so no copy-paste is
+    involved. Team chat is the right first connection because it carries the highest context density and
+    fails loudly, which makes verification trivial: ask what happened in a channel today and you either
+    get a summary or a flat admission of no access, at which point the checklist is server running,
+    token valid, permissions granted, resource exists, tool visible. The payoff compounds across
+    sources, turning a four-step morning of scrolling chat, the sprint board, and the calendar into one
+    question about overnight activity. The constraint worth respecting is scope — grant minimal
+    permissions, read what each one actually allows, keep HR, legal, salary, personal DMs, and sensitive
+    customer channels out, and tell colleagues that Claude can read the channels you connected.
   date: "2024-12-29"
   tags:
     - ai
@@ -81,6 +129,17 @@
   slug: second-brain-teaching-skills
   title: "Second Brain: Teaching Skills"
   excerpt: "Your second brain knows facts. Now let's teach it how you actually work — turning repetitive tasks into one-command magic."
+  recap: |
+    Skills convert a paragraph-long prompt you retype every week into a single trigger like /standup or
+    /weekly-recap, and the crucial detail is that they are written in plain language, not code — a
+    SKILL.md file stating when to use it, numbered steps to follow, and the exact output shape, with
+    Claude working out the how. A standup skill reads yesterday's commits and moved issues, pulls
+    in-progress work and calendar entries for today, flags what you are waiting on, then formats three
+    sections capped at two or three bullets each; the same file produces the same structure every run,
+    which is the whole point. Four patterns cover almost everything worth automating — gather, generate,
+    analyze, automate — mapping to /catchup, /standup, /review, /release. The sorting rule is blunt: if
+    someone could follow the written steps mechanically it is a skill, and if the work needs judgment at
+    every turn it stays a conversation.
   date: "2024-12-29"
   tags:
     - Second Brain
@@ -100,6 +159,17 @@
   slug: second-brain-hooks
   title: "Second Brain: Automatic Behaviors"
   excerpt: "Skills wait for you to call them. Hooks don't wait — they just happen. Learn to create automatic triggers that catch your blind spots before they become problems."
+  recap: |
+    Skills are pull, hooks are push — you invoke a skill, but a hook fires itself on an event (session
+    start, before or after a tool call, on file write, at session end) and decides on its own whether to
+    say anything at all. Four earn their place: a session-start briefing that flags documentation older
+    than 30 days and pending reviews, an after-write check that a newly created markdown file actually
+    landed in the navigation config, a session-end reminder listing uncommitted files, and a rare
+    before-tool-use guard on destructive commands. Implementation is either a small Python function
+    returning a list of one-line reminders or a plain prompt hook in hooks/ that just describes the
+    checks in prose, which covers most cases without code. What keeps hooks tolerable is silence — no
+    "all checks passed" noise, warnings rather than blocks, one line per issue, easy override — because
+    a hook that fires constantly gets switched off, and a switched-off hook protects nothing.
   date: "2024-12-29"
   tags:
     - Second Brain
@@ -120,6 +190,18 @@
   slug: second-brain-plugins
   title: "Second Brain: Sharing Knowledge with Plugins"
   excerpt: "Turn your personal automation into team infrastructure. One package, instant capability."
+  recap: |
+    Personal automation becomes team infrastructure the moment sharing stops being "here are five files,
+    put them there, rename this one" and becomes claude plugin install. A plugin is a directory with
+    plugin.json naming the skills/, hooks/, and agents/ it ships plus a README that serves as the first
+    impression, and configuration keys with sensible defaults — standup_format brief or detailed,
+    freshness_days 30, a channel that defaults to #general instead of a hardcoded #engineering — are
+    what let it survive contact with a second team. Distribution is a three-way tradeoff: a Git
+    repository gives version control and one-command updates but needs repo access, a local folder path
+    works offline with no updates and version confusion, a team registry adds a central catalog, access
+    control, and an audit trail at the cost of setup and maintenance, and a private Git repo is the
+    right default for most teams. Precedence is worth knowing before names collide — project plugins
+    beat team plugins beat personal ones — so a project can override a team default without forking it.
   date: "2024-12-29"
   tags:
     - claude
@@ -140,6 +222,19 @@
   slug: second-brain-memory-layer
   title: "Second Brain: The Memory Layer"
   excerpt: "Your second brain has skills and hooks. But ask it \"how many decisions did we make last month?\" and it has to read every file. There's a better way."
+  recap: |
+    Markdown is excellent for reading and terrible for querying — "show me December decisions still
+    pending" means opening fifty files, parsing each one, and hoping the format held, against a single
+    structured read and an instant filter. The tracking layer is YAML for data and JSON Schema for
+    validation, a database that lives in the git repository, governed by four rules: start minimal
+    (number, title, status, created, file — not id, created_at, updated_at, created_by, status_history),
+    make every field answer a question you can state out loud, denormalize so a discussion record
+    carries participant names instead of ids that must be chased across files, and spell names out
+    because abbreviations save bytes and cost hours. Decisions live in one records.yaml with a
+    last_number counter, discussions partition by month as 2024-01.yaml, and the schema enums status to
+    draft, proposed, accepted, implemented, rejected so a typo fails validation before it is written.
+    Schema drift is expected rather than avoided — add optional fields, stamp a schema_version in
+    config.yaml, or run a small migration script.
   date: "2024-12-30"
   tags:
     - second-brain
@@ -160,6 +255,18 @@
   slug: second-brain-communication-hub
   title: "Second Brain: Team Communication Hub"
   excerpt: "Monday morning. 47 unread messages. Somewhere in there is something important. Build a communication hub that filters signal from noise."
+  recap: |
+    Team chat is a firehose in which two real decisions hide among 47 messages of "lol", "coffee
+    anyone?", and meeting reschedules. The hub that fixes it is assembly, not invention: an MCP
+    connection for access to Slack or Discord, a recap skill that takes an hours argument (24 by
+    default, 8 since this morning, 120 for the week) and categorizes on signal words like "decided to",
+    "agreed on", "going with", "blocked", "waiting", and the tracking layer marking each processed time
+    range so nothing is summarized twice or silently skipped. Channels carry a priority in config.yaml —
+    high ones get full summaries, low ones only decision extraction — and every extracted decision is
+    offered back as an ADR with title, owner, date, and source channel already populated, so a chat
+    message becomes real documentation on one keystroke. Privacy is the part teams get wrong: capture
+    work, not workers, which means explicit skip_channels, skip_patterns for salary and compensation,
+    anonymize_dms, and telling people before you switch it on.
   date: "2024-12-30"
   tags:
     - second-brain
@@ -180,6 +287,18 @@
   slug: second-brain-meeting-memory
   title: "Second Brain: Meeting Memory"
   excerpt: "Three weeks ago, we definitely discussed the API changes. What did we decide? Nobody remembers. Turn every meeting into searchable, permanent context."
+  recap: |
+    A transcript is not memory — it exists, nobody re-reads it, and "what did we decide about the API
+    three weeks ago?" still has no answer. A transcribe skill closes that gap: it pulls the raw
+    transcript over MCP, checks meeting_id against tracking data so nothing is processed twice, writes a
+    markdown document with searchable frontmatter (date, participants, topic, meeting_id, duration) over
+    five fixed sections — context, discussion, decisions, action items, open questions — and then offers
+    each technical conclusion as an ADR candidate for confirmation. Start with triggered processing,
+    listing unprocessed meetings and naming the one you want, until the output is tuned; promote only
+    high-value recurring meetings to automatic and leave casual ones unprocessed. The payoff is
+    chain-shaped and compounds — three months in you have a searchable archive, a year in a new hire can
+    reconstruct why the API looks like this: REST versus GraphQL debated in November, ADR-0012 a week
+    later, caching raised in December, the v2 timeline set in January planning.
   date: "2024-12-30"
   tags:
     - second-brain
@@ -200,6 +319,19 @@
   slug: second-brain-decision-intelligence
   title: "Second Brain: Decision Intelligence"
   excerpt: "Why do we use this framework? Decisions without context become arbitrary rules. Decision intelligence makes the \"why\" permanent and queryable."
+  recap: |
+    Decisions decay on a predictable curve: in week one it's "Redis, because it handles our read
+    patterns and the team has production experience," by month three it's "it was decided at some
+    point," and by year one it's "that's just what we use" — and the bill arrives as the same debate
+    relitigated every quarter and newcomers locked out of the history. An ADR only stops that if it
+    records the rejected options, not just the chosen one — Memcached ruled out for no persistence,
+    in-memory ruled out because it breaks across horizontally scaled instances, each with the conditions
+    that would justify revisiting. The reversibility test decides what earns a record: if undoing it
+    costs real time, money, or effort, write it down; if it's a ten-minute change, don't. Numbered
+    ranges (0001-0999 architecture and infrastructure, 1000-1999 fork and upstream, 2000-2999 feature
+    and product, 3000-3999 process) turn "show me every infrastructure decision" into a query, and once
+    the records exist, "why do we use Redis?" answers itself with context, rationale, rejections, and
+    the discussions that led there.
   date: "2024-12-30"
   tags:
     - second-brain
@@ -220,6 +352,20 @@
   slug: second-brain-autonomous-workflow
   title: "Second Brain: The Autonomous Workflow"
   excerpt: "Imagine starting your day with everything summarized. Standup prepared. Context loaded. Wire it all together into a workflow that runs itself."
+  recap: |
+    Autonomous here means configured intelligence handling the boring parts, not AI replacing the job or
+    magic running with zero involvement — a session-start hook that reports overnight team messages,
+    sprint state, meetings still undocumented and docs gone stale as one line per category, a /standup
+    skill that turns yesterday's commits, merged PRs and moved issues into three bullets of under
+    fifteen words, and transcripts processed into tracked decisions the moment a meeting ends. Every
+    piece already existed — MCP connections as data sources, skills as triggered procedures, hooks as
+    automatic checks, plugins as shareable configuration, tracking as persistent memory — and the payoff
+    comes from wiring them into one day rather than from any component alone. Sprint planning shows the
+    compounding: asking what context a real-time notifications feature needs returns ADR-0015 (Redis
+    enables pub/sub), ADR-0022 (WebSockets deferred), the December brainstorm, and the note that the
+    last comparable feature ran 1.5x over estimate. What keeps the setup honest is a weekly audit of
+    what still got looked up by hand, what context was missing at the moment of need, and which
+    repetitive task stayed manual.
   date: "2024-12-30"
   tags:
     - second-brain
@@ -241,6 +387,20 @@
   title: "UMIAS - From Dying Portal to National Healthcare Platform"
   series_display_title: "Case Study"
   excerpt: "How we transformed a 2,000 visitor news site into the world's largest medical booking app with 1.6M installs and 2M monthly appointments in just 3 years."
+  recap: |
+    A Moscow healthcare news portal drawing 1,000-2,000 monthly visitors, weeks from shutdown, became
+    what McKinsey's Smart Cities 2018 report called the largest medical appointment booking app in the
+    world — over 1 million monthly active users, 1.6 million installs, 2 million appointments a month.
+    The wedge was friction, not features: after a full year online bookings had plateaued at 6% of all
+    appointments because the state portal holding 93% share required registration and government
+    identity verification first, so the news content was killed outright and every ruble redirected into
+    one-click booking with a phone number as the only identifier, plus ReactNative apps while
+    competitors still shipped shrunken desktop sites. Scale then broke things nobody designed for — slot
+    matching across hundreds of clinics ran 2-3 seconds until Redis caching, indexes and district
+    sharding pulled it under 200ms; the city HIS API's rate limits forced a batching queue that
+    prioritized time-sensitive calls; Monday mornings arrived at 5-10x baseline. The transferable point
+    is that a dying product can sit on a live market position, and the way in is to question the step
+    everyone treats as mandatory.
   case_study_year: "2015-2018"
   case_study_role: "Tech Lead"
   case_study_type: "Independent"
@@ -268,6 +428,20 @@
   title: "IDA - From Deployment Chaos to 99.9% Uptime"
   series_display_title: "Case Study"
   excerpt: "How we stabilized a failing deployment pipeline and achieved 99.9% uptime for an international driving permit service, reducing deployment failures by 90%."
+  recap: |
+    International Drivers Association's 2021 release process was SSH by hand, server configuration
+    living in two senior developers' heads, tests nobody ran, no parity between development and
+    production, and rollback meaning restore from backup and pray — so the team batched changes for
+    weeks rather than risk another incident. The fix was four sequenced phases over eight months instead
+    of one ambitious program: Docker first, which took environment-related bugs to zero within two weeks
+    and converted the skeptics; then Terraform for every EC2 instance, RDS database and security group;
+    then a Jenkins pipeline that rejects any build failing unit tests, integration tests or dependency
+    scans; then CloudWatch, Sentry and PagerDuty so production was actually visible. Deploy time fell
+    from 45 minutes to 8, uptime moved from roughly 95% to 99.9%, deployment-related incidents dropped
+    90%, and MTTR went from hours to minutes. The cultural result outlasted the metrics — Friday freezes
+    became unnecessary, new hires deploy to staging on day one — and the diagnosis generalizes: Django,
+    Wagtail and AWS were never the problem, so the infrastructure failure was a process failure in
+    disguise.
   case_study_year: "2021-2023"
   case_study_role: "Fractional Tech Lead"
   case_study_type: "Independent"
@@ -295,6 +469,20 @@
   slug: case-study-moxy
   title: "Moxy - Building a Play-to-Earn Gaming Platform from Zero"
   excerpt: "How we built scalable cloud infrastructure from scratch for Moxy's gaming platform. 99.99% uptime, 10,000+ concurrent users, sub-200ms latency globally."
+  recap: |
+    Live tournament traffic defeats ordinary capacity planning: roughly 500 baseline users, 10,000+
+    concurrent within minutes of an event opening, another surge on a critical play everyone wants to
+    watch at once, then a rapid collapse back to baseline — which leaves over-provisioning as the
+    expensive answer and under-provisioning as the broken one. Building Moxy's play-to-earn platform
+    from zero AWS resources, the calls were Kubernetes on EKS from day one rather than simpler
+    orchestration to migrate off later, every resource down to IAM policies defined in Terraform so
+    disaster recovery is a terraform apply in a new region, and two caching layers — CloudFront at the
+    edge, ElastiCache in the application — holding latency under 200ms globally. The first real event
+    settled it: 8,000 concurrent users and climbing, a 25% spike in thirty seconds, the autoscaler
+    adding pods, not a single error in the logs. The argument worth carrying is that early architectural
+    decisions are the cheapest ones a company ever makes — 99.99% uptime, 75% faster deployments and 40%
+    saved against an over-provisioned baseline were bought in month one, and none of them could have
+    been retrofitted in year three.
   case_study_year: "2020-2021"
   case_study_role: "Fractional Solution Architect"
   case_study_type: "Independent"
@@ -323,6 +511,17 @@
   slug: case-study-wellbe
   title: "WellBe - From Firebase Limitations to Scalable GraphQL Architecture"
   excerpt: "How we migrated a mental wellness app from Firebase to a modern GraphQL + Heroku architecture. 60% faster feature development, 100% subscription event coverage."
+  recap: |
+    Firebase got WellBe to market and then became the ceiling: unstable under growing load, no flexible
+    schema management, and every server-side change gated behind a one-to-two-week App Store review. The
+    rebuild put Django with Strawberry GraphQL on Heroku, split user, subscription, and notification
+    services over PostgreSQL and Redis, and added a dedicated handler that normalized App Store, Google
+    Play, and Yukassa webhooks into one lifecycle model covering creation, renewal, grace period,
+    billing retry, and expiration. That normalization is what made questions like trial-end churn
+    answerable without manual data extraction, while feature flags and GraphQL's additive schema broke
+    the App Store dependency outright: feature development time down 60%, notification delivery errors
+    under 1%, deploys multiple times a day. The migration ran service by service rather than as a
+    rewrite, which is the part worth copying when the constraint is a working product you cannot pause.
   case_study_year: "2023-2024"
   case_study_role: "Fractional Tech Lead"
   case_study_type: "Independent"
@@ -352,6 +551,18 @@
   slug: enterprise-document-delivery-optimization
   title: "Enterprise Document Delivery Platform Optimization at Ricoh"
   excerpt: "How we optimized a 51-Lambda serverless architecture for enterprise document delivery. 47% faster API response times, 40% reduced cold starts through V2 rearchitecture."
+  recap: |
+    A 51-Lambda document delivery platform at Ricoh — 630,000 lines, 3,500 files, 27 contributors — was
+    paying for its own shape: every function opened its own RDS MySQL connection on cold start, a custom
+    authorizer re-validated identical JWTs thousands of times per session, and the stored procedures
+    passed everything as JSON with no compile-time checking. V2 went after all three at once — secrets
+    and connection caching on a 5-minute TTL, JWT results cached in ElastiCache Redis aligned to the API
+    Gateway authorizer window, SSL certificates preloaded during init, and typed procedures with
+    generated, type-annotated wrappers replacing the JSON interfaces. Warm DB connection time fell from
+    150ms to 80ms, cached authorizer latency from 200ms to 60ms, cold starts from 3.5s to 2.1s, and P95
+    API response from 850ms to 450ms. The transferable point is that connection pooling, secrets
+    caching, and certificate preloading are not optimizations in serverless; they are the entry price
+    for running a database-backed Lambda fleet in production.
   case_study_year: "2024-2025"
   case_study_role: "Lead Engineer"
   case_study_type: "Toptal"
@@ -379,6 +590,18 @@
   slug: play2live-blockchain-esports-platform
   title: "Play2Live - Blockchain Esports Streaming Platform"
   excerpt: "Principal Engineer & Consultant managing 5 teams across 30+ people for a $30M ICO blockchain gaming startup. Led AI, DevOps, Blockchain, Auth, and Backoffice teams. Implemented ETH-Tendermint bridge integration."
+  recap: |
+    Play2Live raised $30M in a 2018 ICO to put token incentives inside esports streaming, which forced
+    two contradictory budgets onto one backend: chat, donations, and engagement events delivered
+    sub-second, and wallet operations held to financial-transaction security. The structural answer was
+    five engineering teams — AI, DevOps, Blockchain, Auth, Backoffice — inside a 30-plus-person company,
+    with an ETH-Tendermint bridge linking Ethereum smart contracts to a higher-throughput consensus
+    engine for the operations that could not wait on mainnet. The work that actually consumed the
+    schedule was identity, not throughput: five social providers (Google, Facebook, Twitch, Steam, VK)
+    plus an account-merging flow that detected one person arriving through different logins and
+    consolidated their data and wallet associations behind a verification step. Once tokens are attached
+    to accounts, duplicate identity stops being a UX annoyance and becomes a financial correctness
+    problem, which is why that subsystem earned a real design instead of a heuristic.
   case_study_year: "2018-2019"
   case_study_role: "Principal Engineer & Consultant"
   case_study_type: "Independent"
@@ -404,6 +627,18 @@
   slug: patentseekers-enterprise-patent-search
   title: "PatentSeekers - Enterprise Patent Search Platform"
   excerpt: "Lead Engineer building cloud infrastructure for an enterprise patent search platform. 100M+ patents indexed, sub-second search, zero-downtime deployments, and 60% cost optimization through hybrid cloud strategy."
+  recap: |
+    Indexing 100M+ patents from EPO, USPTO, and WIPO feeds and answering the queries IP professionals
+    actually write — proximity operators, citation analysis, a custom query language — in sub-second
+    time is a data-infrastructure problem long before it is a search problem. The platform ran on AWS
+    with infrastructure as code across the whole stack, blue/green deployments because enterprise IP
+    clients cannot absorb a maintenance window, golden images per node type to keep environments
+    identical, and 99.9% production uptime across 210K+ lines and 8,500+ commits from 30+ contributors.
+    The cost lever was splitting the estate rather than tuning it: AWS for production reliability and
+    compliance, dedicated servers for development and staging, cutting non-production spend 60% while
+    leaving the production posture untouched. That split is the decision worth borrowing — cloud pricing
+    punishes data-intensive workloads hardest in exactly the environments where nobody is paying for the
+    SLA.
   case_study_year: "2019-2020"
   case_study_role: "Lead Engineer"
   case_study_type: "Toptal"
@@ -429,6 +664,18 @@
   slug: zoetis-sales-intelligence-platform
   title: "Zoetis - Sales Intelligence Platform for Animal Health"
   excerpt: "Senior Python Engineer building ML-driven sales analytics platform for the world's leading animal health company. Django data pipelines processing millions of records with Azure and DataBricks integration."
+  recap: |
+    Zoetis field representatives had abundant sales data and no intelligence layer — data dumps that
+    never answered which accounts to visit first, or with what. The platform that fixed it is a
+    Django/React application on Azure running SAP exports, customer master data, and territory
+    assignments through four stages — ingestion, transformation, DataBricks ML scoring, delivery — with
+    separate DX and RX pipelines because diagnostics and pharmaceuticals score customers on different
+    rules. At 99,875 lines, 15,593 commits, and 104 contributors it processes 2M+ records nightly in
+    under four hours at 50,000-record chunks, holding sub-500ms P95 on the API and 99.5%+ uptime. The
+    load-bearing lessons are narrower than the architecture: idempotent operations, because partial
+    loads and retries are inevitable; versioned API contracts between DataBricks and Django, because ML
+    models ship on a different cadence than the app; and a rules engine configurable without a
+    deployment, because sales leadership rewrites scoring faster than anyone can ship code.
   case_study_year: "2023-2024"
   case_study_role: "Senior Python Engineer"
   case_study_type: "Toptal"
@@ -454,6 +701,18 @@
   slug: zero-trust-what-it-is
   title: "Zero Trust: What It Actually Is"
   excerpt: "Where does verification finally terminate — at a brain, or at a quorum? A philosophical look at the last perimeter of trust."
+  recap: |
+    Zero Trust taken at its word is recursive verification, and a recursion has to terminate somewhere —
+    the classical answer bottoms out in a human who knows something nobody else does, the only secret in
+    the system no policy engine can enumerate. That root fails three ways: you cannot demonstrate
+    knowledge of a passphrase without leaking it to silicon, brains forget and die and can be coerced,
+    and Wittgenstein's private-language argument takes apart the idea that a string is a passphrase
+    without a community that recognises the act. The mature move is to make the terminal plural —
+    Shamir's 1979 secret sharing, M-of-N multisignature, the USAF's 1962 two-person rule on Permissive
+    Action Links — the same doctrine in three media: a judgment with that blast radius is not in any
+    single mind's gift. One brain authenticating to itself is fine for small blast radius, but "we trust
+    our CTO" is a perimeter statement drawn at exactly one skull, and the engineer who can deploy to
+    production alone at 3 a.m. is a single point of failure the diagram never shows.
   date: "2026-01-14"
   tags:
     - Zero-Trust
@@ -474,6 +733,19 @@
   slug: zero-trust-pgp-sops
   title: "Zero Trust: Secrets When You Trust Nobody (PGP + SOPS)"
   excerpt: "Commit real secrets to git — encrypted well enough that the repo can be public. PGP and SOPS for the working engineer, plus an honest map of where the trust boundary actually moves."
+  recap: |
+    Committing a production database password to git is fine once a clone is useless to anyone outside
+    the recipient list — the encryption becomes a perimeter that travels with the file instead of one
+    you provision around it. SOPS makes that workable by encrypting only the values and leaving the keys
+    readable, so a diff still tells you whether a change was a rotation or a hostname typo; a fresh
+    per-file AES-256 data key encrypts every value, and that DEK is wrapped once per PGP recipient in
+    the sops trailer — the same envelope trick TLS uses for session keys. Onboarding is one command,
+    sops updatekeys, which rewraps the DEK and leaves the ciphertext bytes untouched, so the reviewer
+    sees exactly one thing happen; offboarding is the same shape, but recipient rotation only answers
+    future access, and historical compromise still requires rotating the secret itself. Three trust
+    assumptions remain and you should be able to name them on demand: the recipient list needs branch
+    protection, the CI identity can read everything and belongs in a short-lived KMS role rather than a
+    PGP key on a Jenkins box, and PGP-only setups give you no audit log at all.
   date: "2026-02-04"
   tags:
     - Zero-Trust
@@ -494,6 +766,19 @@
   slug: zero-trust-immutability-as-proof
   title: "Zero Trust: Immutability as Proof"
   excerpt: "Append-only streams, hash chains, and the past you cannot unhack. The third trust shift: stop trusting the storage layer to be honest about its own history."
+  recap: |
+    A database row is a cached projection, not a fact — current state is a fold over an event stream the
+    storage layer hides for performance reasons that have nothing to do with truth. Make the log primary
+    and the state derived, and tampering stops being silent: in a hash chain where each block is the
+    hash of the previous hash concatenated with the event, one flipped bit cascades to the head, and ten
+    lines of Python show the two heads diverging. Git has given source code that property for fifteen
+    years, and the same primitive covers data through Kafka topics with infinite retention,
+    event-sourced aggregates with a monotonic sequence, or S3 Object Lock that even admin credentials
+    cannot rewrite before retention expires; Merkle roots plus signed checkpoints anchored out-of-band
+    extend the proof to an auditor who never reads the log and never trusts your servers. Blockchains
+    are one expensive instantiation and almost never the right first reach — what you get instead is a
+    post-mortem that ends in "chain broke at block 4,712, head diverged from the 02:14:08 checkpoint"
+    rather than one that ends in "we believe."
   date: "2026-02-18"
   tags:
     - Zero-Trust
@@ -514,6 +799,18 @@
   slug: cloud-agnostic-thinking
   title: "Agnostic Way: Thinking Cloud-Agnostic"
   excerpt: "The mindset, what it actually buys you, and the three exit costs nobody priced in."
+  recap: |
+    Most cloud-agnostic architectures fail because they confuse abstraction with optionality — paying an
+    abstraction tax forever to buy an option nobody ever exercises. The discipline that survives contact
+    is narrower: write the exit cost next to every dependency, in the same architecture doc that records
+    why you adopted it, and know which of three points each workload sits on — portable (one Friday),
+    lift-and-shift-able (days to weeks), vendor-locked-by-default (fiscal quarters). Agnosticism buys
+    negotiation leverage at renewal, regulatory survival when the next data-residency deadline lands,
+    and talent mobility; if none of the three applies — small spend, calm jurisdiction, junior team —
+    use the managed service, name the price, revisit in a year. The costs nobody prices into the
+    original decision are terabyte-scale egress that becomes a five-figure line item before the rewrite
+    even starts, IAM rewiring that teaches you in week three that the cloud is the IAM layer, and SLA
+    fine print that does not port even when the uptime number matches.
   date: "2026-01-21"
   tags:
     - Cloud-Agnostic
@@ -534,6 +831,18 @@
   slug: secondbrain-db-overview
   title: "SBDB: Your Markdown IS Your Database"
   excerpt: "Markdown files are structured data wearing prose's clothes. `sbdb` is the smallest tool that lets you stop pretending otherwise."
+  recap: |
+    A markdown directory is a database that nobody admits to running: the frontmatter is typed columns,
+    the body is the payload, the wikilinks are foreign keys, and the schema is enforced by nobody. That
+    denial produces four quiet rot modes once the file count crosses a thousand — frontmatter drift
+    where half the files say tags and the rest say keywords, silent edits nobody reviews, link rot that
+    never fails loudly, and inventory loss where counting proposed ADRs requires writing a script every
+    time. secondbrain-db is one static Go binary that layers five thin things over the same directory
+    without taking it away: schemas in JSON-Schema 2020-12 with x-storage and x-entity extensions, .sbdb
+    sidecars holding sha256 integrity hashes, Starlark virtual fields, a SQLite-backed link graph, and
+    git log projected into typed JSONL events. There is no daemon and no sbdb serve — the state is the
+    directory plus the SQLite file, and deleting the binary leaves a normal repo of normal markdown
+    behind.
   date: "2026-01-07"
   tags:
     - secondbrain-db
@@ -554,6 +863,18 @@
   slug: secondbrain-db-typed-schemas
   title: "SBDB: Typed Schemas"
   excerpt: "A copy-pasteable JSON-Schema 2020-12 contract for every markdown file in your repo, plus the small `x-*` vocabulary that turns the schema into an ORM."
+  recap: |
+    The schema is the layer every other sbdb feature leans on, and it is stock JSON Schema 2020-12 in
+    schemas/*.yaml — ajv validates it, yaml-language-server autocompletes your frontmatter from it, and
+    everything sbdb-specific hides behind one greppable x- prefix. Thirty lines for a recipes entity
+    buys additionalProperties false so prep_tme fails outright, an enum that collapses six spellings of
+    japanese into one token, defaults that sbdb create fills in, and a $ref like
+    sbdb://people#/properties/id that does double duty as both type constraint and a foreign-key edge in
+    the graph. Validation failure prints the JSON Pointer, the schema location that rejected it, and a
+    one-line fix at a stable exit code 2, which is what makes the CLI usable by an agent that checks $?
+    instead of parsing English. Evolution runs on x-schema-version — additive changes like a new
+    optional property or a widened enum never bump it, breaking changes ship an x-migrations descriptor
+    that sbdb schema migrate --dry-run walks over every record before rewriting anything.
   date: "2026-01-28"
   tags:
     - secondbrain-db
@@ -574,6 +895,19 @@
   slug: secondbrain-db-integrity-signing
   title: "SBDB: Integrity Signing"
   excerpt: "Per-file hashes, three flavours of drift, and a `doctor` command that makes silent edits loud."
+  recap: |
+    Discipline is what already failed at keeping a wiki honest, so sbdb gives every managed doc a
+    five-field sidecar — a sha256 over canonicalised content, the schema version in force at write time,
+    last_seen, the writer binary version, and the list of fields it normalised — and rehashes on every
+    read. This is drift detection, not signing: anyone with repo write access can edit the file and the
+    sidecar together, and that case belongs to branch protection and signed commits. What it does catch
+    is the frequent category, and doctor names three flavours because the correct response differs —
+    hand-edit drift heals safely because a human is at the keyboard, agent-rewrite drift gets a
+    Stop-hook running sbdb doctor heal --all --schema-validate so the agent reads its own damage in the
+    next prompt window, and merge residue is flagged cause merge_residue and refuses to heal without
+    --force rather than bless a resolution nobody reviewed. Per schema, x-integrity strict fails CI,
+    warn is a migration scaffold teams stay on for eighteen months, and off is defensible only for
+    disposable notes.
   date: "2026-02-11"
   tags:
     - secondbrain-db
@@ -594,6 +928,19 @@
   slug: secondbrain-db-virtual-fields
   title: "SBDB: Virtual Fields"
   excerpt: "Stop typing the title twice. Starlark virtual fields compute frontmatter from the markdown body — sandboxed, deterministic, and loud when they lie."
+  recap: |
+    The title is already in the file as the first H1, and maintaining a second copy in frontmatter is
+    why half your dashboard rows say Untitled. A virtual field fixes that by being an ordinary schema
+    property with readOnly true plus an x-compute block naming a Starlark function that sbdb calls as
+    compute(content, fields) on every write — three lines for title, one expression for word_count, a
+    regex for jira_refs whose items.pattern then type-checks the output so the virtual cannot lie to the
+    index. The sandbox is the load-bearing part: no filesystem, no network, no import, no clock, no
+    cross-document reads, just re and the string and collection builtins, which makes every virtual a
+    pure function of its two arguments, cacheable, verifiable by doctor, and harmless when hostile. Type
+    violations fail loud at write time — returning str(len(...)) for an integer field names the schema,
+    the field and the file, and rejects the write atomically with nothing moved on disk — while facts
+    about events, cross-document counts, and editorial fields like summary are exactly the cases that
+    stay hand-written.
   date: "2026-02-25"
   tags:
     - secondbrain-db
@@ -614,6 +961,18 @@
   slug: secondbrain-db-knowledge-graph
   title: "SBDB: The Knowledge Graph"
   excerpt: "Foreign keys for markdown — typed `$ref` edges, prose-link edges, a local SQLite index, and reverse-link queries in milliseconds."
+  recap: |
+    Every wiki renders a forward link and forgets how to follow a backward one, which is the whole
+    problem, and sbdb solves it with two extraction passes into one edges table of from_id, to_id, kind,
+    source_field and label. Pass one walks the schema: a $ref pointing at
+    sbdb://incidents#/properties/id is simultaneously a string constraint to a stock validator and a
+    named typed edge to the indexer, so supersedes chains and ownership ties get declared rather than
+    regexed, and a dangling reference becomes a validation error the way a missing import is a compile
+    error. Pass two walks the prose, turning every resolvable markdown link into a mentions edge with
+    the link text as label — deliberately keeping the duplicate row when frontmatter and body both point
+    at the same incident, because the prose remembers why the link was made. The index is three tables
+    in .sbdb/index.sqlite, disposable and rebuilt from the files; a 3,400-document, 28,000-edge archive
+    reindexes in 1.3 seconds, and sbdb links --to answers what points at this before you delete it.
   date: "2026-03-04"
   tags:
     - secondbrain-db
@@ -634,6 +993,18 @@
   slug: secondbrain-db-git-is-the-audit-log
   title: "SBDB: Git Is the Audit Log"
   excerpt: "Git is already an append-only ledger of every change you ever made — `sbdb events emit` projects it as a JSONL stream and stores zero new bytes."
+  recap: |
+    Git is already an append-only, hash-chained ledger of every change your team made, signed by
+    committer and ordered by time, which makes the usual audit stack — events table, relay worker, queue
+    — six engineer-weeks spent building a worse version of it, plus a second truth that drifts the
+    moment a backfill script writes to the table directly. sbdb events emit walks git log over a commit
+    range, classifies each touched file by entity against the schema's path globs, and prints one JSONL
+    line per change, shaped by an x-events block that whitelists frontmatter fields so bodies never leak
+    onto the audit bus; it stores zero new bytes. Because the projection is deterministic over the same
+    history, replay is just a different range — the standup window, the weekly compliance dump, the
+    regulator's question six months later all return byte-identical output. The honest limit is that git
+    is not Kafka: latency is measured in pushes, with no per-consumer offsets, which is the right trade
+    at the tens-to-thousands-of-events-per-day rate a knowledge base actually produces.
   date: "2026-03-11"
   tags:
     - secondbrain-db
@@ -654,6 +1025,19 @@
   slug: comprehension-debt-the-debt-nobody-booked
   title: "Comprehension Debt: The Debt Nobody Booked"
   excerpt: "AI writes code faster than your team builds the theory of it. The gap is a debt, it compounds, and it isn't on any ledger your tools can see."
+  recap: |
+    Comprehension already consumed about 58% of professional developer time in 2018, three years before
+    Copilot, measured by Xia et al. across 78 developers on seven industrial projects. Then generation
+    went industrial: GitClear's 211-million-line analysis found duplicated blocks up 8x in 2024 and
+    refactored lines collapsing from 24.1% to 9.5%; METR's trial had experienced developers 19% slower
+    with AI while believing they were 20% faster; Anthropic's study scored AI-assisted engineers 17%
+    lower on comprehension quizzes about code they had just shipped. Naur's 1985 Programming as Theory
+    Building explains why volume is not the real problem — the product of programming is a theory held
+    by the people who built it, one that degrades on serialization — so LLM output is code whose theory
+    nobody ever formed, born legacy and pre-orphaned with green CI. That puts the cost on a different
+    ledger from technical debt, since it lives in people rather than the artifact, and the usable
+    proxies are onboarding time to a first confident change, modules with zero humans who can explain
+    them, and how often a trivial change detonates.
   date: "2026-08-25"
   tags:
     - Comprehension-Debt
@@ -674,6 +1058,20 @@
   slug: comprehension-debt-frozen-context
   title: "Comprehension Debt: Frozen Context"
   excerpt: "Your knowledge base is a snapshot of a theory nobody re-verifies. Markdown can't fail — and that's precisely why it drifts into fiction."
+  recap: |
+    AGENTS.md, CLAUDE.md, Cline's Memory Bank, glob-scoped ADRs — every vendor converged on one
+    architecture, serialize the team's theory into prose and inject it into every context window, and it
+    decays three ways. Chroma's context-rot study across 18 frontier models found performance degrading
+    non-uniformly as input length grows; instruction files only ever grow, because nobody is sure a rule
+    is safe to delete, until the agent ignores the file wholesale rather than selectively; and drift is
+    the quiet one, a March CLAUDE.md still asserting that database access goes through lib/db.ts and
+    GraphQL is banned, months after that file was deleted and GraphQL shipped, with zero errors raised.
+    Underneath all three sits the property that markdown has no failing state: code that lies won't
+    compile, tests go red, an OpenAPI spec that lies breaks its contract test, but prose that lies
+    renders exactly like prose that tells the truth, and loading an ADR into a prompt is not enforcing
+    it. Both escape routes — generating docs from code, generating code from specs — agree the fix is a
+    verification loop, not better discipline, leaving prose the job it is genuinely good at: rationale,
+    not enforcement.
   date: "2026-09-01"
   tags:
     - Comprehension-Debt
@@ -694,6 +1092,20 @@
   slug: comprehension-debt-boundaries-beat-willpower
   title: "Comprehension Debt: Boundaries Beat Willpower"
   excerpt: "You can't out-read a machine writing a thousand lines an hour. Plugin contracts are the only comprehension strategy that survives code you didn't write."
+  recap: |
+    Working memory holds roughly two to six chunks, and the expert advantage is compression rather than
+    capacity, so reading harder was never going to scale against a writer emitting a thousand lines an
+    hour — longer checklists and a second approver are promises, and a promise has no throughput and
+    renegotiates itself at six on a Friday. Parnas in 1972, Evans' bounded contexts, and Team
+    Topologies' cognitive-load sizing are one idea: the boundary is where comprehension gets compressed.
+    That contracts substitute for reading is already proven at scale by VS Code's deliberately narrow
+    extension API and Yarn's plugin core, where new contributors ship features without knowing the
+    core's subtleties — but the discount is earned only when the contract carries types, hooks, and
+    invariants; miss the invariants and consumers read the implementation anyway. Making a boundary bind
+    instead of inform takes about a dozen lines of eslint-plugin-boundaries or dependency-cruiser
+    config, ArchUnit on the JVM, turning a ui import of core/internals into exit 1 rather than a review
+    hope, and redefines understood as every module behind a contract with an owner who can explain it
+    and a gate that goes red.
   date: "2026-09-08"
   tags:
     - Comprehension-Debt
@@ -714,6 +1126,19 @@
   slug: comprehension-debt-specs-with-a-failing-state
   title: "Comprehension Debt: Specs With a Failing State"
   excerpt: "A spec that can't fail is an opinion with a heading. The industry put $125M and 93k GitHub stars behind fixing that."
+  recap: |
+    Strip the vendor language and a spec is three things — a document, a runner, and an exit code — and
+    removing any leg of that tripod puts you back in documentation, which drifts into fiction precisely
+    because nothing breaks when it lies. The 2025–26 wave splits into two camps with opposite arrows and
+    one shared component: Living Documentation derives docs from the code so drift is structurally
+    impossible, though it can only describe what already shipped, while GitHub's Spec Kit at 93,000
+    stars, Kiro's EARS acceptance criteria, OpenSpec's validated delta-specs, and Tessl's $125M bet on
+    code as regenerable build output make intent the durable artifact instead. Each enforces less than
+    its landing page implies — Spec Kit enforces process order, Kiro the shape of a requirement,
+    OpenSpec the structure of a change, and nobody enforces semantics end to end. For a codebase that
+    already exists the entry price is two moves: arm the OpenAPI file that has been quietly lying since
+    some Tuesday with a contract test, and require a scenario-bearing delta-spec on new work only, so
+    coverage follows change instead of chasing it.
   date: "2026-09-15"
   tags:
     - Comprehension-Debt
@@ -734,6 +1159,19 @@
   slug: comprehension-debt-metaframework
   title: "Comprehension Debt: Metaframework"
   excerpt: "Your product management tool is a database your repo has never heard of. Bring the product home — typed, validated, and able to fail CI."
+  recap: |
+    Code was born in version control, CI became YAML in the repo, infrastructure became Terraform
+    reviewed like any other diff — and every one of those migrations delivered the same three gifts of a
+    diff, a review, and a history. Product management is the holdout, so the decisions about what the
+    system actually is sit in Linear or Jira or Notion, a vendor's database the repo cannot see, which
+    is why agents get product context by copy-paste, paraphrased and three sprints stale. Bringing it
+    home takes four properties: a stable address per entity, srn://billing/checkout/adr/psp-fallback
+    resolving to one markdown file; a declared kind; a JSON Schema per kind; and a CI check that exits 1
+    when the catalog lies — implemented in metaframework v0.1.0, where the filesystem is the database,
+    git is the history, evolution is additive-only, and a 288-entity catalog re-reads in about 239 ms.
+    The payoff is that a scope cut arrives as a reviewable diff instead of a comment thread, and asking
+    when guest checkout was dropped becomes git blame on a file with a schema rather than archaeology
+    across four tools.
   date: "2026-09-22"
   tags:
     - Comprehension-Debt
@@ -754,6 +1192,19 @@
   slug: comprehension-debt-the-monday-playbook
   title: "Comprehension Debt: The Monday Playbook"
   excerpt: "Six moves, no rewrite required, that start paying down comprehension debt while the feature train keeps running — beginning Monday."
+  recap: |
+    Six moves over twelve weeks pay down comprehension debt with no rewrite and no feature freeze, each
+    shipping with an owner, a mechanism, and a metric — a move missing one of the three is a listicle
+    entry. Start by baselining three numbers you already have, time-to-confident-change, orphan-module
+    count and surprise rate, since METR found developers believing they were 20% faster while measuring
+    slower, so self-report is precisely the instrument this problem breaks. Then give every module a
+    named human who can explain it, in-repo next to CODEOWNERS, with explain-back review as the antidote
+    to the 17% comprehension drop Anthropic measured in AI-assisted engineers; ratchet boundary rules on
+    changed files only, aimed at GitClear's collapse of refactoring from 24.1% to 9.5% against an 8x
+    rise in duplicated blocks; gate new decisions as typed entities that validate in CI while the old
+    wiki goes read-only and is mined opportunistically; and put the rules file on an expiry-date diet.
+    The sixth move keeps the other five alive by reserving a defended slice of every cycle and reporting
+    it beside velocity, because what gets measured next to velocity gets protected from it.
   date: "2026-09-29"
   tags:
     - Comprehension-Debt

@@ -11,6 +11,7 @@ const getSeriesIcon = (slug: string, accentColor: string, size: string = 'w-5 h-
 
 import { CyberpunkBackground } from '@/components/CyberpunkBackground';
 import { MarkdownRenderer } from '@/components/MarkdownRenderer';
+import { useArticleRecap } from '@/components/ArticleRecap';
 const blogVideo = '/videos/cyberpunk-interface.mp4';
 const authorAvatar = '/images/avatar-squere.webp';
 import { getBlogPostBySlug, getSeriesWithPosts, getAllBlogPosts, type BlogPost, type BlogPostWithSeries, type SeriesWithPosts } from '@/lib/dataLoader';
@@ -128,7 +129,12 @@ export default function BlogPostPage() {
     queryFn: () => getSeriesWithPosts(post?.series?.slug || ''),
     enabled: !!post?.series?.slug
   });
-  
+
+  const { trigger: recapTrigger, panel: recapPanel } = useArticleRecap(
+    post?.recap,
+    seriesData?.accentColor
+  );
+
   if (isLoading || !postSlug) {
     return (
       <div className="min-h-screen text-foreground relative overflow-x-hidden flex items-center justify-center">
@@ -311,6 +317,7 @@ export default function BlogPostPage() {
             <span className="flex items-center gap-2 px-3 py-1.5 rounded border border-accent/30 bg-accent/10 text-accent">
               <Users className="w-3 h-3" /> {post.audience?.toUpperCase() || 'EVERYONE'}
             </span>
+            {recapTrigger}
           </div>
         </div>
 
@@ -319,6 +326,12 @@ export default function BlogPostPage() {
             {post.excerpt}
           </p>
         </div>
+
+        {recapPanel && (
+          <div className="max-w-4xl mx-auto mb-8 px-4 sm:px-0">
+            {recapPanel}
+          </div>
+        )}
 
         {seriesData && (
           <div className="max-w-4xl mx-auto mb-8 px-4 sm:px-0">

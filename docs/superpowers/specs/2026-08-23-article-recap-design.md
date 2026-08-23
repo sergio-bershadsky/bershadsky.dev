@@ -17,7 +17,7 @@ An optional per-post recap of roughly 1,000 characters — a 30-second read that
 |---|---|---|
 | Content source | Hand-authored `recap:` field in `blog-posts/data.yaml` | Zero runtime cost, controlled quality, prerendered for SEO, no API key in the browser, no backend (the site has none) |
 | Presentation | Inline expanding panel under the hero | Preserves scroll position and page context; no focus-trap/overlay complexity; matches the existing chip language |
-| Scope | All published posts (31 at time of writing) | Format is judged across the whole catalogue at once |
+| Scope | All published posts (36 at time of writing) | Format is judged across the whole catalogue at once |
 | Storage location | Inside `data.yaml` beside `excerpt` | One source of truth per post; cost is a longer YAML file |
 | Corner radius | Match sibling meta chips (`rounded`), not the global `--radius: 0rem` | Local consistency with adjacent elements beats the global rule for this element |
 
@@ -39,7 +39,7 @@ Optional by design: posts without a recap render no chip. Nothing breaks on a mi
   1. **Chip button** — sits in the article meta row. `font-mono text-xs`, `Zap` icon (lucide), label `TL;DR // 30_SEC`, trailing chevron rotated 180° when open. Styling matches sibling chips (`px-3 py-1.5 rounded border`). Carries the only glow on the view while open.
   2. **Panel** — `NeonCard` with `bg-card/80 backdrop-blur-md`, border in the series accent via `style={{ borderColor }}`. Contains a `RECAP //` eyebrow in Share Tech Mono and the recap body in Merriweather serif (the site's human-voice register). Expands via framer-motion height + opacity.
 - Accessibility: real `<button>` with `aria-expanded` and `aria-controls`; panel has the matching `id`. Keyboard support comes free from button semantics.
-- SEO: the panel is always present in the DOM (visually collapsed), never conditionally rendered, so prerendered HTML contains the recap text.
+- SEO: the site's prerender emits head metadata only — the body is `<div id="root"></div>` and every page's content, including the article text, is client-rendered. The recap is therefore no more or less crawlable than the article body itself (JS-executing crawlers see both). To give non-JS crawlers the argument, `script/prerender.ts` publishes the recap as the `abstract` property of the `BlogPosting` JSON-LD.
 
 ## Integration
 
@@ -56,7 +56,7 @@ Each recap:
 - States what the piece claims, the load-bearing evidence, and what the reader can do with it.
 - No emojis, no markdown syntax (rendered as plain text).
 
-Generation: one agent per post reads the article's `.content.md` and drafts the recap; output audited for length and banned phrasing before review.
+Generation: agents batch-read the articles' `.content.md` and draft recaps into `.draft/recaps/<id>.txt`; a second pass audits length and banned phrasing. `script/merge-recaps.py` then merges the texts into `data.yaml` as `recap: |` blocks — idempotent, re-validates every recap, and refuses to write if any fails.
 
 ## Verification
 

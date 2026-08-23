@@ -3,6 +3,7 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
+  recap: string | null;
   content: string;
   date: string;
   tags: string[];
